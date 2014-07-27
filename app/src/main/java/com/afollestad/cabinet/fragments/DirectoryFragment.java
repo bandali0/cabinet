@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Outline;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
@@ -22,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.adapters.FileAdapter;
@@ -181,7 +183,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             canShow = canShow && ((LocalFile) mDirectory).existsSync();
         }
         boolean searchMode = mQuery != null;
-        menu.findItem(R.id.createNew).setVisible(!searchMode && canShow);
         menu.findItem(R.id.sort).setVisible(canShow);
         menu.findItem(R.id.goUp).setVisible(!searchMode && canShow && mDirectory.getParent() != null);
 
@@ -211,7 +212,103 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_recyclerview, null);
+        View view = inflater.inflate(R.layout.fragment_recyclerview, null);
+        View fab = view.findViewById(R.id.fab);
+        boolean canShow = true;
+        if (!mDirectory.isRemote()) {
+            canShow = ((LocalFile) mDirectory).existsSync();
+        }
+        boolean searchMode = mQuery != null;
+        if (!searchMode && canShow) {
+            fab.setVisibility(View.GONE);
+            int size = getResources().getDimensionPixelSize(R.dimen.fab_size);
+            Outline outline = new Outline();
+            outline.setOval(0, 0, size, size);
+
+            fab.setOutline(outline);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onFabPressed();
+                }
+            });
+            fab.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    Toast.makeText(getActivity(), R.string.newStr, Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+            });
+            fab.setClipToOutline(true);
+        } else fab.setVisibility(View.GONE);
+        return view;
+    }
+
+    protected void onFabPressed() {
+        SilkDialog.create(getActivity())
+                .setAccentColorRes(R.color.cabinet_color)
+                .setTitle(R.string.newStr)
+                .setItems(R.array.new_options, new SilkDialog.SelectionCallback() {
+                    @Override
+                    public void onSelection(int index, String value) {
+                        switch (index) {
+                            case 0: // Folder
+                                Utils.showInputDialog(getActivity(), R.string.new_folder, R.string.untitled, null,
+                                        new SilkDialog.InputCallback() {
+                                            @Override
+                                            public void onInput(String newName) {
+                                                if (newName.isEmpty())
+                                                    newName = getString(R.string.untitled);
+                                                final File dir = mDirectory.isRemote() ?
+                                                        new CloudFile(getActivity(), (CloudFile) mDirectory, newName, true) :
+                                                        new LocalFile(getActivity(), mDirectory, newName);
+                                                dir.exists(new File.BooleanCallback() {
+                                                    @Override
+                                                    public void onComplete(boolean result) {
+                                                        if (!result) {
+                                                            runOnUiThread(new Runnable() {
+                                                                @Override
+                                                                public void run() {
+                                                                    dir.mkdir(new SftpClient.CompletionCallback() {
+                                                                        @Override
+                                                                        public void onComplete() {
+                                                                            runOnUiThread(new Runnable() {
+                                                                                @Override
+                                                                                public void run() {
+                                                                                    reload();
+                                                                                }
+                                                                            });
+                                                                        }
+
+                                                                        @Override
+                                                                        public void onError(Exception e) {
+                                                                            Utils.showErrorDialog(getActivity(), e.getMessage());
+                                                                        }
+                                                                    });
+                                                                }
+                                                            });
+                                                        } else {
+                                                            Utils.showErrorDialog(getActivity(), getString(R.string.directory_already_exists));
+                                                        }
+                                                    }
+
+                                                    @Override
+                                                    public void onError(Exception e) {
+                                                        Utils.showErrorDialog(getActivity(), e.getMessage());
+                                                    }
+                                                });
+                                            }
+                                        }
+                                );
+                                break;
+                            case 1: // Remote connection
+                                Activity context = getActivity();
+                                context.setTheme(R.style.Theme_Cabinet);
+                                RemoteConnectionDialog.create(context).show(true);
+                                break;
+                        }
+                    }
+                }).show(true);
     }
 
     @Override
@@ -386,73 +483,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.createNew:
-                SilkDialog.create(getActivity())
-                        .setAccentColorRes(R.color.cabinet_color)
-                        .setTitle(R.string.newStr)
-                        .setItems(R.array.new_options, new SilkDialog.SelectionCallback() {
-                            @Override
-                            public void onSelection(int index, String value) {
-                                switch (index) {
-                                    case 0: // Folder
-                                        Utils.showInputDialog(getActivity(), R.string.new_folder, R.string.untitled, null,
-                                                new SilkDialog.InputCallback() {
-                                                    @Override
-                                                    public void onInput(String newName) {
-                                                        if (newName.isEmpty())
-                                                            newName = getString(R.string.untitled);
-                                                        final File dir = mDirectory.isRemote() ?
-                                                                new CloudFile(getActivity(), (CloudFile) mDirectory, newName, true) :
-                                                                new LocalFile(getActivity(), mDirectory, newName);
-                                                        dir.exists(new File.BooleanCallback() {
-                                                            @Override
-                                                            public void onComplete(boolean result) {
-                                                                if (!result) {
-                                                                    runOnUiThread(new Runnable() {
-                                                                        @Override
-                                                                        public void run() {
-                                                                            dir.mkdir(new SftpClient.CompletionCallback() {
-                                                                                @Override
-                                                                                public void onComplete() {
-                                                                                    runOnUiThread(new Runnable() {
-                                                                                        @Override
-                                                                                        public void run() {
-                                                                                            reload();
-                                                                                        }
-                                                                                    });
-                                                                                }
-
-                                                                                @Override
-                                                                                public void onError(Exception e) {
-                                                                                    Utils.showErrorDialog(getActivity(), e.getMessage());
-                                                                                }
-                                                                            });
-                                                                        }
-                                                                    });
-                                                                } else {
-                                                                    Utils.showErrorDialog(getActivity(), getString(R.string.directory_already_exists));
-                                                                }
-                                                            }
-
-                                                            @Override
-                                                            public void onError(Exception e) {
-                                                                Utils.showErrorDialog(getActivity(), e.getMessage());
-                                                            }
-                                                        });
-                                                    }
-                                                }
-                                        );
-                                        break;
-                                    case 1: // Remote connection
-                                        Activity context = getActivity();
-                                        context.setTheme(R.style.Theme_Cabinet);
-                                        RemoteConnectionDialog.create(context).show(true);
-                                        break;
-                                }
-                            }
-                        })
-                        .show(true);
-                return true;
             case R.id.goUp:
                 ((DrawerActivity) getActivity()).switchDirectory(mDirectory.getParent(), false);
                 break;

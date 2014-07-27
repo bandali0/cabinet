@@ -28,7 +28,7 @@
             android:lineSpacingMultiplier="1.4"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:text="@string/no_files"/>
+            android:text="@string/no_files" />
 
     </RelativeLayout>
 
@@ -40,17 +40,17 @@
         style="?android:progressBarStyle"
         android:indeterminateOnly="true" />
 
-    <!--<ImageButton-->
-    <!--android:id="@+id/fab"-->
-    <!--android:layout_alignParentRight="true"-->
-    <!--android:layout_alignParentBottom="true"-->
-    <!--android:layout_width="@dimen/fab_size"-->
-    <!--android:layout_height="@dimen/fab_size"-->
-    <!--android:layout_gravity="bottom|right"-->
-    <!--android:layout_marginRight="16dp"-->
-    <!--android:layout_marginBottom="16dp"-->
-    <!--android:src="@drawable/ic_add"-->
-    <!--android:background="@drawable/fab_ripple"-->
-    <!--android:stateListAnimator="@anim/fab_anim" />-->
+    <ImageButton
+        android:id="@+id/fab"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="@dimen/fab_size"
+        android:layout_height="@dimen/fab_size"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/ic_new"
+        android:background="@drawable/fab_ripple"
+        android:stateListAnimator="@anim/fab_anim" />
 
 </RelativeLayout>

@@ -15,7 +15,7 @@ android {
 
     defaultConfig {
         applicationId "com.afollestad.cabinet"
-        minSdkVersion 16
+        minSdkVersion 'L'
         targetSdkVersion 'L'
         versionCode 36
         versionName "1.6"

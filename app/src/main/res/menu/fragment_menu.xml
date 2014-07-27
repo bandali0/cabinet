@@ -3,11 +3,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/createNew"
-        android:title="@string/newStr"
-        android:icon="@drawable/ic_new"
-        android:showAsAction="ifRoom" />
-    <item
         android:id="@+id/goUp"
         android:title="@string/go_up"
         android:icon="@drawable/ic_up"
