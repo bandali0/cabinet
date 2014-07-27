@@ -121,13 +121,6 @@ public class NavigationDrawerFragment extends Fragment {
         return mDrawerListView;
     }
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        // Select either the default item (0) or the last selected item.
-        selectItem(mCurrentSelectedPosition);
-    }
-
     /**
      * Users of this fragment must call this method to set up the navigation drawer interactions.
      *
@@ -200,6 +193,9 @@ public class NavigationDrawerFragment extends Fragment {
         });
 
         mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+        // Select either the default item (0) or the last selected item.
+        selectItem(mCurrentSelectedPosition);
     }
 
     private void selectItem(int position) {
