@@ -17,7 +17,7 @@
             android:textColor="@color/cabinet_color"
             android:layout_marginBottom="7dp"
             android:layout_marginTop="@dimen/welcome_header_margin_top"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="24dp"
             android:text="@string/welcome"
             android:fontFamily="sans-serif-light"
             android:textStyle="italic" />
@@ -28,10 +28,10 @@
             android:text="@string/welcome_intro"
             android:layout_marginBottom="10dp"
             android:textSize="@dimen/welcome_summary_textsize"
-            android:lineSpacingMultiplier="1.4"
+            android:lineSpacingMultiplier="1.6"
             android:paddingTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
             android:fontFamily="sans-serif-light" />
 
         <ViewStub
@@ -48,16 +48,19 @@
             android:text="@string/welcome_conclusion"
             android:layout_marginBottom="10dp"
             android:textSize="@dimen/welcome_summary_textsize"
-            android:lineSpacingMultiplier="1.4"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:lineSpacingMultiplier="1.6"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
             android:fontFamily="sans-serif-light" />
 
         <Button
             android:id="@+id/finish"
             android:layout_width="match_parent"
             android:layout_height="@dimen/welcome_button_height"
-            android:text="@string/lets_go" />
+            android:text="@string/lets_go"
+            android:background="@drawable/rect_button_ripple_selector"
+            android:elevation="2dp"
+            android:textColor="@color/button_text_selector" />
 
     </LinearLayout>
 

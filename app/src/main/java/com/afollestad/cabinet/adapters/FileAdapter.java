@@ -115,7 +115,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
     @Override
     public void onBindViewHolder(FileViewHolder holder, int index) {
         File file = mFiles.get(index);
-        holder.view.setTag(index);
+        holder.view.setTag("0:" + index);
 
         holder.title.setText(file.getName());
         if (file.isDirectory()) holder.content.setText(R.string.directory);

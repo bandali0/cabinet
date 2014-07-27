@@ -2,10 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="16dp"
+    android:paddingTop="10dp"
     android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:background="?android:activatedBackgroundIndicator">
+    android:paddingRight="10dp"
+    android:background="?android:listChoiceBackgroundIndicator"
+    android:descendantFocusability="blocksDescendants">
 
     <RelativeLayout
         android:id="@android:id/widget_frame"
@@ -23,37 +24,54 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_toRightOf="@+id/image">
+            android:layout_toRightOf="@+id/image"
+            android:layout_toLeftOf="@+id/menu">
 
             <TextView
                 android:id="@android:id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:textSize="19sp"
                 android:textColor="#000"
                 android:singleLine="true"
-                android:fontFamily="sans-serif" />
+                android:fontFamily="sans-serif"
+                android:layout_marginBottom="4dp" />
 
             <TextView
                 android:id="@android:id/content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="17sp"
+                android:textSize="16sp"
                 android:maxLines="2"
                 android:ellipsize="end"
-                android:fontFamily="sans-serif-light" />
+                android:fontFamily="sans-serif-light"
+                android:layout_marginBottom="4dp" />
 
             <TextView
                 android:id="@+id/directory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="17sp"
+                android:textSize="16sp"
                 android:singleLine="true"
                 android:ellipsize="end"
                 android:visibility="gone"
                 android:fontFamily="sans-serif-light" />
 
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/menu"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:src="@drawable/ic_overflow_dark"
+            android:scaleType="fitXY"
+            android:layout_marginLeft="8dp"
+            android:layout_alignParentRight="true"
+            android:background="?android:selectableItemBackground"
+            android:layout_centerVertical="true"
+            android:padding="8dp"
+            android:focusableInTouchMode="false"
+            android:focusable="false" />
 
     </RelativeLayout>
 
@@ -63,7 +81,7 @@
         android:layout_height="1dp"
         android:background="@color/divider_color"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="64dp"
         android:layout_below="@android:id/widget_frame" />
 
