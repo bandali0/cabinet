@@ -79,10 +79,6 @@ public class NavigationDrawerFragment extends Fragment {
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
             mFromSavedInstanceState = true;
         }
-
-        mAdapter = new NavigationDrawerAdapter(getActivity());
-        // Select either the default item (0) or the last selected item.
-        selectItem(mCurrentSelectedPosition);
     }
 
     @Override
@@ -119,13 +115,17 @@ public class NavigationDrawerFragment extends Fragment {
                 return true;
             }
         });
+        mAdapter = new NavigationDrawerAdapter(getActivity());
         mDrawerListView.setAdapter(mAdapter);
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
     }
 
-    public boolean isDrawerOpen() {
-        return mDrawerLayout != null && mDrawerLayout.isDrawerOpen(mFragmentContainerView);
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        // Select either the default item (0) or the last selected item.
+        selectItem(mCurrentSelectedPosition);
     }
 
     /**
@@ -215,7 +215,7 @@ public class NavigationDrawerFragment extends Fragment {
         }
         DrawerActivity act = (DrawerActivity) getActivity();
         act.switchDirectory(mAdapter.getItem(position));
-        ((DrawerLayout) act.findViewById(R.id.drawer_layout)).closeDrawers();
+        mDrawerLayout.closeDrawers();
     }
 
     @Override
@@ -284,7 +284,7 @@ public class NavigationDrawerFragment extends Fragment {
         Activity act = getActivity();
         if (act != null) {
             mAdapter.reload(act);
-            ((DrawerLayout) act.findViewById(R.id.drawer_layout)).openDrawer(Gravity.START);
+            mDrawerLayout.openDrawer(Gravity.START);
         }
     }
 }
