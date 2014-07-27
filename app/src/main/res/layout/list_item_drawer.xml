@@ -8,4 +8,4 @@
     android:paddingBottom="@dimen/nav_drawer_item_vert_pad"
     android:paddingLeft="@dimen/nav_drawer_item_hor_pad"
     android:fontFamily="sans-serif-light"
-    android:background="@drawable/rect_button_ripple_selector" />
+    android:background="?android:listChoiceBackgroundIndicator" />
