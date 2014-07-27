@@ -614,9 +614,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             case R.id.donation4:
                 ((DrawerActivity) getActivity()).donate(4);
                 break;
-            case R.id.settings:
-                getActivity().startActivity(new Intent(getActivity(), SettingsActivity.class));
-                break;
         }
         return super.onOptionsItemSelected(item);
     }

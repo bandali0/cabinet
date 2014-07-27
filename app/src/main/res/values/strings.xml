@@ -134,7 +134,6 @@
     <string name="translucent_navbar">Translucent Navigation Bar</string>
     <string name="translucent_statusbar_desc">Translucent status bar on KitKat.</string>
     <string name="translucent_navbar_desc">Translucent navigation bar on KitKat.</string>
-    <string name="settings">Settings</string>
 
     <string-array name="new_options">
         <item>Folder</item>
