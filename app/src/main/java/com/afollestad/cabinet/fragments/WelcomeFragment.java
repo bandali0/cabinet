@@ -1,7 +1,6 @@
 package com.afollestad.cabinet.fragments;
 
 import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -35,7 +34,7 @@ public class WelcomeFragment extends Fragment {
         ViewStub fileStub = (ViewStub) view.findViewById(R.id.fileCardStub);
         fileCard = fileStub.inflate();
 
-        ImageView icon = (ImageView) fileCard.findViewById(android.R.id.icon);
+        ImageView icon = (ImageView) fileCard.findViewById(R.id.image);
         icon.setImageResource(R.drawable.android_logo);
         icon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,17 +49,17 @@ public class WelcomeFragment extends Fragment {
 
         ((TextView) fileCard.findViewById(android.R.id.content)).setText(R.string.file_stub_content);
 
-        View menuButton = fileCard.findViewById(android.R.id.button1);
-        Context context = getActivity();
-        context.setTheme(android.R.style.Theme_Holo_Light);
-        menu = new PopupMenu(context, menuButton);
-        menu.inflate(R.menu.file_options);
-        menuButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                menu.show();
-            }
-        });
+//       TODO View menuButton = fileCard.findViewById(android.R.id.button1);
+//        Context context = getActivity();
+//        context.setTheme(android.R.style.Theme_Holo_Light);
+//        menu = new PopupMenu(context, menuButton);
+//        menu.inflate(R.menu.file_options);
+//        menuButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                menu.show();
+//            }
+//        });
 
         view.findViewById(R.id.finish).setOnClickListener(new View.OnClickListener() {
             @Override

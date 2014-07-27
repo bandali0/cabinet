@@ -80,6 +80,7 @@ public class NavigationDrawerFragment extends Fragment {
             mFromSavedInstanceState = true;
         }
 
+        mAdapter = new NavigationDrawerAdapter(getActivity());
         // Select either the default item (0) or the last selected item.
         selectItem(mCurrentSelectedPosition);
     }
@@ -118,7 +119,6 @@ public class NavigationDrawerFragment extends Fragment {
                 return true;
             }
         });
-        mAdapter = new NavigationDrawerAdapter(getActivity());
         mDrawerListView.setAdapter(mAdapter);
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
