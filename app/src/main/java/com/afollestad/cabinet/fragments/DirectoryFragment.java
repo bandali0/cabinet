@@ -40,11 +40,13 @@ import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.services.NetworkService;
 import com.afollestad.cabinet.sftp.SftpClient;
 import com.afollestad.cabinet.ui.DrawerActivity;
+import com.afollestad.cabinet.utils.PauseOnScrollListener;
 import com.afollestad.cabinet.utils.Shortcuts;
 import com.afollestad.cabinet.utils.Utils;
 import com.afollestad.cabinet.zip.Unzipper;
 import com.afollestad.cabinet.zip.Zipper;
 import com.afollestad.silk.dialogs.SilkDialog;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.io.FileFilter;
 import java.io.IOException;
@@ -215,8 +217,11 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         mRecyclerView = (RecyclerView) view.findViewById(android.R.id.list);
 //        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), true, true));
+
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new FileAdapter(getActivity(), this, this, this, mQuery != null);

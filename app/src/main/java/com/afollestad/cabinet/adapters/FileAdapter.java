@@ -164,8 +164,6 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
     @Override
     public FileViewHolder onCreateViewHolder(ViewGroup parent, int index) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_file, parent, false);
-        v.setTag("0:" + index);
-        v.setOnClickListener(this);
         if (mShowDirs) v.findViewById(R.id.directory).setVisibility(View.VISIBLE);
         return new FileViewHolder(v);
     }
@@ -174,6 +172,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
     public void onBindViewHolder(FileViewHolder holder, int index) {
         File file = mFiles.get(index);
         holder.view.setTag("0:" + index);
+        holder.view.setOnClickListener(this);
 
         holder.title.setText(file.getName());
         if (file.isDirectory()) holder.content.setText(R.string.directory);
