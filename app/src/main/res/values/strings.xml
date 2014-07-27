@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Cabinet</string>
+    <string name="pin">Pin</string>
+    <string name="copy">Copy</string>
+    <string name="cut">Cut</string>
+    <string name="rename">Rename</string>
+    <string name="delete">Delete</string>
+    <string name="no_files">No files</string>
+    <string name="root">Root</string>
+    <string name="directory">Directory</string>
+    <string name="unknown">Unknown</string>
+    <string name="open_as">Open As…</string>
+    <string name="storage">Storage</string>
+    <string name="activity_not_found">No app was found to open this file</string>
+    <string name="sort_by">Sort By</string>
+    <string name="sort_name_folderstop">Name, folders first</string>
+    <string name="sort_name">Name</string>
+    <string name="sort_extension">Extension</string>
+    <string name="sort_size_lowhigh">Size, low to high</string>
+    <string name="sort_size_highlow">Size, high to low</string>
+    <string name="newStr">New</string>
+    <string name="search">Search</string>
+    <string name="show_hidden_files">Show Hidden Files</string>
+    <string name="confirm_delete">Are you sure you want to delete %1$s?</string>
+    <string name="new_remote_connection">New Remote Connection</string>
+    <string name="host">Host</string>
+    <string name="port">Port</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="remove_shortcut">Remove Shortcut</string>
+    <string name="confirm_remove_shortcut">Are you sure you want to remove your shortcut to %1$s?</string>
+    <string name="error">Error</string>
+    <string name="failed_download_file">An error occurred while attempting to download this file: %1$s</string>
+    <string name="failed_connect_server">Failed to connect to the server: %1$s</string>
+    <string name="connecting">Connecting…</string>
+    <string name="downloading">Downloading…</string>
+    <string name="new_folder">New Folder</string>
+    <string name="deleting">Deleting…</string>
+    <string name="failed_delete_file">Failed to delete this file: %1$s</string>
+    <string name="failed_make_directory">Failed to make a new folder: %1$s</string>
+    <string name="created_folder">Created folder %1$s</string>
+    <string name="untitled">Untitled</string>
+    <string name="renaming">Renaming…</string>
+    <string name="renamed_to">Renamed to %1$s</string>
+    <string name="failed_rename_file">Failed to rename/move this file: %1$s</string>
+    <string name="test_connection">Test Connection</string>
+    <string name="connection_successful">Connection successful!</string>
+    <string name="go_up">Go Up</string>
+    <string name="press_back_to_exit">Press back again to exit…</string>
+    <string name="paste">Paste</string>
+    <string name="execute">Execute</string>
+    <string name="making_folder">Creating folder…</string>
+    <string name="copy_x">
+<![CDATA[
+        <b>Copy:</b>&nbsp;&nbsp;%1$s
+    ]]>
+    </string>
+    <string name="cut_x">
+<![CDATA[
+        <b>Cut:</b>&nbsp;&nbsp;%1$s
+    ]]>
+    </string>
+    <string name="copy_xfiles">
+<![CDATA[
+        <b>Copy:</b>&nbsp;&nbsp;%1$d files
+    ]]>
+    </string>
+    <string name="cut_xfiles">
+<![CDATA[
+        <b>Cut:</b>&nbsp;&nbsp;%1$d files
+    ]]>
+    </string>
+    <string name="search_files">Search files…</string>
+    <string name="search_x">
+<![CDATA[
+        <b>Search:</b>&nbsp;%1$s
+    ]]>
+    </string>
+    <string name="x_files">%1$d files</string>
+    <string name="no_x_files">No %1$s files</string>
+    <string name="failed_execute_file">Failed to execute this file: %1$s</string>
+    <string name="executing_x">Executing %1$s…\n</string>
+    <string name="done">Done</string>
+    <string name="network_service_label">Cabinet Network Service</string>
+    <string name="connection_notification_content">Connected to %1$s</string>
+    <string name="cabinet_sftp">Cabinet SFTP</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="thank_you">Thank you very much!</string>
+    <string name="donate">Donate</string>
+    <string name="donation1">$0.99</string>
+    <string name="donation2">$5.00</string>
+    <string name="donation3">$10.00</string>
+    <string name="donation4">$20.00</string>
+    <string name="moving">Moving…</string>
+    <string name="moved_to">Moved to %1$s</string>
+    <string name="failed_upload_file">Failed to upload this file: %1$s</string>
+    <string name="uploaded_to">Uploaded to %1$s</string>
+    <string name="downloaded_to">Downloaded to %1$s</string>
+    <string name="failed_copy_file">Failed to copy this file: %1$s</string>
+    <string name="copied_to">Copied to %1$s</string>
+    <string name="uploading">Uploading…</string>
+    <string name="copying">Copying…</string>
+    <string name="disconnect_promp">Do you want to disconnect from %1$s?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="directory_already_exists">Directory already exists</string>
+    <string name="rate">Rate</string>
+    <string name="later">Later</string>
+    <string name="rate_desc">Do you want to rate Cabinet on Google Play? Good ratings are appreciated!</string>
+    <string name="sure">Sure!</string>
+    <string name="no_thanks">No thanks</string>
+    <string name="defaultSshPort">22</string>
+    <string name="welcome">Welcome</string>
+    <string name="welcome_intro">Welcome to Cabinet! Cabinet is a simplistic file manager designed to be aesthetically
+        pleasing, and just work how a file manager should.\n\nTake a look at this file card:</string>
+    <string name="welcome_conclusion">Try tapping the preview image or the 3-dot icon. Tapping the preview image turns
+        the card blue: this is multi-selection mode. The 3-dot icon shows a popup menu with individual file options.\n\n
+        Cabinet has other various features, such as remote access to servers via SFTP that
+        you can find by exploring. Thanks for trying out Cabinet!</string>
+    <string name="file_sub_title">Android Logo.png</string>
+    <string name="file_stub_content">image/png – 15 KB</string>
+    <string name="lets_go">Let\'s Go!</string>
+    <string name="zip">Zip</string>
+    <string name="unzip">Unzip</string>
+    <string name="zipping">Zipping…</string>
+    <string name="selectAll">Select All</string>
+    <string name="unzipping">Unzipping…</string>
+    <string name="failed_unzip_file">Failed to unzip this file: %1$s</string>
+    <string name="failed_zip_files">Failed to zip file(s): %1$s</string>
+    <string name="translucency">Translucency</string>
+    <string name="translucent_statusbar">Translucent Status Bar</string>
+    <string name="translucent_navbar">Translucent Navigation Bar</string>
+    <string name="translucent_statusbar_desc">Translucent status bar on KitKat.</string>
+    <string name="translucent_navbar_desc">Translucent navigation bar on KitKat.</string>
+    <string name="settings">Settings</string>
+
+    <string-array name="new_options">
+        <item>Folder</item>
+        <item>Remote Connection…</item>
+    </string-array>
+    <string-array name="open_as">
+        <item>Text</item>
+        <item>Image</item>
+        <item>Audio</item>
+        <item>Video</item>
+        <item>Other</item>
+    </string-array>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+</resources>

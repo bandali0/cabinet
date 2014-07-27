@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Cabinet" parent="@style/CabinetParent">
+        <item name="android:buttonStyle">@style/ButtonCabinet</item>
+        <item name="android:imageButtonStyle">@style/ImageButtonCabinet</item>
+        <item name="android:editTextBackground">@drawable/cabinet_edit_text_holo_light</item>
+        <item name="android:checkboxStyle">@style/CheckBoxCabinet</item>
+        <item name="android:radioButtonStyle">@style/RadioButtonCabinet</item>
+        <item name="android:progressBarStyleHorizontal">@style/ProgressBarCabinet</item>
+        <item name="android:textColorHighlight">#9957687c</item>
+        <item name="android:textSelectHandleLeft">@drawable/cabinet_text_select_handle_left</item>
+        <item name="android:textSelectHandleRight">@drawable/cabinet_text_select_handle_right</item>
+        <item name="android:textSelectHandle">@drawable/cabinet_text_select_handle_middle</item>
+        <item name="android:fastScrollThumbDrawable">@drawable/cabinet_fastscroll_thumb_holo</item>
+
+        <item name="android:actionBarItemBackground">@drawable/selectable_background_cabinet</item>
+        <item name="android:popupMenuStyle">@style/PopupMenu.Cabinet</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.Cabinet</item>
+        <item name="android:actionBarTabStyle">@style/ActionBarTabStyle.Cabinet</item>
+        <item name="android:actionDropDownStyle">@style/DropDownNav.Cabinet</item>
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.Cabinet</item>
+        <item name="android:actionModeBackground">@drawable/ab_solid_cabinet</item>
+        <item name="android:actionModeSplitBackground">@drawable/ab_solid_cabinet</item>
+        <item name="android:actionBarWidgetTheme">@style/Theme.Cabinet.Widget</item>
+
+        <item name="android:actionOverflowButtonStyle">@style/OverflowRecoup</item>
+    </style>
+
+    <style name="OverflowRecoup" parent="@android:style/Widget.Holo.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_overflow</item>
+    </style>
+
+    <style name="ButtonCabinet" parent="android:Widget.Holo.Light.Button">
+        <item name="android:background">@drawable/cabinet_btn_default_holo_light</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:minWidth">64dp</item>
+    </style>
+
+    <style name="ImageButtonCabinet" parent="android:Widget.Holo.Light.ImageButton">
+        <item name="android:background">@drawable/cabinet_btn_default_holo_light</item>
+    </style>
+
+    <style name="CheckBoxCabinet" parent="android:Widget.Holo.Light.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/cabinet_btn_check_holo_light</item>
+    </style>
+
+    <style name="RadioButtonCabinet" parent="android:Widget.Holo.Light.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/cabinet_btn_radio_holo_light</item>
+    </style>
+
+    <style name="CheckBoxCabinetDark" parent="android:Widget.Holo.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/cabinetdark_btn_check_holo_dark</item>
+    </style>
+
+    <style name="RadioButtonCabinetDark" parent="android:Widget.Holo.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/cabinetdark_btn_radio_holo_dark</item>
+    </style>
+
+    <style name="ProgressBarCabinet" parent="android:Widget.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/cabinet_progress_horizontal_holo_light
+        </item>
+        <item name="android:indeterminateDrawable">
+            @drawable/cabinet_progress_indeterminate_horizontal_holo_light
+        </item>
+        <item name="android:minHeight">16dip</item>
+        <item name="android:maxHeight">16dip</item>
+    </style>
+
+    <style name="ActionBar.Solid.Cabinet" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@drawable/ab_solid_cabinet</item>
+        <item name="android:backgroundStacked">@drawable/ab_stacked_solid_cabinet</item>
+        <item name="android:backgroundSplit">@drawable/ab_bottom_solid_cabinet</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.Cabinet</item>
+    </style>
+
+    <style name="ActionBar.Transparent.Cabinet" parent="@android:style/Widget.Holo.ActionBar">
+        <item name="android:background">@drawable/ab_transparent_cabinet</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.Cabinet</item>
+    </style>
+
+    <style name="PopupMenu.Cabinet" parent="@android:style/Widget.Holo.ListPopupWindow">
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_cabinet</item>
+    </style>
+
+    <style name="DropDownListView.Cabinet" parent="@android:style/Widget.Holo.ListView.DropDown">
+        <item name="android:listSelector">@drawable/selectable_background_cabinet</item>
+    </style>
+
+    <style name="ActionBarTabStyle.Cabinet" parent="@android:style/Widget.Holo.ActionBar.TabView">
+        <item name="android:background">@drawable/tab_indicator_ab_cabinet</item>
+    </style>
+
+    <style name="DropDownNav.Cabinet" parent="@android:style/Widget.Holo.Spinner">
+        <item name="android:background">@drawable/spinner_background_ab_cabinet</item>
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_cabinet</item>
+        <item name="android:dropDownSelector">@drawable/selectable_background_cabinet</item>
+    </style>
+
+    <style name="ProgressBar.Cabinet" parent="@android:style/Widget.Holo.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/progress_horizontal_cabinet</item>
+    </style>
+
+    <!-- this style is only referenced in a Light.DarkActionBar based theme -->
+    <style name="Theme.Cabinet.Widget" parent="@android:style/Theme.Holo">
+        <item name="android:popupMenuStyle">@style/PopupMenu.Cabinet</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.Cabinet</item>
+        <item name="android:checkboxStyle">@style/CheckBoxCabinetDark</item>
+        <item name="android:radioButtonStyle">@style/RadioButtonCabinetDark</item>
+    </style>
+
+</resources>

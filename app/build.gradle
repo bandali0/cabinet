@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        production {
+            keyAlias 'afollestad'
+            keyPassword 'aidan1995'
+            storeFile file('../keystore')
+            storePassword 'aidan1995'
+        }
+    }
+
+    compileSdkVersion 'android-L'
+    buildToolsVersion '20.0.0'
+
+    defaultConfig {
+        applicationId "com.afollestad.cabinet"
+        minSdkVersion 16
+        targetSdkVersion 'L'
+        versionCode 36
+        versionName "1.6"
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.production
+        }
+        release {
+            signingConfig signingConfigs.production
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':libsuperuser')
+    compile project(':silk')
+    compile 'com.nostra13.universalimageloader:universal-image-loader:+'
+    compile 'com.readystatesoftware.systembartint:systembartint:+'
+    compile 'com.android.support:recyclerview-v7:+'
+    // You must install or update the Support Repository through the SDK manager to use this dependency.
+    compile 'com.android.support:support-v4:19.+'
+}

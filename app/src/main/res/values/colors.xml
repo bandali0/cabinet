@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="cabinet_color">#57687c</color>
+    <color name="drawer_background_gray">#3D3D3D</color>
+    <color name="accent_color">#333</color>
+    <color name="divider_color">#ddd</color>
+
+</resources>

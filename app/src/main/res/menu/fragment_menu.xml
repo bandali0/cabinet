@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/createNew"
+          android:title="@string/newStr"
+          android:icon="@drawable/ic_new"
+          android:showAsAction="ifRoom"/>
+    <item android:id="@+id/goUp"
+          android:title="@string/go_up"
+          android:icon="@drawable/ic_up"
+          android:showAsAction="ifRoom"/>
+    <item android:id="@+id/sort"
+          android:title="@string/sort_by"
+          android:icon="@drawable/ic_sort"
+          android:showAsAction="ifRoom">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/sortNameFoldersTop" android:title="@string/sort_name_folderstop"/>
+                <item android:id="@+id/sortName" android:title="@string/sort_name"/>
+                <item android:id="@+id/sortExtension" android:title="@string/sort_extension"/>
+                <item android:id="@+id/sortSizeLowHigh" android:title="@string/sort_size_lowhigh"/>
+                <item android:id="@+id/sortSizeHighLow" android:title="@string/sort_size_highlow"/>
+            </group>
+        </menu>
+    </item>
+    <item android:id="@+id/search"
+          android:title="@string/search"
+          android:icon="@drawable/ic_search"
+          android:showAsAction="collapseActionView|ifRoom"
+          android:actionViewClass="android.widget.SearchView"/>
+    <item android:id="@+id/showHidden"
+          android:title="@string/show_hidden_files"
+          android:checkable="true"/>
+    <item android:id="@+id/donate"
+          android:title="@string/donate">
+        <menu>
+            <item android:id="@+id/donation1"
+                  android:title="@string/donation1"/>
+            <item android:id="@+id/donation2"
+                  android:title="@string/donation2"/>
+            <item android:id="@+id/donation3"
+                  android:title="@string/donation3"/>
+            <item android:id="@+id/donation4"
+                  android:title="@string/donation4"/>
+        </menu>
+    </item>
+
+    <item android:id="@+id/settings"
+          android:title="@string/settings"/>
+
+</menu>

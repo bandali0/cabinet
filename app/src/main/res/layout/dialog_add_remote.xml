@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingLeft="7dp"
+    android:paddingRight="7dp">
+
+    <EditText
+        android:id="@+id/host"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/host"
+        android:inputType="textUri"
+        android:layout_marginTop="6dp"
+        android:singleLine="true"
+        android:fontFamily="sans-serif-light" />
+
+    <EditText
+        android:id="@+id/port"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/port"
+        android:inputType="number"
+        android:layout_marginTop="6dp"
+        android:text="@string/defaultSshPort"
+        android:singleLine="true"
+        android:fontFamily="sans-serif-light" />
+
+    <EditText
+        android:id="@+id/user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/username"
+        android:layout_marginTop="6dp"
+        android:singleLine="true"
+        android:fontFamily="sans-serif-light" />
+
+    <EditText
+        android:id="@+id/pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:layout_marginTop="6dp"
+        android:singleLine="true"
+        android:fontFamily="sans-serif-light" />
+
+    <Button
+        android:id="@+id/testConnection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/test_connection"
+        android:layout_marginTop="12dp"
+        android:singleLine="true"
+        android:fontFamily="sans-serif-light" />
+
+</LinearLayout>

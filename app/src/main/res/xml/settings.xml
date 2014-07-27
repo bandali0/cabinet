@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/translucency">
+
+        <CheckBoxPreference
+            android:key="my_account"
+            android:title="@string/translucent_statusbar"
+            android:summary="@string/translucent_statusbar_desc"
+            android:layout="@layout/preference_custom" />
+
+        <CheckBoxPreference
+            android:key="logout"
+            android:title="@string/translucent_navbar"
+            android:summary="@string/translucent_navbar_desc"
+            android:layout="@layout/preference_custom" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
