@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:paddingTop="10dp"
     android:paddingLeft="16dp"
-    android:paddingRight="10dp"
+    android:paddingRight="22dp"
     android:background="?android:listChoiceBackgroundIndicator"
     android:descendantFocusability="blocksDescendants">
 

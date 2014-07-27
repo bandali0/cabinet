@@ -1,14 +1,17 @@
 package com.afollestad.cabinet.adapters;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.TouchDelegate;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -173,6 +176,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
         File file = mFiles.get(index);
         holder.view.setTag("0:" + index);
         holder.view.setOnClickListener(this);
+        setupTouchDelegate(mContext, holder.menu);
 
         holder.title.setText(file.getName());
         if (file.isDirectory()) holder.content.setText(R.string.directory);
@@ -220,7 +224,6 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
                 holder.directory.setText(file.getParent().getPath());
             else holder.directory.setVisibility(View.GONE);
         }
-
 
         holder.view.setActivated(isItemChecked(file));
         holder.icon.setTag("1:" + index);
@@ -291,5 +294,22 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
         for (File fi : paths)
             checkedPaths.add(fi.getPath());
         notifyDataSetChanged();
+    }
+
+    public static void setupTouchDelegate(Context context, final View menu) {
+        final int offset = context.getResources().getDimensionPixelSize(R.dimen.menu_touchdelegate);
+        assert menu.getParent() != null;
+        ((View) menu.getParent()).post(new Runnable() {
+            public void run() {
+                Rect delegateArea = new Rect();
+                menu.getHitRect(delegateArea);
+                delegateArea.top -= offset;
+                delegateArea.bottom += offset;
+                delegateArea.left -= offset;
+                delegateArea.right += offset;
+                TouchDelegate expandedArea = new TouchDelegate(delegateArea, menu);
+                ((View) menu.getParent()).setTouchDelegate(expandedArea);
+            }
+        });
     }
 }

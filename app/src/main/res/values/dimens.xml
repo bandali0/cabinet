@@ -10,9 +10,9 @@
     <dimen name="welcome_header_margin_top">20dp</dimen>
     <dimen name="welcome_summary_textsize">20sp</dimen>
     <dimen name="welcome_button_height">56dp</dimen>
-    <dimen name="list_padding_bottom">10dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_size">56dp</dimen>
+    <dimen name="menu_touchdelegate">25dp</dimen>
 
 </resources>
