@@ -38,7 +38,6 @@ import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.services.NetworkService;
 import com.afollestad.cabinet.sftp.SftpClient;
 import com.afollestad.cabinet.ui.DrawerActivity;
-import com.afollestad.cabinet.ui.SettingsActivity;
 import com.afollestad.cabinet.utils.Utils;
 import com.afollestad.silk.dialogs.SilkDialog;
 
