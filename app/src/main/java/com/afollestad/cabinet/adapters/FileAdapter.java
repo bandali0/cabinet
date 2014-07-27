@@ -54,7 +54,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
                 mIconListener.onIconClicked(index, file, checked);
         } else {  // menu
             ContextThemeWrapper context = new ContextThemeWrapper(mContext, R.style.Theme_PopupMenuTheme);
-            mPopupMenu = new PopupMenu(context, view);
+            PopupMenu mPopupMenu = new PopupMenu(context, view);
             mPopupMenu.inflate(file.isDirectory() ? R.menu.dir_options : R.menu.file_options);
             boolean foundInCopyCab = false;
             boolean foundInCutCab = false;
@@ -119,7 +119,6 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
     private MenuClickListener mMenuListener;
     private boolean mShowDirs;
     private List<String> checkedPaths;
-    private PopupMenu mPopupMenu;
 
     public void add(File file) {
         mFiles.add(file);
@@ -181,39 +180,41 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
         else holder.content.setText(file.getMimeType() + " – " + file.getSizeString());
 
         String mime = file.getMimeType();
-        if (mime != null && mime.startsWith("image/")) {
-            Uri uri = Uri.fromFile(file.toJavaFile());
-            ImageLoader.getInstance().displayImage(Uri.decode(uri.toString()), holder.icon);
-        } else if (mime != null && mime.equals("application/vnd.android.package-archive")) {
-            PackageManager pm = mContext.getPackageManager();
-            PackageInfo pi = pm.getPackageArchiveInfo(file.getPath(), 0);
-            try {
-                pi.applicationInfo.sourceDir = file.getPath();
-                pi.applicationInfo.publicSourceDir = file.getPath();
-                ApplicationInfo appInfo = pi.applicationInfo;
-                if (appInfo.icon != 0) {
-                    Uri uri = Uri.parse("android.resource://" + appInfo.packageName + "/" + appInfo.icon);
-                    ImageLoader.getInstance().displayImage(uri.toString(), holder.icon);
+        if (mime != null) {
+            if (mime.startsWith("image/")) {
+                Uri uri = Uri.fromFile(file.toJavaFile());
+                ImageLoader.getInstance().displayImage(Uri.decode(uri.toString()), holder.icon);
+            } else if (mime.equals("application/vnd.android.package-archive")) {
+                PackageManager pm = mContext.getPackageManager();
+                PackageInfo pi = pm.getPackageArchiveInfo(file.getPath(), 0);
+                try {
+                    pi.applicationInfo.sourceDir = file.getPath();
+                    pi.applicationInfo.publicSourceDir = file.getPath();
+                    ApplicationInfo appInfo = pi.applicationInfo;
+                    if (appInfo.icon != 0) {
+                        Uri uri = Uri.parse("android.resource://" + appInfo.packageName + "/" + appInfo.icon);
+                        ImageLoader.getInstance().displayImage(uri.toString(), holder.icon);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    holder.icon.setImageResource(R.drawable.ic_file);
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
-                holder.icon.setImageResource(R.drawable.ic_file);
-            }
-        } else {
-            int resId = R.drawable.ic_file;
-            if (file.isDirectory()) {
-                resId = R.drawable.ic_folder;
-            } else if (mime != null) {
-                if (mime.startsWith("image/")) {
-                    resId = R.drawable.ic_image;
-                } else if (mime.startsWith("video/")) {
-                    resId = R.drawable.ic_video;
-                } else if (mime.startsWith("audio/") || mime.equals("application/ogg")) {
-                    resId = R.drawable.ic_audio;
+            } else {
+                int resId = R.drawable.ic_file;
+                if (file.isDirectory()) {
+                    resId = R.drawable.ic_folder;
+                } else {
+                    if (mime.startsWith("image/")) {
+                        resId = R.drawable.ic_image;
+                    } else if (mime.startsWith("video/")) {
+                        resId = R.drawable.ic_video;
+                    } else if (mime.startsWith("audio/") || mime.equals("application/ogg")) {
+                        resId = R.drawable.ic_audio;
+                    }
                 }
+                holder.icon.setImageResource(resId);
             }
-            holder.icon.setImageResource(resId);
-        }
+        } else holder.icon.setImageResource(R.drawable.ic_file);
 
         if (mShowDirs) {
             if (!file.isDirectory())
