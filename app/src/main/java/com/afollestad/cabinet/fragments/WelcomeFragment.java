@@ -3,6 +3,7 @@ package com.afollestad.cabinet.fragments;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,17 +50,16 @@ public class WelcomeFragment extends Fragment {
 
         ((TextView) fileCard.findViewById(android.R.id.content)).setText(R.string.file_stub_content);
 
-//       TODO View menuButton = fileCard.findViewById(android.R.id.button1);
-//        Context context = getActivity();
-//        context.setTheme(android.R.style.Theme_Holo_Light);
-//        menu = new PopupMenu(context, menuButton);
-//        menu.inflate(R.menu.file_options);
-//        menuButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                menu.show();
-//            }
-//        });
+        View menuButton = fileCard.findViewById(R.id.menu);
+        ContextThemeWrapper context = new ContextThemeWrapper(getActivity(), R.style.Theme_PopupMenuTheme);
+        menu = new PopupMenu(context, menuButton);
+        menu.inflate(R.menu.file_options);
+        menuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                menu.show();
+            }
+        });
 
         view.findViewById(R.id.finish).setOnClickListener(new View.OnClickListener() {
             @Override

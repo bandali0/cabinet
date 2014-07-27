@@ -1,19 +1,26 @@
 package com.afollestad.cabinet.adapters;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import com.afollestad.cabinet.R;
+import com.afollestad.cabinet.cab.CopyCab;
+import com.afollestad.cabinet.cab.CutCab;
 import com.afollestad.cabinet.file.base.File;
+import com.afollestad.cabinet.ui.DrawerActivity;
+import com.afollestad.cabinet.utils.Shortcuts;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
@@ -21,11 +28,12 @@ import java.util.List;
 
 public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder> implements View.OnClickListener {
 
-    public FileAdapter(Context context, ItemClickListener listener, IconClickListener iconClickListener, boolean showDirectories) {
+    public FileAdapter(Activity context, ItemClickListener listener, IconClickListener iconClickListener, MenuClickListener menuListener, boolean showDirectories) {
         mContext = context;
         mFiles = new ArrayList<File>();
         mListener = listener;
         mIconListener = iconClickListener;
+        mMenuListener = menuListener;
         mShowDirs = showDirectories;
         checkedPaths = new ArrayList<String>();
     }
@@ -34,16 +42,53 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
     public void onClick(View view) {
         String[] split = ((String) view.getTag()).split(":");
         int type = Integer.parseInt(split[0]);
-        int index = Integer.parseInt(split[1]);
-        if (type == 0) {
+        final int index = Integer.parseInt(split[1]);
+        File file = mFiles.get(index);
+        if (type == 0) {  // item
             if (mListener != null)
                 mListener.onItemClicked(index, mFiles.get(index));
-        } else {
-            File file = mFiles.get(index);
+        } else if (type == 1) {  // icon
             boolean checked = !isItemChecked(file);
             setItemChecked(file, checked);
             if (mIconListener != null)
                 mIconListener.onIconClicked(index, file, checked);
+        } else {  // menu
+            ContextThemeWrapper context = new ContextThemeWrapper(mContext, R.style.Theme_PopupMenuTheme);
+            mPopupMenu = new PopupMenu(context, view);
+            mPopupMenu.inflate(file.isDirectory() ? R.menu.dir_options : R.menu.file_options);
+            boolean foundInCopyCab = false;
+            boolean foundInCutCab = false;
+            DrawerActivity act = (DrawerActivity) mContext;
+            if (act.getFileCab() instanceof CopyCab) {
+                foundInCopyCab = act.getFileCab().containsFile(file);
+            } else if (act.getFileCab() instanceof CutCab) {
+                foundInCutCab = act.getFileCab().containsFile(file);
+            }
+            mPopupMenu.getMenu().findItem(R.id.copy).setVisible(!foundInCopyCab);
+            mPopupMenu.getMenu().findItem(R.id.cut).setVisible(!foundInCutCab);
+            if (file.isDirectory()) {
+                mPopupMenu.getMenu().findItem(R.id.pin).setVisible(!Shortcuts.contains(mContext, new Shortcuts.Item(file)));
+            } else {
+                MenuItem zip = mPopupMenu.getMenu().findItem(R.id.zip);
+                if (!file.isRemote()) {
+                    zip.setVisible(true);
+                    if (file.getExtension().equals("zip"))
+                        zip.setTitle(R.string.unzip);
+                    else zip.setTitle(R.string.zip);
+                } else zip.setVisible(false);
+                boolean canExecute = !file.getMimeType().startsWith("image/") &&
+                        !file.getMimeType().startsWith("video/") &&
+                        !file.getMimeType().startsWith("audio/");
+                mPopupMenu.getMenu().findItem(R.id.execute).setVisible(canExecute);
+            }
+            mPopupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem menuItem) {
+                    mMenuListener.onMenuItemClick(mFiles.get(index), menuItem);
+                    return true;
+                }
+            });
+            mPopupMenu.show();
         }
     }
 
@@ -54,6 +99,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
         TextView title;
         TextView content;
         TextView directory;
+        View menu;
 
         public FileViewHolder(View itemView) {
             super(itemView);
@@ -62,15 +108,18 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
             title = (TextView) itemView.findViewById(android.R.id.title);
             content = (TextView) itemView.findViewById(android.R.id.content);
             directory = (TextView) itemView.findViewById(R.id.directory);
+            menu = itemView.findViewById(R.id.menu);
         }
     }
 
-    private Context mContext;
+    private Activity mContext;
     private List<File> mFiles;
     private ItemClickListener mListener;
     private IconClickListener mIconListener;
+    private MenuClickListener mMenuListener;
     private boolean mShowDirs;
     private List<String> checkedPaths;
+    private PopupMenu mPopupMenu;
 
     public void add(File file) {
         mFiles.add(file);
@@ -84,9 +133,19 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
         notifyDataSetChanged();
     }
 
+    public void update(File file) {
+        for (int i = 0; i < mFiles.size(); i++) {
+            if (mFiles.get(i).getPath().equals(file.getPath())) {
+                mFiles.set(i, file);
+                break;
+            }
+        }
+        notifyDataSetChanged();
+    }
+
     public void remove(File file) {
-        for(int i = 0; i < mFiles.size(); i++) {
-            if(mFiles.get(i).getPath().equals(file.getPath())) {
+        for (int i = 0; i < mFiles.size(); i++) {
+            if (mFiles.get(i).getPath().equals(file.getPath())) {
                 mFiles.remove(i);
                 break;
             }
@@ -162,42 +221,14 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
             else holder.directory.setVisibility(View.GONE);
         }
 
+
         holder.view.setActivated(isItemChecked(file));
         holder.icon.setTag("1:" + index);
         holder.icon.setOnClickListener(this);
-    }
 
-//    @Override
-//    protected void onPreMenuOpen(CardBase item, Menu menu) {
-//        if (item instanceof File) {
-//            File file = (File) item;
-//            boolean foundInCopyCab = false;
-//            boolean foundInCutCab = false;
-//            if (((MainActivity) getContext()).getFileCab() instanceof CopyCab) {
-//                foundInCopyCab = ((MainActivity) getContext()).getFileCab().containsFile(file);
-//            } else if (((MainActivity) getContext()).getFileCab() instanceof CutCab) {
-//                foundInCutCab = ((MainActivity) getContext()).getFileCab().containsFile(file);
-//            }
-//            menu.findItem(R.id.copy).setVisible(!foundInCopyCab);
-//            menu.findItem(R.id.cut).setVisible(!foundInCutCab);
-//
-//            if (file.isDirectory()) {
-//                menu.findItem(R.id.pin).setVisible(!Shortcuts.contains(getContext(), new Shortcuts.Item(file)));
-//            } else {
-//                MenuItem zip = menu.findItem(R.id.zip);
-//                if (!file.isRemote()) {
-//                    zip.setVisible(true);
-//                    if (file.getExtension().equals("zip"))
-//                        zip.setTitle(R.string.unzip);
-//                    else zip.setTitle(R.string.zip);
-//                } else zip.setVisible(false);
-//                boolean canExecute = !file.getMimeType().startsWith("image/") &&
-//                        !file.getMimeType().startsWith("video/") &&
-//                        !file.getMimeType().startsWith("audio/");
-//                menu.findItem(R.id.execute).setVisible(canExecute);
-//            }
-//        }
-//    }
+        holder.menu.setTag("2:" + index);
+        holder.menu.setOnClickListener(this);
+    }
 
     @Override
     public int getItemCount() {
@@ -210,6 +241,10 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
 
     public static interface IconClickListener {
         public abstract void onIconClicked(int index, File file, boolean added);
+    }
+
+    public static interface MenuClickListener {
+        public abstract void onMenuItemClick(File file, MenuItem item);
     }
 
 

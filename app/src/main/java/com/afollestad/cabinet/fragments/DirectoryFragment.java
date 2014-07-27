@@ -25,6 +25,8 @@ import android.widget.TextView;
 
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.adapters.FileAdapter;
+import com.afollestad.cabinet.cab.CopyCab;
+import com.afollestad.cabinet.cab.CutCab;
 import com.afollestad.cabinet.cab.MainCab;
 import com.afollestad.cabinet.cab.base.BaseFileCab;
 import com.afollestad.cabinet.comparators.AlphabeticalComparator;
@@ -38,17 +40,23 @@ import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.services.NetworkService;
 import com.afollestad.cabinet.sftp.SftpClient;
 import com.afollestad.cabinet.ui.DrawerActivity;
+import com.afollestad.cabinet.utils.Shortcuts;
 import com.afollestad.cabinet.utils.Utils;
+import com.afollestad.cabinet.zip.Unzipper;
+import com.afollestad.cabinet.zip.Zipper;
 import com.afollestad.silk.dialogs.SilkDialog;
 
 import java.io.FileFilter;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 
-public class DirectoryFragment extends Fragment implements FileAdapter.IconClickListener, FileAdapter.ItemClickListener {
+public class DirectoryFragment extends Fragment implements FileAdapter.IconClickListener, FileAdapter.ItemClickListener, FileAdapter.MenuClickListener {
 
     private final transient BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
@@ -111,8 +119,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         if (mQuery != null) {
             act.setTitle(Html.fromHtml(getString(R.string.search_x, mQuery)));
         } else act.setTitle(mDirectory.getDisplay());
-
-        reapplyPopupmenus();
         BaseFileCab fileCab = ((DrawerActivity) getActivity()).getFileCab();
         if (fileCab != null) {
             mAdapter.restoreCheckedPaths(fileCab.getFiles());
@@ -213,7 +219,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 //        mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new FileAdapter(getActivity(), this, this, mQuery != null);
+        mAdapter = new FileAdapter(getActivity(), this, this, this, mQuery != null);
         mRecyclerView.setAdapter(mAdapter);
 
         DrawerActivity.setupTranslucentPadding(getActivity(), view.findViewById(R.id.listFrame));
@@ -315,17 +321,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         });
     }
 
-    /**
-     * This is called whenever the fragment comes back into view to avoid context loss issues.
-     */
-    private void reapplyPopupmenus() {
-        //TODO
-//        for (int i = 0; i < mAdapter.getCount(); i++) {
-//            mAdapter.getItems().set(i, (File) mAdapter.getItem(i)
-//                    .setPopupMenu(mAdapter.getItem(i).getPopupMenu(), this));
-//        }
-    }
-
     public void reload() {
         if (getActivity() == null || getView() == null) {
             return;
@@ -346,7 +341,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                         if (results != null && results.length > 0) {
                             Arrays.sort(results, getComparator());
                             for (File fi : results) {
-//                               TODO fi.setPopupMenu(fi.getPopupMenu(), DirectoryFragment.this);
                                 mAdapter.add(fi);
                             }
                         }
@@ -383,126 +377,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         Collections.sort(mAdapter.getFiles(), getComparator());
         mAdapter.notifyDataSetChanged();
     }
-
-//    TODO @Override
-//    public void onMenuItemClick(final Card card, MenuItem item) {
-//        final File file = (File) card;
-//        switch (item.getItemId()) {
-//            case R.id.execute:
-//                final SilkDialog executeDialog = new SilkDialog(getActivity())
-//                        .setAccentColorRes(R.color.cabinet_color)
-//                        .setTitle(R.string.execute)
-//                        .setMessage(R.string.executing_x, file.getPath())
-//                        .setPostiveButtonText(R.string.done)
-//                        .setButtonListener(new SilkDialog.DialogCallback() {
-//                            @Override
-//                            public void onPositive() {
-//                                file.finishExecution();
-//                            }
-//
-//                            @Override
-//                            public void onCancelled() {
-//                                file.finishExecution();
-//                            }
-//                        });
-//                OutputStream os = new OutputStream() {
-//                    @Override
-//                    public void write(int oneByte) throws IOException {
-//                        char ch = (char) oneByte;
-//                        executeDialog.getMessageView().setVisibility(View.VISIBLE);
-//                        executeDialog.getMessageView().append(String.valueOf(ch));
-//                    }
-//                };
-//                file.execute(os, new SftpClient.CompletionCallback() {
-//                    @Override
-//                    public void onComplete() {
-//                        executeDialog.show();
-//                    }
-//
-//                    @Override
-//                    public void onError(Exception e) {
-//                        executeDialog.dismiss();
-//                    }
-//                });
-//                break;
-//            case R.id.pin:
-//                Shortcuts.add(getActivity(), new Shortcuts.Item(file));
-//                ((MainActivity) getActivity()).reloadNavDrawer();
-//                break;
-//            case R.id.openAs:
-//                Utils.openFile((MainActivity) getActivity(), file, true);
-//                break;
-//            case R.id.copy:
-//                boolean shouldCreateCopy = ((MainActivity) getActivity()).getFileCab() == null ||
-//                        !((MainActivity) getActivity()).getFileCab().isActive() ||
-//                        ((MainActivity) getActivity()).getFileCab() instanceof CutCab;
-//                if (shouldCreateCopy)
-//                    ((MainActivity) getActivity()).setFileCab((BaseFileCab) new CopyCab()
-//                            .setFragment(this).setFile(file).start());
-//                else ((MainActivity) getActivity()).getFileCab().addFile(file);
-//                break;
-//            case R.id.cut:
-//                boolean shouldCreateCut = ((MainActivity) getActivity()).getFileCab() == null ||
-//                        !((MainActivity) getActivity()).getFileCab().isActive() ||
-//                        ((MainActivity) getActivity()).getFileCab() instanceof CopyCab;
-//                if (shouldCreateCut)
-//                    ((MainActivity) getActivity()).setFileCab((BaseFileCab) new CutCab()
-//                            .setFragment(this).setFile(file).start());
-//                else ((MainActivity) getActivity()).getFileCab().addFile(file);
-//                break;
-//            case R.id.rename:
-//                Utils.showInputDialog(getActivity(), R.string.rename, 0, card.getTitle().toString(), new SilkDialog.InputCallback() {
-//                    @Override
-//                    public void onInput(String text) {
-//                        if (!text.contains("."))
-//                            text += file.getExtension();
-//                        File newFile = file.isRemote() ?
-//                                new CloudFile(getActivity(), (CloudFile) file.getParent(), text, file.isDirectory()) :
-//                                new LocalFile(getActivity(), file.getParent(), text);
-//                        newFile.setSilkId(file.getSilkId());
-//                        file.rename(newFile, new SftpClient.FileCallback() {
-//                            @Override
-//                            public void onComplete(File newFile) {
-//                                mAdapter.update(newFile);
-//                            }
-//
-//                            @Override
-//                            public void onError(Exception e) {
-//                                // Ignore
-//                            }
-//                        });
-//                    }
-//                });
-//                break;
-//            case R.id.zip:
-//                final List<File> files = new ArrayList<File>();
-//                files.add(file);
-//                if (file.getExtension().equals("zip")) {
-//                    Unzipper.unzip(this, files, null);
-//                } else {
-//                    Zipper.zip(this, files, null);
-//                }
-//                break;
-//            case R.id.delete:
-//                Utils.showConfirmDialog(getActivity(), R.string.delete, R.string.confirm_delete, card.getTitle().toString(), new SilkDialog.DialogCallback() {
-//                    @Override
-//                    public void onPositive() {
-//                        file.delete(new SftpClient.CompletionCallback() {
-//                            @Override
-//                            public void onComplete() {
-//                                mAdapter.remove(file);
-//                            }
-//
-//                            @Override
-//                            public void onError(Exception e) {
-//                                // Ignore
-//                            }
-//                        });
-//                    }
-//                });
-//                break;
-//        }
-//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -638,6 +512,124 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             ((DrawerActivity) getActivity()).switchDirectory(file, false);
         } else {
             Utils.openFile((DrawerActivity) getActivity(), file, false);
+        }
+    }
+
+    @Override
+    public void onMenuItemClick(final File file, MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.execute:
+                final SilkDialog executeDialog = SilkDialog.create(getActivity())
+                        .setAccentColorRes(R.color.cabinet_color)
+                        .setTitle(R.string.execute)
+                        .setMessage(R.string.executing_x, file.getPath())
+                        .setPostiveButtonText(R.string.done)
+                        .setButtonListener(new SilkDialog.DialogCallback() {
+                            @Override
+                            public void onPositive() {
+                                file.finishExecution();
+                            }
+
+                            @Override
+                            public void onCancelled() {
+                                file.finishExecution();
+                            }
+                        });
+                OutputStream os = new OutputStream() {
+                    @Override
+                    public void write(int oneByte) throws IOException {
+                        char ch = (char) oneByte;
+                        executeDialog.getMessageView().setVisibility(View.VISIBLE);
+                        executeDialog.getMessageView().append(String.valueOf(ch));
+                    }
+                };
+                file.execute(os, new SftpClient.CompletionCallback() {
+                    @Override
+                    public void onComplete() {
+                        executeDialog.show();
+                    }
+
+                    @Override
+                    public void onError(Exception e) {
+                        executeDialog.dismiss();
+                    }
+                });
+                break;
+            case R.id.pin:
+                Shortcuts.add(getActivity(), new Shortcuts.Item(file));
+                ((DrawerActivity) getActivity()).reloadNavDrawer();
+                break;
+            case R.id.openAs:
+                Utils.openFile((DrawerActivity) getActivity(), file, true);
+                break;
+            case R.id.copy:
+                boolean shouldCreateCopy = ((DrawerActivity) getActivity()).getFileCab() == null ||
+                        !((DrawerActivity) getActivity()).getFileCab().isActive() ||
+                        ((DrawerActivity) getActivity()).getFileCab() instanceof CutCab;
+                if (shouldCreateCopy)
+                    ((DrawerActivity) getActivity()).setFileCab((BaseFileCab) new CopyCab()
+                            .setFragment(this).setFile(file).start());
+                else ((DrawerActivity) getActivity()).getFileCab().addFile(file);
+                break;
+            case R.id.cut:
+                boolean shouldCreateCut = ((DrawerActivity) getActivity()).getFileCab() == null ||
+                        !((DrawerActivity) getActivity()).getFileCab().isActive() ||
+                        ((DrawerActivity) getActivity()).getFileCab() instanceof CopyCab;
+                if (shouldCreateCut)
+                    ((DrawerActivity) getActivity()).setFileCab((BaseFileCab) new CutCab()
+                            .setFragment(this).setFile(file).start());
+                else ((DrawerActivity) getActivity()).getFileCab().addFile(file);
+                break;
+            case R.id.rename:
+                Utils.showInputDialog(getActivity(), R.string.rename, 0, file.getName(), new SilkDialog.InputCallback() {
+                    @Override
+                    public void onInput(String text) {
+                        if (!text.contains("."))
+                            text += file.getExtension();
+                        File newFile = file.isRemote() ?
+                                new CloudFile(getActivity(), (CloudFile) file.getParent(), text, file.isDirectory()) :
+                                new LocalFile(getActivity(), file.getParent(), text);
+                        file.rename(newFile, new SftpClient.FileCallback() {
+                            @Override
+                            public void onComplete(File newFile) {
+                                mAdapter.update(newFile);
+                            }
+
+                            @Override
+                            public void onError(Exception e) {
+                                // Ignore
+                            }
+                        });
+                    }
+                });
+                break;
+            case R.id.zip:
+                final List<File> files = new ArrayList<File>();
+                files.add(file);
+                if (file.getExtension().equals("zip")) {
+                    Unzipper.unzip(this, files, null);
+                } else {
+                    Zipper.zip(this, files, null);
+                }
+                break;
+            case R.id.delete:
+                Utils.showConfirmDialog(getActivity(), R.string.delete, R.string.confirm_delete, file.getName(), new SilkDialog.DialogCallback() {
+                    @Override
+                    public void onPositive() {
+                        file.delete(new SftpClient.CompletionCallback() {
+                            @Override
+                            public void onComplete() {
+                                mAdapter.remove(file);
+                            }
+
+                            @Override
+                            public void onError(Exception e) {
+                                // Ignore
+                            }
+                        });
+                    }
+                });
+                break;
         }
     }
 }
