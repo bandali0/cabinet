@@ -13,7 +13,7 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import com.afollestad.cabinet.R;
-import com.afollestad.cabinet.ui.MainActivityOld;
+import com.afollestad.cabinet.ui.DrawerActivity;
 
 /**
  * @author Aidan Follestad (afollestad)
@@ -65,7 +65,7 @@ public class WelcomeFragment extends Fragment {
         view.findViewById(R.id.finish).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((MainActivityOld) getActivity()).switchDirectory(null, true);
+                ((DrawerActivity) getActivity()).switchDirectory(null, true);
             }
         });
 
