@@ -214,13 +214,9 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_recyclerview, null);
         View fab = view.findViewById(R.id.fab);
-        boolean canShow = true;
-        if (!mDirectory.isRemote()) {
-            canShow = ((LocalFile) mDirectory).existsSync();
-        }
         boolean searchMode = mQuery != null;
-        if (!searchMode && canShow) {
-            fab.setVisibility(View.GONE);
+        if (!searchMode) {
+            fab.setVisibility(View.VISIBLE);
             int size = getResources().getDimensionPixelSize(R.dimen.fab_size);
             Outline outline = new Outline();
             outline.setOval(0, 0, size, size);
@@ -316,7 +312,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         super.onViewCreated(view, savedInstanceState);
 
         mRecyclerView = (RecyclerView) view.findViewById(android.R.id.list);
-//        mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), true, true));
 
         mLayoutManager = new LinearLayoutManager(getActivity());
