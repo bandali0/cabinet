@@ -5,6 +5,7 @@
         <item name="android:colorPrimary">@color/cabinet_color</item>
         <item name="android:colorPrimaryDark">@color/cabinet_color_darker</item>
         <item name="android:colorAccent">@color/cabinet_color</item>
+        <item name="android:actionModeBackground">@color/cabinet_color</item>
     </style>
 
     <style name="Theme.PopupMenuTheme" parent="android:Theme.Material" />
