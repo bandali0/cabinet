@@ -5,7 +5,7 @@
     android:paddingTop="10dp"
     android:paddingLeft="16dp"
     android:paddingRight="22dp"
-    android:background="?android:listChoiceBackgroundIndicator"
+    android:background="@drawable/list_item_selected"
     android:descendantFocusability="blocksDescendants">
 
     <RelativeLayout
