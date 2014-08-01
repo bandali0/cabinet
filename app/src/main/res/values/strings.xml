@@ -150,5 +150,6 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="share">Share</string>
     <string name="no_apps_for_sharing">No apps are available for sharing this type of file</string>
+    <string name="iconpress_hint">You can tap a file\'s icon to quickly select it!</string>
 
 </resources>

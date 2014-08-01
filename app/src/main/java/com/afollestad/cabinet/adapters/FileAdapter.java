@@ -2,11 +2,13 @@ package com.afollestad.cabinet.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Rect;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -17,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.cab.CopyCab;
@@ -97,6 +100,11 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
 
     @Override
     public boolean onLongClick(View view) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
+        if (!prefs.getBoolean("shown_iconpress_hint", false)) {
+            prefs.edit().putBoolean("shown_iconpress_hint", true).commit();
+            Toast.makeText(mContext, R.string.iconpress_hint, Toast.LENGTH_LONG).show();
+        }
         view.findViewById(R.id.image).performClick();
         return true;
     }
@@ -191,8 +199,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
         if (file.isDirectory()) {
             holder.content.setText(R.string.directory);
             holder.size.setVisibility(View.GONE);
-        }
-        else {
+        } else {
             holder.content.setText(file.getMimeType());
             holder.size.setText(file.getSizeString());
             holder.size.setVisibility(View.VISIBLE);
