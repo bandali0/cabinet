@@ -107,6 +107,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
         ImageView icon;
         TextView title;
         TextView content;
+        TextView size;
         TextView directory;
         View menu;
 
@@ -116,6 +117,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
             icon = (ImageView) itemView.findViewById(R.id.image);
             title = (TextView) itemView.findViewById(android.R.id.title);
             content = (TextView) itemView.findViewById(android.R.id.content);
+            size = (TextView) itemView.findViewById(R.id.size);
             directory = (TextView) itemView.findViewById(R.id.directory);
             menu = itemView.findViewById(R.id.menu);
         }
@@ -186,8 +188,15 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
         setupTouchDelegate(mContext, holder.menu);
 
         holder.title.setText(file.getName());
-        if (file.isDirectory()) holder.content.setText(R.string.directory);
-        else holder.content.setText(file.getMimeType() + " – " + file.getSizeString());
+        if (file.isDirectory()) {
+            holder.content.setText(R.string.directory);
+            holder.size.setVisibility(View.GONE);
+        }
+        else {
+            holder.content.setText(file.getMimeType());
+            holder.size.setText(file.getSizeString());
+            holder.size.setVisibility(View.VISIBLE);
+        }
 
         String mime = file.getMimeType();
         if (mime != null) {

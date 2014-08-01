@@ -37,15 +37,33 @@
                 android:fontFamily="sans-serif"
                 android:layout_marginBottom="4dp" />
 
-            <TextView
-                android:id="@android:id/content"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:maxLines="2"
-                android:ellipsize="end"
-                android:fontFamily="sans-serif-light"
-                android:layout_marginBottom="4dp" />
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:id="@android:id/content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:fontFamily="sans-serif-light"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@+id/size"
+                    android:layout_marginRight="5dp" />
+
+                <TextView
+                    android:id="@+id/size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:singleLine="true"
+                    android:fontFamily="sans-serif-light"
+                    android:layout_alignParentRight="true" />
+
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/directory"
