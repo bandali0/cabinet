@@ -10,4 +10,26 @@
 
     <style name="Theme.PopupMenuTheme" parent="android:Theme.Material" />
 
+    <style name="ButtonCabinet" parent="android:Widget.Material.Light.Button">
+        <item name="android:background">@drawable/rect_button_ripple_selector</item>
+        <item name="android:textColor">@color/button_text_selector</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:minWidth">64dp</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+
+    <style name="Fab">
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_width">@dimen/fab_size</item>
+        <item name="android:layout_height">@dimen/fab_size</item>
+        <item name="android:layout_gravity">bottom|right</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:src">@drawable/ic_new</item>
+        <item name="android:background">@drawable/fab_ripple</item>
+        <item name="android:stateListAnimator">@anim/fab_anim</item>
+        <item name="elevation">2dp</item>
+    </style>
+
 </resources>

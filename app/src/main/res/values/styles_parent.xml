@@ -3,6 +3,6 @@
 
     <style name="CabinetParent" parent="@android:style/Theme.Holo.Light.DarkActionBar" />
 
-    <style name="Theme.PopupMenuTheme" parent="@android:style/Theme.Holo.Light.DarkActionBar" />
+    <style name="Theme.PopupMenuTheme" parent="@android:style/Theme.Holo" />
 
 </resources>

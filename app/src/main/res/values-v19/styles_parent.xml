@@ -3,7 +3,6 @@
 
     <style name="CabinetParent" parent="@android:style/Theme.Holo.Light.DarkActionBar">
         <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">@bool/transparent_nav</item>
     </style>
 
 </resources>

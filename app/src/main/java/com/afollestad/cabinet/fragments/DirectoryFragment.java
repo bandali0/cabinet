@@ -222,8 +222,9 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             int size = getResources().getDimensionPixelSize(R.dimen.fab_size);
             Outline outline = new Outline();
             outline.setOval(0, 0, size, size);
-
             fab.setOutline(outline);
+            fab.setClipToOutline(true);
+
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -237,7 +238,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                     return true;
                 }
             });
-            fab.setClipToOutline(true);
         } else fab.setVisibility(View.GONE);
         return view;
     }
@@ -320,9 +320,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new FileAdapter(getActivity(), this, this, this, mQuery != null);
         mRecyclerView.setAdapter(mAdapter);
-
-        DrawerActivity.setupTranslucentPadding(getActivity(), view.findViewById(R.id.listFrame));
-        DrawerActivity.setupTranslucentPadding(getActivity(), view.findViewById(android.R.id.progress));
 
         reload();
         if (((DrawerActivity) getActivity()).getFileCab() != null) {

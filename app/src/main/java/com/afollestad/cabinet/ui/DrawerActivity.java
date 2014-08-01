@@ -21,7 +21,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.afollestad.cabinet.R;
-import com.afollestad.cabinet.adapters.NavigationDrawerAdapter;
 import com.afollestad.cabinet.cab.base.BaseFileCab;
 import com.afollestad.cabinet.file.CloudFile;
 import com.afollestad.cabinet.file.LocalFile;
@@ -42,7 +41,6 @@ public class DrawerActivity extends Activity
     private CharSequence mTitle;
 
     private BillingProcessor mBP;
-    private NavigationDrawerAdapter drawerAdapter;
     private boolean canExit;
     private BaseFileCab mFileCab;
     private NetworkService mNetworkService;
@@ -85,7 +83,7 @@ public class DrawerActivity extends Activity
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
         setupTransparentTints(this);
-        setupTranslucentPadding(this, findViewById(R.id.container));
+
 
         mBP = new BillingProcessor(this, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlPBB2hP/R0PrXtK8NPeDX7QV1fvk1hDxPVbIwRZLIgO5l/ZnAOAf8y9Bq57+eO5CD+ZVTgWcAVrS/QsiqDI/MwbfXcDydSkZLJoFofOFXRuSL7mX/jNwZBNtH0UrmcyFx1RqaHIe9KZFONBWLeLBmr47Hvs7dKshAto2Iy0v18kN48NqKxlWtj/PHwk8uIQ4YQeLYiXDCGhfBXYS861guEr3FFUnSLYtIpQ8CiGjwfU60+kjRMmXEGnmhle5lqzj6QeL6m2PNrkbJ0T9w2HM+bR7buHcD8e6tHl2Be6s/j7zn1Ypco/NCbqhtPgCnmLpeYm8EwwTnH4Yei7ACR7mXQIDAQAB", this);
         processIntent(getIntent());

@@ -3,7 +3,6 @@
 
     <style name="Theme.Cabinet" parent="@style/CabinetParent">
         <item name="android:buttonStyle">@style/ButtonCabinet</item>
-        <item name="android:imageButtonStyle">@style/ImageButtonCabinet</item>
         <item name="android:editTextBackground">@drawable/cabinet_edit_text_holo_light</item>
         <item name="android:checkboxStyle">@style/CheckBoxCabinet</item>
         <item name="android:radioButtonStyle">@style/RadioButtonCabinet</item>
@@ -26,18 +25,26 @@
     </style>
 
     <style name="ButtonCabinet" parent="android:Widget.Holo.Light.Button">
-        <item name="android:background">@drawable/cabinet_btn_default_holo_light</item>
-        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">@drawable/rect_button_selector</item>
+        <item name="android:textColor">#fff</item>
         <item name="android:minHeight">48dp</item>
         <item name="android:minWidth">64dp</item>
     </style>
 
-    <style name="ImageButtonCabinet" parent="android:Widget.Holo.Light.ImageButton">
-        <item name="android:background">@drawable/cabinet_btn_default_holo_light</item>
-    </style>
-
     <style name="CheckBoxCabinet" parent="android:Widget.Holo.Light.CompoundButton.CheckBox">
         <item name="android:button">@drawable/cabinet_btn_check_holo_light</item>
+    </style>
+
+    <style name="Fab">
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_width">@dimen/fab_size</item>
+        <item name="android:layout_height">@dimen/fab_size</item>
+        <item name="android:layout_gravity">bottom|right</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:src">@drawable/ic_new</item>
+        <item name="android:background">@drawable/fab_selector</item>
     </style>
 
     <style name="RadioButtonCabinet" parent="android:Widget.Holo.Light.CompoundButton.RadioButton">
