@@ -5,7 +5,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.afollestad.cabinet.R;
-import com.afollestad.cabinet.adapters.FileAdapter;
 import com.afollestad.cabinet.cab.base.BaseFileCab;
 import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.sftp.SftpClient;
@@ -59,7 +58,7 @@ public class MainCab extends BaseFileCab {
             deleteNextFile();
             return super.onActionItemClicked(actionMode, menuItem);
         } else if (menuItem.getItemId() == R.id.selectAll) {
-            List<File> newSelected = ((FileAdapter) getFragment().getAdapter()).checkAll();
+            List<File> newSelected = getFragment().getAdapter().checkAll();
             addFiles(newSelected);
             invalidate();
             return true;

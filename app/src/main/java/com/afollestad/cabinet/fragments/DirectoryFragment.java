@@ -2,11 +2,13 @@ package com.afollestad.cabinet.fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Outline;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
@@ -640,6 +642,15 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                     Unzipper.unzip(this, files, null);
                 } else {
                     Zipper.zip(this, files, null);
+                }
+                break;
+            case R.id.share:
+                try {
+                    getActivity().startActivity(new Intent(Intent.ACTION_SEND)
+                            .setType(file.getMimeType())
+                            .putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file.toJavaFile())));
+                } catch (ActivityNotFoundException e) {
+                    Toast.makeText(getActivity(), R.string.no_apps_for_sharing, Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.delete:

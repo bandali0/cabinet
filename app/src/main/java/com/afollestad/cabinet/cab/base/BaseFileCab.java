@@ -4,7 +4,6 @@ import android.view.ActionMode;
 import android.view.MenuItem;
 
 import com.afollestad.cabinet.R;
-import com.afollestad.cabinet.adapters.FileAdapter;
 import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.fragments.DirectoryFragment;
 
@@ -103,7 +102,7 @@ public abstract class BaseFileCab extends BaseCab {
     @Override
     public void onDestroyActionMode(ActionMode actionMode) {
         clearFiles();
-        ((FileAdapter) getFragment().getAdapter()).resetChecked();
+        getFragment().getAdapter().resetChecked();
         super.onDestroyActionMode(actionMode);
     }
 }
