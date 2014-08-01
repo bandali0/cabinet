@@ -114,9 +114,8 @@
     <string name="defaultSshPort">22</string>
     <string name="welcome">Welcome</string>
     <string name="welcome_intro">Welcome to Cabinet! Cabinet is a simplistic file manager designed to be aesthetically
-        pleasing, and just work how a file manager should.\n\nTake a look at this file card:</string>
-    <string name="welcome_conclusion">Try tapping the preview image or the 3-dot icon. Tapping the preview image turns
-        the card blue: this is multi-selection mode. The 3-dot icon shows a popup menu with individual file options.\n\nCabinet
+        pleasing, and just work how a file manager should.\n\nTake a look at this file:</string>
+    <string name="welcome_conclusion">Try tapping the preview image or the 3-dot icon. Tapping the preview image selects the file for batch actions, this can also be done by tapping and holding files. The 3-dot icon shows a popup menu with individual file options.\n\nCabinet
         has other various features, such as remote access to servers via SFTP that you can find by exploring. Thanks for trying out Cabinet!</string>
     <string name="file_sub_title">Android Logo.png</string>
     <string name="file_stub_content">image/png – 15 KB</string>

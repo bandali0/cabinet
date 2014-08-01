@@ -29,7 +29,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder> implements View.OnClickListener {
+public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder> implements View.OnClickListener, View.OnLongClickListener {
 
     public FileAdapter(Activity context, ItemClickListener listener, IconClickListener iconClickListener, MenuClickListener menuListener, boolean showDirectories) {
         mContext = context;
@@ -93,6 +93,12 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
             });
             mPopupMenu.show();
         }
+    }
+
+    @Override
+    public boolean onLongClick(View view) {
+        view.findViewById(R.id.image).performClick();
+        return true;
     }
 
     public static class FileViewHolder extends RecyclerView.ViewHolder {
@@ -176,6 +182,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
         File file = mFiles.get(index);
         holder.view.setTag("0:" + index);
         holder.view.setOnClickListener(this);
+        holder.view.setOnLongClickListener(this);
         setupTouchDelegate(mContext, holder.menu);
 
         holder.title.setText(file.getName());
@@ -277,7 +284,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
     public List<File> checkAll() {
         List<File> newlySelected = new ArrayList<File>();
         for (int i = 0; i < mFiles.size(); i++) {
-            File file = (File) mFiles.get(i);
+            File file = mFiles.get(i);
             String path = file.getPath();
             if (!checkedPaths.contains(path)) {
                 checkedPaths.add(path);

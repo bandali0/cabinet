@@ -27,6 +27,7 @@ public class WelcomeFragment extends Fragment {
 
     private View fileCard;
     private PopupMenu menu;
+    private ImageView icon;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -35,12 +36,20 @@ public class WelcomeFragment extends Fragment {
         ViewStub fileStub = (ViewStub) view.findViewById(R.id.fileCardStub);
         fileCard = fileStub.inflate();
 
-        ImageView icon = (ImageView) fileCard.findViewById(R.id.image);
+        icon = (ImageView) fileCard.findViewById(R.id.image);
         icon.setImageResource(R.drawable.android_logo);
         icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 fileCard.setActivated(!view.isActivated());
+            }
+        });
+
+        fileCard.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                icon.performClick();
+                return true;
             }
         });
 
