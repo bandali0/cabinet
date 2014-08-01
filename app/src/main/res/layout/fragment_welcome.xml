@@ -58,8 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/welcome_button_height"
             android:text="@string/lets_go"
-            android:background="@drawable/rect_button_selector"
-            android:textColor="@color/button_text_selector" />
+            android:layout_marginBottom="16dp" />
 
     </LinearLayout>
 
