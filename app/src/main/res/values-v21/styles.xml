@@ -15,7 +15,7 @@
         <item name="android:textColor">@color/button_text_selector</item>
         <item name="android:minHeight">48dp</item>
         <item name="android:minWidth">64dp</item>
-        <item name="android:elevation">4dp</item>
+        <item name="android:elevation">2dp</item>
     </style>
 
     <style name="Fab">
@@ -29,7 +29,7 @@
         <item name="android:src">@drawable/ic_new</item>
         <item name="android:background">@drawable/fab_ripple</item>
         <item name="android:stateListAnimator">@anim/fab_anim</item>
-        <item name="elevation">2dp</item>
+        <item name="android:elevation">2dp</item>
     </style>
 
 </resources>
