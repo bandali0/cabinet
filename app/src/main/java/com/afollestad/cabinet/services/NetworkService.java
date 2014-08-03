@@ -73,7 +73,7 @@ public class NetworkService extends Service {
                     .setAction(DISCONNECT_SFTP);
             PendingIntent disconnectPi = PendingIntent.getService(this, DISCONNECT_RC,
                     disconnectIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-            nb.addAction(R.drawable.ic_stat_remove, getString(R.string.disconnect), disconnectPi);
+            nb.addAction(R.drawable.ic_stat_close, getString(R.string.disconnect), disconnectPi);
             nm.notify(CONNECTION_NOTI, nb.build());
             return;
         }
