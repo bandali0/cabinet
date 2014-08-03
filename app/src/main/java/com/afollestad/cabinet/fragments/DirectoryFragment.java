@@ -219,7 +219,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_recyclerview, null);
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        fab = (FloatingActionButton) view.findViewById(R.id.fab);
         boolean searchMode = mQuery != null;
         if (!searchMode) {
             fab.setVisibility(View.VISIBLE);
@@ -308,12 +308,34 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 }).show(true);
     }
 
+    private FloatingActionButton fab;
+    private boolean fabShown = true;
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         mRecyclerView = (RecyclerView) view.findViewById(android.R.id.list);
-        mRecyclerView.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), true, true));
+        mRecyclerView.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), true, true, new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(int scrollState) {
+            }
+
+            @Override
+            public void onScrolled(int dx, int dy) {
+                if (dy < 0 && !fabShown) {
+                    if (dy < -5) {
+                        fab.hide(false);
+                        fabShown = true;
+                    }
+                } else if (dy > 0 && fabShown) {
+                    if (dy > 10) {
+                        fab.hide(true);
+                        fabShown = false;
+                    }
+                }
+            }
+        }));
 
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
