@@ -1,7 +1,11 @@
-<!-- TODO replace with shape for Un-Material -->
-<ripple xmlns:android="http://schemas.android.com/apk/res/android"
-    android:color="?android:colorControlHighlight">
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
+    <solid android:color="#fff" />
+</shape>
 
-    <item android:drawable="@drawable/list_selector" />
+<!-- TODO replace shape for Material -->
+<!--<ripple xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:color="?android:colorControlHighlight">-->
 
-</ripple>
+    <!--<item android:drawable="@drawable/list_selector" />-->
+
+<!--</ripple>-->

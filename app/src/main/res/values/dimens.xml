@@ -12,7 +12,7 @@
     <dimen name="welcome_button_height">56dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="fab_size">56dp</dimen>
+    <dimen name="fab_size">72dp</dimen>
     <dimen name="menu_touchdelegate">25dp</dimen>
 
 </resources>

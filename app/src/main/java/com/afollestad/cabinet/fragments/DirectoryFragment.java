@@ -7,7 +7,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.Outline;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -50,6 +49,7 @@ import com.afollestad.cabinet.utils.Utils;
 import com.afollestad.cabinet.zip.Unzipper;
 import com.afollestad.cabinet.zip.Zipper;
 import com.afollestad.silk.dialogs.SilkDialog;
+import com.faizmalkani.floatingactionbutton.FloatingActionButton;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.io.FileFilter;
@@ -219,16 +219,10 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_recyclerview, null);
-        View fab = view.findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
         boolean searchMode = mQuery != null;
         if (!searchMode) {
             fab.setVisibility(View.VISIBLE);
-            // TODO Comment for Un-Material
-            int size = getResources().getDimensionPixelSize(R.dimen.fab_size);
-            Outline outline = new Outline();
-            outline.setOval(0, 0, size, size);
-            fab.setOutline(outline);
-            fab.setClipToOutline(true);
 
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override

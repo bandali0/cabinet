@@ -10,13 +10,13 @@ android {
         }
     }
 
-    compileSdkVersion 19
+    compileSdkVersion 'android-L'
     buildToolsVersion '20.0.0'
 
     defaultConfig {
         applicationId "com.afollestad.cabinet"
-        minSdkVersion 16
-        targetSdkVersion 19
+        minSdkVersion 'L'
+        targetSdkVersion 'L'
         versionCode 37
         versionName "1.6.1"
     }
@@ -42,5 +42,4 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:+'
     // You must install or update the Support Repository through the SDK manager to use this dependency.
     compile 'com.android.support:support-v4:19.+'
-    compile project(':fab')
 }

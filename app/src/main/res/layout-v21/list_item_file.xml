@@ -5,10 +5,10 @@
     android:paddingTop="10dp"
     android:paddingLeft="16dp"
     android:paddingRight="22dp"
-    android:background="@drawable/list_ripple_selector"
+    android:background="@drawable/list_selector"
     android:descendantFocusability="blocksDescendants">
 
-    <!-- TODO change background for Un-Material -->
+    <!-- TODO change background for Material @drawable/list_ripple_selector -->
 
     <RelativeLayout
         android:id="@android:id/widget_frame"

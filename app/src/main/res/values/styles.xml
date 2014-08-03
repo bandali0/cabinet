@@ -36,18 +36,6 @@
         <item name="android:button">@drawable/cabinet_btn_check_holo_light</item>
     </style>
 
-    <style name="Fab">
-        <item name="android:layout_alignParentRight">true</item>
-        <item name="android:layout_alignParentBottom">true</item>
-        <item name="android:layout_width">@dimen/fab_size</item>
-        <item name="android:layout_height">@dimen/fab_size</item>
-        <item name="android:layout_gravity">bottom|right</item>
-        <item name="android:layout_marginRight">16dp</item>
-        <item name="android:layout_marginBottom">16dp</item>
-        <item name="android:src">@drawable/ic_new</item>
-        <item name="android:background">@drawable/fab_selector</item>
-    </style>
-
     <style name="RadioButtonCabinet" parent="android:Widget.Holo.Light.CompoundButton.RadioButton">
         <item name="android:button">@drawable/cabinet_btn_radio_holo_light</item>
     </style>
