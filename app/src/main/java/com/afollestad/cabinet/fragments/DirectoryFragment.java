@@ -81,6 +81,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     private RecyclerView mRecyclerView;
     private FileAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private boolean shouldInvalidateMenu;
 
     public File getDirectory() {
         return mDirectory;
@@ -160,65 +161,63 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        // If getActivity() was null in onCreateOptionsMenu, invalidate the menu now to fix that
-        activity.invalidateOptionsMenu();
+        if (shouldInvalidateMenu) activity.invalidateOptionsMenu();
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.fragment_menu, menu);
-        int sorter = Utils.getSorter(getActivity());
-        switch (sorter) {
-            default:
-                menu.findItem(R.id.sortNameFoldersTop).setChecked(true);
-                break;
-            case 1:
-                menu.findItem(R.id.sortName).setChecked(true);
-                break;
-            case 2:
-                menu.findItem(R.id.sortExtension).setChecked(true);
-                break;
-            case 3:
-                menu.findItem(R.id.sortSizeLowHigh).setChecked(true);
-                break;
-            case 4:
-                menu.findItem(R.id.sortSizeHighLow).setChecked(true);
-                break;
-        }
-
-        boolean canShow = false;
         if (getActivity() != null) {
-            canShow = !((DrawerLayout) getActivity().findViewById(R.id.drawer_layout)).isDrawerOpen(Gravity.START);
-        }
-        if (!mDirectory.isRemote()) {
-            canShow = canShow && ((LocalFile) mDirectory).existsSync();
-        }
-        boolean searchMode = mQuery != null;
-        menu.findItem(R.id.sort).setVisible(canShow);
-        menu.findItem(R.id.goUp).setVisible(!searchMode && canShow && mDirectory.getParent() != null);
+            int sorter = Utils.getSorter(getActivity());
+            switch (sorter) {
+                default:
+                    menu.findItem(R.id.sortNameFoldersTop).setChecked(true);
+                    break;
+                case 1:
+                    menu.findItem(R.id.sortName).setChecked(true);
+                    break;
+                case 2:
+                    menu.findItem(R.id.sortExtension).setChecked(true);
+                    break;
+                case 3:
+                    menu.findItem(R.id.sortSizeLowHigh).setChecked(true);
+                    break;
+                case 4:
+                    menu.findItem(R.id.sortSizeHighLow).setChecked(true);
+                    break;
+            }
 
-        final MenuItem search = menu.findItem(R.id.search);
-        if (canShow && !searchMode) {
-            assert search != null;
-            SearchView searchView = (SearchView) search.getActionView();
-            View view = searchView.findViewById(searchView.getContext().getResources().getIdentifier("android:id/search_plate", null, null));
-            view.setBackgroundResource(R.drawable.cabinet_edit_text_holo_light);
-            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                @Override
-                public boolean onQueryTextSubmit(String query) {
-                    search.collapseActionView();
-                    ((DrawerActivity) getActivity()).search(mDirectory, query);
-                    return false;
-                }
+            boolean canShow = !((DrawerLayout) getActivity().findViewById(R.id.drawer_layout)).isDrawerOpen(Gravity.START);
+            if (!mDirectory.isRemote()) {
+                canShow = canShow && ((LocalFile) mDirectory).existsSync();
+            }
+            boolean searchMode = mQuery != null;
+            menu.findItem(R.id.sort).setVisible(canShow);
+            menu.findItem(R.id.goUp).setVisible(!searchMode && canShow && mDirectory.getParent() != null);
 
-                @Override
-                public boolean onQueryTextChange(String newText) {
-                    return false;
-                }
-            });
-            searchView.setQueryHint(getString(R.string.search_files));
-        } else search.setVisible(false);
+            final MenuItem search = menu.findItem(R.id.search);
+            if (canShow && !searchMode) {
+                assert search != null;
+                SearchView searchView = (SearchView) search.getActionView();
+                View view = searchView.findViewById(searchView.getContext().getResources().getIdentifier("android:id/search_plate", null, null));
+                view.setBackgroundResource(R.drawable.cabinet_edit_text_holo_light);
+                searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        search.collapseActionView();
+                        ((DrawerActivity) getActivity()).search(mDirectory, query);
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        return false;
+                    }
+                });
+                searchView.setQueryHint(getString(R.string.search_files));
+            } else search.setVisible(false);
+        } else shouldInvalidateMenu = true;
     }
 
     @Nullable
