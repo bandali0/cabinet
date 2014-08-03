@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Outline;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -222,12 +223,12 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         boolean searchMode = mQuery != null;
         if (!searchMode) {
             fab.setVisibility(View.VISIBLE);
-            // TODO Uncomment for Material
-//            int size = getResources().getDimensionPixelSize(R.dimen.fab_size);
-//            Outline outline = new Outline();
-//            outline.setOval(0, 0, size, size);
-//            fab.setOutline(outline);
-//            fab.setClipToOutline(true);
+            // TODO Comment for Un-Material
+            int size = getResources().getDimensionPixelSize(R.dimen.fab_size);
+            Outline outline = new Outline();
+            outline.setOval(0, 0, size, size);
+            fab.setOutline(outline);
+            fab.setClipToOutline(true);
 
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override

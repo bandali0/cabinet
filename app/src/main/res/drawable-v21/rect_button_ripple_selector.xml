@@ -1,11 +1,7 @@
-<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
-    <solid android:color="#fff" />
-</shape>
+<!-- TODO replace with shape for Un-Material -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?android:colorControlHighlight">
 
-<!-- TODO uncomment for Material -->
-<!--<ripple xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--android:color="?android:colorControlHighlight">-->
+    <item android:drawable="@drawable/rect_button_selector" />
 
-    <!--<item android:drawable="@drawable/rect_button_selector" />-->
-
-<!--</ripple>-->
+</ripple>

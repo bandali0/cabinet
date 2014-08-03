@@ -1,13 +1,9 @@
-<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
-    <solid android:color="#fff" />
-</shape>
-
-<!-- TODO uncomment for Material -->
-<!--<ripple xmlns:android="http://schemas.android.com/apk/res/android"-->
-    <!--android:color="?android:colorControlHighlight">-->
-    <!--<item>-->
-        <!--<shape android:shape="oval">-->
-            <!--<solid android:color="?android:colorAccent" />-->
-        <!--</shape>-->
-    <!--</item>-->
-<!--</ripple>-->
+<!-- TODO replace with shape for Un-Material -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?android:colorControlHighlight">
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="?android:colorAccent" />
+        </shape>
+    </item>
+</ripple>
