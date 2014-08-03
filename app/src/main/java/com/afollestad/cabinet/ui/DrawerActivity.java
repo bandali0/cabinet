@@ -47,14 +47,18 @@ public class DrawerActivity extends Activity
     private CloudFile mRemoteSwitch;
 
     public static void setupTransparentTints(Activity context) {
-        if (Build.VERSION.SDK_INT != Build.VERSION_CODES.KITKAT) return;
+        // TODO uncomment for Material
+        // if (Build.VERSION.SDK_INT != Build.VERSION_CODES.KITKAT) return;
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) return;
         SystemBarTintManager tintManager = new SystemBarTintManager(context);
         tintManager.setStatusBarTintEnabled(true);
         tintManager.setStatusBarTintResource(R.color.cabinet_color);
     }
 
     public static void setupTranslucentPadding(Activity context, View view) {
-        if (Build.VERSION.SDK_INT != Build.VERSION_CODES.KITKAT) return;
+        // TODO uncomment for Material
+        // if (Build.VERSION.SDK_INT != Build.VERSION_CODES.KITKAT) return;
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) return;
         SystemBarTintManager tintManager = new SystemBarTintManager(context);
         SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
         view.setPadding(view.getPaddingLeft(), config.getPixelInsetTop(true), view.getPaddingRight(), view.getPaddingBottom());
@@ -220,7 +224,7 @@ public class DrawerActivity extends Activity
 
     @Override
     public boolean onKeyLongPress(int keyCode, KeyEvent event) {
-        if(keyCode == KeyEvent.KEYCODE_BACK) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             finish();
             return true;
         }

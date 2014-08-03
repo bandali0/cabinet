@@ -74,10 +74,9 @@ public class WelcomeFragment extends Fragment {
         view.findViewById(R.id.finish).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putBoolean("shown_welcome", true).commit();
                 ((DrawerActivity) getActivity()).switchDirectory(null, true);
             }
         });
-
-        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putBoolean("shown_welcome", true).commit();
     }
 }
