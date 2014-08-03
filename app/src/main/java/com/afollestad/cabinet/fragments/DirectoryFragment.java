@@ -7,7 +7,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.Outline;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -81,7 +80,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     private RecyclerView mRecyclerView;
     private FileAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private boolean shouldInvalidateMenu;
 
     public File getDirectory() {
         return mDirectory;
@@ -110,11 +108,11 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        mDirectory = (File) getArguments().getSerializable("path");
+        mQuery = getArguments().getString("query");
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         setRetainInstance(true);
-        mDirectory = (File) getArguments().getSerializable("path");
-        mQuery = getArguments().getString("query");
         if (mQuery != null) mQuery = mQuery.trim();
     }
 
@@ -153,71 +151,67 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (savedInstanceState != null) {
-            mDirectory = (File) savedInstanceState.getSerializable("directory");
-            mQuery = savedInstanceState.getString("query");
+            if (savedInstanceState.containsKey("directory")) {
+                mDirectory = (File) savedInstanceState.getSerializable("directory");
+            }
+            if (savedInstanceState.containsKey("query")) {
+                mQuery = savedInstanceState.getString("query");
+            }
         }
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        if (shouldInvalidateMenu) activity.invalidateOptionsMenu();
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.fragment_menu, menu);
-        if (getActivity() != null) {
-            int sorter = Utils.getSorter(getActivity());
-            switch (sorter) {
-                default:
-                    menu.findItem(R.id.sortNameFoldersTop).setChecked(true);
-                    break;
-                case 1:
-                    menu.findItem(R.id.sortName).setChecked(true);
-                    break;
-                case 2:
-                    menu.findItem(R.id.sortExtension).setChecked(true);
-                    break;
-                case 3:
-                    menu.findItem(R.id.sortSizeLowHigh).setChecked(true);
-                    break;
-                case 4:
-                    menu.findItem(R.id.sortSizeHighLow).setChecked(true);
-                    break;
-            }
+        int sorter = Utils.getSorter(getActivity());
+        switch (sorter) {
+            default:
+                menu.findItem(R.id.sortNameFoldersTop).setChecked(true);
+                break;
+            case 1:
+                menu.findItem(R.id.sortName).setChecked(true);
+                break;
+            case 2:
+                menu.findItem(R.id.sortExtension).setChecked(true);
+                break;
+            case 3:
+                menu.findItem(R.id.sortSizeLowHigh).setChecked(true);
+                break;
+            case 4:
+                menu.findItem(R.id.sortSizeHighLow).setChecked(true);
+                break;
+        }
 
-            boolean canShow = !((DrawerLayout) getActivity().findViewById(R.id.drawer_layout)).isDrawerOpen(Gravity.START);
-            if (!mDirectory.isRemote()) {
-                canShow = canShow && ((LocalFile) mDirectory).existsSync();
-            }
-            boolean searchMode = mQuery != null;
-            menu.findItem(R.id.sort).setVisible(canShow);
-            menu.findItem(R.id.goUp).setVisible(!searchMode && canShow && mDirectory.getParent() != null);
+        boolean canShow = !((DrawerLayout) getActivity().findViewById(R.id.drawer_layout)).isDrawerOpen(Gravity.START);
+        if (!mDirectory.isRemote()) {
+            canShow = canShow && ((LocalFile) mDirectory).existsSync();
+        }
+        boolean searchMode = mQuery != null;
+        menu.findItem(R.id.sort).setVisible(canShow);
+        menu.findItem(R.id.goUp).setVisible(!searchMode && canShow && mDirectory.getParent() != null);
 
-            final MenuItem search = menu.findItem(R.id.search);
-            if (canShow && !searchMode) {
-                assert search != null;
-                SearchView searchView = (SearchView) search.getActionView();
-                View view = searchView.findViewById(searchView.getContext().getResources().getIdentifier("android:id/search_plate", null, null));
-                view.setBackgroundResource(R.drawable.cabinet_edit_text_holo_light);
-                searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                    @Override
-                    public boolean onQueryTextSubmit(String query) {
-                        search.collapseActionView();
-                        ((DrawerActivity) getActivity()).search(mDirectory, query);
-                        return false;
-                    }
+        final MenuItem search = menu.findItem(R.id.search);
+        if (canShow && !searchMode) {
+            assert search != null;
+            SearchView searchView = (SearchView) search.getActionView();
+            View view = searchView.findViewById(searchView.getContext().getResources().getIdentifier("android:id/search_plate", null, null));
+            view.setBackgroundResource(R.drawable.cabinet_edit_text_holo_light);
+            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    search.collapseActionView();
+                    ((DrawerActivity) getActivity()).search(mDirectory, query);
+                    return false;
+                }
 
-                    @Override
-                    public boolean onQueryTextChange(String newText) {
-                        return false;
-                    }
-                });
-                searchView.setQueryHint(getString(R.string.search_files));
-            } else search.setVisible(false);
-        } else shouldInvalidateMenu = true;
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    return false;
+                }
+            });
+            searchView.setQueryHint(getString(R.string.search_files));
+        } else search.setVisible(false);
     }
 
     @Nullable
@@ -228,11 +222,12 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         boolean searchMode = mQuery != null;
         if (!searchMode) {
             fab.setVisibility(View.VISIBLE);
-            int size = getResources().getDimensionPixelSize(R.dimen.fab_size);
-            Outline outline = new Outline();
-            outline.setOval(0, 0, size, size);
-            fab.setOutline(outline);
-            fab.setClipToOutline(true);
+            // TODO Uncomment for Material
+//            int size = getResources().getDimensionPixelSize(R.dimen.fab_size);
+//            Outline outline = new Outline();
+//            outline.setOval(0, 0, size, size);
+//            fab.setOutline(outline);
+//            fab.setClipToOutline(true);
 
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
