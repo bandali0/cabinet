@@ -158,6 +158,13 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     }
 
     @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        // If getActivity() was null in onCreateOptionsMenu, invalidate the menu now to fix that
+        activity.invalidateOptionsMenu();
+    }
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.fragment_menu, menu);
@@ -180,7 +187,10 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 break;
         }
 
-        boolean canShow = !((DrawerLayout) getActivity().findViewById(R.id.drawer_layout)).isDrawerOpen(Gravity.START);
+        boolean canShow = false;
+        if (getActivity() != null) {
+            canShow = !((DrawerLayout) getActivity().findViewById(R.id.drawer_layout)).isDrawerOpen(Gravity.START);
+        }
         if (!mDirectory.isRemote()) {
             canShow = canShow && ((LocalFile) mDirectory).existsSync();
         }
