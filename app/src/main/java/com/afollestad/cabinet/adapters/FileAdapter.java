@@ -301,8 +301,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
 
     public List<File> checkAll() {
         List<File> newlySelected = new ArrayList<File>();
-        for (int i = 0; i < mFiles.size(); i++) {
-            File file = mFiles.get(i);
+        for (File file : mFiles) {
             String path = file.getPath();
             if (!checkedPaths.contains(path)) {
                 checkedPaths.add(path);
