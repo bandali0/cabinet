@@ -240,7 +240,53 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     }
 
     private void showNewFolderDialog() {
+        Utils.showInputDialog(getActivity(), R.string.new_folder, R.string.untitled, null,
+                new Utils.InputCallback() {
+                    @Override
+                    public void onInput(String newName) {
+                        if (newName.isEmpty())
+                            newName = getString(R.string.untitled);
+                        final File dir = mDirectory.isRemote() ?
+                                new CloudFile(getActivity(), (CloudFile) mDirectory, newName, true) :
+                                new LocalFile(getActivity(), mDirectory, newName);
+                        dir.exists(new File.BooleanCallback() {
+                            @Override
+                            public void onComplete(boolean result) {
+                                if (!result) {
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            dir.mkdir(new SftpClient.CompletionCallback() {
+                                                @Override
+                                                public void onComplete() {
+                                                    runOnUiThread(new Runnable() {
+                                                        @Override
+                                                        public void run() {
+                                                            reload();
+                                                        }
+                                                    });
+                                                }
 
+                                                @Override
+                                                public void onError(Exception e) {
+                                                    Utils.showErrorDialog(getActivity(), e.getMessage());
+                                                }
+                                            });
+                                        }
+                                    });
+                                } else {
+                                    Utils.showErrorDialog(getActivity(), getString(R.string.directory_already_exists));
+                                }
+                            }
+
+                            @Override
+                            public void onError(Exception e) {
+                                Utils.showErrorDialog(getActivity(), e.getMessage());
+                            }
+                        });
+                    }
+                }
+        );
     }
 
     protected void onFabPressed() {

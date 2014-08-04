@@ -34,11 +34,9 @@ import com.afollestad.cabinet.utils.Shortcuts;
 import com.anjlab.android.iab.v3.BillingProcessor;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
-public class DrawerActivity extends Activity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks, BillingProcessor.IBillingHandler {
+public class DrawerActivity extends Activity implements BillingProcessor.IBillingHandler {
 
     private NavigationDrawerFragment mNavigationDrawerFragment;
-    private CharSequence mTitle;
 
     private BillingProcessor mBP;
     private boolean canExit;
@@ -77,7 +75,6 @@ public class DrawerActivity extends Activity
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(R.id.navigation_drawer);
-        mTitle = getTitle();
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
@@ -95,11 +92,6 @@ public class DrawerActivity extends Activity
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         processIntent(intent);
-    }
-
-    @Override
-    public void onNavigationDrawerItemSelected(int position) {
-
     }
 
     private void displayRatingDialog() {
