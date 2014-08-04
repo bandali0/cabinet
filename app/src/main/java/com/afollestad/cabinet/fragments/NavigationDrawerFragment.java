@@ -45,6 +45,7 @@ public class NavigationDrawerFragment extends Fragment {
     private int mCurrentSelectedPosition = 1;
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
+    private CharSequence mTitle;
 
     public NavigationDrawerFragment() {
     }
@@ -130,6 +131,7 @@ public class NavigationDrawerFragment extends Fragment {
                     return;
                 }
 
+                getActivity().setTitle(mTitle);
                 getActivity().invalidateOptionsMenu(); // calls onPrepareOptionsMenu()
             }
 
@@ -139,6 +141,9 @@ public class NavigationDrawerFragment extends Fragment {
                 if (!isAdded()) {
                     return;
                 }
+
+                mTitle = getActivity().getTitle();
+                getActivity().setTitle(R.string.app_name);
 
                 if (!mUserLearnedDrawer) {
                     // The user manually opened the drawer; store this flag to prevent auto-showing
