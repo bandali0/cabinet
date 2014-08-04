@@ -127,6 +127,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         if (fileCab != null) {
             mAdapter.restoreCheckedPaths(fileCab.getFiles());
         }
+        ((NavigationDrawerFragment) act.getFragmentManager().findFragmentByTag("NAV_DRAWER")).getAdapter().setCheckedFile(mDirectory);
     }
 
     @Override
