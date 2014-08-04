@@ -542,16 +542,19 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 
     @Override
     public void onIconClicked(int index, File file, boolean added) {
-        boolean shouldCreateCab = (((DrawerActivity) getActivity()).getFileCab() == null ||
-                !((DrawerActivity) getActivity()).getFileCab().isActive() ||
-                !(((DrawerActivity) getActivity()).getFileCab() instanceof MainCab)) &&
-                added;
-        if (shouldCreateCab)
-            ((DrawerActivity) getActivity()).setFileCab((BaseFileCab) new MainCab()
-                    .setFragment(this).setFile(file).start());
-        else if (((DrawerActivity) getActivity()).getFileCab() != null) {
+        BaseFileCab cab = ((DrawerActivity) getActivity()).getFileCab();
+        if (cab != null && (cab instanceof CopyCab || cab instanceof CutCab) && cab.isActive()) {
             if (added) ((DrawerActivity) getActivity()).getFileCab().addFile(file);
             else ((DrawerActivity) getActivity()).getFileCab().removeFile(file);
+        } else {
+            boolean shouldCreateCab = cab == null || !cab.isActive() || !(cab instanceof MainCab) && added;
+            if (shouldCreateCab)
+                ((DrawerActivity) getActivity()).setFileCab((BaseFileCab) new MainCab()
+                        .setFragment(this).setFile(file).start());
+            else {
+                if (added) ((DrawerActivity) getActivity()).getFileCab().addFile(file);
+                else ((DrawerActivity) getActivity()).getFileCab().removeFile(file);
+            }
         }
     }
 
