@@ -83,11 +83,6 @@ public class Utils {
         return PreferenceManager.getDefaultSharedPreferences(context).getInt("sorter", 0);
     }
 
-    public static void setShowHidden(DirectoryFragment context, boolean show) {
-        PreferenceManager.getDefaultSharedPreferences(context.getActivity()).edit().putBoolean("show_hidden", show).commit();
-        context.reload();
-    }
-
     public static boolean getShowHidden(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context).getBoolean("show_hidden", false);
     }

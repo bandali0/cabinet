@@ -125,11 +125,19 @@
     <string name="unzipping">Unzipping…</string>
     <string name="failed_unzip_file">Failed to unzip this file: %1$s</string>
     <string name="failed_zip_files">Failed to zip file(s): %1$s</string>
-    <string name="translucency">Translucency</string>
+
     <string name="translucent_statusbar">Translucent Status Bar</string>
-    <string name="translucent_navbar">Translucent Navigation Bar</string>
-    <string name="translucent_statusbar_desc">Translucent status bar on KitKat.</string>
-    <string name="translucent_navbar_desc">Translucent navigation bar on KitKat.</string>
+    <string name="translucent_navbar">Transparent Navigation Bar</string>
+    <string name="translucent_statusbar_desc">Translucent (same color as action bar) status bar on KitKat and above.</string>
+    <string name="translucent_navbar_desc">Transparent (see-through) navigation bar on KitKat and above.</string>
+
+    <string name="about_body"><![CDATA[
+        The next generation digital coupon platform, helping consumers save money.<br/><br/>
+        Copyright %1$d Recoup Smart LLC.
+    ]]></string>
+    <string name="app_name_and_version" translatable="false"><![CDATA[
+        <b>Cabinet</b>&nbsp;<font color="#888888">v%1$s</font>
+    ]]></string>
 
     <string-array name="new_options">
         <item>Folder</item>
@@ -149,5 +157,13 @@
     <string name="no_apps_for_sharing">No apps are available for sharing this type of file</string>
     <string name="iconpress_hint">You can tap a file\'s icon to quickly select it!</string>
     <string name="drawer_longpress_hint">Tip: long press pinned shortcuts to remove them!</string>
+    <string name="about">About</string>
+    <string name="about_desc">About the app and it\'s designer.</string>
+    <string name="info">Info</string>
+    <string name="files">Files</string>
+    <string name="show_hidden_files_desc">Toggle whether or not Cabinet will show hidden files.</string>
+    <string name="ui">UI</string>
+    <string name="settings">Settings</string>
+    <string name="translucentstatusbar_disabled">You cannot change this on Android L.</string>
 
 </resources>

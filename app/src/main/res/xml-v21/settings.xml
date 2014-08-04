@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/info">
+
+        <Preference
+            android:key="about"
+            android:title="@string/about"
+            android:summary="@string/about_desc" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/files">
+
+        <CheckBoxPreference
+            android:key="show_hidden"
+            android:title="@string/show_hidden_files"
+            android:summary="@string/show_hidden_files_desc"
+            android:persistent="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/ui">
+
+        <CheckBoxPreference
+            android:key="translucent_statusbar"
+            android:title="@string/translucent_statusbar"
+            android:summary="@string/translucent_statusbar_desc"
+            android:persistent="true" />
+
+        <CheckBoxPreference
+            android:key="translucent_navbar"
+            android:title="@string/translucent_navbar"
+            android:summary="@string/translucent_navbar_desc"
+            android:persistent="true" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

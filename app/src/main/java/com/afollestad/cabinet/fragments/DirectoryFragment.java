@@ -45,6 +45,7 @@ import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.services.NetworkService;
 import com.afollestad.cabinet.sftp.SftpClient;
 import com.afollestad.cabinet.ui.DrawerActivity;
+import com.afollestad.cabinet.ui.SettingsActivity;
 import com.afollestad.cabinet.utils.PauseOnScrollListener;
 import com.afollestad.cabinet.utils.Shortcuts;
 import com.afollestad.cabinet.utils.Utils;
@@ -501,10 +502,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             case R.id.goUp:
                 ((DrawerActivity) getActivity()).switchDirectory(mDirectory.getParent(), false);
                 break;
-            case R.id.showHidden:
-                item.setChecked(!item.isChecked());
-                Utils.setShowHidden(this, item.isChecked());
-                break;
             case R.id.sortNameFoldersTop:
                 item.setChecked(true);
                 Utils.setSorter(this, 0);
@@ -536,6 +533,9 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 break;
             case R.id.donation4:
                 ((DrawerActivity) getActivity()).donate(4);
+                break;
+            case R.id.settings:
+                startActivity(new Intent(getActivity(), SettingsActivity.class));
                 break;
         }
         return super.onOptionsItemSelected(item);
