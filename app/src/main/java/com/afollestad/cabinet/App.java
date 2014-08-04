@@ -21,6 +21,8 @@ public class App extends Application {
                 .cacheOnDisk(true)
                 .showImageForEmptyUri(R.drawable.ic_image)
                 .showImageOnFail(R.drawable.ic_image)
+                .cacheInMemory(true)
+                .cacheOnDisk(false)
                 .build();
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
                 .defaultDisplayImageOptions(options)
