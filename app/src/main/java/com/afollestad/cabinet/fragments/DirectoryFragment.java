@@ -300,9 +300,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                                 showNewFolderDialog();
                                 break;
                             case 1: // Remote connection
-                                Activity context = getActivity();
-                                context.setTheme(R.style.Theme_Cabinet);
-                                new RemoteConnectionDialog().show(getFragmentManager(), "REMOTE_CONNECTION");
+                                new RemoteConnectionDialog(getActivity()).show();
                                 break;
                         }
                     }

@@ -55,6 +55,7 @@
         android:text="@string/test_connection"
         android:layout_marginTop="12dp"
         android:singleLine="true"
-        android:fontFamily="sans-serif-light" />
+        android:fontFamily="sans-serif-light"
+        android:enabled="false" />
 
 </LinearLayout>

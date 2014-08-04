@@ -1,13 +1,11 @@
 package com.afollestad.cabinet.fragments;
 
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.os.Bundle;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -16,31 +14,29 @@ import com.afollestad.cabinet.sftp.SftpClient;
 import com.afollestad.cabinet.ui.DrawerActivity;
 import com.afollestad.cabinet.utils.Shortcuts;
 
-public class RemoteConnectionDialog extends DialogFragment implements SftpClient.CompletionCallback {
+public class RemoteConnectionDialog implements SftpClient.CompletionCallback {
 
+    public RemoteConnectionDialog(Activity context) {
+        mContext = context;
+    }
+
+    private Activity mContext;
     private SftpClient client;
+    private AlertDialog dialog;
     private Button testConnection;
     private TextView host;
     private TextView port;
     private TextView user;
     private TextView pass;
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.dialog_add_remote, null);
-    }
+    public void show() {
+        View view = mContext.getLayoutInflater().inflate(R.layout.dialog_add_remote, null);
+        testConnection = (Button) view.findViewById(R.id.testConnection);
+        host = (TextView) view.findViewById(R.id.host);
+        port = (TextView) view.findViewById(R.id.port);
+        user = (TextView) view.findViewById(R.id.user);
+        pass = (TextView) view.findViewById(R.id.pass);
 
-    private void setCanSubmit(boolean enabled) {
-        View v = getView();
-        if (v != null) {
-            v.findViewById(android.R.id.button1).setEnabled(enabled);
-        }
-    }
-
-    @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        Dialog dialog = super.onCreateDialog(savedInstanceState);
-        dialog.setTitle(R.string.new_remote_connection);
         TextWatcher watcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
@@ -52,10 +48,10 @@ public class RemoteConnectionDialog extends DialogFragment implements SftpClient
                         port.getText().toString().trim().length() > 0 &&
                         user.getText().toString().trim().length() > 0 &&
                         pass.getText().toString().trim().length() > 0) {
-                    setCanSubmit(true);
+                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
                     testConnection.setEnabled(true);
                 } else {
-                    setCanSubmit(false);
+                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
                     testConnection.setEnabled(false);
                 }
             }
@@ -64,15 +60,10 @@ public class RemoteConnectionDialog extends DialogFragment implements SftpClient
             public void afterTextChanged(Editable editable) {
             }
         };
-        host = (TextView) dialog.findViewById(R.id.host);
         host.addTextChangedListener(watcher);
-        port = (TextView) dialog.findViewById(R.id.port);
         port.addTextChangedListener(watcher);
-        user = (TextView) dialog.findViewById(R.id.user);
         user.addTextChangedListener(watcher);
-        pass = (TextView) dialog.findViewById(R.id.pass);
         pass.addTextChangedListener(watcher);
-        testConnection = (Button) dialog.findViewById(R.id.testConnection);
         testConnection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,16 +75,32 @@ public class RemoteConnectionDialog extends DialogFragment implements SftpClient
                         .connect(RemoteConnectionDialog.this);
             }
         });
-        dialog.findViewById(android.R.id.button1).setEnabled(false);
-        testConnection.setEnabled(false);
-        return dialog;
+
+        dialog = new AlertDialog.Builder(mContext)
+                .setTitle(R.string.new_remote_connection)
+                .setView(view)
+                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                        onSubmit();
+                    }
+                })
+                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                }).create();
+        dialog.show();
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
     }
 
     @Override
     public void onComplete() {
         client.disconnect();
         client = null;
-        getActivity().runOnUiThread(new Runnable() {
+        mContext.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 testConnection.setEnabled(true);
@@ -105,7 +112,7 @@ public class RemoteConnectionDialog extends DialogFragment implements SftpClient
     @Override
     public void onError(final Exception e) {
         client = null;
-        getActivity().runOnUiThread(new Runnable() {
+        mContext.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 testConnection.setEnabled(true);
@@ -119,13 +126,13 @@ public class RemoteConnectionDialog extends DialogFragment implements SftpClient
             client.disconnect();
             client = null;
         }
-        Shortcuts.add(getActivity(), new Shortcuts.Item(
+        Shortcuts.add(mContext, new Shortcuts.Item(
                 host.getText().toString().trim(),
                 Integer.parseInt(port.getText().toString().trim()),
                 user.getText().toString().trim(),
                 pass.getText().toString().trim(),
                 "/"
         ));
-        ((DrawerActivity) getActivity()).reloadNavDrawer();
+        ((DrawerActivity) mContext).reloadNavDrawer();
     }
 }
