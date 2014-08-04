@@ -2,9 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/execute"
-        android:title="@string/execute" />
-    <item
         android:id="@+id/openAs"
         android:title="@string/open_as" />
     <item

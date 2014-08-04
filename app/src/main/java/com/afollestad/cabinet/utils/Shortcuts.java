@@ -4,11 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+
 import com.afollestad.cabinet.file.CloudFile;
 import com.afollestad.cabinet.file.LocalFile;
 import com.afollestad.cabinet.file.Remote;
 import com.afollestad.cabinet.file.base.File;
-import com.afollestad.silk.SilkComparable;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -17,7 +18,7 @@ import java.util.List;
 
 public class Shortcuts {
 
-    public static class Item implements SilkComparable {
+    public static class Item {
 
         public Item(File file) {
             mPath = file.getPath();
@@ -51,7 +52,6 @@ public class Shortcuts {
             }
         }
 
-        private long id;
         private boolean isRemote;
         private final String mPath;
         private String mHost;
@@ -111,16 +111,6 @@ public class Shortcuts {
         @Override
         public String toString() {
             return toJSON().toString();
-        }
-
-        @Override
-        public void setSilkId(long id) {
-            this.id = id;
-        }
-
-        @Override
-        public long getSilkId() {
-            return id;
         }
 
         public File toFile(Activity context) {

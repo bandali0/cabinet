@@ -9,7 +9,6 @@ import com.afollestad.cabinet.file.CloudFile;
 import com.afollestad.cabinet.sftp.SftpClient;
 import com.afollestad.cabinet.ui.DrawerActivity;
 
-import java.io.OutputStream;
 import java.io.Serializable;
 
 public abstract class File implements Serializable {
@@ -109,10 +108,6 @@ public abstract class File implements Serializable {
     public final String getPath() {
         return mPath;
     }
-
-    public abstract void execute(OutputStream os, SftpClient.CompletionCallback callback);
-
-    public abstract void finishExecution();
 
     public abstract void mkdir(SftpClient.CompletionCallback callback);
 

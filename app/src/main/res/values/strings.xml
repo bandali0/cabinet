@@ -50,7 +50,6 @@
     <string name="go_up">Go Up</string>
     <string name="press_back_to_exit">Press back again to exit…</string>
     <string name="paste">Paste</string>
-    <string name="execute">Execute</string>
     <string name="making_folder">Creating folder…</string>
     <string name="copy_x">
 <![CDATA[
@@ -80,8 +79,6 @@
     </string>
     <string name="x_files">%1$d files</string>
     <string name="no_x_files">No %1$s files</string>
-    <string name="failed_execute_file">Failed to execute this file: %1$s</string>
-    <string name="executing_x">Executing %1$s…\n</string>
     <string name="done">Done</string>
     <string name="network_service_label">Cabinet Network Service</string>
     <string name="connection_notification_content">Connected to %1$s</string>

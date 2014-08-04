@@ -1,6 +1,7 @@
 package com.afollestad.cabinet.utils;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -10,7 +11,10 @@ import android.net.Uri;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
+
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.file.CloudFile;
 import com.afollestad.cabinet.file.LocalFile;
@@ -19,7 +23,6 @@ import com.afollestad.cabinet.fragments.DirectoryFragment;
 import com.afollestad.cabinet.services.NetworkService;
 import com.afollestad.cabinet.sftp.SftpClient;
 import com.afollestad.cabinet.ui.DrawerActivity;
-import com.afollestad.silk.dialogs.SilkDialog;
 
 public class Utils {
 
@@ -49,11 +52,7 @@ public class Utils {
 
             @Override
             public void onError(Exception e) {
-                SilkDialog.create(context)
-                        .setAccentColorRes(R.color.cabinet_color)
-                        .setTitle(R.string.error)
-                        .setMessage(e.getMessage())
-                        .show(true);
+                showErrorDialog(context, e.getMessage());
             }
         });
     }
@@ -93,28 +92,33 @@ public class Utils {
         return PreferenceManager.getDefaultSharedPreferences(context).getBoolean("show_hidden", false);
     }
 
-    public static void showConfirmDialog(Activity context, int title, int message, String replacement, final SilkDialog.DialogCallback callback) {
-        context.setTheme(R.style.Theme_Cabinet);
-        SilkDialog.create(context)
-                .setAccentColorRes(R.color.cabinet_color)
+    public static void showConfirmDialog(Activity context, int title, int message, String replacement, final DialogCallback callback) {
+        new AlertDialog.Builder(context)
                 .setTitle(title)
-                .setMessage(message, replacement)
-                .setPostiveButtonText(R.string.yes)
-                .setNegativeButtonText(R.string.no)
-                .setButtonListener(callback)
-                .show(true);
+                .setMessage(context.getString(message, replacement))
+                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                        callback.onPositive();
+                    }
+                })
+                .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                }).create().show();
     }
 
     public static void showErrorDialog(final Activity context, final int message, final Exception e) {
         context.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                context.setTheme(R.style.Theme_Cabinet);
-                SilkDialog.create(context)
-                        .setAccentColorRes(R.color.cabinet_color)
+                new AlertDialog.Builder(context)
                         .setTitle(R.string.error)
-                        .setMessage(message, e.getMessage())
-                        .show(true);
+                        .setMessage(context.getString(message, e.getMessage()))
+                        .create().show();
             }
         });
     }
@@ -123,12 +127,10 @@ public class Utils {
         context.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                context.setTheme(R.style.Theme_Cabinet);
-                SilkDialog.create(context)
-                        .setAccentColorRes(R.color.cabinet_color)
+                new AlertDialog.Builder(context)
                         .setTitle(R.string.error)
                         .setMessage(message)
-                        .show(true);
+                        .create().show();
             }
         });
     }
@@ -147,25 +149,44 @@ public class Utils {
         return showProgressDialog(context, message, null);
     }
 
-    public static void showInputDialog(Activity context, int title, int hint, String prefillInput, final SilkDialog.InputCallback callback) {
-        context.setTheme(R.style.Theme_Cabinet);
-        String hintStr = null;
-        if (hint != 0) hintStr = context.getString(hint);
-        SilkDialog.create(context)
-                .setAccentColorRes(R.color.cabinet_color)
+    public interface InputCallback {
+        public abstract void onInput(String input);
+    }
+
+    public interface DialogCallback {
+        public abstract void onPositive();
+    }
+
+    public static void showInputDialog(Activity context, int title, int hint, String prefillInput, final InputCallback callback) {
+        View view = context.getLayoutInflater().inflate(R.layout.dialog_input, null);
+        final EditText input = (EditText) view.findViewById(R.id.input);
+        if (hint != 0) input.setHint(hint);
+        if (prefillInput != null) input.append(prefillInput);
+        new AlertDialog.Builder(context)
                 .setTitle(title)
-                .setAcceptsInput(true, hintStr, prefillInput, callback)
-                .show(true);
+                .setView(view)
+                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                        if (callback != null) callback.onInput(input.getText().toString().trim());
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                }).create().show();
     }
 
     private static void openLocal(final Activity context, final File file, String mime) {
         if (mime == null) {
-            SilkDialog.create(context)
-                    .setAccentColorRes(R.color.cabinet_color)
+            new AlertDialog.Builder(context)
                     .setTitle(R.string.open_as)
-                    .setItems(R.array.open_as, new SilkDialog.SelectionCallback() {
+                    .setItems(R.array.open_as, new DialogInterface.OnClickListener() {
                         @Override
-                        public void onSelection(int index, String value) {
+                        public void onClick(DialogInterface dialogInterface, int index) {
                             String newMime;
                             switch (index) {
                                 default:
@@ -186,31 +207,16 @@ public class Utils {
                             }
                             openLocal(context, file, newMime);
                         }
-                    }).show(true);
+                    }).create().show();
             return;
         }
         try {
             context.startActivity(new Intent(Intent.ACTION_VIEW)
                     .setDataAndType(Uri.fromFile(file.toJavaFile()), mime));
         } catch (ActivityNotFoundException e) {
-            if (mime == null) Toast.makeText(context, R.string.activity_not_found, Toast.LENGTH_SHORT).show();
-            else openLocal(context, file, null);
+            Toast.makeText(context, R.string.activity_not_found, Toast.LENGTH_SHORT).show();
         }
     }
-
-//    public static File generateIndexedName(File file) {
-//        if (!file.exists()) return file;
-//        File newFile;
-//        int index = 1;
-//        while (true) {
-//            newFile = new File(file.getContext(), file.getParent(),
-//                    file.getNameNoExtension() + " (" + index + ")" + file.getExtension());
-//            if (!newFile.exists()) break;
-//            index++;
-//        }
-//        newFile.setSilkId(file.getSilkId());
-//        return newFile;
-//    }
 
     private static boolean cancelledDownload;
 

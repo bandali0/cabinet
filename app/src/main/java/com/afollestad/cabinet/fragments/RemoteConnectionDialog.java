@@ -1,12 +1,13 @@
 package com.afollestad.cabinet.fragments;
 
-import android.app.Activity;
 import android.app.Dialog;
+import android.app.DialogFragment;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -14,30 +15,8 @@ import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.sftp.SftpClient;
 import com.afollestad.cabinet.ui.DrawerActivity;
 import com.afollestad.cabinet.utils.Shortcuts;
-import com.afollestad.silk.dialogs.SilkDialog;
 
-public class RemoteConnectionDialog extends SilkDialog implements SftpClient.CompletionCallback {
-
-    public RemoteConnectionDialog() {
-    }
-
-    public static RemoteConnectionDialog create(Activity context) {
-        return create(context, false);
-    }
-
-    public static RemoteConnectionDialog create(Activity context, boolean darkTheme) {
-        RemoteConnectionDialog dialog = new RemoteConnectionDialog();
-        dialog.mContext = context;
-        Bundle args = new Bundle();
-        args.putBoolean("dark_theme", darkTheme);
-        dialog.setArguments(args);
-
-        dialog.setCustomView(LayoutInflater.from(context).inflate(R.layout.dialog_add_remote, null));
-        dialog.setTitle(R.string.new_remote_connection);
-        dialog.setAccentColorRes(R.color.cabinet_color);
-
-        return dialog;
-    }
+public class RemoteConnectionDialog extends DialogFragment implements SftpClient.CompletionCallback {
 
     private SftpClient client;
     private Button testConnection;
@@ -47,8 +26,21 @@ public class RemoteConnectionDialog extends SilkDialog implements SftpClient.Com
     private TextView pass;
 
     @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.dialog_add_remote, null);
+    }
+
+    private void setCanSubmit(boolean enabled) {
+        View v = getView();
+        if (v != null) {
+            v.findViewById(android.R.id.button1).setEnabled(enabled);
+        }
+    }
+
+    @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Dialog dialog = super.onCreateDialog(savedInstanceState);
+        dialog.setTitle(R.string.new_remote_connection);
         TextWatcher watcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
@@ -122,13 +114,11 @@ public class RemoteConnectionDialog extends SilkDialog implements SftpClient.Com
         });
     }
 
-    @Override
     protected void onSubmit() {
         if (client != null) {
             client.disconnect();
             client = null;
         }
-        super.onSubmit();
         Shortcuts.add(getActivity(), new Shortcuts.Item(
                 host.getText().toString().trim(),
                 Integer.parseInt(port.getText().toString().trim()),

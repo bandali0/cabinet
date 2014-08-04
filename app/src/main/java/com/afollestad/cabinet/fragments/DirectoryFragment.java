@@ -1,10 +1,12 @@
 package com.afollestad.cabinet.fragments;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
@@ -48,19 +50,15 @@ import com.afollestad.cabinet.utils.Shortcuts;
 import com.afollestad.cabinet.utils.Utils;
 import com.afollestad.cabinet.zip.Unzipper;
 import com.afollestad.cabinet.zip.Zipper;
-import com.afollestad.silk.dialogs.SilkDialog;
 import com.faizmalkani.floatingactionbutton.FloatingActionButton;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.io.FileFilter;
-import java.io.IOException;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
 
 public class DirectoryFragment extends Fragment implements FileAdapter.IconClickListener, FileAdapter.ItemClickListener, FileAdapter.MenuClickListener {
 
@@ -241,71 +239,28 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         return view;
     }
 
+    private void showNewFolderDialog() {
+
+    }
+
     protected void onFabPressed() {
-        SilkDialog.create(getActivity())
-                .setAccentColorRes(R.color.cabinet_color)
+        new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.newStr)
-                .setItems(R.array.new_options, new SilkDialog.SelectionCallback() {
+                .setItems(R.array.new_options, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onSelection(int index, String value) {
+                    public void onClick(DialogInterface dialogInterface, int index) {
                         switch (index) {
                             case 0: // Folder
-                                Utils.showInputDialog(getActivity(), R.string.new_folder, R.string.untitled, null,
-                                        new SilkDialog.InputCallback() {
-                                            @Override
-                                            public void onInput(String newName) {
-                                                if (newName.isEmpty())
-                                                    newName = getString(R.string.untitled);
-                                                final File dir = mDirectory.isRemote() ?
-                                                        new CloudFile(getActivity(), (CloudFile) mDirectory, newName, true) :
-                                                        new LocalFile(getActivity(), mDirectory, newName);
-                                                dir.exists(new File.BooleanCallback() {
-                                                    @Override
-                                                    public void onComplete(boolean result) {
-                                                        if (!result) {
-                                                            runOnUiThread(new Runnable() {
-                                                                @Override
-                                                                public void run() {
-                                                                    dir.mkdir(new SftpClient.CompletionCallback() {
-                                                                        @Override
-                                                                        public void onComplete() {
-                                                                            runOnUiThread(new Runnable() {
-                                                                                @Override
-                                                                                public void run() {
-                                                                                    reload();
-                                                                                }
-                                                                            });
-                                                                        }
-
-                                                                        @Override
-                                                                        public void onError(Exception e) {
-                                                                            Utils.showErrorDialog(getActivity(), e.getMessage());
-                                                                        }
-                                                                    });
-                                                                }
-                                                            });
-                                                        } else {
-                                                            Utils.showErrorDialog(getActivity(), getString(R.string.directory_already_exists));
-                                                        }
-                                                    }
-
-                                                    @Override
-                                                    public void onError(Exception e) {
-                                                        Utils.showErrorDialog(getActivity(), e.getMessage());
-                                                    }
-                                                });
-                                            }
-                                        }
-                                );
+                                showNewFolderDialog();
                                 break;
                             case 1: // Remote connection
                                 Activity context = getActivity();
                                 context.setTheme(R.style.Theme_Cabinet);
-                                RemoteConnectionDialog.create(context).show(true);
+                                new RemoteConnectionDialog().show(getFragmentManager(), "REMOTE_CONNECTION");
                                 break;
                         }
                     }
-                }).show(true);
+                }).create().show();
     }
 
     private FloatingActionButton fab;
@@ -568,43 +523,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     @Override
     public void onMenuItemClick(final File file, MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.execute:
-                final SilkDialog executeDialog = SilkDialog.create(getActivity())
-                        .setAccentColorRes(R.color.cabinet_color)
-                        .setTitle(R.string.execute)
-                        .setMessage(R.string.executing_x, file.getPath())
-                        .setPostiveButtonText(R.string.done)
-                        .setButtonListener(new SilkDialog.DialogCallback() {
-                            @Override
-                            public void onPositive() {
-                                file.finishExecution();
-                            }
-
-                            @Override
-                            public void onCancelled() {
-                                file.finishExecution();
-                            }
-                        });
-                OutputStream os = new OutputStream() {
-                    @Override
-                    public void write(int oneByte) throws IOException {
-                        char ch = (char) oneByte;
-                        executeDialog.getMessageView().setVisibility(View.VISIBLE);
-                        executeDialog.getMessageView().append(String.valueOf(ch));
-                    }
-                };
-                file.execute(os, new SftpClient.CompletionCallback() {
-                    @Override
-                    public void onComplete() {
-                        executeDialog.show();
-                    }
-
-                    @Override
-                    public void onError(Exception e) {
-                        executeDialog.dismiss();
-                    }
-                });
-                break;
             case R.id.pin:
                 Shortcuts.add(getActivity(), new Shortcuts.Item(file));
                 ((DrawerActivity) getActivity()).reloadNavDrawer();
@@ -631,7 +549,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 else ((DrawerActivity) getActivity()).getFileCab().addFile(file);
                 break;
             case R.id.rename:
-                Utils.showInputDialog(getActivity(), R.string.rename, 0, file.getName(), new SilkDialog.InputCallback() {
+                Utils.showInputDialog(getActivity(), R.string.rename, 0, file.getName(), new Utils.InputCallback() {
                     @Override
                     public void onInput(String text) {
                         if (!text.contains("."))
@@ -672,7 +590,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 }
                 break;
             case R.id.delete:
-                Utils.showConfirmDialog(getActivity(), R.string.delete, R.string.confirm_delete, file.getName(), new SilkDialog.DialogCallback() {
+                Utils.showConfirmDialog(getActivity(), R.string.delete, R.string.confirm_delete, file.getName(), new Utils.DialogCallback() {
                     @Override
                     public void onPositive() {
                         file.delete(new SftpClient.CompletionCallback() {

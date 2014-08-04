@@ -4,17 +4,16 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.util.Log;
 import android.widget.Toast;
+
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.services.NetworkService;
 import com.afollestad.cabinet.sftp.FileNotExistsException;
 import com.afollestad.cabinet.sftp.SftpClient;
 import com.afollestad.cabinet.utils.Utils;
-import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.SftpATTRS;
 
-import java.io.OutputStream;
 import java.util.List;
 
 public class CloudFile extends File {
@@ -44,55 +43,6 @@ public class CloudFile extends File {
 
     public Remote getRemote() {
         return mRemote;
-    }
-
-    @Override
-    public void execute(final OutputStream os, final SftpClient.CompletionCallback callback) {
-        final ProgressDialog connectProgress = Utils.showProgressDialog(getContext(), R.string.connecting);
-        getContext().getNetworkService().getSftpClient(new NetworkService.SftpGetCallback() {
-            @Override
-            public void onSftpClient(final SftpClient client) {
-                connectProgress.dismiss();
-                client.execute(getPath(), os, new SftpClient.CompletionCallback() {
-                    @Override
-                    public void onComplete() {
-                        // Signals to open the execute dialog in the fragment
-                        callback.onComplete();
-                    }
-
-                    @Override
-                    public void onError(final Exception e) {
-                        getContext().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                // Signals to hide the execute dialog in the fragment
-                                callback.onError(null);
-                                Utils.showErrorDialog(getContext(), R.string.failed_execute_file, e);
-                            }
-                        });
-                    }
-                });
-            }
-
-            @Override
-            public void onError(final Exception e) {
-                getContext().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        connectProgress.dismiss();
-                        Utils.showErrorDialog(getContext(), R.string.failed_connect_server, e);
-                    }
-                });
-            }
-        }, this);
-    }
-
-    @Override
-    public void finishExecution() {
-        if (getContext().getNetworkService().getSftpClient() != null) {
-            ChannelExec exec = getContext().getNetworkService().getSftpClient().getExecChannel();
-            exec.disconnect();
-        }
     }
 
     @Override
@@ -191,7 +141,8 @@ public class CloudFile extends File {
                 connectProgress.dismiss();
                 final ProgressDialog renameProgress = Utils.showProgressDialog(getContext(),
                         !newFile.isRemote() ? R.string.downloading :
-                                getParent().equals(newFile.getParent()) ? R.string.renaming : R.string.moving);
+                                getParent().equals(newFile.getParent()) ? R.string.renaming : R.string.moving
+                );
                 if (newFile.isRemote()) {
                     Utils.checkDuplicates(getContext(), newFile, new Utils.DuplicateCheckResult() {
                         @Override

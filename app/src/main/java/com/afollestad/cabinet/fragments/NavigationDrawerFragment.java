@@ -11,13 +11,13 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.afollestad.cabinet.R;
@@ -25,7 +25,6 @@ import com.afollestad.cabinet.adapters.NavigationDrawerAdapter;
 import com.afollestad.cabinet.ui.DrawerActivity;
 import com.afollestad.cabinet.utils.Shortcuts;
 import com.afollestad.cabinet.utils.Utils;
-import com.afollestad.silk.dialogs.SilkDialog;
 
 public class NavigationDrawerFragment extends Fragment {
 
@@ -40,9 +39,9 @@ public class NavigationDrawerFragment extends Fragment {
     private ActionBarDrawerToggle mDrawerToggle;
 
     private DrawerLayout mDrawerLayout;
-    private ListView mDrawerListView;
-    private View mFragmentContainerView;
+    private RecyclerView mDrawerListView;
     private NavigationDrawerAdapter mAdapter;
+    private View mFragmentContainerView;
 
     private int mCurrentSelectedPosition = 1;
     private boolean mFromSavedInstanceState;
@@ -73,33 +72,31 @@ public class NavigationDrawerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mDrawerListView = (ListView) inflater.inflate(
+        mDrawerListView = (RecyclerView) inflater.inflate(
                 R.layout.fragment_drawer, container, false);
-        mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mAdapter = new NavigationDrawerAdapter(getActivity(), new NavigationDrawerAdapter.ClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                selectItem(position);
+            public void onClick(int index) {
+                selectItem(index);
             }
-        });
-        mDrawerListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int i, long l) {
-                Shortcuts.Item item = mAdapter.getItem(i);
+            public void onLongClick(final int index) {
+                Shortcuts.Item item = mAdapter.getItem(index);
                 Utils.showConfirmDialog(getActivity(), R.string.remove_shortcut,
-                        R.string.confirm_remove_shortcut, item.getDisplay(getActivity()), new SilkDialog.DialogCallback() {
+                        R.string.confirm_remove_shortcut, item.getDisplay(getActivity()), new Utils.DialogCallback() {
                             @Override
                             public void onPositive() {
-                                Shortcuts.remove(getActivity(), i);
+                                Shortcuts.remove(getActivity(), index);
                                 mAdapter.reload(getActivity());
                             }
                         }
                 );
-                return true;
             }
         });
-        mAdapter = new NavigationDrawerAdapter(getActivity());
         mDrawerListView.setAdapter(mAdapter);
-        mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
+        mDrawerListView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mAdapter.setCheckedPos(mCurrentSelectedPosition);
         return mDrawerListView;
     }
 
@@ -181,7 +178,7 @@ public class NavigationDrawerFragment extends Fragment {
     private void selectItem(int position) {
         mCurrentSelectedPosition = position;
         if (mDrawerListView != null) {
-            mDrawerListView.setItemChecked(position, true);
+            mAdapter.setCheckedPos(position);
         }
         if (mDrawerLayout != null) {
             mDrawerLayout.closeDrawer(mFragmentContainerView);

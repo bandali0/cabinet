@@ -1,11 +1,12 @@
 package com.afollestad.cabinet.ui;
 
-import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
@@ -30,7 +31,6 @@ import com.afollestad.cabinet.fragments.NavigationDrawerFragment;
 import com.afollestad.cabinet.fragments.WelcomeFragment;
 import com.afollestad.cabinet.services.NetworkService;
 import com.afollestad.cabinet.utils.Shortcuts;
-import com.afollestad.silk.dialogs.SilkDialog;
 import com.anjlab.android.iab.v3.BillingProcessor;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
@@ -102,55 +102,57 @@ public class DrawerActivity extends Activity
 
     }
 
-    public void restoreActionBar() {
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle(mTitle);
-    }
-
     private void displayRatingDialog() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         if (!prefs.getBoolean("shown_rating_dialog", false)) {
-            SilkDialog.create(this)
-                    .setAccentColorRes(R.color.cabinet_color)
+            new AlertDialog.Builder(this)
                     .setTitle(R.string.rate)
                     .setMessage(R.string.rate_desc)
-                    .setNeutralButtonText(R.string.later)
-                    .setPostiveButtonText(R.string.sure)
-                    .setNegativeButtonText(R.string.no_thanks)
-                    .setButtonListener(new SilkDialog.DialogCallback() {
+                    .setPositiveButton(R.string.sure, new DialogInterface.OnClickListener() {
                         @Override
-                        public void onPositive() {
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
                             PreferenceManager.getDefaultSharedPreferences(DrawerActivity.this)
                                     .edit().putBoolean("shown_rating_dialog", true).commit();
                             startActivity(new Intent(Intent.ACTION_VIEW)
                                     .setData(Uri.parse("market://details?id=com.afollestad.cabinet")));
                         }
-
+                    })
+                    .setNeutralButton(R.string.later, new DialogInterface.OnClickListener() {
                         @Override
-                        public void onCancelled() {
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    })
+                    .setNegativeButton(R.string.no_thanks, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
                             PreferenceManager.getDefaultSharedPreferences(DrawerActivity.this)
                                     .edit().putBoolean("shown_rating_dialog", true).commit();
                         }
-                    }).show(false);
+                    }).create().show();
         }
     }
 
     private void displayDisconnectPrompt() {
-        SilkDialog.create(this)
-                .setAccentColorRes(R.color.cabinet_color)
+        new AlertDialog.Builder(this)
                 .setTitle(R.string.disconnect)
-                .setMessage(R.string.disconnect_promp, mRemoteSwitch.getRemote().getHost())
-                .setPostiveButtonText(R.string.yes)
-                .setNegativeButtonText(R.string.no)
-                .setButtonListener(new SilkDialog.DialogCallback() {
+                .setMessage(getString(R.string.disconnect_promp, mRemoteSwitch.getRemote().getHost()))
+                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onPositive() {
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
                         startService(new Intent(DrawerActivity.this, NetworkService.class)
                                 .setAction(NetworkService.DISCONNECT_SFTP));
                     }
                 })
-                .show(true);
+                .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                }).create().show();
     }
 
     private void processIntent(Intent intent) {

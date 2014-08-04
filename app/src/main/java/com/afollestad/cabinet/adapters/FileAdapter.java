@@ -82,10 +82,6 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
                         zip.setTitle(R.string.unzip);
                     else zip.setTitle(R.string.zip);
                 } else zip.setVisible(false);
-                boolean canExecute = !file.getMimeType().startsWith("image/") &&
-                        !file.getMimeType().startsWith("video/") &&
-                        !file.getMimeType().startsWith("audio/");
-                mPopupMenu.getMenu().findItem(R.id.execute).setVisible(canExecute);
             }
             mPopupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                 @Override
@@ -106,7 +102,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
             Toast.makeText(mContext, R.string.iconpress_hint, Toast.LENGTH_LONG).show();
         }
         view.findViewById(R.id.image).performClick();
-        return true;
+        return false;
     }
 
     public static class FileViewHolder extends RecyclerView.ViewHolder {
