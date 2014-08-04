@@ -102,7 +102,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
             Toast.makeText(mContext, R.string.iconpress_hint, Toast.LENGTH_LONG).show();
         }
         view.findViewById(R.id.image).performClick();
-        return false;
+        return true;
     }
 
     public static class FileViewHolder extends RecyclerView.ViewHolder {
