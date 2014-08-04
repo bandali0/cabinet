@@ -70,6 +70,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getActionBar().setDisplayShowHomeEnabled(false);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
 
