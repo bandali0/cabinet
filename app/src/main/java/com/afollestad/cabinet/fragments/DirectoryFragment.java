@@ -579,8 +579,9 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 break;
             case R.id.copy: {
                 BaseFileCab cab = ((DrawerActivity) getActivity()).getFileCab();
-                boolean shouldCreateCopy = cab == null || !cab.isActive() || cab instanceof CutCab;
+                boolean shouldCreateCopy = cab == null || !cab.isActive() || !(cab instanceof CopyCab);
                 if (shouldCreateCopy) {
+                    if (cab != null) cab.overrideDestroy = true;
                     ((DrawerActivity) getActivity()).setFileCab((BaseFileCab) new CopyCab()
                             .setFragment(this).setFile(file).start());
                 } else cab.addFile(file);
@@ -588,8 +589,9 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             }
             case R.id.cut: {
                 BaseFileCab cab = ((DrawerActivity) getActivity()).getFileCab();
-                boolean shouldCreateCut = cab == null || !cab.isActive() || cab instanceof CopyCab;
+                boolean shouldCreateCut = cab == null || !cab.isActive() || !(cab instanceof CutCab);
                 if (shouldCreateCut) {
+                    if (cab != null) cab.overrideDestroy = true;
                     ((DrawerActivity) getActivity()).setFileCab((BaseFileCab) new CutCab()
                             .setFragment(this).setFile(file).start());
                 } else cab.addFile(file);
