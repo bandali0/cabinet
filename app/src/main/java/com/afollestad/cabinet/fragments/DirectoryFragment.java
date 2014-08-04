@@ -577,26 +577,24 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             case R.id.openAs:
                 Utils.openFile((DrawerActivity) getActivity(), file, true);
                 break;
-            case R.id.copy:
-                boolean shouldCreateCopy = ((DrawerActivity) getActivity()).getFileCab() == null ||
-                        !((DrawerActivity) getActivity()).getFileCab().isActive() ||
-                        ((DrawerActivity) getActivity()).getFileCab() instanceof CutCab;
+            case R.id.copy: {
+                BaseFileCab cab = ((DrawerActivity) getActivity()).getFileCab();
+                boolean shouldCreateCopy = cab == null || !cab.isActive() || cab instanceof CutCab;
                 if (shouldCreateCopy) {
-                    mAdapter.resetChecked();
                     ((DrawerActivity) getActivity()).setFileCab((BaseFileCab) new CopyCab()
                             .setFragment(this).setFile(file).start());
-                } else ((DrawerActivity) getActivity()).getFileCab().addFile(file);
+                } else cab.addFile(file);
                 break;
-            case R.id.cut:
-                boolean shouldCreateCut = ((DrawerActivity) getActivity()).getFileCab() == null ||
-                        !((DrawerActivity) getActivity()).getFileCab().isActive() ||
-                        ((DrawerActivity) getActivity()).getFileCab() instanceof CopyCab;
+            }
+            case R.id.cut: {
+                BaseFileCab cab = ((DrawerActivity) getActivity()).getFileCab();
+                boolean shouldCreateCut = cab == null || !cab.isActive() || cab instanceof CopyCab;
                 if (shouldCreateCut) {
-                    mAdapter.resetChecked();
                     ((DrawerActivity) getActivity()).setFileCab((BaseFileCab) new CutCab()
                             .setFragment(this).setFile(file).start());
-                } else ((DrawerActivity) getActivity()).getFileCab().addFile(file);
+                } else cab.addFile(file);
                 break;
+            }
             case R.id.rename:
                 Utils.showInputDialog(getActivity(), R.string.rename, 0, file.getName(), new Utils.InputCallback() {
                     @Override

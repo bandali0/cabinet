@@ -54,6 +54,7 @@ public abstract class BaseFileCab extends BaseCab {
     }
 
     public final BaseFileCab setFile(File file) {
+        getFragment().getAdapter().resetChecked();
         getFragment().getAdapter().setItemChecked(file, true);
         clearFiles();
         mFiles.add(file);
@@ -62,6 +63,7 @@ public abstract class BaseFileCab extends BaseCab {
     }
 
     public final BaseFileCab setFiles(List<File> files) {
+        getFragment().getAdapter().resetChecked();
         getFragment().getAdapter().setItemsChecked(files, true);
         clearFiles();
         mFiles.addAll(files);
