@@ -118,6 +118,12 @@ public class Utils {
                 new AlertDialog.Builder(context)
                         .setTitle(R.string.error)
                         .setMessage(context.getString(message, e.getMessage()))
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        })
                         .create().show();
             }
         });
@@ -130,6 +136,12 @@ public class Utils {
                 new AlertDialog.Builder(context)
                         .setTitle(R.string.error)
                         .setMessage(message)
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        })
                         .create().show();
             }
         });
