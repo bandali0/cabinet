@@ -578,19 +578,21 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 boolean shouldCreateCopy = ((DrawerActivity) getActivity()).getFileCab() == null ||
                         !((DrawerActivity) getActivity()).getFileCab().isActive() ||
                         ((DrawerActivity) getActivity()).getFileCab() instanceof CutCab;
-                if (shouldCreateCopy)
+                if (shouldCreateCopy) {
+                    mAdapter.resetChecked();
                     ((DrawerActivity) getActivity()).setFileCab((BaseFileCab) new CopyCab()
                             .setFragment(this).setFile(file).start());
-                else ((DrawerActivity) getActivity()).getFileCab().addFile(file);
+                } else ((DrawerActivity) getActivity()).getFileCab().addFile(file);
                 break;
             case R.id.cut:
                 boolean shouldCreateCut = ((DrawerActivity) getActivity()).getFileCab() == null ||
                         !((DrawerActivity) getActivity()).getFileCab().isActive() ||
                         ((DrawerActivity) getActivity()).getFileCab() instanceof CopyCab;
-                if (shouldCreateCut)
+                if (shouldCreateCut) {
+                    mAdapter.resetChecked();
                     ((DrawerActivity) getActivity()).setFileCab((BaseFileCab) new CutCab()
                             .setFragment(this).setFile(file).start());
-                else ((DrawerActivity) getActivity()).getFileCab().addFile(file);
+                } else ((DrawerActivity) getActivity()).getFileCab().addFile(file);
                 break;
             case R.id.rename:
                 Utils.showInputDialog(getActivity(), R.string.rename, 0, file.getName(), new Utils.InputCallback() {

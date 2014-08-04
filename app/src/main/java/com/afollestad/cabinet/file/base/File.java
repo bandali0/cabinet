@@ -2,6 +2,7 @@ package com.afollestad.cabinet.file.base;
 
 import android.app.Activity;
 import android.os.Environment;
+import android.util.Log;
 import android.webkit.MimeTypeMap;
 
 import com.afollestad.cabinet.R;
@@ -146,7 +147,8 @@ public abstract class File implements Serializable {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
+        Log.v("FileEquals", "o instanceof File? " + (o instanceof File) + ", " + getPath() + " == " + ((File) o).getPath() + "? " + ((File) o).getPath().equals(getPath()));
         return o instanceof File && ((File) o).getPath().equals(getPath());
     }
 }

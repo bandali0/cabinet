@@ -28,18 +28,21 @@ public abstract class BaseFileCab extends BaseCab {
     }
 
     public final BaseFileCab addFile(File file) {
+        getFragment().getAdapter().setItemChecked(file, true);
         mFiles.add(file);
         invalidate();
         return this;
     }
 
     public final BaseFileCab addFiles(List<File> files) {
+        getFragment().getAdapter().setItemsChecked(files, true);
         mFiles.addAll(files);
         invalidate();
         return this;
     }
 
     public final BaseFileCab removeFile(File file) {
+        getFragment().getAdapter().setItemChecked(file, false);
         for (int i = 0; i < mFiles.size(); i++) {
             if (file.getPath().equals(mFiles.get(i).getPath())) {
                 mFiles.remove(i);
@@ -51,6 +54,7 @@ public abstract class BaseFileCab extends BaseCab {
     }
 
     public final BaseFileCab setFile(File file) {
+        getFragment().getAdapter().setItemChecked(file, true);
         clearFiles();
         mFiles.add(file);
         invalidate();
@@ -58,6 +62,7 @@ public abstract class BaseFileCab extends BaseCab {
     }
 
     public final BaseFileCab setFiles(List<File> files) {
+        getFragment().getAdapter().setItemsChecked(files, true);
         clearFiles();
         mFiles.addAll(files);
         invalidate();

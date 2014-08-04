@@ -284,6 +284,12 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
         notifyDataSetChanged();
     }
 
+    public void setItemsChecked(List<File> files, boolean checked) {
+        for (File fi : files) {
+            setItemChecked(fi, checked);
+        }
+    }
+
     public boolean isItemChecked(File file) {
         return checkedPaths.contains(file.getPath());
     }
