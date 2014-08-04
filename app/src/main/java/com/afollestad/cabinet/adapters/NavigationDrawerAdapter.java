@@ -77,7 +77,7 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
         notifyDataSetChanged();
     }
 
-    public void setCheckedFile(File file) {
+    public int setCheckedFile(File file) {
         int index = -1;
         for (int i = 0; i < mItems.size(); i++) {
             Shortcuts.Item item = mItems.get(i);
@@ -87,6 +87,7 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
             }
         }
         setCheckedPos(index);
+        return index;
     }
 
     public void setCheckedPos(int index) {
