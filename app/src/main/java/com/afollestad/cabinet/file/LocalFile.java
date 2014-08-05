@@ -464,6 +464,11 @@ public class LocalFile extends File {
         callback.onComplete(results != null ? results.toArray(new File[results.size()]) : null);
     }
 
+    @Override
+    public long lastModified() {
+        return mFile.lastModified();
+    }
+
     public List<File> listFilesSync(boolean includeHidden) {
         return listFilesSync(includeHidden, null);
     }

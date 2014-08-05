@@ -172,4 +172,7 @@
     <string name="translucentstatusbar_disabled">You cannot change this on Android L.</string>
     <string name="translucency_not_supported">Transluency is not supported on this version of Android.</string>
 
+    <string name="sort_modified">Last modified</string>
+    <string name="modified_x">Modified %1$s</string>
+
 </resources>

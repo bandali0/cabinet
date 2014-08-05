@@ -130,6 +130,8 @@ public abstract class File implements Serializable {
 
     public abstract void listFiles(boolean includeHidden, ArrayCallback callback);
 
+    public abstract long lastModified();
+
     public static interface ArrayCallback {
         public abstract void onComplete(File[] results);
 

@@ -432,6 +432,11 @@ public class CloudFile extends File {
     }
 
     @Override
+    public long lastModified() {
+        return -1;
+    }
+
+    @Override
     public File getParent() {
         if (getPath().contains("/")) {
             if (getPath().equals("/")) return null;

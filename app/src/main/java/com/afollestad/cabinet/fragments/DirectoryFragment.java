@@ -38,6 +38,7 @@ import com.afollestad.cabinet.comparators.AlphabeticalComparator;
 import com.afollestad.cabinet.comparators.ExtensionComparator;
 import com.afollestad.cabinet.comparators.FoldersFirstComparator;
 import com.afollestad.cabinet.comparators.HighLowSizeComparator;
+import com.afollestad.cabinet.comparators.LastModifiedComparator;
 import com.afollestad.cabinet.comparators.LowHighSizeComparator;
 import com.afollestad.cabinet.file.CloudFile;
 import com.afollestad.cabinet.file.LocalFile;
@@ -201,6 +202,9 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 break;
             case 4:
                 menu.findItem(R.id.sortSizeHighLow).setChecked(true);
+                break;
+            case 5:
+                menu.findItem(R.id.sortLastModified).setChecked(true);
                 break;
         }
 
@@ -382,6 +386,8 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new FileAdapter(getActivity(), this, this, this, mQuery != null);
+        int sorter = Utils.getSorter(getActivity());
+        mAdapter.showLastModified = (sorter == 5);
         mRecyclerView.setAdapter(mAdapter);
 
         reload();
@@ -438,6 +444,9 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 break;
             case 4:
                 comparator = new HighLowSizeComparator();
+                break;
+            case 5:
+                comparator = new LastModifiedComparator();
                 break;
         }
         return comparator;
@@ -557,6 +566,10 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             case R.id.sortSizeHighLow:
                 item.setChecked(true);
                 Utils.setSorter(this, 4);
+                break;
+            case R.id.sortLastModified:
+                item.setChecked(true);
+                Utils.setSorter(this, 5);
                 break;
             case R.id.donation1:
                 ((DrawerActivity) getActivity()).donate(1);

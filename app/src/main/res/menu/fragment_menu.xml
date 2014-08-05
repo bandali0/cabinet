@@ -29,6 +29,9 @@
                 <item
                     android:id="@+id/sortSizeHighLow"
                     android:title="@string/sort_size_highlow" />
+                <item
+                    android:id="@+id/sortLastModified"
+                    android:title="@string/sort_modified" />
             </group>
         </menu>
     </item>

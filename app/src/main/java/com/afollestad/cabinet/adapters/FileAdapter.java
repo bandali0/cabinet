@@ -28,9 +28,12 @@ import com.afollestad.cabinet.cab.CutCab;
 import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.ui.DrawerActivity;
 import com.afollestad.cabinet.utils.Shortcuts;
+import com.afollestad.cabinet.utils.TimeUtils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder> implements View.OnClickListener, View.OnLongClickListener {
@@ -135,6 +138,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
     private MenuClickListener mMenuListener;
     private boolean mShowDirs;
     private List<String> checkedPaths;
+    public boolean showLastModified;
 
     public void add(File file) {
         mFiles.add(file);
@@ -243,6 +247,15 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
             if (!file.isDirectory())
                 holder.directory.setText(file.getParent().getPath());
             else holder.directory.setVisibility(View.GONE);
+        } else if (showLastModified) {
+            if (file.lastModified() == -1) {
+                holder.directory.setVisibility(View.GONE);
+            } else {
+                holder.directory.setVisibility(View.VISIBLE);
+                Calendar cal = new GregorianCalendar();
+                cal.setTimeInMillis(file.lastModified());
+                holder.directory.setText(mContext.getString(R.string.modified_x, TimeUtils.toString(cal, true, true)));
+            }
         }
 
         holder.view.setActivated(isItemChecked(file));
