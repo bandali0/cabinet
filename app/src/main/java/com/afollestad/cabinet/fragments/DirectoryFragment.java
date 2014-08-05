@@ -399,7 +399,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         if (act != null) act.runOnUiThread(runnable);
     }
 
-    protected final void setListShown(boolean shown) {
+    public final void setListShown(boolean shown) {
         View v = getView();
         if (v != null) {
             if (shown) {

@@ -5,7 +5,6 @@ import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.fragments.DirectoryFragment;
 
 
@@ -38,15 +37,6 @@ public abstract class BaseCab implements ActionMode.Callback {
 
     public Activity getContext() {
         return mContext.getActivity();
-    }
-
-    public void addAdapter(File file) {
-        if (file.isRemote()) {
-            mContext.reload();
-        } else {
-            mContext.getAdapter().add(file);
-            mContext.resort();
-        }
     }
 
     public abstract int getMenu();

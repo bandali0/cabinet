@@ -116,6 +116,7 @@ public class MainCab extends BaseFileCab {
 
     private void deleteNextFile() {
         if (getFiles().size() == 0) {
+            getFragment().setListShown(true); // invalidates empty text
             invalidate();
             return;
         }
