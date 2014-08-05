@@ -20,7 +20,7 @@ public class ThemeUtils {
 
     public static boolean isTranslucentStatusbar(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        return prefs.getBoolean("translucent_statusbar", true);
+        return prefs.getBoolean("translucent_statusbar", Build.VERSION.SDK_INT < 20);
     }
 
     public static boolean isTranslucentNavbar(Context context) {
