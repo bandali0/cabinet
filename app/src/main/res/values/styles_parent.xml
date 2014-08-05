@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="CabinetParent" parent="@android:style/Theme.Holo.Light.DarkActionBar" />
+    <style name="CabinetParent" parent="@style/CabinetUIParent" />
+
+    <style name="CabinetUIParent" parent="@android:style/Theme.Holo.Light.DarkActionBar">
+        <item name="android:buttonStyle">@style/ButtonCabinet</item>
+        <item name="android:editTextBackground">@drawable/cabinet_edit_text_holo_light</item>
+        <item name="android:checkboxStyle">@style/CheckBoxCabinet</item>
+        <item name="android:radioButtonStyle">@style/RadioButtonCabinet</item>
+        <item name="android:textColorHighlight">#9957687c</item>
+        <item name="android:textSelectHandleLeft">@drawable/cabinet_text_select_handle_left</item>
+        <item name="android:textSelectHandleRight">@drawable/cabinet_text_select_handle_right</item>
+        <item name="android:textSelectHandle">@drawable/cabinet_text_select_handle_middle</item>
+
+        <item name="android:popupMenuStyle">@style/PopupMenu.Cabinet</item>
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.Cabinet</item>
+        <item name="android:actionModeBackground">@drawable/ab_solid_cabinet</item>
+        <item name="android:actionModeSplitBackground">@drawable/ab_solid_cabinet</item>
+        <item name="android:actionBarWidgetTheme">@style/Theme.Cabinet.Widget</item>
+
+        <item name="android:actionBarSize">56dp</item>
+        <item name="android:actionOverflowButtonStyle">@style/OverflowRecoup</item>
+    </style>
 
     <style name="Theme.PopupMenuTheme" parent="@android:style/Theme.Holo" />
 

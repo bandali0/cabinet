@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="CabinetParent" parent="@android:style/Theme.Holo.Light.DarkActionBar">
+    <style name="CabinetParent" parent="@style/CabinetUIParent" />
+
+    <style name="Theme.CabinetStatusTranslucent" parent="@style/Theme.Cabinet">
         <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="Theme.CabinetNavTranslucent" parent="@style/Theme.Cabinet">
+        <item name="android:windowTranslucentNavigation">@bool/translucent_nav</item>
+    </style>
+
+    <style name="Theme.CabinetNavStatusTranslucent" parent="@style/Theme.Cabinet">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">@bool/translucent_nav</item>
     </style>
 
 </resources>

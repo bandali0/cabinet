@@ -132,8 +132,12 @@
     <string name="translucent_navbar_desc">Transparent (see-through) navigation bar on KitKat and above.</string>
 
     <string name="about_body"><![CDATA[
-        The next generation digital coupon platform, helping consumers save money.<br/><br/>
-        Copyright %1$d Recoup Smart LLC.
+        A minimalist, intuitive, beautiful file manager for Android 4.1 and above.<br/><br/>
+        Designed by <b>Aidan Follestad</b>.<br/>
+        <a href=\'https://twitter.com/afollestad\'>Twitter</a>&nbsp;&nbsp;
+        <a href=\'https://google.com/+AidanFollestad\'>Google+</a>&nbsp;&nbsp;
+        <a href=\'https://github.com/afollestad\'>GitHub</a>&nbsp;&nbsp;
+        <a href=\'https://www.linkedin.com/in/afollestad\'>LinkedIn</a>
     ]]></string>
     <string name="app_name_and_version" translatable="false"><![CDATA[
         <b>Cabinet</b>&nbsp;<font color="#888888">v%1$s</font>
@@ -158,12 +162,13 @@
     <string name="iconpress_hint">You can tap a file\'s icon to quickly select it!</string>
     <string name="drawer_longpress_hint">Tip: long press pinned shortcuts to remove them!</string>
     <string name="about">About</string>
-    <string name="about_desc">About the app and it\'s designer.</string>
+    <string name="about_desc">About the app and its designer.</string>
     <string name="info">Info</string>
     <string name="files">Files</string>
     <string name="show_hidden_files_desc">Toggle whether or not Cabinet will show hidden files.</string>
     <string name="ui">UI</string>
     <string name="settings">Settings</string>
     <string name="translucentstatusbar_disabled">You cannot change this on Android L.</string>
+    <string name="translucency_not_supported">Transluency is not supported on this version of Android.</string>
 
 </resources>

@@ -19,6 +19,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.afollestad.cabinet.R;
@@ -31,22 +32,24 @@ import com.afollestad.cabinet.fragments.NavigationDrawerFragment;
 import com.afollestad.cabinet.fragments.WelcomeFragment;
 import com.afollestad.cabinet.services.NetworkService;
 import com.afollestad.cabinet.utils.Shortcuts;
+import com.afollestad.cabinet.utils.ThemeUtils;
 import com.anjlab.android.iab.v3.BillingProcessor;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 public class DrawerActivity extends Activity implements BillingProcessor.IBillingHandler {
 
     private NavigationDrawerFragment mNavigationDrawerFragment;
-
     private BillingProcessor mBP;
     private boolean canExit;
     private BaseFileCab mFileCab;
     private NetworkService mNetworkService;
     private CloudFile mRemoteSwitch;
+    private ThemeUtils mThemeUtils;
 
     public static void setupTransparentTints(Activity context) {
         // TODO change condition for Material
-        if (Build.VERSION.SDK_INT != Build.VERSION_CODES.KITKAT) return;
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT || !ThemeUtils.isTranslucentStatusbar(context))
+            return;
         SystemBarTintManager tintManager = new SystemBarTintManager(context);
         tintManager.setStatusBarTintEnabled(true);
         tintManager.setStatusBarTintResource(R.color.cabinet_color);
@@ -54,10 +57,26 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
 
     public static void setupTranslucentPadding(Activity context, View view) {
         // TODO change condition for Material
-        if (Build.VERSION.SDK_INT != Build.VERSION_CODES.KITKAT) return;
+        boolean status = ThemeUtils.isTranslucentStatusbar(context);
+        boolean nav = ThemeUtils.isTranslucentNavbar(context);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT || (!status && !nav))
+            return;
         SystemBarTintManager tintManager = new SystemBarTintManager(context);
         SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
-        view.setPadding(view.getPaddingLeft(), config.getPixelInsetTop(true), view.getPaddingRight(), view.getPaddingBottom());
+        int top = status ? config.getPixelInsetTop(true) : 0;
+        int bottom = nav ? config.getPixelInsetBottom() : 0;
+        view.setPadding(view.getPaddingLeft(), top, view.getPaddingRight(), view.getPaddingBottom() + bottom);
+    }
+
+    public static void setupTranslucentBottomMargin(Activity context, View view) {
+        // TODO change condition for Material
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT || !ThemeUtils.isTranslucentNavbar(context))
+            return;
+        SystemBarTintManager tintManager = new SystemBarTintManager(context);
+        SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) view.getLayoutParams();
+        params.bottomMargin = config.getPixelInsetBottom();
+        view.setLayoutParams(params);
     }
 
     public BaseFileCab getFileCab() {
@@ -70,6 +89,8 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mThemeUtils = new ThemeUtils(this);
+        setTheme(mThemeUtils.getCurrent());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
 
@@ -86,6 +107,15 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
 
         mBP = new BillingProcessor(this, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlPBB2hP/R0PrXtK8NPeDX7QV1fvk1hDxPVbIwRZLIgO5l/ZnAOAf8y9Bq57+eO5CD+ZVTgWcAVrS/QsiqDI/MwbfXcDydSkZLJoFofOFXRuSL7mX/jNwZBNtH0UrmcyFx1RqaHIe9KZFONBWLeLBmr47Hvs7dKshAto2Iy0v18kN48NqKxlWtj/PHwk8uIQ4YQeLYiXDCGhfBXYS861guEr3FFUnSLYtIpQ8CiGjwfU60+kjRMmXEGnmhle5lqzj6QeL6m2PNrkbJ0T9w2HM+bR7buHcD8e6tHl2Be6s/j7zn1Ypco/NCbqhtPgCnmLpeYm8EwwTnH4Yei7ACR7mXQIDAQAB", this);
         processIntent(getIntent());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mThemeUtils.isChanged()) {
+            setTheme(mThemeUtils.getCurrent());
+            recreate();
+        }
     }
 
     @Override

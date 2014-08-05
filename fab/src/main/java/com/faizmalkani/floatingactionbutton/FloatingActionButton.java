@@ -101,7 +101,7 @@ public class FloatingActionButton extends View {
         return super.onTouchEvent(event);
     }
 
-    public void hide(boolean hide) {
+    public void hide(boolean hide, float extraOffset) {
         if (mHidden != hide) {
             float offset;
             if (mHidden) {
@@ -111,7 +111,7 @@ public class FloatingActionButton extends View {
                 offset = mScreenHeight;
             }
             mHidden = hide;
-            ObjectAnimator animator = ObjectAnimator.ofFloat(this, "Y", offset);
+            ObjectAnimator animator = ObjectAnimator.ofFloat(this, "Y", offset + extraOffset);
             animator.setInterpolator(mInterpolator);
             animator.start();
         }

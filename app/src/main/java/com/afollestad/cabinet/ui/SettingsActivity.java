@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.fragments.AboutDialog;
@@ -18,17 +17,23 @@ public class SettingsActivity extends PreferenceActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        DrawerActivity.setupTransparentTints(this);
         getActionBar().setDisplayHomeAsUpEnabled(true);
         addPreferencesFromResource(R.xml.settings);
 
         Preference translucentStatusbar = findPreference("translucent_statusbar");
-        Toast.makeText(this, Build.VERSION.SDK_INT + "", Toast.LENGTH_SHORT).show();
-        if (Build.VERSION.SDK_INT >= 20) {
+        Preference translucentNavbar = findPreference("translucent_navbar");
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
             translucentStatusbar.setEnabled(false);
-            translucentStatusbar.setSummary(R.string.translucentstatusbar_disabled);
+            translucentStatusbar.setSummary(R.string.translucency_not_supported);
+            translucentNavbar.setEnabled(false);
+            translucentNavbar.setSummary(R.string.translucency_not_supported);
         }
+//       else if (Build.VERSION.SDK_INT >= 20) {
+//            translucentStatusbar.setEnabled(false);
+//            translucentStatusbar.setSummary(R.string.translucentstatusbar_disabled);
+//        }
+        // TODO toggle comment for Material
 
         findPreference("about").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
@@ -37,9 +42,6 @@ public class SettingsActivity extends PreferenceActivity {
                 return true;
             }
         });
-
-        DrawerActivity.setupTranslucentPadding(this, findViewById(android.R.id.list));
-
     }
 
     @Override
@@ -50,5 +52,4 @@ public class SettingsActivity extends PreferenceActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

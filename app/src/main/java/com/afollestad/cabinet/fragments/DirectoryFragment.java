@@ -53,6 +53,7 @@ import com.afollestad.cabinet.zip.Unzipper;
 import com.afollestad.cabinet.zip.Zipper;
 import com.faizmalkani.floatingactionbutton.FloatingActionButton;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import java.io.FileFilter;
 import java.util.ArrayList;
@@ -114,6 +115,10 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         setHasOptionsMenu(true);
         setRetainInstance(true);
         if (mQuery != null) mQuery = mQuery.trim();
+
+        SystemBarTintManager tintManager = new SystemBarTintManager(getActivity());
+        SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
+        navBarHeight = config.getPixelInsetBottom();
     }
 
     @Override
@@ -220,10 +225,11 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_recyclerview, null);
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        DrawerActivity.setupTranslucentBottomMargin(getActivity(), fab);
+
         boolean searchMode = mQuery != null;
         if (!searchMode) {
             fab.setVisibility(View.VISIBLE);
-
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -311,6 +317,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 
     private FloatingActionButton fab;
     private boolean fabShown = true;
+    private float navBarHeight;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -326,17 +333,19 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             public void onScrolled(int dx, int dy) {
                 if (dy < 0 && !fabShown) {
                     if (dy < -5) {
-                        fab.hide(false);
+                        fab.hide(false, 0);
                         fabShown = true;
                     }
                 } else if (dy > 0 && fabShown) {
                     if (dy > 10) {
-                        fab.hide(true);
+                        fab.hide(true, navBarHeight);
                         fabShown = false;
                     }
                 }
             }
         }));
+        mRecyclerView.setClipToPadding(false);
+        DrawerActivity.setupTranslucentPadding(getActivity(), mRecyclerView);
 
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);

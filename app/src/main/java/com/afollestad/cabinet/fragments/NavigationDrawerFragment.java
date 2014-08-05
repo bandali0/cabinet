@@ -1,6 +1,5 @@
 package com.afollestad.cabinet.fragments;
 
-
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
@@ -30,16 +29,11 @@ import com.afollestad.cabinet.utils.Utils;
 public class NavigationDrawerFragment extends Fragment {
 
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
-
-    /**
-     * Per the design guidelines, you should show the drawer on launch until the user manually
-     * expands it. This shared preference tracks this.
-     */
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learn";
     private ActionBarDrawerToggle mDrawerToggle;
 
     private DrawerLayout mDrawerLayout;
-    private RecyclerView mDrawerListView;
+    private RecyclerView mRecyclerView;
     private NavigationDrawerAdapter mAdapter;
     private View mFragmentContainerView;
 
@@ -73,8 +67,9 @@ public class NavigationDrawerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mDrawerListView = (RecyclerView) inflater.inflate(
+        mRecyclerView = (RecyclerView) inflater.inflate(
                 R.layout.fragment_drawer, container, false);
+        mRecyclerView.setClipToPadding(false);
         mAdapter = new NavigationDrawerAdapter(getActivity(), new NavigationDrawerAdapter.ClickListener() {
             @Override
             public void onClick(int index) {
@@ -95,10 +90,10 @@ public class NavigationDrawerFragment extends Fragment {
                 );
             }
         });
-        mDrawerListView.setAdapter(mAdapter);
-        mDrawerListView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mAdapter.setCheckedPos(mCurrentSelectedPosition);
-        return mDrawerListView;
+        return mRecyclerView;
     }
 
     @Override
@@ -182,14 +177,16 @@ public class NavigationDrawerFragment extends Fragment {
 
     private void selectItem(int position) {
         mCurrentSelectedPosition = position;
-        if (mDrawerListView != null) {
+        if (mRecyclerView != null) {
             mAdapter.setCheckedPos(position);
         }
         if (mDrawerLayout != null) {
             mDrawerLayout.closeDrawer(mFragmentContainerView);
         }
         DrawerActivity act = (DrawerActivity) getActivity();
-        act.switchDirectory(mAdapter.getItem(position));
+        Shortcuts.Item item = mAdapter.getItem(position);
+        act.switchDirectory(item);
+        mTitle = item.getDisplay(getActivity());
         mDrawerLayout.closeDrawers();
     }
 
