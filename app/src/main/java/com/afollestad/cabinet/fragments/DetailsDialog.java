@@ -32,7 +32,7 @@ public class DetailsDialog extends DialogFragment {
         LayoutInflater layoutInflater = getActivity().getLayoutInflater();
         View rootView = layoutInflater.inflate(R.layout.dialog_custom, null);
         TextView nameAndVersionView = (TextView) rootView.findViewById(R.id.title);
-        nameAndVersionView.setText(file.getName());
+        nameAndVersionView.setText(Html.fromHtml(getString(R.string.details_title)));
         TextView aboutBodyView = (TextView) rootView.findViewById(R.id.body);
         aboutBodyView.setText(Html.fromHtml(getString(R.string.details_body,
                 file.getPath(), file.getSizeString(), "TODO")));

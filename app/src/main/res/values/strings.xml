@@ -199,6 +199,9 @@
     ]]></string>
 
     <!-- Details dialog -->
+    <string name="details_title" translatable="false"><![CDATA[
+        <b>Details</b>
+    ]]></string>
     <string name="details_body"><![CDATA[
         <b>Path:</b>&nbsp;%1$s<br/>
         <b>Size:</b>&nbsp;%2$s<br/>
