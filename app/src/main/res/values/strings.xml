@@ -127,9 +127,9 @@
     <string name="failed_zip_files">Failed to zip file(s): %1$s</string>
 
     <string name="translucent_statusbar">Translucent Status Bar</string>
-    <string name="translucent_navbar">Transparent Navigation Bar</string>
+    <string name="translucent_navbar">Translucent Nav Bar</string>
     <string name="translucent_statusbar_desc">Translucent (same color as action bar) status bar on KitKat and above.</string>
-    <string name="translucent_navbar_desc">Transparent (see-through) navigation bar on KitKat and above.</string>
+    <string name="translucent_navbar_desc">Translucent navigation bar on KitKat and above.</string>
 
     <string name="about_body"><![CDATA[
         A minimalist, intuitive, beautiful file manager for Android 4.1 and above.<br/><br/>
