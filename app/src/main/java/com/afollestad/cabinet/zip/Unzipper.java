@@ -2,6 +2,7 @@ package com.afollestad.cabinet.zip;
 
 import android.app.ProgressDialog;
 import android.util.Log;
+
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.file.LocalFile;
 import com.afollestad.cabinet.file.base.File;

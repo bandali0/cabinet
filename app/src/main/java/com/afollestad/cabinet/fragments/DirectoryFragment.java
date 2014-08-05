@@ -81,6 +81,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     private RecyclerView mRecyclerView;
     private FileAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private boolean showHidden;
 
     public File getDirectory() {
         return mDirectory;
@@ -118,7 +119,9 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 
         SystemBarTintManager tintManager = new SystemBarTintManager(getActivity());
         SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
+
         navBarHeight = config.getPixelInsetBottom();
+        showHidden = Utils.getShowHidden(getActivity());
     }
 
     @Override
@@ -134,6 +137,11 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             mAdapter.restoreCheckedPaths(fileCab.getFiles());
         }
         ((NavigationDrawerFragment) act.getFragmentManager().findFragmentByTag("NAV_DRAWER")).selectFile(mDirectory);
+
+        if (showHidden != Utils.getShowHidden(getActivity())) {
+            showHidden = Utils.getShowHidden(getActivity());
+            reload();
+        }
     }
 
     @Override
@@ -416,7 +424,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 
     public void search() {
         setListShown(false);
-        final boolean showHidden = Utils.getShowHidden(getActivity());
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -455,7 +462,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             search();
             return;
         }
-        boolean showHidden = Utils.getShowHidden(getActivity());
         setListShown(false);
         mDirectory.setContext(getActivity());
         mDirectory.listFiles(showHidden, new File.ArrayCallback() {
