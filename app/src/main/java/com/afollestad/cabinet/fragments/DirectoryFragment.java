@@ -321,17 +321,27 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         return ((DrawerActivity) getActivity()).fabRight;
     }
 
-    public void disableFab(boolean hide) {
-        disableFab = hide;
-        toggleFab(hide);
-    }
-
-    public void toggleFab(boolean hide) {
+    public void invalidateFabCoordinates() {
         if (fabLeft() == 0) {
             float translation = getResources().getDimension(R.dimen.fab_translation);
             ((DrawerActivity) getActivity()).fabLeft = fab.getX();
             ((DrawerActivity) getActivity()).fabRight = fab.getX() + translation;
         }
+    }
+
+    public void disableFab(boolean hide) {
+        invalidateFabCoordinates();
+        disableFab = hide;
+        if (!hide) {
+            // Setup fab to show coming in animation
+            fabShown = false;
+            fab.setX(fabRight());
+        }
+        toggleFab(hide);
+    }
+
+    public void toggleFab(boolean hide) {
+        invalidateFabCoordinates();
         if (hide) {
             if (fabShown) {
                 ObjectAnimator outAnim = ObjectAnimator.ofFloat(fab, "x", fabLeft(), fabRight());
