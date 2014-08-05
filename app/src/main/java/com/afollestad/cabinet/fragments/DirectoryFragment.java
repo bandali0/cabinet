@@ -314,7 +314,9 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 
     protected void onFabPressed() {
         if (pasteMode) {
+            toggleFab(true);
             ((DrawerActivity) getActivity()).getFileCab().paste();
+            toggleFab(false);
         } else {
             new AlertDialog.Builder(getActivity())
                     .setTitle(R.string.newStr)
