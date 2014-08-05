@@ -78,6 +78,7 @@ public class MainCab extends BaseFileCab {
                         public void onClick(DialogInterface dialogInterface, int i) {
                             dialogInterface.dismiss();
                             deleteNextFile();
+                            finish();
                         }
                     })
                     .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
@@ -86,7 +87,7 @@ public class MainCab extends BaseFileCab {
                             dialogInterface.dismiss();
                         }
                     }).create().show();
-            return super.onActionItemClicked(actionMode, menuItem);
+            return false;
         } else if (menuItem.getItemId() == R.id.selectAll) {
             List<File> newSelected = getFragment().getAdapter().checkAll();
             addFiles(newSelected);
