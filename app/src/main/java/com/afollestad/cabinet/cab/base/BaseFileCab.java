@@ -1,6 +1,5 @@
 package com.afollestad.cabinet.cab.base;
 
-import android.util.Log;
 import android.view.ActionMode;
 
 import com.afollestad.cabinet.file.base.File;
@@ -20,10 +19,6 @@ public abstract class BaseFileCab extends BaseCab {
     private final List<File> mFiles;
     public boolean overrideDestroy;
 
-    private void log(String message) {
-        Log.d("File-Cab", message);
-    }
-
     public abstract void paste();
 
     public abstract boolean canPaste();
@@ -41,7 +36,6 @@ public abstract class BaseFileCab extends BaseCab {
 
     @Override
     public BaseFileCab setFragment(DirectoryFragment fragment) {
-        log("setFragment: " + fragment);
         mDirectory = fragment.getDirectory();
         super.setFragment(fragment);
         invalidateFab();
@@ -50,7 +44,6 @@ public abstract class BaseFileCab extends BaseCab {
     }
 
     public final BaseFileCab addFile(File file) {
-        log("Add file: " + file.getPath());
         getFragment().mAdapter.setItemChecked(file, true);
         mFiles.add(file);
         invalidate();
@@ -58,7 +51,6 @@ public abstract class BaseFileCab extends BaseCab {
     }
 
     public final BaseFileCab addFiles(List<File> files) {
-        log("Add " + files.size() + " files");
         getFragment().mAdapter.setItemsChecked(files, true);
         mFiles.addAll(files);
         invalidate();
@@ -66,7 +58,6 @@ public abstract class BaseFileCab extends BaseCab {
     }
 
     public final BaseFileCab removeFile(File file) {
-        log("Remove file: " + file.getPath());
         getFragment().mAdapter.setItemChecked(file, false);
         for (int i = 0; i < mFiles.size(); i++) {
             if (file.getPath().equals(mFiles.get(i).getPath())) {
@@ -79,7 +70,6 @@ public abstract class BaseFileCab extends BaseCab {
     }
 
     public final BaseFileCab setFile(File file) {
-        log("Set file: " + file.getPath());
         getFragment().mAdapter.resetChecked();
         getFragment().mAdapter.setItemChecked(file, true);
         clearFiles();
@@ -89,7 +79,6 @@ public abstract class BaseFileCab extends BaseCab {
     }
 
     public final BaseFileCab setFiles(List<File> files) {
-        log("Set " + files.size() + " files");
         getFragment().mAdapter.resetChecked();
         getFragment().mAdapter.setItemsChecked(files, true);
         clearFiles();
@@ -99,7 +88,6 @@ public abstract class BaseFileCab extends BaseCab {
     }
 
     public final void clearFiles() {
-        log("Clear files");
         mFiles.clear();
     }
 
@@ -135,7 +123,7 @@ public abstract class BaseFileCab extends BaseCab {
             clearFiles();
             getFragment().mAdapter.resetChecked();
             if (canPaste()) getFragment().setPasteMode(false);
-        } else log("Override destroy");
+        }
         super.onDestroyActionMode(actionMode);
     }
 }

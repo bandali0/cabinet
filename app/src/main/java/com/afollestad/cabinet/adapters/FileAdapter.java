@@ -10,7 +10,6 @@ import android.graphics.Rect;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -284,12 +283,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
     }
 
 
-    private void log(String message) {
-        Log.d("File-Adapter", message);
-    }
-
     public void setItemChecked(File file, boolean checked) {
-        log("setItemChecked: " + file.getPath() + ", " + checked);
         if (checkedPaths.contains(file.getPath()) && !checked) {
             for (int i = 0; i < checkedPaths.size(); i++) {
                 if (checkedPaths.get(i).equals(file.getPath())) {
@@ -314,7 +308,6 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
     }
 
     public void resetChecked() {
-        log("resetChecked");
         checkedPaths.clear();
         notifyDataSetChanged();
     }
@@ -334,7 +327,6 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
 
     public void restoreCheckedPaths(List<File> paths) {
         if (paths == null) return;
-        log("restoreCheckedPaths");
         checkedPaths.clear();
         for (File fi : paths)
             checkedPaths.add(fi.getPath());
