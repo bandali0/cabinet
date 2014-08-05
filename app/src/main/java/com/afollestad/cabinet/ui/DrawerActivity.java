@@ -48,7 +48,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
 
     public static void setupTransparentTints(Activity context) {
         // TODO change condition for Material
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT || !ThemeUtils.isTranslucentStatusbar(context))
+        if (Build.VERSION.SDK_INT != Build.VERSION_CODES.KITKAT || !ThemeUtils.isTranslucentStatusbar(context))
             return;
         SystemBarTintManager tintManager = new SystemBarTintManager(context);
         tintManager.setStatusBarTintEnabled(true);
