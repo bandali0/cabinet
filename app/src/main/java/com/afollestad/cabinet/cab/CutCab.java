@@ -29,6 +29,7 @@ public class CutCab extends BaseFileCab {
 
     @Override
     public void paste() {
+        getFragment().toggleFab(true);
         for (final File file : getFiles()) {
             if (shouldCancel) break;
             File newFile = getDirectory().isRemote() ?
@@ -46,6 +47,7 @@ public class CutCab extends BaseFileCab {
                 }
             });
         }
+        getFragment().toggleFab(false);
         finish();
     }
 
