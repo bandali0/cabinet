@@ -2,29 +2,28 @@
 <resources>
 
     <!-- TODO toggle comment for Material -->
+    <style name="CabinetUIParent" parent="android:Theme.Material.Light.DarkActionBar">
+        <item name="android:colorPrimary">@color/cabinet_color</item>
+        <item name="android:colorPrimaryDark">@color/cabinet_color_darker</item>
+        <item name="android:colorAccent">@color/cabinet_color</item>
+        <item name="android:actionModeBackground">@color/cabinet_color</item>
+        <item name="android:buttonStyle">@style/ButtonCabinet</item>
+    </style>
 
-    <!--<style name="CabinetUIParent" parent="android:Theme.Material.Light.DarkActionBar">-->
-        <!--<item name="android:colorPrimary">@color/cabinet_color</item>-->
-        <!--<item name="android:colorPrimaryDark">@color/cabinet_color_darker</item>-->
-        <!--<item name="android:colorAccent">@color/cabinet_color</item>-->
-        <!--<item name="android:actionModeBackground">@color/cabinet_color</item>-->
-        <!--<item name="android:buttonStyle">@style/ButtonCabinet</item>-->
-    <!--</style>-->
+    <style name="Theme.Cabinet" parent="@style/CabinetUIParent" />
 
-    <!--<style name="Theme.Cabinet" parent="@style/CabinetUIParent" />-->
+    <style name="Theme.CabinetNavTranslucent" parent="@style/CabinetUIParent">
+        <item name="android:windowTranslucentNavigation">@bool/translucent_nav</item>
+    </style>
 
-    <!--<style name="Theme.CabinetNavTranslucent" parent="@style/CabinetUIParent">-->
-        <!--<item name="android:windowTranslucentNavigation">@bool/translucent_nav</item>-->
-    <!--</style>-->
+    <style name="Theme.PopupMenuTheme" parent="android:Theme.Material" />
 
-    <!--<style name="Theme.PopupMenuTheme" parent="android:Theme.Material" />-->
-
-    <!--<style name="ButtonCabinet" parent="android:Widget.Material.Light.Button">-->
-        <!--<item name="android:background">@drawable/rect_button_ripple_selector</item>-->
-        <!--<item name="android:textColor">@color/button_text_selector</item>-->
-        <!--<item name="android:minHeight">48dp</item>-->
-        <!--<item name="android:minWidth">64dp</item>-->
-        <!--<item name="android:elevation">2dp</item>-->
-    <!--</style>-->
+    <style name="ButtonCabinet" parent="android:Widget.Material.Light.Button">
+        <item name="android:background">@drawable/rect_button_ripple_selector</item>
+        <item name="android:textColor">@color/button_text_selector</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:minWidth">64dp</item>
+        <item name="android:elevation">2dp</item>
+    </style>
 
 </resources>
