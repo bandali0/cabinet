@@ -24,23 +24,23 @@ public abstract class BaseFileCab extends BaseCab {
     public abstract boolean canPaste();
 
     public void invalidateFab() {
-        if (canPaste()) {
-            boolean hide = false;
+        boolean hide = false;
+        if (!canPaste()) hide = true;
+        else {
             for (File fi : getFiles()) {
                 if (fi.getParent().equals(getDirectory())) {
                     hide = true;
                     break;
                 }
             }
-            getFragment().disableFab(hide);
         }
+        getFragment().disableFab(hide);
     }
 
     @Override
     public BaseFileCab setFragment(DirectoryFragment fragment) {
         mDirectory = fragment.getDirectory();
         super.setFragment(fragment);
-        invalidateFab();
         fragment.setPasteMode(canPaste());
         return this;
     }
