@@ -82,8 +82,10 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     private RecyclerView mRecyclerView;
     private FileAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+
     private boolean showHidden;
     private boolean pasteMode;
+    private int sorter;
 
     public File getDirectory() {
         return mDirectory;
@@ -124,6 +126,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 
         navBarHeight = config.getPixelInsetBottom();
         showHidden = Utils.getShowHidden(getActivity());
+        sorter = Utils.getSorter(getActivity());
     }
 
     @Override
@@ -144,6 +147,9 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 
         if (showHidden != Utils.getShowHidden(getActivity())) {
             showHidden = Utils.getShowHidden(getActivity());
+            reload();
+        } else if (sorter != Utils.getSorter(getActivity())) {
+            sorter = Utils.getSorter(getActivity());
             reload();
         }
     }
@@ -186,7 +192,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.fragment_menu, menu);
-        int sorter = Utils.getSorter(getActivity());
         switch (sorter) {
             default:
                 menu.findItem(R.id.sortNameFoldersTop).setChecked(true);
@@ -389,8 +394,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new FileAdapter(getActivity(), this, this, this, mQuery != null);
-        int sorter = Utils.getSorter(getActivity());
-        mAdapter.showLastModified = (sorter == 5);
         mRecyclerView.setAdapter(mAdapter);
 
         reload();
@@ -431,7 +434,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 
     private Comparator<File> getComparator() {
         Comparator<File> comparator;
-        int sorter = Utils.getSorter(getActivity());
         switch (sorter) {
             default:
                 comparator = new FoldersFirstComparator();
@@ -496,6 +498,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             return;
         }
         setListShown(false);
+        mAdapter.showLastModified = (sorter == 5);
         mDirectory.setContext(getActivity());
         mDirectory.listFiles(showHidden, new File.ArrayCallback() {
             @Override
