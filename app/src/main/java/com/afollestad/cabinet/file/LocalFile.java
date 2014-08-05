@@ -45,7 +45,6 @@ public class LocalFile extends File {
 
     private java.io.File mFile;
     public boolean isSearchResult;
-    private transient Process mExecutor;
 
     private List<String> runAsRoot(String command) throws Exception {
         Log.v("Cabinet-SU", command);
@@ -165,12 +164,21 @@ public class LocalFile extends File {
                             }
                         }).start();
                     } else if (mFile.renameTo(newFile.toJavaFile())) {
-                        callback.onComplete(newFile);
-                        Toast.makeText(getContext(), getContext().getString(getParent().equals(newFile.getParent()) ?
-                                R.string.renamed_to : R.string.moved_to, newFile.getPath()), Toast.LENGTH_SHORT).show();
+                        getContext().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                callback.onComplete(newFile);
+                                Toast.makeText(getContext(), getContext().getString(getParent().equals(newFile.getParent()) ? R.string.renamed_to : R.string.moved_to, newFile.getPath()), Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     } else {
-                        Utils.showErrorDialog(getContext(), R.string.failed_rename_file, new Exception("Unknown error"));
-                        callback.onError(null);
+                        getContext().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Utils.showErrorDialog(getContext(), R.string.failed_rename_file, new Exception("Unknown error"));
+                                callback.onError(null);
+                            }
+                        });
                     }
                 }
             });
