@@ -83,6 +83,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 
     private boolean showHidden;
     private boolean pasteMode;
+    private boolean disableFab;
     public int sorter;
 
     public File getDirectory() {
@@ -320,26 +321,17 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         return ((DrawerActivity) getActivity()).fabRight;
     }
 
-    private void invalidateCoordinates() {
+    public void disableFab(boolean hide) {
+        disableFab = hide;
+        toggleFab(hide);
+    }
+
+    public void toggleFab(boolean hide) {
         if (fabLeft() == 0) {
             float translation = getResources().getDimension(R.dimen.fab_translation);
             ((DrawerActivity) getActivity()).fabLeft = fab.getX();
             ((DrawerActivity) getActivity()).fabRight = fab.getX() + translation;
         }
-    }
-
-    public void disableFab(boolean hide) {
-        invalidateCoordinates();
-        fab.setVisibility(hide ? View.GONE : View.VISIBLE);
-        if (!hide) {
-            fabShown = false;
-            fab.setX(fabRight());
-            toggleFab(false);
-        }
-    }
-
-    public void toggleFab(boolean hide) {
-        invalidateCoordinates();
         if (hide) {
             if (fabShown) {
                 ObjectAnimator outAnim = ObjectAnimator.ofFloat(fab, "x", fabLeft(), fabRight());
@@ -370,13 +362,15 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 
             @Override
             public void onScrolled(int dx, int dy) {
-                if (dy < 0 && !fabShown) {
-                    if (dy < -5) {
-                        toggleFab(false);
-                    }
-                } else if (dy > 0 && fabShown) {
-                    if (dy > 10) {
-                        toggleFab(true);
+                if (!disableFab) {
+                    if (dy < 0 && !fabShown) {
+                        if (dy < -5) {
+                            toggleFab(false);
+                        }
+                    } else if (dy > 0 && fabShown) {
+                        if (dy > 10) {
+                            toggleFab(true);
+                        }
                     }
                 }
             }
@@ -718,7 +712,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 });
                 break;
             case R.id.details:
-                DetailsDialog.create(file).show(getChildFragmentManager(), "DETAILS_DIALOG");
+                DetailsDialog.create(file).show(getActivity().getFragmentManager(), "DETAILS_DIALOG");
                 break;
         }
     }
