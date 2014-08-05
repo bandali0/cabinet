@@ -248,6 +248,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 
         boolean searchMode = mQuery != null;
         if (!searchMode) {
+            if (pasteMode) fab.setDrawable(getResources().getDrawable(R.drawable.ic_paste));
             fab.setVisibility(fabShown ? View.VISIBLE : View.GONE);
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
