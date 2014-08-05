@@ -31,7 +31,7 @@ public abstract class BaseFileCab extends BaseCab {
                 break;
             }
         }
-        getFragment().toggleFab(hide);
+        getFragment().disableFab(hide);
     }
 
     @Override

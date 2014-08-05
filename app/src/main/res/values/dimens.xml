@@ -15,5 +15,6 @@
     <dimen name="fab_size">72dp</dimen>
     <dimen name="menu_touchdelegate">25dp</dimen>
     <dimen name="welcome_section1_margin">5dp</dimen>
+    <dimen name="fab_translation">90dp</dimen>
 
 </resources>

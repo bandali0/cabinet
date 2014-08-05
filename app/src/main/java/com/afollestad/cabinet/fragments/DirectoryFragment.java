@@ -1,5 +1,6 @@
 package com.afollestad.cabinet.fragments;
 
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -54,7 +55,6 @@ import com.afollestad.cabinet.zip.Unzipper;
 import com.afollestad.cabinet.zip.Zipper;
 import com.faizmalkani.floatingactionbutton.FloatingActionButton;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import java.io.FileFilter;
 import java.util.ArrayList;
@@ -79,9 +79,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 
     private File mDirectory;
     private String mQuery;
-    private RecyclerView mRecyclerView;
     public FileAdapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
 
     private boolean showHidden;
     private boolean pasteMode;
@@ -113,14 +111,9 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         mDirectory = (File) getArguments().getSerializable("path");
         mQuery = getArguments().getString("query");
         super.onCreate(savedInstanceState);
+
         setHasOptionsMenu(true);
-        setRetainInstance(true);
         if (mQuery != null) mQuery = mQuery.trim();
-
-        SystemBarTintManager tintManager = new SystemBarTintManager(getActivity());
-        SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
-
-        navBarHeight = config.getPixelInsetBottom();
         showHidden = Utils.getShowHidden(getActivity());
         sorter = Utils.getSorter(getActivity());
     }
@@ -157,30 +150,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             getActivity().unregisterReceiver(mReceiver);
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        outState.putSerializable("directory", mDirectory);
-        outState.putString("query", mQuery);
-        outState.putBoolean("paste_mode", pasteMode);
-        super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        if (savedInstanceState != null) {
-            if (savedInstanceState.containsKey("directory")) {
-                mDirectory = (File) savedInstanceState.getSerializable("directory");
-            }
-            if (savedInstanceState.containsKey("query")) {
-                mQuery = savedInstanceState.getString("query");
-            }
-            if (savedInstanceState.containsKey("paste_mode")) {
-                pasteMode = savedInstanceState.getBoolean("paste_mode");
-            }
         }
     }
 
@@ -342,18 +311,49 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 
     private FloatingActionButton fab;
     private boolean fabShown = true;
-    private float navBarHeight;
+
+    private float fabLeft() {
+        return ((DrawerActivity) getActivity()).fabLeft;
+    }
+
+    private float fabRight() {
+        return ((DrawerActivity) getActivity()).fabRight;
+    }
+
+    private void invalidateCoordinates() {
+        if (fabLeft() == 0) {
+            Toast.makeText(getActivity(), "Setting fab coodinates", Toast.LENGTH_SHORT).show();
+            float translation = getResources().getDimension(R.dimen.fab_translation);
+            ((DrawerActivity) getActivity()).fabLeft = fab.getX();
+            ((DrawerActivity) getActivity()).fabRight = fab.getX() + translation;
+        }
+    }
+
+    public void disableFab(boolean hide) {
+        invalidateCoordinates();
+        fab.setVisibility(hide ? View.GONE : View.VISIBLE);
+        if (!hide) {
+            fabShown = false;
+            fab.setX(fabRight());
+            toggleFab(false);
+        }
+    }
 
     public void toggleFab(boolean hide) {
+        invalidateCoordinates();
         if (hide) {
             if (fabShown) {
-                fab.hide(true, navBarHeight);
+                ObjectAnimator outAnim = ObjectAnimator.ofFloat(fab, "x", fabLeft(), fabRight());
+                outAnim.setDuration(250);
+                outAnim.start();
                 fabShown = false;
             }
         } else {
-            if (fab.getVisibility() == View.GONE) fab.setVisibility(View.VISIBLE);
             if (!fabShown) {
-                fab.hide(false, 0);
+                if (fab.getX() != fabRight()) fab.setX(fabRight());
+                ObjectAnimator outAnim = ObjectAnimator.ofFloat(fab, "x", fabRight(), fabLeft());
+                outAnim.setDuration(250);
+                outAnim.start();
                 fabShown = true;
             }
         }
@@ -363,7 +363,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mRecyclerView = (RecyclerView) view.findViewById(android.R.id.list);
+        RecyclerView mRecyclerView = (RecyclerView) view.findViewById(android.R.id.list);
         mRecyclerView.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), true, true, new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(int scrollState) {
@@ -387,8 +387,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         DrawerActivity.setupTranslucentPadding(getActivity(), view.findViewById(android.R.id.empty));
         DrawerActivity.setupTranslucentPadding(getActivity(), view.findViewById(android.R.id.progress));
 
-        mLayoutManager = new LinearLayoutManager(getActivity());
-        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mAdapter = new FileAdapter(getActivity(), this, this, this, mQuery != null);
         mRecyclerView.setAdapter(mAdapter);
 

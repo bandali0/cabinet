@@ -45,6 +45,8 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     private NetworkService mNetworkService;
     private CloudFile mRemoteSwitch;
     private ThemeUtils mThemeUtils;
+    public float fabLeft;
+    public float fabRight;
 
     public static void setupTransparentTints(Activity context) {
         // TODO change condition for Material
