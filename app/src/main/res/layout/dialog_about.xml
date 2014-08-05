@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:textSize="17sp"
-            android:lineSpacingMultiplier="1.4"
+            android:lineSpacingMultiplier="1.6"
             android:textIsSelectable="true"
             android:textColorLink="@color/cabinet_color"
             android:fontFamily="sans-serif-light" />
