@@ -38,32 +38,32 @@ public class ThemeUtils {
     }
 
     public int getCurrent() {
-//        if (translucentStatusbar && translucentNavbar) {
-//            return R.style.Theme_CabinetNavStatusTranslucent;
-//        } else if (translucentStatusbar) {
-//            return R.style.Theme_CabinetStatusTranslucent;
-//        } else if (translucentNavbar) {
-//            return R.style.Theme_CabinetNavTranslucent;
-//        } else {
-//            return R.style.Theme_Cabinet;
-//        }
-        // TODO toggle commented area for Material
-        if (Build.VERSION.SDK_INT >= 20) {
-            if (translucentNavbar) {
-                return R.style.Theme_CabinetNavTranslucent;
-            } else {
-                return R.style.Theme_Cabinet;
-            }
+        if (translucentStatusbar && translucentNavbar) {
+            return R.style.Theme_CabinetNavStatusTranslucent;
+        } else if (translucentStatusbar) {
+            return R.style.Theme_CabinetStatusTranslucent;
+        } else if (translucentNavbar) {
+            return R.style.Theme_CabinetNavTranslucent;
         } else {
-            if (translucentStatusbar && translucentNavbar) {
-                return R.style.Theme_CabinetNavStatusTranslucent;
-            } else if (translucentStatusbar) {
-                return R.style.Theme_CabinetStatusTranslucent;
-            } else if (translucentNavbar) {
-                return R.style.Theme_CabinetNavTranslucent;
-            } else {
-                return R.style.Theme_Cabinet;
-            }
+            return R.style.Theme_Cabinet;
         }
+        // TODO toggle commented area for Material
+//        if (Build.VERSION.SDK_INT >= 20) {
+//            if (translucentNavbar) {
+//                return R.style.Theme_CabinetNavTranslucent;
+//            } else {
+//                return R.style.Theme_Cabinet;
+//            }
+//        } else {
+//            if (translucentStatusbar && translucentNavbar) {
+//                return R.style.Theme_CabinetNavStatusTranslucent;
+//            } else if (translucentStatusbar) {
+//                return R.style.Theme_CabinetStatusTranslucent;
+//            } else if (translucentNavbar) {
+//                return R.style.Theme_CabinetNavTranslucent;
+//            } else {
+//                return R.style.Theme_Cabinet;
+//            }
+//        }
     }
 }
