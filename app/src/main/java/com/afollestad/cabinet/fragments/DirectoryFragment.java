@@ -82,6 +82,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     private FileAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private boolean showHidden;
+    private boolean pasteMode;
 
     public File getDirectory() {
         return mDirectory;
@@ -132,9 +133,11 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         if (mQuery != null) {
             act.setTitle(Html.fromHtml(getString(R.string.search_x, mQuery)));
         } else act.setTitle(mDirectory.getDisplay());
+
         BaseFileCab fileCab = ((DrawerActivity) getActivity()).getFileCab();
         if (fileCab != null) {
             mAdapter.restoreCheckedPaths(fileCab.getFiles());
+            fileCab.setFragment(this);
         }
         ((NavigationDrawerFragment) act.getFragmentManager().findFragmentByTag("NAV_DRAWER")).selectFile(mDirectory);
 
@@ -158,6 +161,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     public void onSaveInstanceState(Bundle outState) {
         outState.putSerializable("directory", mDirectory);
         outState.putString("query", mQuery);
+        outState.putBoolean("paste_mode", pasteMode);
         super.onSaveInstanceState(outState);
     }
 
@@ -170,6 +174,9 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             }
             if (savedInstanceState.containsKey("query")) {
                 mQuery = savedInstanceState.getString("query");
+            }
+            if (savedInstanceState.containsKey("paste_mode")) {
+                pasteMode = savedInstanceState.getBoolean("paste_mode");
             }
         }
     }
@@ -237,7 +244,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 
         boolean searchMode = mQuery != null;
         if (!searchMode) {
-            fab.setVisibility(View.VISIBLE);
+            fab.setVisibility(fabShown ? View.VISIBLE : View.GONE);
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -247,7 +254,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             fab.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
-                    Toast.makeText(getActivity(), R.string.newStr, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), pasteMode ? R.string.paste : R.string.newStr, Toast.LENGTH_SHORT).show();
                     return true;
                 }
             });
@@ -306,26 +313,45 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     }
 
     protected void onFabPressed() {
-        new AlertDialog.Builder(getActivity())
-                .setTitle(R.string.newStr)
-                .setItems(R.array.new_options, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int index) {
-                        switch (index) {
-                            case 0: // Folder
-                                showNewFolderDialog();
-                                break;
-                            case 1: // Remote connection
-                                new RemoteConnectionDialog(getActivity()).show();
-                                break;
+        if (pasteMode) {
+            ((DrawerActivity) getActivity()).getFileCab().paste();
+        } else {
+            new AlertDialog.Builder(getActivity())
+                    .setTitle(R.string.newStr)
+                    .setItems(R.array.new_options, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int index) {
+                            switch (index) {
+                                case 0: // Folder
+                                    showNewFolderDialog();
+                                    break;
+                                case 1: // Remote connection
+                                    new RemoteConnectionDialog(getActivity()).show();
+                                    break;
+                            }
                         }
-                    }
-                }).create().show();
+                    }).create().show();
+        }
     }
 
     private FloatingActionButton fab;
     private boolean fabShown = true;
     private float navBarHeight;
+
+    public void toggleFab(boolean hide) {
+        if (hide) {
+            if (fabShown) {
+                fab.hide(true, navBarHeight);
+                fabShown = false;
+            }
+        } else {
+            if (fab.getVisibility() == View.GONE) fab.setVisibility(View.VISIBLE);
+            if (!fabShown) {
+                fab.hide(false, 0);
+                fabShown = true;
+            }
+        }
+    }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -341,13 +367,11 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             public void onScrolled(int dx, int dy) {
                 if (dy < 0 && !fabShown) {
                     if (dy < -5) {
-                        fab.hide(false, 0);
-                        fabShown = true;
+                        toggleFab(false);
                     }
                 } else if (dy > 0 && fabShown) {
                     if (dy > 10) {
-                        fab.hide(true, navBarHeight);
-                        fabShown = false;
+                        toggleFab(true);
                     }
                 }
             }
@@ -361,9 +385,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         mRecyclerView.setAdapter(mAdapter);
 
         reload();
-        if (((DrawerActivity) getActivity()).getFileCab() != null) {
-            ((DrawerActivity) getActivity()).getFileCab().setFragment(this);
-        }
     }
 
     protected void runOnUiThread(Runnable runnable) {
@@ -554,6 +575,17 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void setPasteMode(boolean pasteMode) {
+        this.pasteMode = pasteMode;
+        View v = getView();
+        if (v != null) {
+            BaseFileCab cab = ((DrawerActivity) getActivity()).getFileCab();
+            if (cab != null) cab.invalidateFab();
+            ((FloatingActionButton) v.findViewById(R.id.fab)).setDrawable(getResources().getDrawable(
+                    pasteMode ? R.drawable.ic_paste : R.drawable.ic_add));
+        }
     }
 
     @Override

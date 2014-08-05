@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.fragments.DirectoryFragment;
 
@@ -66,7 +67,8 @@ public abstract class BaseCab implements ActionMode.Callback {
     @Override
     public final boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
         mActionMode = actionMode;
-        actionMode.getMenuInflater().inflate(getMenu(), menu);
+        if (getMenu() != -1)
+            actionMode.getMenuInflater().inflate(getMenu(), menu);
         return true;
     }
 

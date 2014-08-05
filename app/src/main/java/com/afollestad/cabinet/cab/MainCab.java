@@ -21,6 +21,15 @@ public class MainCab extends BaseFileCab {
     }
 
     @Override
+    public void paste() {
+    }
+
+    @Override
+    public boolean canPaste() {
+        return false;
+    }
+
+    @Override
     public CharSequence getTitle() {
         if (getFiles().size() == 1)
             return getFiles().get(0).getName();
@@ -47,10 +56,12 @@ public class MainCab extends BaseFileCab {
     @Override
     public boolean onActionItemClicked(final ActionMode actionMode, final MenuItem menuItem) {
         if (menuItem.getItemId() == R.id.copy) {
+            ((DrawerActivity) getContext()).getFileCab().overrideDestroy = true;
             ((DrawerActivity) getContext()).setFileCab((BaseFileCab) new CopyCab()
                     .setFragment(getFragment()).setFiles(getFiles()).start());
             return super.onActionItemClicked(actionMode, menuItem);
         } else if (menuItem.getItemId() == R.id.cut) {
+            ((DrawerActivity) getContext()).getFileCab().overrideDestroy = true;
             ((DrawerActivity) getContext()).setFileCab((BaseFileCab) new CutCab()
                     .setFragment(getFragment()).setFiles(getFiles()).start());
             return super.onActionItemClicked(actionMode, menuItem);

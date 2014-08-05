@@ -3,8 +3,8 @@ package com.afollestad.cabinet.cab;
 import android.text.Html;
 import android.text.Spanned;
 import android.view.ActionMode;
-import android.view.Menu;
 import android.view.MenuItem;
+
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.cab.base.BaseFileCab;
 import com.afollestad.cabinet.file.CloudFile;
@@ -25,43 +25,37 @@ public class CutCab extends BaseFileCab {
         return Html.fromHtml(getContext().getString(R.string.cut_xfiles, getFiles().size()));
     }
 
-    @Override
-    public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
-        boolean hide = false;
-        for (File fi : getFiles()) {
-            if (fi.getParent().equals(getDirectory())) {
-                hide = true;
-                break;
-            }
-        }
-        menu.findItem(R.id.paste).setVisible(!hide);
-        return super.onPrepareActionMode(actionMode, menu);
-    }
-
     private boolean shouldCancel;
 
     @Override
-    public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
-        if (menuItem.getItemId() == R.id.paste) {
-            for (final File file : getFiles()) {
-                if (shouldCancel) break;
-                File newFile = getDirectory().isRemote() ?
-                        new CloudFile(getContext(), (CloudFile) getDirectory(), file.getName(), file.isDirectory()) :
-                        new LocalFile(getContext(), getDirectory(), file.getName());
-                file.rename(newFile, new SftpClient.FileCallback() {
-                    @Override
-                    public void onComplete(File newFile) {
-                        addAdapter(newFile);
-                    }
+    public void paste() {
+        for (final File file : getFiles()) {
+            if (shouldCancel) break;
+            File newFile = getDirectory().isRemote() ?
+                    new CloudFile(getContext(), (CloudFile) getDirectory(), file.getName(), file.isDirectory()) :
+                    new LocalFile(getContext(), getDirectory(), file.getName());
+            file.rename(newFile, new SftpClient.FileCallback() {
+                @Override
+                public void onComplete(File newFile) {
+                    addAdapter(newFile);
+                }
 
-                    @Override
-                    public void onError(Exception e) {
-                        shouldCancel = true;
-                    }
-                });
-            }
-            return super.onActionItemClicked(actionMode, menuItem);
+                @Override
+                public void onError(Exception e) {
+                    shouldCancel = true;
+                }
+            });
         }
+        finish();
+    }
+
+    @Override
+    public boolean canPaste() {
+        return true;
+    }
+
+    @Override
+    public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
         return false;
     }
 }

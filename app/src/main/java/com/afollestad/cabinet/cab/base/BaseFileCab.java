@@ -2,9 +2,7 @@ package com.afollestad.cabinet.cab.base;
 
 import android.util.Log;
 import android.view.ActionMode;
-import android.view.MenuItem;
 
-import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.fragments.DirectoryFragment;
 
@@ -26,11 +24,28 @@ public abstract class BaseFileCab extends BaseCab {
         Log.d("File-Cab", message);
     }
 
+    public abstract void paste();
+
+    public abstract boolean canPaste();
+
+    public void invalidateFab() {
+        boolean hide = false;
+        for (File fi : getFiles()) {
+            if (fi.getParent().equals(getDirectory())) {
+                hide = true;
+                break;
+            }
+        }
+        getFragment().toggleFab(hide);
+    }
+
     @Override
     public BaseFileCab setFragment(DirectoryFragment fragment) {
         log("setFragment: " + fragment);
         mDirectory = fragment.getDirectory();
         super.setFragment(fragment);
+        invalidateFab();
+        fragment.setPasteMode(canPaste());
         return this;
     }
 
@@ -111,12 +126,7 @@ public abstract class BaseFileCab extends BaseCab {
 
     @Override
     public int getMenu() {
-        return R.menu.paste_cab;
-    }
-
-    @Override
-    public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
-        return super.onActionItemClicked(actionMode, menuItem);
+        return -1;
     }
 
     @Override
@@ -124,6 +134,7 @@ public abstract class BaseFileCab extends BaseCab {
         if (!overrideDestroy) {
             clearFiles();
             getFragment().getAdapter().resetChecked();
+            if (canPaste()) getFragment().setPasteMode(false);
         } else log("Override destroy");
         super.onDestroyActionMode(actionMode);
     }
