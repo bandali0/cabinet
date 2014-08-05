@@ -70,7 +70,9 @@ public class MainCab extends BaseFileCab {
         } else if (menuItem.getItemId() == R.id.delete) {
             new AlertDialog.Builder(getContext())
                     .setTitle(R.string.delete)
-                    .setMessage(R.string.confirm_delete_files)
+                    .setMessage(getFiles().size() == 1 ?
+                            getContext().getString(R.string.confirm_delete, getFiles().get(0).getName()) :
+                            getContext().getString(R.string.confirm_delete_xfiles, getFiles().size()))
                     .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {

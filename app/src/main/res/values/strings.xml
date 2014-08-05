@@ -24,7 +24,7 @@
     <string name="search">Search</string>
     <string name="show_hidden_files">Show Hidden Files</string>
     <string name="confirm_delete">Are you sure you want to delete %1$s?</string>
-    <string name="confirm_delete_files">Are you sure you want to delete the selected files?</string>
+    <string name="confirm_delete_xfiles">Are you sure you want to delete %1$d files?</string>
     <string name="new_remote_connection">New Remote Connection</string>
     <string name="host">Host</string>
     <string name="port">Port</string>
