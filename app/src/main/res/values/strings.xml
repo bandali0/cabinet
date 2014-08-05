@@ -203,9 +203,10 @@
         <b>Details</b>
     ]]></string>
     <string name="details_body"><![CDATA[
-        <b>Path:</b>&nbsp;%1$s<br/>
-        <b>Size:</b>&nbsp;%2$s<br/>
-        <b>Permissions:</b>&nbsp;%3$s<br/>
+        <b>Name:</b>&nbsp;&nbsp;%1$s<br/>
+        <b>Path:</b>&nbsp;&nbsp;%1$s<br/>
+        <b>Size:</b>&nbsp;&nbsp;%2$s<br/>
+        <b>Permissions:</b>&nbsp;&nbsp;%3$s
     ]]></string>
 
 </resources>

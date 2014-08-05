@@ -35,7 +35,7 @@ public class DetailsDialog extends DialogFragment {
         nameAndVersionView.setText(Html.fromHtml(getString(R.string.details_title)));
         TextView aboutBodyView = (TextView) rootView.findViewById(R.id.body);
         aboutBodyView.setText(Html.fromHtml(getString(R.string.details_body,
-                file.getPath(), file.getSizeString(), "TODO")));
+                file.getName(), file.getPath(), file.getSizeString(), "TODO")));
         return new AlertDialog.Builder(getActivity())
                 .setView(rootView)
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
