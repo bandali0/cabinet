@@ -1,5 +1,7 @@
 package com.afollestad.cabinet.cab;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -66,7 +68,22 @@ public class MainCab extends BaseFileCab {
                     .setFragment(getFragment()).setFiles(getFiles()).start());
             return super.onActionItemClicked(actionMode, menuItem);
         } else if (menuItem.getItemId() == R.id.delete) {
-            deleteNextFile();
+            new AlertDialog.Builder(getContext())
+                    .setTitle(R.string.delete)
+                    .setMessage(R.string.confirm_delete_files)
+                    .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                            deleteNextFile();
+                        }
+                    })
+                    .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    }).create().show();
             return super.onActionItemClicked(actionMode, menuItem);
         } else if (menuItem.getItemId() == R.id.selectAll) {
             List<File> newSelected = getFragment().getAdapter().checkAll();
