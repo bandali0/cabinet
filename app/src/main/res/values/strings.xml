@@ -2,24 +2,30 @@
 <resources>
 
     <string name="app_name">Cabinet</string>
+
+    <string name="storage">Storage</string>
+
+    <string name="open_as">Open As…</string>
     <string name="pin">Pin</string>
     <string name="copy">Copy</string>
     <string name="cut">Cut</string>
     <string name="rename">Rename</string>
     <string name="delete">Delete</string>
+
     <string name="no_files">No files</string>
     <string name="root">Root</string>
     <string name="directory">Directory</string>
     <string name="unknown">Unknown</string>
-    <string name="open_as">Open As…</string>
-    <string name="storage">Storage</string>
-    <string name="activity_not_found">No app was found to open this file</string>
+
     <string name="sort_by">Sort By</string>
     <string name="sort_name_folderstop">Name, folders first</string>
     <string name="sort_name">Name</string>
     <string name="sort_extension">Extension</string>
     <string name="sort_size_lowhigh">Size, low to high</string>
     <string name="sort_size_highlow">Size, high to low</string>
+
+    <string name="activity_not_found">No app was found to open this file</string>
+
     <string name="newStr">New</string>
     <string name="search">Search</string>
     <string name="show_hidden_files">Show Hidden Files</string>
@@ -87,10 +93,10 @@
     <string name="disconnect">Disconnect</string>
     <string name="thank_you">Thank you very much!</string>
     <string name="donate">Donate</string>
-    <string name="donation1">$0.99</string>
-    <string name="donation2">$5.00</string>
-    <string name="donation3">$10.00</string>
-    <string name="donation4">$20.00</string>
+    <string name="donation1" translatable="false">$0.99</string>
+    <string name="donation2" translatable="false">$5.00</string>
+    <string name="donation3" translatable="false">$10.00</string>
+    <string name="donation4" translatable="false">$20.00</string>
     <string name="moving">Moving…</string>
     <string name="moved_to">Moved to %1$s</string>
     <string name="failed_upload_file">Failed to upload this file: %1$s</string>
@@ -109,7 +115,7 @@
     <string name="rate_desc">Do you want to rate Cabinet on Google Play? Good ratings are appreciated!</string>
     <string name="sure">Sure!</string>
     <string name="no_thanks">No thanks</string>
-    <string name="defaultSshPort">22</string>
+    <string name="defaultSshPort" translatable="false">22</string>
     <string name="welcome">Welcome</string>
     <string name="welcome_intro">Welcome to Cabinet! Cabinet is a simplistic file manager designed to be aesthetically
         pleasing, and just work how a file manager should.\n\nTake a look at this file:</string>
