@@ -26,6 +26,7 @@
     <string name="zip">Zip</string>
     <string name="unzip">Unzip</string>
     <string name="selectAll">Select All</string>
+    <string name="details">Details</string>
 
     <!-- Misc. -->
     <string name="no_files">No files</string>
@@ -195,6 +196,13 @@
     ]]></string>
     <string name="app_name_and_version" translatable="false"><![CDATA[
         <b>Cabinet</b>&nbsp;<font color="#888888">v%1$s</font>
+    ]]></string>
+
+    <!-- Details dialog -->
+    <string name="details_body"><![CDATA[
+        <b>Path:</b>&nbsp;%1$s<br/>
+        <b>Size:</b>&nbsp;%2$s<br/>
+        <b>Permissions:</b>&nbsp;%3$s<br/>
     ]]></string>
 
 </resources>

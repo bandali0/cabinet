@@ -322,7 +322,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 
     private void invalidateCoordinates() {
         if (fabLeft() == 0) {
-            Toast.makeText(getActivity(), "Setting fab coodinates", Toast.LENGTH_SHORT).show();
             float translation = getResources().getDimension(R.dimen.fab_translation);
             ((DrawerActivity) getActivity()).fabLeft = fab.getX();
             ((DrawerActivity) getActivity()).fabRight = fab.getX() + translation;
@@ -717,6 +716,9 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                         });
                     }
                 });
+                break;
+            case R.id.details:
+                DetailsDialog.create(file).show(getChildFragmentManager(), "DETAILS_DIALOG");
                 break;
         }
     }

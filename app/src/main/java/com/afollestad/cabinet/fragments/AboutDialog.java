@@ -36,14 +36,13 @@ public class AboutDialog extends DialogFragment {
         } catch (PackageManager.NameNotFoundException e) {
             versionName = VERSION_UNAVAILABLE;
         }
-        // Build the about body view and append the link to see OSS licenses
         LayoutInflater layoutInflater = getActivity().getLayoutInflater();
-        View rootView = layoutInflater.inflate(R.layout.dialog_about, null);
+        View rootView = layoutInflater.inflate(R.layout.dialog_custom, null);
         TextView nameAndVersionView = (TextView) rootView.findViewById(
-                R.id.app_name_and_version);
+                R.id.title);
         nameAndVersionView.setText(Html.fromHtml(
                 getString(R.string.app_name_and_version, versionName)));
-        TextView aboutBodyView = (TextView) rootView.findViewById(R.id.about_body);
+        TextView aboutBodyView = (TextView) rootView.findViewById(R.id.body);
         aboutBodyView.setText(Html.fromHtml(getString(R.string.about_body, Calendar.getInstance().get(Calendar.YEAR))));
         aboutBodyView.setMovementMethod(new LinkMovementMethod());
         return new AlertDialog.Builder(getActivity())
