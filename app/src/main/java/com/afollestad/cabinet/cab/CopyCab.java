@@ -32,7 +32,7 @@ public class CopyCab extends BaseFileCab {
     public void paste() {
         final ProgressDialog mDialog = new ProgressDialog(getContext());
         mDialog.setMessage(getContext().getString(R.string.copying));
-        if (getFiles().size() > 0) {
+        if (getFiles().size() > 1) {
             mDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
             mDialog.setMax(getFiles().size());
         } else mDialog.setIndeterminate(true);
