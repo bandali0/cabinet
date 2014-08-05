@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.file.base.File;
+import com.afollestad.cabinet.utils.TimeUtils;
+
+import java.util.GregorianCalendar;
 
 public class DetailsDialog extends DialogFragment {
 
@@ -34,8 +37,20 @@ public class DetailsDialog extends DialogFragment {
         TextView nameAndVersionView = (TextView) rootView.findViewById(R.id.title);
         nameAndVersionView.setText(Html.fromHtml(getString(R.string.details_title)));
         TextView aboutBodyView = (TextView) rootView.findViewById(R.id.body);
-        aboutBodyView.setText(Html.fromHtml(getString(R.string.details_body,
-                file.getName(), file.getPath(), file.getSizeString(), "TODO")));
+        String content;
+        GregorianCalendar cal = new GregorianCalendar();
+        cal.setTimeInMillis(file.lastModified());
+        if (file.isDirectory()) {
+            String size = getString(R.string.unavailable);
+            if (!file.isRemote())
+                size = file.getSizeString();
+            content = getString(R.string.details_body_dir,
+                    file.getName(), file.getPath(), size, TimeUtils.toStringLong(cal));
+        } else {
+            content = getString(R.string.details_body_file,
+                    file.getName(), file.getPath(), file.getSizeString(), TimeUtils.toStringLong(cal), "TODO");
+        }
+        aboutBodyView.setText(Html.fromHtml(content));
         return new AlertDialog.Builder(getActivity())
                 .setView(rootView)
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {

@@ -37,6 +37,7 @@
     <string name="go_up">Go Up</string>
     <string name="press_back_to_exit">Press back again to exit…</string>
     <string name="x_files">%1$d files</string>
+    <string name="x_filesdirs">%1$d files/directories</string>
     <string name="no_x_files">No %1$s files</string>
     <string name="done">Done</string>
     <string name="remove_shortcut">Remove Shortcut</string>
@@ -59,6 +60,7 @@
     <string name="search">Search</string>
     <string name="confirm_delete">Are you sure you want to delete %1$s?</string>
     <string name="confirm_delete_xfiles">Are you sure you want to delete %1$d files?</string>
+    <string name="unavailable">Unavailable</string>
 
     <!-- Sort options -->
     <string name="sort_by">Sort By</string>
@@ -202,11 +204,18 @@
     <string name="details_title" translatable="false"><![CDATA[
         <b>Details</b>
     ]]></string>
-    <string name="details_body"><![CDATA[
+    <string name="details_body_file"><![CDATA[
         <b>Name:</b>&nbsp;&nbsp;%1$s<br/>
-        <b>Path:</b>&nbsp;&nbsp;%1$s<br/>
-        <b>Size:</b>&nbsp;&nbsp;%2$s<br/>
-        <b>Permissions:</b>&nbsp;&nbsp;%3$s
+        <b>Path:</b>&nbsp;&nbsp;%2$s<br/>
+        <b>Size:</b>&nbsp;&nbsp;%3$s<br/>
+        <b>Modified:</b>&nbsp;&nbsp;%4$s<br/>
+        <b>Permissions:</b>&nbsp;&nbsp;%5$s
+    ]]></string>
+    <string name="details_body_dir"><![CDATA[
+        <b>Name:</b>&nbsp;&nbsp;%1$s<br/>
+        <b>Path:</b>&nbsp;&nbsp;%2$s<br/>
+        <b>Contents:</b>&nbsp;&nbsp;%3$s<br/>
+        <b>Modified:</b>&nbsp;&nbsp;%4$s
     ]]></string>
 
 </resources>
