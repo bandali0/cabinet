@@ -24,14 +24,16 @@ public abstract class BaseFileCab extends BaseCab {
     public abstract boolean canPaste();
 
     public void invalidateFab() {
-        boolean hide = false;
-        for (File fi : getFiles()) {
-            if (fi.getParent().equals(getDirectory())) {
-                hide = true;
-                break;
+        if (canPaste()) {
+            boolean hide = false;
+            for (File fi : getFiles()) {
+                if (fi.getParent().equals(getDirectory())) {
+                    hide = true;
+                    break;
+                }
             }
+            getFragment().disableFab(hide);
         }
-        getFragment().disableFab(hide);
     }
 
     @Override
