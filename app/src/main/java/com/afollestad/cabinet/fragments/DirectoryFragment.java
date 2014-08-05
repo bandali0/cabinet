@@ -80,19 +80,15 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     private File mDirectory;
     private String mQuery;
     private RecyclerView mRecyclerView;
-    private FileAdapter mAdapter;
+    public FileAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
     private boolean showHidden;
     private boolean pasteMode;
-    private int sorter;
+    public int sorter;
 
     public File getDirectory() {
         return mDirectory;
-    }
-
-    public FileAdapter getAdapter() {
-        return mAdapter;
     }
 
     public static DirectoryFragment create(File directory) {

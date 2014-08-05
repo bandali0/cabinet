@@ -256,7 +256,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
                 cal.setTimeInMillis(file.lastModified());
                 holder.directory.setText(mContext.getString(R.string.modified_x, TimeUtils.toString(cal, true, true)));
             }
-        }
+        } else holder.directory.setVisibility(View.GONE);
 
         holder.view.setActivated(isItemChecked(file));
         holder.icon.setTag("1:" + index);

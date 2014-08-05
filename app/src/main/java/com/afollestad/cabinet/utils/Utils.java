@@ -76,7 +76,8 @@ public class Utils {
 
     public static void setSorter(DirectoryFragment context, int sorter) {
         PreferenceManager.getDefaultSharedPreferences(context.getActivity()).edit().putInt("sorter", sorter).commit();
-        context.getAdapter().showLastModified = (sorter == 5);
+        context.mAdapter.showLastModified = (sorter == 5);
+        context.sorter = sorter;
         context.resort();
     }
 

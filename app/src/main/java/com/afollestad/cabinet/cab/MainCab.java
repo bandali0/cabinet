@@ -89,7 +89,7 @@ public class MainCab extends BaseFileCab {
                     }).create().show();
             return false;
         } else if (menuItem.getItemId() == R.id.selectAll) {
-            List<File> newSelected = getFragment().getAdapter().checkAll();
+            List<File> newSelected = getFragment().mAdapter.checkAll();
             addFiles(newSelected);
             invalidate();
             return true;
@@ -123,7 +123,7 @@ public class MainCab extends BaseFileCab {
         getFiles().get(0).delete(new SftpClient.CompletionCallback() {
             @Override
             public void onComplete() {
-                getFragment().getAdapter().remove(getFiles().get(0));
+                getFragment().mAdapter.remove(getFiles().get(0));
                 getFiles().remove(0);
                 deleteNextFile();
             }

@@ -51,7 +51,7 @@ public abstract class BaseFileCab extends BaseCab {
 
     public final BaseFileCab addFile(File file) {
         log("Add file: " + file.getPath());
-        getFragment().getAdapter().setItemChecked(file, true);
+        getFragment().mAdapter.setItemChecked(file, true);
         mFiles.add(file);
         invalidate();
         return this;
@@ -59,7 +59,7 @@ public abstract class BaseFileCab extends BaseCab {
 
     public final BaseFileCab addFiles(List<File> files) {
         log("Add " + files.size() + " files");
-        getFragment().getAdapter().setItemsChecked(files, true);
+        getFragment().mAdapter.setItemsChecked(files, true);
         mFiles.addAll(files);
         invalidate();
         return this;
@@ -67,7 +67,7 @@ public abstract class BaseFileCab extends BaseCab {
 
     public final BaseFileCab removeFile(File file) {
         log("Remove file: " + file.getPath());
-        getFragment().getAdapter().setItemChecked(file, false);
+        getFragment().mAdapter.setItemChecked(file, false);
         for (int i = 0; i < mFiles.size(); i++) {
             if (file.getPath().equals(mFiles.get(i).getPath())) {
                 mFiles.remove(i);
@@ -80,8 +80,8 @@ public abstract class BaseFileCab extends BaseCab {
 
     public final BaseFileCab setFile(File file) {
         log("Set file: " + file.getPath());
-        getFragment().getAdapter().resetChecked();
-        getFragment().getAdapter().setItemChecked(file, true);
+        getFragment().mAdapter.resetChecked();
+        getFragment().mAdapter.setItemChecked(file, true);
         clearFiles();
         mFiles.add(file);
         invalidate();
@@ -90,8 +90,8 @@ public abstract class BaseFileCab extends BaseCab {
 
     public final BaseFileCab setFiles(List<File> files) {
         log("Set " + files.size() + " files");
-        getFragment().getAdapter().resetChecked();
-        getFragment().getAdapter().setItemsChecked(files, true);
+        getFragment().mAdapter.resetChecked();
+        getFragment().mAdapter.setItemsChecked(files, true);
         clearFiles();
         mFiles.addAll(files);
         invalidate();
@@ -133,7 +133,7 @@ public abstract class BaseFileCab extends BaseCab {
     public void onDestroyActionMode(ActionMode actionMode) {
         if (!overrideDestroy) {
             clearFiles();
-            getFragment().getAdapter().resetChecked();
+            getFragment().mAdapter.resetChecked();
             if (canPaste()) getFragment().setPasteMode(false);
         } else log("Override destroy");
         super.onDestroyActionMode(actionMode);
