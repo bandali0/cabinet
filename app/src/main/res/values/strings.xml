@@ -3,20 +3,63 @@
 
     <string name="app_name">Cabinet</string>
 
-    <string name="storage">Storage</string>
+    <!-- Welcome screen -->
+    <string name="welcome">Welcome</string>
+    <string name="welcome_intro">Welcome to Cabinet! Cabinet is a simplistic file manager designed to be aesthetically
+        pleasing, and just work how a file manager should.\n\nTake a look at this file:</string>
+    <string name="welcome_conclusion">Try tapping the preview image or the 3-dot icon. Tapping the preview image selects the file for batch actions, this can also be done by tapping and holding files. The 3-dot icon shows a popup menu with individual file options.\n\nCabinet
+        has other various features, such as remote access to servers via SFTP that you can find by exploring. Thanks for trying out Cabinet!</string>
+    <string name="file_sub_title">Android Logo.png</string>
+    <string name="file_stub_content">image/png</string>
+    <string name="file_stub_size">15 KB</string>
+    <string name="lets_go">Let\'s Go!</string>
 
+    <!-- File actions-->
     <string name="open_as">Open As…</string>
     <string name="pin">Pin</string>
     <string name="copy">Copy</string>
     <string name="cut">Cut</string>
     <string name="rename">Rename</string>
     <string name="delete">Delete</string>
+    <string name="paste">Paste</string>
+    <string name="share">Share</string>
+    <string name="zip">Zip</string>
+    <string name="unzip">Unzip</string>
+    <string name="selectAll">Select All</string>
 
+    <!-- Misc. -->
     <string name="no_files">No files</string>
+    <string name="storage">Storage</string>
     <string name="root">Root</string>
     <string name="directory">Directory</string>
     <string name="unknown">Unknown</string>
+    <string name="go_up">Go Up</string>
+    <string name="press_back_to_exit">Press back again to exit…</string>
+    <string name="x_files">%1$d files</string>
+    <string name="no_x_files">No %1$s files</string>
+    <string name="done">Done</string>
+    <string name="remove_shortcut">Remove Shortcut</string>
+    <string name="confirm_remove_shortcut">Are you sure you want to remove your shortcut to %1$s?</string>
+    <string name="sort_modified">Last modified</string>
+    <string name="modified_x">Modified %1$s</string>
+    <string name="iconpress_hint">You can tap a file\'s icon to quickly select it!</string>
+    <string name="drawer_longpress_hint">Tip: long press pinned shortcuts to remove them!</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="new_folder">New Folder</string>
+    <string name="created_folder">Created folder %1$s</string>
+    <string name="untitled">Untitled</string>
+    <string name="renamed_to">Renamed to %1$s</string>
+    <string name="moved_to">Moved to %1$s</string>
+    <string name="copied_to">Copied to %1$s</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="newStr">New</string>
+    <string name="search">Search</string>
+    <string name="confirm_delete">Are you sure you want to delete %1$s?</string>
+    <string name="confirm_delete_xfiles">Are you sure you want to delete %1$d files?</string>
 
+    <!-- Sort options -->
     <string name="sort_by">Sort By</string>
     <string name="sort_name_folderstop">Name, folders first</string>
     <string name="sort_name">Name</string>
@@ -24,40 +67,51 @@
     <string name="sort_size_lowhigh">Size, low to high</string>
     <string name="sort_size_highlow">Size, high to low</string>
 
-    <string name="activity_not_found">No app was found to open this file</string>
-
-    <string name="newStr">New</string>
-    <string name="search">Search</string>
-    <string name="show_hidden_files">Show Hidden Files</string>
-    <string name="confirm_delete">Are you sure you want to delete %1$s?</string>
-    <string name="confirm_delete_xfiles">Are you sure you want to delete %1$d files?</string>
+    <!-- SFTP stuff -->
     <string name="new_remote_connection">New Remote Connection</string>
+    <string name="network_service_label">Cabinet Network Service</string>
+    <string name="connection_notification_content">Connected to %1$s</string>
+    <string name="cabinet_sftp">Cabinet SFTP</string>
+    <string name="disconnect">Disconnect</string>
     <string name="host">Host</string>
     <string name="port">Port</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
-    <string name="remove_shortcut">Remove Shortcut</string>
-    <string name="confirm_remove_shortcut">Are you sure you want to remove your shortcut to %1$s?</string>
+    <string name="test_connection">Test Connection</string>
+    <string name="connection_successful">Connection successful!</string>
+    <string name="disconnect_promp">Do you want to disconnect from %1$s?</string>
+    <string name="uploaded_to">Uploaded to %1$s</string>
+    <string name="downloaded_to">Downloaded to %1$s</string>
+    <string name="defaultSshPort" translatable="false">22</string>
+
+    <!-- Status messages -->
+    <string name="connecting">Connecting…</string>
+    <string name="downloading">Downloading…</string>
+    <string name="deleting">Deleting…</string>
+    <string name="making_folder">Creating folder…</string>
+    <string name="renaming">Renaming…</string>
+    <string name="unzipping">Unzipping…</string>
+    <string name="zipping">Zipping…</string>
+    <string name="moving">Moving…</string>
+    <string name="uploading">Uploading…</string>
+    <string name="copying">Copying…</string>
+
+    <!-- Error messages -->
+    <string name="failed_delete_file">Failed to delete this file: %1$s</string>
+    <string name="failed_make_directory">Failed to make a new folder: %1$s</string>
+    <string name="failed_rename_file">Failed to rename/move this file: %1$s</string>
+    <string name="failed_unzip_file">Failed to unzip this file: %1$s</string>
+    <string name="failed_zip_files">Failed to zip file(s): %1$s</string>
     <string name="error">Error</string>
     <string name="failed_download_file">An error occurred while attempting to download this file: %1$s</string>
     <string name="failed_connect_server">Failed to connect to the server: %1$s</string>
-    <string name="connecting">Connecting…</string>
-    <string name="downloading">Downloading…</string>
-    <string name="new_folder">New Folder</string>
-    <string name="deleting">Deleting…</string>
-    <string name="failed_delete_file">Failed to delete this file: %1$s</string>
-    <string name="failed_make_directory">Failed to make a new folder: %1$s</string>
-    <string name="created_folder">Created folder %1$s</string>
-    <string name="untitled">Untitled</string>
-    <string name="renaming">Renaming…</string>
-    <string name="renamed_to">Renamed to %1$s</string>
-    <string name="failed_rename_file">Failed to rename/move this file: %1$s</string>
-    <string name="test_connection">Test Connection</string>
-    <string name="connection_successful">Connection successful!</string>
-    <string name="go_up">Go Up</string>
-    <string name="press_back_to_exit">Press back again to exit…</string>
-    <string name="paste">Paste</string>
-    <string name="making_folder">Creating folder…</string>
+    <string name="activity_not_found">No app was found to open this file</string>
+    <string name="failed_upload_file">Failed to upload this file: %1$s</string>
+    <string name="failed_copy_file">Failed to copy this file: %1$s</string>
+    <string name="no_apps_for_sharing">No apps are available for sharing this type of file</string>
+    <string name="directory_already_exists">Directory already exists</string>
+
+    <!-- Contextual action bar titles -->
     <string name="copy_x">
 <![CDATA[
         <b>Copy:</b>&nbsp;&nbsp;%1$s
@@ -84,73 +138,23 @@
         <b>Search:</b>&nbsp;%1$s
     ]]>
     </string>
-    <string name="x_files">%1$d files</string>
-    <string name="no_x_files">No %1$s files</string>
-    <string name="done">Done</string>
-    <string name="network_service_label">Cabinet Network Service</string>
-    <string name="connection_notification_content">Connected to %1$s</string>
-    <string name="cabinet_sftp">Cabinet SFTP</string>
-    <string name="disconnect">Disconnect</string>
-    <string name="thank_you">Thank you very much!</string>
+
+    <!-- Donation -->
     <string name="donate">Donate</string>
     <string name="donation1" translatable="false">$0.99</string>
     <string name="donation2" translatable="false">$5.00</string>
     <string name="donation3" translatable="false">$10.00</string>
     <string name="donation4" translatable="false">$20.00</string>
-    <string name="moving">Moving…</string>
-    <string name="moved_to">Moved to %1$s</string>
-    <string name="failed_upload_file">Failed to upload this file: %1$s</string>
-    <string name="uploaded_to">Uploaded to %1$s</string>
-    <string name="downloaded_to">Downloaded to %1$s</string>
-    <string name="failed_copy_file">Failed to copy this file: %1$s</string>
-    <string name="copied_to">Copied to %1$s</string>
-    <string name="uploading">Uploading…</string>
-    <string name="copying">Copying…</string>
-    <string name="disconnect_promp">Do you want to disconnect from %1$s?</string>
-    <string name="no">No</string>
-    <string name="yes">Yes</string>
-    <string name="directory_already_exists">Directory already exists</string>
+    <string name="thank_you">Thank you very much!</string>
+
+    <!-- Rate dialog -->
     <string name="rate">Rate</string>
     <string name="later">Later</string>
     <string name="rate_desc">Do you want to rate Cabinet on Google Play? Good ratings are appreciated!</string>
     <string name="sure">Sure!</string>
     <string name="no_thanks">No thanks</string>
-    <string name="defaultSshPort" translatable="false">22</string>
-    <string name="welcome">Welcome</string>
-    <string name="welcome_intro">Welcome to Cabinet! Cabinet is a simplistic file manager designed to be aesthetically
-        pleasing, and just work how a file manager should.\n\nTake a look at this file:</string>
-    <string name="welcome_conclusion">Try tapping the preview image or the 3-dot icon. Tapping the preview image selects the file for batch actions, this can also be done by tapping and holding files. The 3-dot icon shows a popup menu with individual file options.\n\nCabinet
-        has other various features, such as remote access to servers via SFTP that you can find by exploring. Thanks for trying out Cabinet!</string>
-    <string name="file_sub_title">Android Logo.png</string>
-    <string name="file_stub_content">image/png</string>
-    <string name="file_stub_size">15 KB</string>
-    <string name="lets_go">Let\'s Go!</string>
-    <string name="zip">Zip</string>
-    <string name="unzip">Unzip</string>
-    <string name="zipping">Zipping…</string>
-    <string name="selectAll">Select All</string>
-    <string name="unzipping">Unzipping…</string>
-    <string name="failed_unzip_file">Failed to unzip this file: %1$s</string>
-    <string name="failed_zip_files">Failed to zip file(s): %1$s</string>
 
-    <string name="translucent_statusbar">Translucent Status Bar</string>
-    <string name="translucent_navbar">Translucent Nav Bar</string>
-    <string name="translucent_statusbar_desc">Translucent (same color as action bar) status bar on KitKat and above.</string>
-    <string name="translucent_navbar_desc">Translucent navigation bar on KitKat and above.</string>
-
-    <string name="about_body"><![CDATA[
-        A minimalist, intuitive, beautiful file manager for Android 4.1 and above.<br/><br/>
-        Designed by <b>Aidan Follestad</b>.<br/>
-        <a href=\'http://aidanfollestad.com\'>Website</a>&nbsp;&nbsp;
-        <a href=\'https://twitter.com/afollestad\'>Twitter</a>&nbsp;&nbsp;
-        <a href=\'https://google.com/+AidanFollestad\'>Google+</a>&nbsp;&nbsp;
-        <a href=\'https://github.com/afollestad\'>GitHub</a>&nbsp;&nbsp;
-        <a href=\'https://www.linkedin.com/in/afollestad\'>LinkedIn</a>
-    ]]></string>
-    <string name="app_name_and_version" translatable="false"><![CDATA[
-        <b>Cabinet</b>&nbsp;<font color="#888888">v%1$s</font>
-    ]]></string>
-
+    <!-- Misc. arrays -->
     <string-array name="new_options">
         <item>Folder</item>
         <item>Remote Connection…</item>
@@ -163,23 +167,34 @@
         <item>Other</item>
     </string-array>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="share">Share</string>
-    <string name="no_apps_for_sharing">No apps are available for sharing this type of file</string>
-    <string name="iconpress_hint">You can tap a file\'s icon to quickly select it!</string>
-    <string name="drawer_longpress_hint">Tip: long press pinned shortcuts to remove them!</string>
-    <string name="about">About</string>
-    <string name="about_desc">About the app and its designer.</string>
+    <!-- Settings -->
     <string name="info">Info</string>
     <string name="files">Files</string>
+    <string name="show_hidden_files">Show Hidden Files</string>
+    <string name="about">About</string>
+    <string name="about_desc">About the app and its designer.</string>
     <string name="show_hidden_files_desc">Toggle whether or not Cabinet will show hidden files.</string>
     <string name="ui">UI</string>
     <string name="settings">Settings</string>
     <string name="translucentstatusbar_disabled">You cannot change this on Android L.</string>
-    <string name="translucency_not_supported">Transluency is not supported on this version of Android.</string>
+    <string name="translucency_not_supported">Translucency is not supported on this version of Android.</string>
+    <string name="translucent_statusbar">Translucent Status Bar</string>
+    <string name="translucent_navbar">Translucent Nav Bar</string>
+    <string name="translucent_statusbar_desc">Translucent (same color as action bar) status bar on KitKat and above.</string>
+    <string name="translucent_navbar_desc">Translucent navigation bar on KitKat and above.</string>
 
-    <string name="sort_modified">Last modified</string>
-    <string name="modified_x">Modified %1$s</string>
+    <!-- About dialog -->
+    <string name="about_body"><![CDATA[
+        A minimalist, intuitive, beautiful file manager for Android 4.1 and above.<br/><br/>
+        Designed by <b>Aidan Follestad</b>.<br/>
+        <a href=\'http://aidanfollestad.com\'>Website</a>&nbsp;&nbsp;
+        <a href=\'https://twitter.com/afollestad\'>Twitter</a>&nbsp;&nbsp;
+        <a href=\'https://google.com/+AidanFollestad\'>Google+</a>&nbsp;&nbsp;
+        <a href=\'https://github.com/afollestad\'>GitHub</a>&nbsp;&nbsp;
+        <a href=\'https://www.linkedin.com/in/afollestad\'>LinkedIn</a>
+    ]]></string>
+    <string name="app_name_and_version" translatable="false"><![CDATA[
+        <b>Cabinet</b>&nbsp;<font color="#888888">v%1$s</font>
+    ]]></string>
 
 </resources>
