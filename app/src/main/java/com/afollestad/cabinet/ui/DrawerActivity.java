@@ -59,7 +59,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         // TODO change condition for Material
         boolean status = ThemeUtils.isTranslucentStatusbar(context);
         boolean nav = ThemeUtils.isTranslucentNavbar(context);
-        if (Build.VERSION.SDK_INT != Build.VERSION_CODES.KITKAT || (!status && !nav))
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT || (!status && !nav))
             return;
         SystemBarTintManager tintManager = new SystemBarTintManager(context);
         SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
