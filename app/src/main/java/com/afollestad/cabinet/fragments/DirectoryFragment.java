@@ -599,7 +599,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         if (v != null) {
             BaseFileCab cab = ((DrawerActivity) getActivity()).getFileCab();
             if (cab != null) cab.invalidateFab();
-            ((FloatingActionButton) v.findViewById(R.id.fab)).setDrawable(getResources().getDrawable(
+            fab.setDrawable(getResources().getDrawable(
                     pasteMode ? R.drawable.ic_paste : R.drawable.ic_add));
         }
     }
