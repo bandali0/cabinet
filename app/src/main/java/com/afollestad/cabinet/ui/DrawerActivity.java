@@ -56,7 +56,6 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     }
 
     public static void setupTranslucentPadding(Activity context, View view) {
-        // TODO change condition for Material
         boolean status = ThemeUtils.isTranslucentStatusbar(context);
         boolean nav = ThemeUtils.isTranslucentNavbar(context);
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT || (!status && !nav))
