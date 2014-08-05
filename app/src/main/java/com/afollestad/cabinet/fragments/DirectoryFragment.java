@@ -383,6 +383,8 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         }));
         mRecyclerView.setClipToPadding(false);
         DrawerActivity.setupTranslucentPadding(getActivity(), mRecyclerView);
+        DrawerActivity.setupTranslucentPadding(getActivity(), view.findViewById(android.R.id.empty));
+        DrawerActivity.setupTranslucentPadding(getActivity(), view.findViewById(android.R.id.progress));
 
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
