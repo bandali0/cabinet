@@ -1,10 +1,12 @@
 package com.afollestad.cabinet.cab;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.cab.base.BaseFileCab;
@@ -104,6 +106,11 @@ public class MainCab extends BaseFileCab {
             for (File fi : getFiles())
                 files.add(Uri.fromFile(fi.toJavaFile()));
             intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, files);
+            try {
+                getContext().startActivity(intent);
+            } catch (ActivityNotFoundException e) {
+                Toast.makeText(getContext(), R.string.no_apps_for_sharing, Toast.LENGTH_SHORT).show();
+            }
         } else if (menuItem.getItemId() == R.id.zip) {
             if (menuItem.getTitle().toString().equals(getContext().getString(R.string.unzip))) {
                 Unzipper.unzip(getFragment(), getFiles(), new Zipper.ZipCallback() {
