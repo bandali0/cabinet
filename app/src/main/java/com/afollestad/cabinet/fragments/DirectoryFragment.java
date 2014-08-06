@@ -214,16 +214,16 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         return inflater.inflate(R.layout.fragment_recyclerview, null);
     }
 
-    private void showNewFolderDialog() {
-        Utils.showInputDialog(getActivity(), R.string.new_folder, R.string.untitled, null,
+    private void showNewFolderDialog(final Activity context) {
+        Utils.showInputDialog(context, R.string.new_folder, R.string.untitled, null,
                 new Utils.InputCallback() {
                     @Override
                     public void onInput(String newName) {
                         if (newName.isEmpty())
                             newName = getString(R.string.untitled);
                         final File dir = mDirectory.isRemote() ?
-                                new CloudFile(getActivity(), (CloudFile) mDirectory, newName, true) :
-                                new LocalFile(getActivity(), mDirectory, newName);
+                                new CloudFile(context, (CloudFile) mDirectory, newName, true) :
+                                new LocalFile(context, mDirectory, newName);
                         dir.exists(new File.BooleanCallback() {
                             @Override
                             public void onComplete(boolean result) {
@@ -244,19 +244,19 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 
                                                 @Override
                                                 public void onError(Exception e) {
-                                                    Utils.showErrorDialog(getActivity(), e.getMessage());
+                                                    Utils.showErrorDialog(context, e.getMessage());
                                                 }
                                             });
                                         }
                                     });
                                 } else {
-                                    Utils.showErrorDialog(getActivity(), getString(R.string.directory_already_exists));
+                                    Utils.showErrorDialog(context, getString(R.string.directory_already_exists));
                                 }
                             }
 
                             @Override
                             public void onError(Exception e) {
-                                Utils.showErrorDialog(getActivity(), e.getMessage());
+                                Utils.showErrorDialog(context, e.getMessage());
                             }
                         });
                     }
@@ -270,15 +270,16 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             if (pasteMode) {
                 ((DrawerActivity) getActivity()).getFileCab().paste();
             } else {
+                final Activity context = getActivity();
                 CustomDialog.create(R.string.newStr, R.array.new_options, new CustomDialog.ClickListener() {
                     @Override
                     public void onPositive(int which) {
                         switch (which) {
                             case 0: // Folder
-                                showNewFolderDialog();
+                                showNewFolderDialog(context);
                                 break;
                             case 1: // Remote connection
-                                new RemoteConnectionDialog(getActivity()).show();
+                                new RemoteConnectionDialog(context).show();
                                 break;
                         }
                     }
