@@ -196,9 +196,9 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         processIntent(intent);
     }
 
-    private void displayInfoDialog() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+    public void checkMaterialAndRating() {
         // TODO comment out if for Material
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         if (!prefs.getBoolean("shown_material_dialog", false) && Build.VERSION.SDK_INT >= 20) {
             CustomDialog.create(R.string.material_version, getString(R.string.material_version_desc), R.string.yes, R.string.later, R.string.no, new CustomDialog.ClickListener() {
                 @Override
@@ -215,7 +215,12 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
                             .edit().putBoolean("shown_material_dialog", true).commit();
                 }
             }).show(getFragmentManager(), "MATERIAL_DIALOG");
-        } else if (!prefs.getBoolean("shown_rating_dialog", false)) {
+        } else checkRating();
+    }
+
+    private void checkRating() {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        if (!prefs.getBoolean("shown_rating_dialog", false)) {
             CustomDialog.create(R.string.rate, getString(R.string.rate_desc), R.string.sure, R.string.later, R.string.no_thanks, new CustomDialog.ClickListener() {
                 @Override
                 public void onPositive(int which) {
@@ -256,7 +261,6 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
             if (!PreferenceManager.getDefaultSharedPreferences(this).getBoolean("shown_welcome", false)) {
                 getFragmentManager().beginTransaction().replace(R.id.container, new WelcomeFragment()).commit();
             } else {
-                displayInfoDialog();
                 switchDirectory(null, true);
             }
         }
