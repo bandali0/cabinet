@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
@@ -186,21 +187,23 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         if (canShow && !searchMode) {
             assert search != null;
             SearchView searchView = (SearchView) search.getActionView();
-            View view = searchView.findViewById(searchView.getContext().getResources().getIdentifier("android:id/search_plate", null, null));
-            view.setBackgroundResource(R.drawable.cabinet_edit_text_holo_light);
-            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                @Override
-                public boolean onQueryTextSubmit(String query) {
-                    search.collapseActionView();
-                    ((DrawerActivity) getActivity()).search(mDirectory, query);
-                    return false;
-                }
+            if (Build.VERSION.SDK_INT < 20) {
+                View view = searchView.findViewById(searchView.getContext().getResources().getIdentifier("android:id/search_plate", null, null));
+                view.setBackgroundResource(R.drawable.cabinet_edit_text_holo_light);
+                searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        search.collapseActionView();
+                        ((DrawerActivity) getActivity()).search(mDirectory, query);
+                        return false;
+                    }
 
-                @Override
-                public boolean onQueryTextChange(String newText) {
-                    return false;
-                }
-            });
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        return false;
+                    }
+                });
+            }
             searchView.setQueryHint(getString(R.string.search_files));
         } else search.setVisible(false);
     }

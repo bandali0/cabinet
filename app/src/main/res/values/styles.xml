@@ -46,6 +46,7 @@
 
     <!-- this style is only referenced in a Light.DarkActionBar based theme -->
     <style name="Theme.Cabinet.Widget" parent="@android:style/Theme.Holo">
+        <item name="android:textColorHint">@color/search_view_hint</item>
         <item name="android:popupMenuStyle">@style/PopupMenu.Cabinet</item>
         <item name="android:checkboxStyle">@style/CheckBoxCabinetDark</item>
         <item name="android:radioButtonStyle">@style/RadioButtonCabinetDark</item>
