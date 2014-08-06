@@ -14,7 +14,8 @@
         android:paddingTop="24dp"
         android:paddingBottom="6dp"
         android:paddingLeft="24dp"
-        android:paddingRight="24dp" />
+        android:paddingRight="24dp"
+        android:textColor="#1E1E1E" />
 
     <ScrollView
         android:layout_width="match_parent"
