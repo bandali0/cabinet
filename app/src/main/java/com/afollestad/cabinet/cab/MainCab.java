@@ -1,5 +1,7 @@
 package com.afollestad.cabinet.cab;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +14,7 @@ import com.afollestad.cabinet.sftp.SftpClient;
 import com.afollestad.cabinet.zip.Unzipper;
 import com.afollestad.cabinet.zip.Zipper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainCab extends BaseFileCab {
@@ -44,12 +47,15 @@ public class MainCab extends BaseFileCab {
     @Override
     public boolean onPrepareActionMode(ActionMode actionMode, Menu menu) {
         boolean showUnzip = true;
+        boolean showShare = true;
         for (File fi : getFiles()) {
-            if (!fi.getExtension().equals("zip")) {
+            if (fi.isDirectory()) showShare = false;
+            else if (!fi.getExtension().equals("zip")) {
                 showUnzip = false;
             }
         }
         menu.findItem(R.id.zip).setTitle(showUnzip ? R.string.unzip : R.string.zip);
+        menu.findItem(R.id.share).setVisible(showShare);
         return super.onPrepareActionMode(actionMode, menu);
     }
 
@@ -83,6 +89,21 @@ public class MainCab extends BaseFileCab {
             addFiles(newSelected);
             invalidate();
             return true;
+        } else if (menuItem.getItemId() == R.id.share) {
+            Intent intent = new Intent().setAction(Intent.ACTION_SEND_MULTIPLE);
+            String mime = null;
+            for (File fi : getFiles()) {
+                if (mime == null) mime = fi.getMimeType();
+                else if (!fi.getMimeType().equals(mime)) {
+                    mime = "*/*";
+                    break;
+                }
+            }
+            intent.setType(mime);
+            ArrayList<Uri> files = new ArrayList<Uri>();
+            for (File fi : getFiles())
+                files.add(Uri.fromFile(fi.toJavaFile()));
+            intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, files);
         } else if (menuItem.getItemId() == R.id.zip) {
             if (menuItem.getTitle().toString().equals(getContext().getString(R.string.unzip))) {
                 Unzipper.unzip(getFragment(), getFiles(), new Zipper.ZipCallback() {

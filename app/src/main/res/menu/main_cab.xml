@@ -22,6 +22,9 @@
         android:icon="@drawable/ic_selectall"
         android:showAsAction="ifRoom" />
     <item
+        android:id="@+id/share"
+        android:title="@string/share" />
+    <item
         android:id="@+id/zip"
         android:title="@string/zip" />
 
