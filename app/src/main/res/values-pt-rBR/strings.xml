@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name" translatable="false">Cabinet</string>
+
+    <!-- Welcome screen -->
+    <string name="welcome">Bem-Vindo</string>
+    <string name="welcome_intro">Bem-Vindo ao Cabinet! Cabinet é minimalista gerenciador de arquivos desenhado para ser esteticamente agradável, e que funciona como um gerenciador de arquivos deve funcionar.\n\nDê uma olhada neste arquivo:</string>
+    <string name="welcome_conclusion">Experimente tocar na imagem de pré-visualização ou no ícone de 3 pontos. Tocar na imagem de visualização seleciona o arquivo para ações em lote, isto também pode ser feito tocando e segurando arquivos. O ícone de 3 pontos mostra um menu com opções individuais do arquivo.\n\nCabinet
+        tem outros vários recursos, como acesso remoto a servidores via SFTP que você pode encontrar explorando. Obrigado por experimentar o Cabinet!</string>
+    <string name="file_sub_title">Android Logo.png</string>
+    <string name="file_stub_content">image/png</string>
+    <string name="file_stub_size">15 KB</string>
+    <string name="lets_go">Começar!</string>
+
+    <!-- File actions-->
+    <string name="open_as">Abrir Como…</string>
+    <string name="pin">Fixar</string>
+    <string name="copy">Copiar</string>
+    <string name="cut">Cortar</string>
+    <string name="rename">Renomear</string>
+    <string name="delete">Deletar</string>
+    <string name="paste">Colar</string>
+    <string name="share">Compartilhar</string>
+    <string name="zip">Compactar</string>
+    <string name="unzip">Descompactar</string>
+    <string name="selectAll">Selecionar Todos</string>
+    <string name="details">Detalhes</string>
+
+    <!-- Misc. -->
+    <string name="no_files">Sem arquivos</string>
+    <string name="storage">Armazenamento</string>
+    <string name="root">Raiz</string>
+    <string name="directory">Diretório</string>
+    <string name="unknown">Desconhecido</string>
+    <string name="go_up">Ir para cima</string>
+    <string name="press_back_to_exit">Pressione voltar novamente para sair…</string>
+    <string name="x_files">%1$d arquivos</string>
+    <string name="no_x_files">Sem %1$s arquivos</string>
+    <string name="done">Feito</string>
+    <string name="remove_shortcut">Remover Atalho</string>
+    <string name="confirm_remove_shortcut">Tem certeza que deseja remover o atalho para %1$s?</string>
+    <string name="sort_modified">Último modificado</string>
+    <string name="modified_x">Modificado %1$s</string>
+    <string name="iconpress_hint">Você pode tocar em um ícone de um arquivo(s) para selecioná-lo rapidamente!</string>
+    <string name="drawer_longpress_hint">Dica: segure atalhos fixados para removê-los!</string>
+    <string name="navigation_drawer_open">Abrir gaveta de navegação</string>
+    <string name="navigation_drawer_close">Fechar gaveta de navegação</string>
+    <string name="new_folder">Nova Pasta</string>
+    <string name="created_folder">Pasta criada %1$s</string>
+    <string name="untitled">Sem Título</string>
+    <string name="renamed_to">Renomeado para %1$s</string>
+    <string name="moved_to">Movido para %1$s</string>
+    <string name="copied_to">Copiado para %1$s</string>
+    <string name="no">Não</string>
+    <string name="yes">Sim</string>
+    <string name="newStr">Novo</string>
+    <string name="search">Pesquisa</string>
+    <string name="confirm_delete">Tem certeza que deseja deletar %1$s?</string>
+    <string name="confirm_delete_xfiles">Tem certeza que deseja deletar %1$d arquivos?</string>
+	<string name="unavailable">Inválido</string>
+
+    <!-- Sort options -->
+    <string name="sort_by">Ordenar por</string>
+    <string name="sort_name_folderstop">Nome, pastas primeiro</string>
+    <string name="sort_name">Nome</string>
+    <string name="sort_extension">Extensão</string>
+    <string name="sort_size_lowhigh">Tamanho, crescente</string>
+    <string name="sort_size_highlow">Tamanho, decrescente</string>
+
+    <!-- SFTP stuff -->
+    <string name="new_remote_connection">Nova Conexão Remota</string>
+    <string name="network_service_label">Serviço de Rede do Cabinet</string>
+    <string name="connection_notification_content">Conectado ao %1$s</string>
+    <string name="cabinet_sftp">Cabinet SFTP</string>
+    <string name="disconnect">Desconectar</string>
+    <string name="host">Host</string>
+    <string name="port">Port</string>
+    <string name="username">Nome de usuário</string>
+    <string name="password">Senha</string>
+    <string name="test_connection">Testar Conexão</string>
+    <string name="connection_successful">Conectado com sucesso!</string>
+    <string name="disconnect_promp">Deseja desconectar de %1$s?</string>
+    <string name="uploaded_to">Transferido para %1$s</string>
+    <string name="downloaded_to">Baixado para %1$s</string>
+    <string name="defaultSshPort" translatable="false">22</string>
+
+    <!-- Status messages -->
+    <string name="connecting">Conectando…</string>
+    <string name="downloading">Baixando…</string>
+    <string name="deleting">Deletando…</string>
+    <string name="making_folder">Criando Pasta…</string>
+    <string name="renaming">Renomeando…</string>
+    <string name="unzipping">Descompactando…</string>
+    <string name="zipping">Compactando…</string>
+    <string name="moving">Movendo…</string>
+    <string name="uploading">Transferindo…</string>
+    <string name="copying">Copiando…</string>
+
+    <!-- Error messages -->
+    <string name="failed_delete_file">Falha ao deletar esse arquivo: %1$s</string>
+    <string name="failed_make_directory">Falha ao criar uma nova pasta: %1$s</string>
+    <string name="failed_rename_file">Falha ao renomear/mover esse arquivo: %1$s</string>
+    <string name="failed_unzip_file">Falha ao descompactar esse arquivo: %1$s</string>
+    <string name="failed_zip_files">Falha ao compactar o arquivo(s): %1$s</string>
+    <string name="error">Erro</string>
+    <string name="failed_download_file">Ocorreu um erro na transferência desse arquivo: %1$s</string>
+    <string name="failed_connect_server">Falha na conexão ao servidor: %1$s</string>
+    <string name="activity_not_found">Não foi encontrado nenhum aplicativo para abrir esse arquivo</string>
+    <string name="failed_upload_file">Falha ao baixar esse arquivo: %1$s</string>
+    <string name="failed_copy_file">Falha ao copiar esse arquivo: %1$s</string>
+    <string name="no_apps_for_sharing">Não existem aplicativos disponíveis para compartilhar esse tipo de arquivo</string>
+    <string name="directory_already_exists">O Diretório já existe</string>
+
+    <!-- Contextual action bar titles -->
+    <string name="copy_x">
+<![CDATA[
+        <b>Copy:</b>&nbsp;&nbsp;%1$s
+    ]]>
+    </string>
+    <string name="cut_x">
+<![CDATA[
+        <b>Cut:</b>&nbsp;&nbsp;%1$s
+    ]]>
+    </string>
+    <string name="copy_xfiles">
+<![CDATA[
+        <b>Copy:</b>&nbsp;&nbsp;%1$d files
+    ]]>
+    </string>
+    <string name="cut_xfiles">
+<![CDATA[
+        <b>Cut:</b>&nbsp;&nbsp;%1$d files
+    ]]>
+    </string>
+    <string name="search_files">Pesquisar Arquivos…</string>
+    <string name="search_x">
+<![CDATA[
+        <b>Search:</b>&nbsp;%1$s
+    ]]>
+    </string>
+
+    <!-- Donation -->
+    <string name="donate">Doar</string>
+    <string name="donation1" translatable="false">$0.99</string>
+    <string name="donation2" translatable="false">$5.00</string>
+    <string name="donation3" translatable="false">$10.00</string>
+    <string name="donation4" translatable="false">$20.00</string>
+    <string name="thank_you">Muito Obrigado!</string>
+
+    <!-- Rate dialog -->
+    <string name="rate">Classificar</string>
+    <string name="later">Mais Tarde</string>
+    <string name="rate_desc">Deseja classificar o Cabinet no Google Play? Boas classificações são apreciadas!</string>
+    <string name="sure">Claro!</string>
+    <string name="no_thanks">Não, obrigado</string>
+
+    <!-- Misc. arrays -->
+    <string-array name="new_options">
+        <item>Pasta</item>
+        <item>Conexão Remota…</item>
+    </string-array>
+    <string-array name="open_as">
+        <item>Texto</item>
+        <item>Imagem</item>
+        <item>Áudio</item>
+        <item>Vídeo</item>
+        <item>Outro</item>
+    </string-array>
+
+    <!-- Settings -->
+    <string name="info">Informação</string>
+    <string name="files">Arquivos</string>
+    <string name="show_hidden_files">Mostrar Arquivos Ocultos</string>
+    <string name="about">Sobre</string>
+    <string name="about_desc">Sobre o aplicativo e o seu designer.</string>
+    <string name="show_hidden_files_desc">Altere para o Cabinet mostrar ou não mostrar arquivos ocultos.</string>
+    <string name="ui">Interface</string>
+    <string name="settings">Configurações</string>
+    <string name="translucentstatusbar_disabled">Você não pode alterar isso no Android L.</string>
+    <string name="translucency_not_supported">Translucidez não é suportada nesta versão do Android.</string>
+    <string name="translucent_statusbar">Barra de Status Translúcida</string>
+    <string name="translucent_navbar">Barra de Navegação Translúcida</string>
+    <string name="translucent_statusbar_desc">Barra de status translúcida (mesma cor da barra de ação) somente para KitKat ou acima.</string>
+    <string name="translucent_navbar_desc">Barra de navegação translúcida para KitKat ou acima.</string>
+
+    <!-- About dialog -->
+    <string name="about_body"><![CDATA[
+        Um bonito, minimalista e intuitivo gerenciador de arquivos para Android 4.1 ou acima.<br/><br/>
+        Design por <b>Aidan Follestad</b>.<br/>
+        <a href=\'http://aidanfollestad.com\'>Website</a>&nbsp;&nbsp;
+        <a href=\'https://twitter.com/afollestad\'>Twitter</a>&nbsp;&nbsp;
+        <a href=\'https://google.com/+AidanFollestad\'>Google+</a>&nbsp;&nbsp;
+        <a href=\'https://github.com/afollestad\'>GitHub</a>&nbsp;&nbsp;
+        <a href=\'https://www.linkedin.com/in/afollestad\'>LinkedIn</a>
+    ]]></string>
+    <string name="app_name_and_version" translatable="false"><![CDATA[
+        <b>Cabinet</b>&nbsp;<font color="#888888">v%1$s</font>
+    ]]></string>
+
+    <!-- Details dialog -->
+    <string name="details_body"><![CDATA[
+        <b>Caminho:</b>&nbsp;%1$s<br/>
+        <b>Tamanho:</b>&nbsp;%2$s<br/>
+        <b>Permissões:</b>&nbsp;%3$s<br/>
+    ]]></string>
+
+</resources>
