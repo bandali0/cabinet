@@ -90,14 +90,14 @@ public class Utils {
     }
 
     public static void showConfirmDialog(Activity context, int title, int message, String replacement, final CustomDialog.ClickListener callback) {
-        CustomDialog.create(title, context.getString(message, replacement), R.string.yes, 0, R.string.no, callback);
+        CustomDialog.create(title, context.getString(message, replacement), R.string.yes, 0, R.string.no, callback).show(context.getFragmentManager(), "CONFIRM");
     }
 
     public static void showErrorDialog(final Activity context, final int message, final Exception e) {
         context.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                CustomDialog.create(R.string.error, context.getString(message, e.getMessage()), null);
+                CustomDialog.create(R.string.error, context.getString(message, e.getMessage()), null).show(context.getFragmentManager(), "ERROR");
             }
         });
     }
@@ -106,7 +106,7 @@ public class Utils {
         context.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                CustomDialog.create(R.string.error, message, null);
+                CustomDialog.create(R.string.error, message, null).show(context.getFragmentManager(), "ERROR");
             }
         });
     }
