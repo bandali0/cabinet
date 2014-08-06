@@ -75,7 +75,6 @@
     <string name="disconnect_prompt">¿Quieres desconectarte de %1$s?</string>
     <string name="uploaded_to">Subido a %1$s</string>
     <string name="downloaded_to">Descargado a %1$s</string>
-    <string name="defaultSshPort" translatable="false">22</string>
     <!-- Status messages -->
     <string name="connecting">Conectando…</string>
     <string name="downloading">Descargando…</string>
@@ -164,9 +163,6 @@
         <a href=\'https://google.com/+AidanFollestad\'>Google+</a>&nbsp;&nbsp;
         <a href=\'https://github.com/afollestad\'>GitHub</a>&nbsp;&nbsp;
         <a href=\'https://www.linkedin.com/in/afollestad\'>LinkedIn</a>
-    ]]></string>
-    <string name="app_name_and_version" translatable="false"><![CDATA[
-        <b>Cabinet</b>&nbsp;<font color="#888888">v%1$s</font>
     ]]></string>
     <!-- Details dialog -->
     <string name="details_body_file"><![CDATA[
