@@ -30,8 +30,8 @@ public class MainCab extends BaseFileCab {
     }
 
     @Override
-    public boolean canPaste() {
-        return false;
+    public PasteMode canPaste() {
+        return PasteMode.NOT_AVAILABLE;
     }
 
     @Override
@@ -66,12 +66,12 @@ public class MainCab extends BaseFileCab {
         if (menuItem.getItemId() == R.id.copy) {
             getContext().getFileCab().overrideDestroy = true;
             getContext().setFileCab((BaseFileCab) new CopyCab()
-                    .setFragment(getFragment()).setFiles(getFiles()).start());
+                    .setFragment(getFragment()).setFiles(getFiles()).invalidateFab().start());
             return super.onActionItemClicked(actionMode, menuItem);
         } else if (menuItem.getItemId() == R.id.cut) {
             getContext().getFileCab().overrideDestroy = true;
             getContext().setFileCab((BaseFileCab) new CutCab()
-                    .setFragment(getFragment()).setFiles(getFiles()).start());
+                    .setFragment(getFragment()).setFiles(getFiles()).invalidateFab().start());
             return super.onActionItemClicked(actionMode, menuItem);
         } else if (menuItem.getItemId() == R.id.delete) {
             CustomDialog.create(R.string.delete, getFiles().size() == 1 ?

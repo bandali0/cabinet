@@ -41,7 +41,7 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
 public class DrawerActivity extends Activity implements BillingProcessor.IBillingHandler {
 
     public interface FabListener {
-        public abstract void onFabPressed(boolean pasteMode);
+        public abstract void onFabPressed(BaseFileCab.PasteMode pasteMode);
     }
 
     private BillingProcessor mBP;
@@ -56,7 +56,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     private float fabRight;
     private boolean fabShown = true;
     private FabListener mFabListener;
-    private boolean fabPasteMode;
+    private BaseFileCab.PasteMode fabPasteMode = BaseFileCab.PasteMode.DISABLED;
     private boolean fabDisabled;
 
     public static void setupTransparentTints(Activity context) {
@@ -145,11 +145,11 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         this.mFabListener = mFabListener;
     }
 
-    public void setPasteMode(boolean pasteMode) {
+    public void setPasteMode(BaseFileCab.PasteMode pasteMode) {
         Log.v("Fab", "DrawerActivity.setPasteMode(" + pasteMode + ")");
         fabPasteMode = pasteMode;
         if (getFileCab() != null) getFileCab().invalidateFab();
-        fab.setDrawable(getResources().getDrawable(pasteMode ? R.drawable.ic_paste : R.drawable.ic_add));
+        fab.setDrawable(getResources().getDrawable(pasteMode == BaseFileCab.PasteMode.ENABLED ? R.drawable.ic_paste : R.drawable.ic_add));
     }
 
     @Override
@@ -172,7 +172,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         fab.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                Toast.makeText(DrawerActivity.this, fabPasteMode ? R.string.paste : R.string.newStr, Toast.LENGTH_SHORT).show();
+                Toast.makeText(DrawerActivity.this, fabPasteMode == BaseFileCab.PasteMode.ENABLED ? R.string.paste : R.string.newStr, Toast.LENGTH_SHORT).show();
                 return false;
             }
         });

@@ -1,5 +1,6 @@
 package com.afollestad.cabinet.cab.base;
 
+import android.util.Log;
 import android.view.ActionMode;
 
 import com.afollestad.cabinet.file.base.File;
@@ -9,6 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BaseFileCab extends BaseCab {
+
+    public enum PasteMode {
+        ENABLED,
+        NOT_AVAILABLE,
+        DISABLED
+    }
 
     public BaseFileCab() {
         super();
@@ -21,20 +28,29 @@ public abstract class BaseFileCab extends BaseCab {
 
     public abstract void paste();
 
-    public abstract boolean canPaste();
+    public abstract PasteMode canPaste();
 
     public BaseFileCab invalidateFab() {
+        Log.v("Fab", "invalidateFab()");
         boolean hide = false;
-        if (isActive() && !canPaste()) {
-            hide = true;
-        } else {
-            for (File fi : getFiles()) {
-                if (fi.getParent().equals(getDirectory())) {
-                    hide = true;
-                    break;
+        Log.v("Fab", "Mode: " + canPaste());
+        if (canPaste() != PasteMode.NOT_AVAILABLE) {
+            if (isActive() && canPaste() == PasteMode.DISABLED) {
+                Log.v("Fab", "Can't paste");
+            } else {
+                if (getFiles().size() == 0) Log.v("Fab", "No files are in the CAB");
+                for (File fi : getFiles()) {
+                    Log.v("Fab", "Checking if " + fi.getParent().getPath() + " == " + getDirectory().getPath());
+                    if (fi.getParent().equals(getDirectory())) {
+                        Log.v("Fab", "They are equal");
+                        hide = true;
+                        break;
+                    }
                 }
             }
-        }
+            if (hide) Log.v("Fab", "Fab is disabled");
+            else Log.v("Fab", "Fab is not disabled");
+        } else Log.v("Fab", "Paste mode not available");
         getContext().disableFab(hide);
         return this;
     }
@@ -126,7 +142,7 @@ public abstract class BaseFileCab extends BaseCab {
         if (!overrideDestroy) {
             clearFiles();
             getFragment().mAdapter.resetChecked();
-            if (canPaste()) getContext().setPasteMode(false);
+            if (canPaste() == PasteMode.ENABLED) getContext().setPasteMode(PasteMode.DISABLED);
         }
         super.onDestroyActionMode(actionMode);
     }

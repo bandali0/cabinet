@@ -266,9 +266,9 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     }
 
     @Override
-    public void onFabPressed(boolean pasteMode) {
+    public void onFabPressed(BaseFileCab.PasteMode pasteMode) {
         if (getActivity() != null) {
-            if (pasteMode) {
+            if (pasteMode == BaseFileCab.PasteMode.ENABLED) {
                 ((DrawerActivity) getActivity()).getFileCab().paste();
             } else {
                 final Activity context = getActivity();

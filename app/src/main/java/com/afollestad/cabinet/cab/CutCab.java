@@ -71,8 +71,8 @@ public class CutCab extends BaseFileCab {
     }
 
     @Override
-    public boolean canPaste() {
-        return isActive();
+    public PasteMode canPaste() {
+        return isActive() ? PasteMode.ENABLED : PasteMode.DISABLED;
     }
 
     @Override

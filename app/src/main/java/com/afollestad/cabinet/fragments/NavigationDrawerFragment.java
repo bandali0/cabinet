@@ -168,7 +168,7 @@ public class NavigationDrawerFragment extends Fragment {
     }
 
     private void selectItem(int position) {
-        if (position < 0) position = 0;
+        if (position < 0) position = 1;
         mCurrentSelectedPosition = position;
         if (mRecyclerView != null) {
             mAdapter.setCheckedPos(position);
