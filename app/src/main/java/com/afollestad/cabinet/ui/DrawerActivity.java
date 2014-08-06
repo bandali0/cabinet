@@ -44,7 +44,6 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         public abstract void onFabPressed(boolean pasteMode);
     }
 
-    private NavigationDrawerFragment mNavigationDrawerFragment;
     private BillingProcessor mBP;
     private boolean canExit;
     private BaseFileCab mFileCab;
@@ -144,7 +143,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
 
-        mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.navigation_drawer);
+        NavigationDrawerFragment mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.navigation_drawer);
         mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
 
         fab = (FloatingActionButton) findViewById(R.id.fab);

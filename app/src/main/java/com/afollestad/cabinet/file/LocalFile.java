@@ -244,6 +244,7 @@ public class LocalFile extends File {
                             getContext().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
+                                    Toast.makeText(getContext(), getContext().getString(R.string.copied_to, dest.getPath()), Toast.LENGTH_SHORT).show();
                                     callback.onComplete(dest);
                                 }
                             });
@@ -263,6 +264,7 @@ public class LocalFile extends File {
                             getContext().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
+                                    Toast.makeText(getContext(), getContext().getString(R.string.copied_to, dest.getPath()), Toast.LENGTH_SHORT).show();
                                     callback.onComplete(result);
                                 }
                             });
