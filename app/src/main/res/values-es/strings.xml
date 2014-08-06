@@ -29,7 +29,7 @@
     <string name="go_up">Subir</string>
     <string name="press_back_to_exit">Presiona otra vez para salir</string>
     <string name="x_files">%1$d archivos</string>
-    <string name="x_filesdirs">%1$d archivos/directorios</string>
+    <string name="x_dirs">%1$d directorios</string>
     <string name="no_x_files">No %1$s archivos</string>
     <string name="done">Hecho</string>
     <string name="remove_shortcut">Eliminar acceso directo</string>
@@ -128,9 +128,7 @@
     <string name="no_thanks">No gracias</string>
     <!-- Misc. arrays -->
     <string-array name="new_options">
-        <!-- Misc. arrays -->
         <item>Carpeta</item>
-        <!-- Misc. arrays -->
         <item>Conección remota</item>
     </string-array>
     <string-array name="open_as">

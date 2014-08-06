@@ -37,7 +37,7 @@
     <string name="go_up">Go Up</string>
     <string name="press_back_to_exit">Press back again to exit…</string>
     <string name="x_files">%1$d files</string>
-    <string name="x_filesdirs">%1$d files/directories</string>
+    <string name="x_dirs">%1$d directories</string>
     <string name="no_x_files">No %1$s files</string>
     <string name="done">Done</string>
     <string name="remove_shortcut">Remove Shortcut</string>

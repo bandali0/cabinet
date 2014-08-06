@@ -28,7 +28,7 @@
     <string name="go_up">Ir para cima</string>
     <string name="press_back_to_exit">Pressione voltar novamente para sair…</string>
     <string name="x_files">%1$d ficheiros</string>
-    <string name="x_filesdirs">%1$d ficheiros/diretórios</string>
+    <string name="x_dirs">%1$d diretórios</string>
     <string name="no_x_files">Sem %1$s ficheiros</string>
     <string name="done">Concluído</string>
     <string name="remove_shortcut">Remover Atalho</string>
@@ -127,14 +127,10 @@
     <string name="no_thanks">Não, obrigado</string>
     <!-- Misc. arrays -->
     <string-array name="new_options">
-    <!-- Misc. arrays -->
         <item>Pasta</item>
-    <!-- Misc. arrays -->
         <item>Ligação Remota…</item>
     </string-array>
     <string-array name="open_as">
-    <!-- File actions-->
-        <item>Abrir Como…</item>
         <item>Texto</item>
         <item>Imagem</item>
         <item>Audio</item>
