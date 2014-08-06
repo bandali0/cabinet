@@ -24,7 +24,7 @@ public abstract class BaseFileCab extends BaseCab {
 
     public abstract boolean canPaste();
 
-    public void invalidateFab() {
+    public BaseFileCab invalidateFab() {
         Log.v("Fab", "invalidateFab()");
         boolean hide = false;
         if (!canPaste()) {
@@ -44,6 +44,7 @@ public abstract class BaseFileCab extends BaseCab {
         if (hide) Log.v("Fab", "Fab is disabled");
         else Log.v("Fab", "Fab is not disabled");
         getContext().disableFab(hide);
+        return this;
     }
 
     @Override
@@ -112,10 +113,7 @@ public abstract class BaseFileCab extends BaseCab {
     @Override
     public final void invalidate() {
         if (getFiles().size() == 0) finish();
-        else {
-            invalidateFab();
-            super.invalidate();
-        }
+        else super.invalidate();
     }
 
     public final File getDirectory() {

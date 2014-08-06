@@ -564,7 +564,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 if (shouldCreateCopy) {
                     if (cab != null) cab.overrideDestroy = true;
                     ((DrawerActivity) getActivity()).setFileCab((BaseFileCab) new CopyCab()
-                            .setFragment(this).setFile(file).start());
+                            .setFragment(this).setFile(file).invalidateFab().start());
                 } else cab.setFragment(this).addFile(file);
                 break;
             }
@@ -574,7 +574,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 if (shouldCreateCut) {
                     if (cab != null) cab.overrideDestroy = true;
                     ((DrawerActivity) getActivity()).setFileCab((BaseFileCab) new CutCab()
-                            .setFragment(this).setFile(file).start());
+                            .setFragment(this).setFile(file).invalidateFab().start());
                 } else cab.setFragment(this).addFile(file);
                 break;
             }
