@@ -33,9 +33,10 @@
     <string name="root">Raiz</string>
     <string name="directory">Diretório</string>
     <string name="unknown">Desconhecido</string>
-    <string name="go_up">Ir para cima</string>
+    <string name="go_up">Vá para cima</string>
     <string name="press_back_to_exit">Pressione voltar novamente para sair…</string>
     <string name="x_files">%1$d arquivos</string>
+    <string name="x_filesdirs">%1$d arquivos/diretórios</string>
     <string name="no_x_files">Sem %1$s arquivos</string>
     <string name="done">Feito</string>
     <string name="remove_shortcut">Remover Atalho</string>
@@ -47,7 +48,6 @@
     <string name="navigation_drawer_open">Abrir gaveta de navegação</string>
     <string name="navigation_drawer_close">Fechar gaveta de navegação</string>
     <string name="new_folder">Nova Pasta</string>
-    <string name="created_folder">Pasta criada %1$s</string>
     <string name="untitled">Sem Título</string>
     <string name="renamed_to">Renomeado para %1$s</string>
     <string name="moved_to">Movido para %1$s</string>
@@ -80,7 +80,7 @@
     <string name="password">Senha</string>
     <string name="test_connection">Testar Conexão</string>
     <string name="connection_successful">Conectado com sucesso!</string>
-    <string name="disconnect_prompt">Deseja desconectar de %1$s?</string>
+    <string name="disconnect_promp">Deseja desconectar de %1$s?</string>
     <string name="uploaded_to">Transferido para %1$s</string>
     <string name="downloaded_to">Baixado para %1$s</string>
     <string name="defaultSshPort" translatable="false">22</string>
@@ -115,33 +115,33 @@
     <!-- Contextual action bar titles -->
     <string name="copy_x">
 <![CDATA[
-        <b>Copy:</b>&nbsp;&nbsp;%1$s
+        <b>Copiar:</b>&nbsp;&nbsp;%1$s
     ]]>
     </string>
     <string name="cut_x">
 <![CDATA[
-        <b>Cut:</b>&nbsp;&nbsp;%1$s
+        <b>Cortar:</b>&nbsp;&nbsp;%1$s
     ]]>
     </string>
     <string name="copy_xfiles">
 <![CDATA[
-        <b>Copy:</b>&nbsp;&nbsp;%1$d files
+        <b>Copiar:</b>&nbsp;&nbsp;%1$d files
     ]]>
     </string>
     <string name="cut_xfiles">
 <![CDATA[
-        <b>Cut:</b>&nbsp;&nbsp;%1$d files
+        <b>Cortar:</b>&nbsp;&nbsp;%1$d files
     ]]>
     </string>
-    <string name="search_files">Pesquisar Arquivos…</string>
+    <string name="search_files">Pesquisando arquivos…</string>
     <string name="search_x">
 <![CDATA[
-        <b>Search:</b>&nbsp;%1$s
+        <b>Pesquisar:</b>&nbsp;%1$s
     ]]>
     </string>
 
     <!-- Donation -->
-    <string name="donate">Doar</string>
+      <string name="donate">Doar</string>
     <string name="donation1" translatable="false">$0.99</string>
     <string name="donation2" translatable="false">$5.00</string>
     <string name="donation3" translatable="false">$10.00</string>
@@ -199,10 +199,23 @@
     ]]></string>
 
     <!-- Details dialog -->
-    <string name="details_body"><![CDATA[
-        <b>Caminho:</b>&nbsp;%1$s<br/>
-        <b>Tamanho:</b>&nbsp;%2$s<br/>
-        <b>Permissões:</b>&nbsp;%3$s<br/>
+    <string name="details_title"><![CDATA[
+        <b>Detalhes</b>
     ]]></string>
+    <string name="details_body_file"><![CDATA[
+        <b>Nome:</b>&nbsp;&nbsp;%1$s<br/>
+        <b>Caminho:</b>&nbsp;&nbsp;%2$s<br/>
+        <b>Tamanho:</b>&nbsp;&nbsp;%3$s<br/>
+        <b>Modificado:</b>&nbsp;&nbsp;%4$s<br/>
+        <b>Permissões:</b>&nbsp;&nbsp;%5$s
+    ]]></string>
+    <string name="details_body_dir"><![CDATA[
+        <b>Nome:</b>&nbsp;&nbsp;%1$s<br/>
+        <b>Caminho:</b>&nbsp;&nbsp;%2$s<br/>
+        <b>Conteúdo:</b>&nbsp;&nbsp;%3$s<br/>
+        <b>Modificado:</b>&nbsp;&nbsp;%4$s
+    ]]></string>
+
+    <string name="loading">Carregando…</string>
 
 </resources>
