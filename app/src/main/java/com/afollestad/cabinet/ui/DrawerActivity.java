@@ -75,9 +75,9 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
             return;
         SystemBarTintManager tintManager = new SystemBarTintManager(context);
         SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
-        int top = status ? config.getPixelInsetTop(true) : 0;
+//        int top = status ? config.getPixelInsetTop(true) : 0;
         int bottom = nav ? config.getPixelInsetBottom() : 0;
-        view.setPadding(view.getPaddingLeft(), top, view.getPaddingRight(), view.getPaddingBottom() + bottom);
+        view.setPadding(view.getPaddingLeft(), config.getPixelInsetTop(true), view.getPaddingRight(), view.getPaddingBottom() + bottom);
     }
 
     public static void setupTranslucentBottomMargin(Activity context, View view) {

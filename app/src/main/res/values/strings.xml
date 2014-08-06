@@ -201,7 +201,7 @@
     ]]></string>
 
     <!-- Details dialog -->
-    <string name="details_title" translatable="false"><![CDATA[
+    <string name="details_title"><![CDATA[
         <b>Details</b>
     ]]></string>
     <string name="details_body_file"><![CDATA[
@@ -217,5 +217,6 @@
         <b>Contents:</b>&nbsp;&nbsp;%3$s<br/>
         <b>Modified:</b>&nbsp;&nbsp;%4$s
     ]]></string>
+    <string name="loading">Loading…</string>
 
 </resources>

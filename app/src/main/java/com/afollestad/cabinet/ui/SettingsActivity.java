@@ -6,7 +6,6 @@ import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.view.MenuItem;
-import android.widget.ListView;
 
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.fragments.AboutDialog;
@@ -24,6 +23,8 @@ public class SettingsActivity extends PreferenceActivity {
         mThemeUtils = new ThemeUtils(this);
         setTheme(mThemeUtils.getCurrent());
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.preference_activity_custom);
+
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
         addPreferencesFromResource(R.xml.settings);
@@ -67,10 +68,6 @@ public class SettingsActivity extends PreferenceActivity {
 //            translucentStatusbar.setSummary(R.string.translucentstatusbar_disabled);
 //        }
         // TODO toggle comment for else statement for Material
-
-        ListView list = (ListView)findViewById(android.R.id.list);
-        list.setClipToPadding(false);
-        DrawerActivity.setupTranslucentPadding(this, list);
     }
 
     @Override
