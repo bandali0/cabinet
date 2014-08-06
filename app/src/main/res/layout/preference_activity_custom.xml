@@ -33,8 +33,6 @@
         android:id="@+id/listContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
         android:paddingLeft="16dp"
         android:paddingRight="16dp">
 
@@ -43,7 +41,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:drawSelectorOnTop="false"
-            android:clipToPadding="false" />
+            android:clipToPadding="false"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
 
         <TextView
             android:id="@android:id/empty"
