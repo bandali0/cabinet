@@ -1,6 +1,5 @@
 package com.afollestad.cabinet.fragments;
 
-import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -53,7 +52,6 @@ import com.afollestad.cabinet.utils.Shortcuts;
 import com.afollestad.cabinet.utils.Utils;
 import com.afollestad.cabinet.zip.Unzipper;
 import com.afollestad.cabinet.zip.Zipper;
-import com.faizmalkani.floatingactionbutton.FloatingActionButton;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.io.FileFilter;
@@ -63,7 +61,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class DirectoryFragment extends Fragment implements FileAdapter.IconClickListener, FileAdapter.ItemClickListener, FileAdapter.MenuClickListener {
+public class DirectoryFragment extends Fragment implements FileAdapter.IconClickListener, FileAdapter.ItemClickListener, FileAdapter.MenuClickListener, DrawerActivity.FabListener {
 
     private final transient BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
@@ -80,10 +78,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     private File mDirectory;
     private String mQuery;
     public FileAdapter mAdapter;
-
     private boolean showHidden;
-    private boolean pasteMode;
-    private boolean disableFab;
     public int sorter;
 
     public File getDirectory() {
@@ -213,29 +208,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_recyclerview, null);
-        fab = (FloatingActionButton) view.findViewById(R.id.fab);
-        DrawerActivity.setupTranslucentBottomMargin(getActivity(), fab);
-
-        boolean searchMode = mQuery != null;
-        if (!searchMode) {
-            if (pasteMode) fab.setDrawable(getResources().getDrawable(R.drawable.ic_paste));
-            fab.setVisibility(fabShown ? View.VISIBLE : View.GONE);
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    onFabPressed();
-                }
-            });
-            fab.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View view) {
-                    Toast.makeText(getActivity(), pasteMode ? R.string.paste : R.string.newStr, Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-            });
-        } else fab.setVisibility(View.GONE);
-        return view;
+        return inflater.inflate(R.layout.fragment_recyclerview, null);
     }
 
     private void showNewFolderDialog() {
@@ -288,7 +261,8 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         );
     }
 
-    protected void onFabPressed() {
+    @Override
+    public void onFabPressed(boolean pasteMode) {
         if (pasteMode) {
             ((DrawerActivity) getActivity()).getFileCab().paste();
         } else {
@@ -310,54 +284,10 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         }
     }
 
-    private FloatingActionButton fab;
-    private boolean fabShown = true;
-
-    private float fabLeft() {
-        return ((DrawerActivity) getActivity()).fabLeft;
-    }
-
-    private float fabRight() {
-        return ((DrawerActivity) getActivity()).fabRight;
-    }
-
-    public void invalidateFabCoordinates() {
-        if (fabLeft() == 0) {
-            float translation = getResources().getDimension(R.dimen.fab_translation);
-            ((DrawerActivity) getActivity()).fabLeft = fab.getX();
-            ((DrawerActivity) getActivity()).fabRight = fab.getX() + translation;
-        }
-    }
-
-    public void disableFab(boolean hide) {
-        invalidateFabCoordinates();
-        disableFab = hide;
-        if (!hide) {
-            // Setup fab to show coming in animation
-            fabShown = false;
-            fab.setX(fabRight());
-        }
-        toggleFab(hide);
-    }
-
-    public void toggleFab(boolean hide) {
-        invalidateFabCoordinates();
-        if (hide) {
-            if (fabShown) {
-                ObjectAnimator outAnim = ObjectAnimator.ofFloat(fab, "x", fabLeft(), fabRight());
-                outAnim.setDuration(250);
-                outAnim.start();
-                fabShown = false;
-            }
-        } else {
-            if (!fabShown) {
-                if (fab.getX() != fabRight()) fab.setX(fabRight());
-                ObjectAnimator outAnim = ObjectAnimator.ofFloat(fab, "x", fabRight(), fabLeft());
-                outAnim.setDuration(250);
-                outAnim.start();
-                fabShown = true;
-            }
-        }
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        ((DrawerActivity) getActivity()).setFabListener(this);
     }
 
     @Override
@@ -372,15 +302,13 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 
             @Override
             public void onScrolled(int dx, int dy) {
-                if (!disableFab) {
-                    if (dy < 0 && !fabShown) {
-                        if (dy < -5) {
-                            toggleFab(false);
-                        }
-                    } else if (dy > 0 && fabShown) {
-                        if (dy > 10) {
-                            toggleFab(true);
-                        }
+                if (dy < 0) {
+                    if (dy < -5) {
+                        ((DrawerActivity) getActivity()).toggleFab(false);
+                    }
+                } else if (dy > 0) {
+                    if (dy > 10) {
+                        ((DrawerActivity) getActivity()).toggleFab(true);
                     }
                 }
             }
@@ -592,17 +520,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void setPasteMode(boolean pasteMode) {
-        this.pasteMode = pasteMode;
-        View v = getView();
-        if (v != null) {
-            BaseFileCab cab = ((DrawerActivity) getActivity()).getFileCab();
-            if (cab != null) cab.invalidateFab();
-            fab.setDrawable(getResources().getDrawable(
-                    pasteMode ? R.drawable.ic_paste : R.drawable.ic_add));
-        }
     }
 
     @Override

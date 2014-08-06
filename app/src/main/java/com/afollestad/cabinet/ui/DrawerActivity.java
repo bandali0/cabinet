@@ -1,5 +1,6 @@
 package com.afollestad.cabinet.ui;
 
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
@@ -34,9 +35,14 @@ import com.afollestad.cabinet.services.NetworkService;
 import com.afollestad.cabinet.utils.Shortcuts;
 import com.afollestad.cabinet.utils.ThemeUtils;
 import com.anjlab.android.iab.v3.BillingProcessor;
+import com.faizmalkani.floatingactionbutton.FloatingActionButton;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 public class DrawerActivity extends Activity implements BillingProcessor.IBillingHandler {
+
+    public interface FabListener {
+        public abstract void onFabPressed(boolean pasteMode);
+    }
 
     private NavigationDrawerFragment mNavigationDrawerFragment;
     private BillingProcessor mBP;
@@ -45,8 +51,14 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     private NetworkService mNetworkService;
     private CloudFile mRemoteSwitch;
     private ThemeUtils mThemeUtils;
-    public float fabLeft;
-    public float fabRight;
+
+    private FloatingActionButton fab;
+    private float fabLeft;
+    private float fabRight;
+    private boolean fabShown = true;
+    private FabListener mFabListener;
+    private boolean fabPasteMode;
+    private boolean fabDisabled;
 
     public static void setupTransparentTints(Activity context) {
         // TODO change condition for Material
@@ -87,6 +99,44 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         mFileCab = cab;
     }
 
+    public void toggleFab(boolean hide) {
+        if (fabLeft == 0) {
+            float translation = getResources().getDimension(R.dimen.fab_translation);
+            fabLeft = fab.getX();
+            fabRight = fab.getX() + translation;
+        }
+        if (hide) {
+            if (fabShown) {
+                ObjectAnimator outAnim = ObjectAnimator.ofFloat(fab, "x", fabLeft, fabRight);
+                outAnim.setDuration(250);
+                outAnim.start();
+                fabShown = false;
+            }
+        } else {
+            if (!fabShown && !fabDisabled) {
+                ObjectAnimator inAnim = ObjectAnimator.ofFloat(fab, "x", fabRight, fabLeft);
+                inAnim.setDuration(250);
+                inAnim.start();
+                fabShown = true;
+            }
+        }
+    }
+
+    public void disableFab(boolean disable) {
+        fabDisabled = disable;
+        toggleFab(disable);
+    }
+
+    public void setFabListener(FabListener mFabListener) {
+        this.mFabListener = mFabListener;
+    }
+
+    public void setPasteMode(boolean pasteMode) {
+        fabPasteMode = pasteMode;
+        if (getFileCab() != null) getFileCab().invalidateFab();
+        fab.setDrawable(getResources().getDrawable(pasteMode ? R.drawable.ic_paste : R.drawable.ic_add));
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mThemeUtils = new ThemeUtils(this);
@@ -94,14 +144,24 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
 
-        mNavigationDrawerFragment = (NavigationDrawerFragment)
-                getFragmentManager().findFragmentById(R.id.navigation_drawer);
+        mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.navigation_drawer);
+        mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
 
-        // Set up the drawer.
-        mNavigationDrawerFragment.setUp(
-                R.id.navigation_drawer,
-                (DrawerLayout) findViewById(R.id.drawer_layout));
-
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mFabListener != null) mFabListener.onFabPressed(fabPasteMode);
+            }
+        });
+        fab.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Toast.makeText(DrawerActivity.this, fabPasteMode ? R.string.paste : R.string.newStr, Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+        setupTranslucentBottomMargin(this, fab);
         setupTransparentTints(this);
 
         mBP = new BillingProcessor(this, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlPBB2hP/R0PrXtK8NPeDX7QV1fvk1hDxPVbIwRZLIgO5l/ZnAOAf8y9Bq57+eO5CD+ZVTgWcAVrS/QsiqDI/MwbfXcDydSkZLJoFofOFXRuSL7mX/jNwZBNtH0UrmcyFx1RqaHIe9KZFONBWLeLBmr47Hvs7dKshAto2Iy0v18kN48NqKxlWtj/PHwk8uIQ4YQeLYiXDCGhfBXYS861guEr3FFUnSLYtIpQ8CiGjwfU60+kjRMmXEGnmhle5lqzj6QeL6m2PNrkbJ0T9w2HM+bR7buHcD8e6tHl2Be6s/j7zn1Ypco/NCbqhtPgCnmLpeYm8EwwTnH4Yei7ACR7mXQIDAQAB", this);

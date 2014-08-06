@@ -10,7 +10,6 @@ import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.cab.base.BaseFileCab;
 import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.sftp.SftpClient;
-import com.afollestad.cabinet.ui.DrawerActivity;
 import com.afollestad.cabinet.zip.Unzipper;
 import com.afollestad.cabinet.zip.Zipper;
 
@@ -58,13 +57,13 @@ public class MainCab extends BaseFileCab {
     @Override
     public boolean onActionItemClicked(final ActionMode actionMode, final MenuItem menuItem) {
         if (menuItem.getItemId() == R.id.copy) {
-            ((DrawerActivity) getContext()).getFileCab().overrideDestroy = true;
-            ((DrawerActivity) getContext()).setFileCab((BaseFileCab) new CopyCab()
+            getContext().getFileCab().overrideDestroy = true;
+            getContext().setFileCab((BaseFileCab) new CopyCab()
                     .setFragment(getFragment()).setFiles(getFiles()).start());
             return super.onActionItemClicked(actionMode, menuItem);
         } else if (menuItem.getItemId() == R.id.cut) {
-            ((DrawerActivity) getContext()).getFileCab().overrideDestroy = true;
-            ((DrawerActivity) getContext()).setFileCab((BaseFileCab) new CutCab()
+            getContext().getFileCab().overrideDestroy = true;
+            getContext().setFileCab((BaseFileCab) new CutCab()
                     .setFragment(getFragment()).setFiles(getFiles()).start());
             return super.onActionItemClicked(actionMode, menuItem);
         } else if (menuItem.getItemId() == R.id.delete) {

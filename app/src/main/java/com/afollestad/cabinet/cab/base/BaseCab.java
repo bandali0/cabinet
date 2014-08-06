@@ -1,12 +1,11 @@
 package com.afollestad.cabinet.cab.base;
 
-import android.app.Activity;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.afollestad.cabinet.fragments.DirectoryFragment;
-
+import com.afollestad.cabinet.ui.DrawerActivity;
 
 public abstract class BaseCab implements ActionMode.Callback {
 
@@ -35,8 +34,8 @@ public abstract class BaseCab implements ActionMode.Callback {
         return mContext;
     }
 
-    public Activity getContext() {
-        return mContext.getActivity();
+    public DrawerActivity getContext() {
+        return (DrawerActivity) mContext.getActivity();
     }
 
     public abstract int getMenu();

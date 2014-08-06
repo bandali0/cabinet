@@ -34,14 +34,14 @@ public abstract class BaseFileCab extends BaseCab {
                 }
             }
         }
-        getFragment().disableFab(hide);
+        getContext().disableFab(hide);
     }
 
     @Override
     public BaseFileCab setFragment(DirectoryFragment fragment) {
         mDirectory = fragment.getDirectory();
         super.setFragment(fragment);
-        fragment.setPasteMode(canPaste());
+        getContext().setPasteMode(canPaste());
         return this;
     }
 
@@ -124,7 +124,7 @@ public abstract class BaseFileCab extends BaseCab {
         if (!overrideDestroy) {
             clearFiles();
             getFragment().mAdapter.resetChecked();
-            if (canPaste()) getFragment().setPasteMode(false);
+            if (canPaste()) getContext().setPasteMode(false);
         }
         super.onDestroyActionMode(actionMode);
     }
