@@ -203,7 +203,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
                 }
             }).show(getFragmentManager(), "MATERIAL_DIALOG");
         } else if (!prefs.getBoolean("shown_rating_dialog", false)) {
-            CustomDialog.create(R.string.rate, R.string.rate_desc, R.string.sure, R.string.later, R.string.no_thanks, new CustomDialog.ClickListener() {
+            CustomDialog.create(R.string.rate, getString(R.string.rate_desc), R.string.sure, R.string.later, R.string.no_thanks, new CustomDialog.ClickListener() {
                 @Override
                 public void onPositive(int which) {
                     PreferenceManager.getDefaultSharedPreferences(DrawerActivity.this)
