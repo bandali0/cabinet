@@ -80,7 +80,7 @@
     <string name="password">Senha</string>
     <string name="test_connection">Testar Conexão</string>
     <string name="connection_successful">Conectado com sucesso!</string>
-    <string name="disconnect_promp">Deseja desconectar de %1$s?</string>
+    <string name="disconnect_prompt">Deseja desconectar de %1$s?</string>
     <string name="uploaded_to">Transferido para %1$s</string>
     <string name="downloaded_to">Baixado para %1$s</string>
     <string name="defaultSshPort" translatable="false">22</string>

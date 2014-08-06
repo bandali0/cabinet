@@ -218,7 +218,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     private void displayDisconnectPrompt() {
         new AlertDialog.Builder(this)
                 .setTitle(R.string.disconnect)
-                .setMessage(getString(R.string.disconnect_promp, mRemoteSwitch.getRemote().getHost()))
+                .setMessage(getString(R.string.disconnect_prompt, mRemoteSwitch.getRemote().getHost()))
                 .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

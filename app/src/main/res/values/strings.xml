@@ -82,7 +82,7 @@
     <string name="password">Password</string>
     <string name="test_connection">Test Connection</string>
     <string name="connection_successful">Connection successful!</string>
-    <string name="disconnect_promp">Do you want to disconnect from %1$s?</string>
+    <string name="disconnect_prompt">Do you want to disconnect from %1$s?</string>
     <string name="uploaded_to">Uploaded to %1$s</string>
     <string name="downloaded_to">Downloaded to %1$s</string>
     <string name="defaultSshPort" translatable="false">22</string>

@@ -25,6 +25,7 @@ public class ThemeUtils {
     }
 
     public static boolean isTranslucentNavbar(Context context) {
+        if (Build.VERSION.SDK_INT < 20 && !isTranslucentStatusbar(context)) return false;
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         return prefs.getBoolean("translucent_navbar", Build.VERSION.SDK_INT < 20);
     }

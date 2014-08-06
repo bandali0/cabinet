@@ -13,7 +13,8 @@
             android:id="@android:id/list"
             android:scrollbars="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:clipToPadding="false" />
 
         <TextView
             android:id="@android:id/empty"

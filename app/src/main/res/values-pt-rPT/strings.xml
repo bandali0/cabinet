@@ -79,7 +79,7 @@
     <string name="password">Palavra-passe</string>
     <string name="test_connection">Testar Ligação</string>
     <string name="connection_successful">Ligação com sucesso!</string>
-    <string name="disconnect_promp">Pretende desligar de %1$s?</string>
+    <string name="disconnect_prompt">Pretende desligar de %1$s?</string>
     <string name="uploaded_to">Carregado para %1$s</string>
     <string name="downloaded_to">Transferido para %1$s</string>
     <string name="defaultSshPort" translatable="false">22</string>

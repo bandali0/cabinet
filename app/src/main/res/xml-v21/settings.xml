@@ -32,7 +32,8 @@
             android:key="translucent_navbar"
             android:title="@string/translucent_navbar"
             android:summary="@string/translucent_navbar_desc"
-            android:persistent="true" />
+            android:persistent="true"
+            android:dependency="translucent_statusbar" />
 
     </PreferenceCategory>
 
