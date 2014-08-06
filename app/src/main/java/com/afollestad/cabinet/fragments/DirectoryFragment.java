@@ -289,12 +289,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        ((DrawerActivity) getActivity()).setFabListener(this);
-    }
-
-    @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -325,6 +319,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         mAdapter = new FileAdapter(getActivity(), this, this, this, mQuery != null);
         mRecyclerView.setAdapter(mAdapter);
 
+        ((DrawerActivity) getActivity()).setFabListener(this);
         reload();
     }
 
