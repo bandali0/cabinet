@@ -77,16 +77,16 @@
     <string name="downloaded_to">Descargado a %1$s</string>
     <string name="defaultSshPort" translatable="false">22</string>
     <!-- Status messages -->
-    <string name="connecting">Conectando...</string>
-    <string name="downloading">Descargando...</string>
-    <string name="deleting">Eliminando...</string>
-    <string name="making_folder">Creando carpeta...</string>
-    <string name="renaming">Renombrando...</string>
-    <string name="unzipping">Descomprimiendo...</string>
-    <string name="zipping">Comprimiendo...</string>
-    <string name="moving">Moviendo...</string>
-    <string name="uploading">Subiendo...</string>
-    <string name="copying">Copiando...</string>
+    <string name="connecting">Conectando…</string>
+    <string name="downloading">Descargando…</string>
+    <string name="deleting">Eliminando…</string>
+    <string name="making_folder">Creando carpeta…</string>
+    <string name="renaming">Renombrando…</string>
+    <string name="unzipping">Descomprimiendo…</string>
+    <string name="zipping">Comprimiendo…</string>
+    <string name="moving">Moviendo…</string>
+    <string name="uploading">Subiendo…</string>
+    <string name="copying">Copiando…</string>
     <!-- Error messages -->
     <string name="failed_delete_file">Error al borrar el archivo: %1$s</string>
     <string name="failed_make_directory">Error al crear la carpeta: %1$s</string>
@@ -114,7 +114,7 @@
     <string name="cut_xfiles"><![CDATA[
         <b>Cortar:</b>&nbsp;&nbsp;%1$d archivos
     ]]></string>
-    <string name="search_files">Buscando archivos...</string>
+    <string name="search_files">Buscando archivos…</string>
     <string name="search_x"><![CDATA[
         <b>Buscar:</b>&nbsp;%1$s
     ]]></string>
@@ -135,8 +135,6 @@
         <item>Conección remota</item>
     </string-array>
     <string-array name="open_as">
-        <!-- File actions-->
-        <item>Abrir como…</item>
         <item>Texto</item>
         <item>Imagen</item>
         <item>Audio</item>
