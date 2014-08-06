@@ -28,7 +28,6 @@ proguard/
 #Log Files
 *.log
 
-
 ### Intellij ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
 
@@ -61,16 +60,8 @@ atlassian-ide-plugin.xml
 com_crashlytics_export_strings.xml
 
 
-### Gradle ###
-.gradle
-build/
-
 # Ignore Gradle GUI config
 gradle-app.setting
-
-
-### Java ###
-*.class
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
@@ -81,3 +72,5 @@ gradle-app.setting
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+*.DS_Store
