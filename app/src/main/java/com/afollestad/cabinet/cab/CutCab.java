@@ -72,7 +72,7 @@ public class CutCab extends BaseFileCab {
 
     @Override
     public boolean canPaste() {
-        return true;
+        return isActive();
     }
 
     @Override
