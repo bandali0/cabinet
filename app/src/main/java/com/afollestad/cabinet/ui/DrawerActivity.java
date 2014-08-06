@@ -16,6 +16,7 @@ import android.os.Environment;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -145,6 +146,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     }
 
     public void setPasteMode(boolean pasteMode) {
+        Log.v("Fab", "DrawerActivity.setPasteMode(" + pasteMode + ")");
         fabPasteMode = pasteMode;
         if (getFileCab() != null) getFileCab().invalidateFab();
         fab.setDrawable(getResources().getDrawable(pasteMode ? R.drawable.ic_paste : R.drawable.ic_add));

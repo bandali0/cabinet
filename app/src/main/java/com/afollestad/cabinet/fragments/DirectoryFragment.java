@@ -116,7 +116,8 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     @Override
     public void onResume() {
         super.onResume();
-        Activity act = getActivity();
+
+        DrawerActivity act = (DrawerActivity) getActivity();
         act.registerReceiver(mReceiver, new IntentFilter(NetworkService.DISCONNECT_SFTP));
         if (mQuery != null) {
             act.setTitle(Html.fromHtml(getString(R.string.search_x, mQuery)));
@@ -137,7 +138,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             reload();
         }
 
-        ((DrawerActivity) act).checkMaterialAndRating();
+        act.checkMaterialAndRating();
     }
 
     @Override
@@ -564,7 +565,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                     if (cab != null) cab.overrideDestroy = true;
                     ((DrawerActivity) getActivity()).setFileCab((BaseFileCab) new CopyCab()
                             .setFragment(this).setFile(file).start());
-                } else cab.addFile(file);
+                } else cab.setFragment(this).addFile(file);
                 break;
             }
             case R.id.cut: {
@@ -574,7 +575,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                     if (cab != null) cab.overrideDestroy = true;
                     ((DrawerActivity) getActivity()).setFileCab((BaseFileCab) new CutCab()
                             .setFragment(this).setFile(file).start());
-                } else cab.addFile(file);
+                } else cab.setFragment(this).addFile(file);
                 break;
             }
             case R.id.rename:

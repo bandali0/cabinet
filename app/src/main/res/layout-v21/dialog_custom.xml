@@ -12,7 +12,7 @@
         android:fontFamily="sans-serif"
         android:singleLine="true"
         android:paddingTop="24dp"
-        android:paddingBottom="16dp"
+        android:paddingBottom="6dp"
         android:paddingLeft="24dp"
         android:paddingRight="24dp" />
 
@@ -32,6 +32,7 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="24dp"
                 android:paddingRight="24dp"
+                android:paddingTop="10dp"
                 android:paddingBottom="24dp"
                 android:textSize="19sp"
                 android:lineSpacingMultiplier="1.4"
