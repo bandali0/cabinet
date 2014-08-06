@@ -1,6 +1,5 @@
 package com.afollestad.cabinet.ui;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
@@ -56,18 +55,6 @@ public class SettingsActivity extends PreferenceActivity {
                 return true;
             }
         });
-
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
-            translucentStatusbar.setEnabled(false);
-            translucentStatusbar.setSummary(R.string.translucency_not_supported);
-            translucentNavbar.setEnabled(false);
-            translucentNavbar.setSummary(R.string.translucency_not_supported);
-        }
-//        else if (Build.VERSION.SDK_INT >= 20) {
-//            translucentStatusbar.setEnabled(false);
-//            translucentStatusbar.setSummary(R.string.translucentstatusbar_disabled);
-//        }
-        // TODO toggle comment for else statement for Material
     }
 
     @Override

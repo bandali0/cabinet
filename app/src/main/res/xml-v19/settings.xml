@@ -6,7 +6,8 @@
         <Preference
             android:key="about"
             android:title="@string/about"
-            android:summary="@string/about_desc" />
+            android:summary="@string/about_desc"
+            android:layout="@layout/preference_custom" />
 
     </PreferenceCategory>
 
@@ -16,7 +17,8 @@
             android:key="show_hidden"
             android:title="@string/show_hidden_files"
             android:summary="@string/show_hidden_files_desc"
-            android:persistent="true" />
+            android:persistent="true"
+            android:layout="@layout/preference_custom" />
 
     </PreferenceCategory>
 
@@ -25,14 +27,17 @@
         <CheckBoxPreference
             android:key="translucent_statusbar"
             android:title="@string/translucent_statusbar"
-            android:summary="@string/translucentstatusbar_disabled"
-            android:enabled="false" />
+            android:summary="@string/translucent_statusbar_desc"
+            android:persistent="true"
+            android:layout="@layout/preference_custom" />
 
         <CheckBoxPreference
             android:key="translucent_navbar"
             android:title="@string/translucent_navbar"
-            android:summary="@string/translucentstatusbar_disabled"
-            android:enabled="false" />
+            android:summary="@string/translucent_navbar_desc"
+            android:persistent="true"
+            android:layout="@layout/preference_custom"
+            android:dependency="translucent_statusbar" />
 
     </PreferenceCategory>
 

@@ -61,28 +61,30 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
 
     public static void setupTransparentTints(Activity context) {
         // TODO change condition for Material
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT || !ThemeUtils.isTranslucentStatusbar(context))
+        if (Build.VERSION.SDK_INT != Build.VERSION_CODES.KITKAT || !ThemeUtils.isTranslucentStatusbar(context))
             return;
         SystemBarTintManager tintManager = new SystemBarTintManager(context);
         tintManager.setStatusBarTintEnabled(true);
         tintManager.setStatusBarTintResource(R.color.cabinet_color);
     }
 
-    public static void setupTranslucentPadding(Activity context, View view) {
-        boolean status = ThemeUtils.isTranslucentStatusbar(context);
-        boolean nav = ThemeUtils.isTranslucentNavbar(context);
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT || (!status && !nav))
-            return;
+    public static void setupTranslucentBottomPadding(Activity context, View view) {
+        if (!ThemeUtils.isTranslucentNavbar(context)) return;
         SystemBarTintManager tintManager = new SystemBarTintManager(context);
         SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
-//        int top = status ? config.getPixelInsetTop(true) : 0;
-        int bottom = nav ? config.getPixelInsetBottom() : 0;
-        view.setPadding(view.getPaddingLeft(), config.getPixelInsetTop(true), view.getPaddingRight(), view.getPaddingBottom() + bottom);
+        view.setPadding(view.getPaddingLeft(), view.getPaddingTop(), view.getPaddingRight(),
+                view.getPaddingBottom() + config.getPixelInsetBottom());
+    }
+
+    public static void setupTranslucentTopPadding(Activity context, View view) {
+        if (!ThemeUtils.isTranslucentStatusbar(context)) return;
+        SystemBarTintManager tintManager = new SystemBarTintManager(context);
+        SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
+        view.setPadding(view.getPaddingLeft(), config.getPixelInsetTop(true), view.getPaddingRight(), view.getPaddingBottom());
     }
 
     public static void setupTranslucentBottomMargin(Activity context, View view) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT || !ThemeUtils.isTranslucentNavbar(context))
-            return;
+        if (!ThemeUtils.isTranslucentNavbar(context)) return;
         SystemBarTintManager tintManager = new SystemBarTintManager(context);
         SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
         FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) view.getLayoutParams();
