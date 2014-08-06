@@ -48,22 +48,27 @@ public abstract class File implements Serializable {
         return String.format("%.1f %sB", bytes / Math.pow(unit, exp), pre);
     }
 
-    private int recursiveSize(java.io.File dir) {
+    private long recursiveSize(java.io.File dir, boolean dirs, boolean bytes) {
         java.io.File[] contents = dir.listFiles();
         if (contents == null) return 0;
-        int count = 0;
+        long count = 0;
         for (java.io.File f : contents) {
             if (f.isDirectory()) {
-                // One for directory itself, rest of contents
-                count += (recursiveSize(f) + 1);
-            } else count++; // One for regular file
+                if (dirs) count++;
+                count += recursiveSize(f, dirs, bytes);
+            } else if (!dirs) {
+                if (bytes) count += f.length();
+                else count++; // One for regular file
+            }
         }
         return count;
     }
 
     public final String getSizeString() {
         if (isDirectory()) {
-            return mContext.getString(R.string.x_filesdirs, recursiveSize(toJavaFile()));
+            return mContext.getString(R.string.x_files, recursiveSize(toJavaFile(), false, false)) + ", " +
+                    mContext.getString(R.string.x_dirs, recursiveSize(toJavaFile(), true, false)) + ", " +
+                    humanReadableByteCount(recursiveSize(toJavaFile(), false, true), true);
         }
         return humanReadableByteCount(length(), true);
     }
