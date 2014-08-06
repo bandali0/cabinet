@@ -1,6 +1,5 @@
 package com.afollestad.cabinet.cab.base;
 
-import android.util.Log;
 import android.view.ActionMode;
 
 import com.afollestad.cabinet.file.base.File;
@@ -25,24 +24,17 @@ public abstract class BaseFileCab extends BaseCab {
     public abstract boolean canPaste();
 
     public BaseFileCab invalidateFab() {
-        Log.v("Fab", "invalidateFab()");
         boolean hide = false;
         if (isActive() && !canPaste()) {
-            Log.v("Fab", "Can't paste");
             hide = true;
         } else {
-            if (getFiles().size() == 0) Log.v("Fab", "No files are in the CAB");
             for (File fi : getFiles()) {
-                Log.v("Fab", "Checking if " + fi.getParent().getPath() + " == " + getDirectory().getPath());
                 if (fi.getParent().equals(getDirectory())) {
-                    Log.v("Fab", "They are equal");
                     hide = true;
                     break;
                 }
             }
         }
-        if (hide) Log.v("Fab", "Fab is disabled");
-        else Log.v("Fab", "Fab is not disabled");
         getContext().disableFab(hide);
         return this;
     }
