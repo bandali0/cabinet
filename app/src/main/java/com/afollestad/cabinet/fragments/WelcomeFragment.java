@@ -36,10 +36,25 @@ public class WelcomeFragment extends Fragment {
     private ImageView icon;
 
     @Override
+    public void onResume() {
+        super.onResume();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ((DrawerActivity) getActivity()).waitFabInvalidate();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ((DrawerActivity) getActivity()).disableFab(true);
+                    }
+                });
+            }
+        }).start();
+    }
+
+    @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        ((DrawerActivity) getActivity()).disableFab(true);
 
         View root = view.findViewById(R.id.root);
         DrawerActivity.setupTranslucentTopPadding(getActivity(), root);

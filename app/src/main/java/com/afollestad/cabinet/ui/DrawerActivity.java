@@ -99,6 +99,19 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         mFileCab = cab;
     }
 
+    public void waitFabInvalidate() {
+        float translation = getResources().getDimension(R.dimen.fab_translation);
+        while (fabLeft == 0) {
+            fabLeft = fab.getX();
+            fabRight = fab.getX() + translation;
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     public void toggleFab(boolean hide) {
         if (fabLeft == 0) {
             float translation = getResources().getDimension(R.dimen.fab_translation);
