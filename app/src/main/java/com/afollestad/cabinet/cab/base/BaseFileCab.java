@@ -27,7 +27,7 @@ public abstract class BaseFileCab extends BaseCab {
     public BaseFileCab invalidateFab() {
         Log.v("Fab", "invalidateFab()");
         boolean hide = false;
-        if (!canPaste()) {
+        if (isActive() && !canPaste()) {
             Log.v("Fab", "Can't paste");
             hide = true;
         } else {
