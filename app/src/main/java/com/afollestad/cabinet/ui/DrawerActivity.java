@@ -187,7 +187,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         // TODO comment out if for Material
         if (!prefs.getBoolean("shown_material_dialog", false) && Build.VERSION.SDK_INT >= 20) {
-            CustomDialog.create(R.string.material_version, getString(R.string.material_version_desc), 0, R.string.later, android.R.string.cancel, new CustomDialog.ClickListener() {
+            CustomDialog.create(R.string.material_version, getString(R.string.material_version_desc), R.string.yes, R.string.later, R.string.no, new CustomDialog.ClickListener() {
                 @Override
                 public void onPositive(int which) {
                     PreferenceManager.getDefaultSharedPreferences(DrawerActivity.this)
