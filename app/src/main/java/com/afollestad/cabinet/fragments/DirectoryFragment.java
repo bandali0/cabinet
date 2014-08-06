@@ -1,12 +1,10 @@
 package com.afollestad.cabinet.fragments;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
@@ -266,24 +264,24 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 
     @Override
     public void onFabPressed(boolean pasteMode) {
-        if (pasteMode) {
-            ((DrawerActivity) getActivity()).getFileCab().paste();
-        } else {
-            new AlertDialog.Builder(getActivity())
-                    .setTitle(R.string.newStr)
-                    .setItems(R.array.new_options, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int index) {
-                            switch (index) {
-                                case 0: // Folder
-                                    showNewFolderDialog();
-                                    break;
-                                case 1: // Remote connection
-                                    new RemoteConnectionDialog(getActivity()).show();
-                                    break;
-                            }
+        if (getActivity() != null) {
+            if (pasteMode) {
+                ((DrawerActivity) getActivity()).getFileCab().paste();
+            } else {
+                CustomDialog.create(R.string.newStr, R.array.new_options, new CustomDialog.ClickListener() {
+                    @Override
+                    public void onPositive(int which) {
+                        switch (which) {
+                            case 0: // Folder
+                                showNewFolderDialog();
+                                break;
+                            case 1: // Remote connection
+                                new RemoteConnectionDialog(getActivity()).show();
+                                break;
                         }
-                    }).create().show();
+                    }
+                }).show(getActivity().getFragmentManager(), "NEW_DIALOG");
+            }
         }
     }
 
@@ -623,9 +621,9 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 }
                 break;
             case R.id.delete:
-                Utils.showConfirmDialog(getActivity(), R.string.delete, R.string.confirm_delete, file.getName(), new Utils.DialogCallback() {
+                Utils.showConfirmDialog(getActivity(), R.string.delete, R.string.confirm_delete, file.getName(), new CustomDialog.ClickListener() {
                     @Override
-                    public void onPositive() {
+                    public void onPositive(int which) {
                         file.delete(new SftpClient.CompletionCallback() {
                             @Override
                             public void onComplete() {

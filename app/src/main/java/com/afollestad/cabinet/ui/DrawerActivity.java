@@ -2,12 +2,10 @@ package com.afollestad.cabinet.ui;
 
 import android.animation.ObjectAnimator;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
@@ -28,6 +26,7 @@ import com.afollestad.cabinet.cab.base.BaseFileCab;
 import com.afollestad.cabinet.file.CloudFile;
 import com.afollestad.cabinet.file.LocalFile;
 import com.afollestad.cabinet.file.base.File;
+import com.afollestad.cabinet.fragments.CustomDialog;
 import com.afollestad.cabinet.fragments.DirectoryFragment;
 import com.afollestad.cabinet.fragments.NavigationDrawerFragment;
 import com.afollestad.cabinet.fragments.WelcomeFragment;
@@ -184,57 +183,52 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         processIntent(intent);
     }
 
-    private void displayRatingDialog() {
+    private void displayInfoDialog() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        if (!prefs.getBoolean("shown_rating_dialog", false)) {
-            new AlertDialog.Builder(this)
-                    .setTitle(R.string.rate)
-                    .setMessage(R.string.rate_desc)
-                    .setPositiveButton(R.string.sure, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                            PreferenceManager.getDefaultSharedPreferences(DrawerActivity.this)
-                                    .edit().putBoolean("shown_rating_dialog", true).commit();
-                            startActivity(new Intent(Intent.ACTION_VIEW)
-                                    .setData(Uri.parse("market://details?id=com.afollestad.cabinet")));
-                        }
-                    })
-                    .setNeutralButton(R.string.later, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                        }
-                    })
-                    .setNegativeButton(R.string.no_thanks, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                            PreferenceManager.getDefaultSharedPreferences(DrawerActivity.this)
-                                    .edit().putBoolean("shown_rating_dialog", true).commit();
-                        }
-                    }).create().show();
+        // TODO comment out if for Material
+        if (!prefs.getBoolean("shown_material_dialog", false) && Build.VERSION.SDK_INT >= 20) {
+            CustomDialog.create(R.string.material_version, getString(R.string.material_version_desc), 0, R.string.later, android.R.string.cancel, new CustomDialog.ClickListener() {
+                @Override
+                public void onPositive(int which) {
+                    PreferenceManager.getDefaultSharedPreferences(DrawerActivity.this)
+                            .edit().putBoolean("shown_material_dialog", true).commit();
+                    startActivity(new Intent(Intent.ACTION_VIEW)
+                            .setData(Uri.parse("https://plus.google.com/u/0/communities/110440751142118056139")));
+                }
+
+                @Override
+                public void onNegative() {
+                    PreferenceManager.getDefaultSharedPreferences(DrawerActivity.this)
+                            .edit().putBoolean("shown_material_dialog", true).commit();
+                }
+            }).show(getFragmentManager(), "MATERIAL_DIALOG");
+        } else if (!prefs.getBoolean("shown_rating_dialog", false)) {
+            CustomDialog.create(R.string.rate, R.string.rate_desc, R.string.sure, R.string.later, R.string.no_thanks, new CustomDialog.ClickListener() {
+                @Override
+                public void onPositive(int which) {
+                    PreferenceManager.getDefaultSharedPreferences(DrawerActivity.this)
+                            .edit().putBoolean("shown_rating_dialog", true).commit();
+                    startActivity(new Intent(Intent.ACTION_VIEW)
+                            .setData(Uri.parse("market://details?id=com.afollestad.cabinet")));
+                }
+
+                @Override
+                public void onNegative() {
+                    PreferenceManager.getDefaultSharedPreferences(DrawerActivity.this)
+                            .edit().putBoolean("shown_rating_dialog", true).commit();
+                }
+            }).show(getFragmentManager(), "RATE_DIALOG");
         }
     }
 
     private void displayDisconnectPrompt() {
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.disconnect)
-                .setMessage(getString(R.string.disconnect_prompt, mRemoteSwitch.getRemote().getHost()))
-                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                        startService(new Intent(DrawerActivity.this, NetworkService.class)
-                                .setAction(NetworkService.DISCONNECT_SFTP));
-                    }
-                })
-                .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                }).create().show();
+        CustomDialog.create(R.string.disconnect, getString(R.string.disconnect_prompt), R.string.yes, 0, R.string.no, new CustomDialog.ClickListener() {
+            @Override
+            public void onPositive(int which) {
+                startService(new Intent(DrawerActivity.this, NetworkService.class)
+                        .setAction(NetworkService.DISCONNECT_SFTP));
+            }
+        }).show(getFragmentManager(), "DISCONNECT_CONFIRM");
     }
 
     private void processIntent(Intent intent) {
@@ -249,7 +243,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
             if (!PreferenceManager.getDefaultSharedPreferences(this).getBoolean("shown_welcome", false)) {
                 getFragmentManager().beginTransaction().replace(R.id.container, new WelcomeFragment()).commit();
             } else {
-                displayRatingDialog();
+                displayInfoDialog();
                 switchDirectory(null, true);
             }
         }
@@ -285,7 +279,11 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         FragmentTransaction trans = getFragmentManager().beginTransaction();
         trans.replace(R.id.container, DirectoryFragment.create(to));
         if (!clearBackStack) trans.addToBackStack(null);
-        trans.commit();
+        try {
+            trans.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void search(File currentDir, String query) {

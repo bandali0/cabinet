@@ -34,9 +34,9 @@ public class DetailsDialog extends DialogFragment {
         File file = (File) getArguments().getSerializable("file");
         LayoutInflater layoutInflater = getActivity().getLayoutInflater();
         View rootView = layoutInflater.inflate(R.layout.dialog_custom, null);
-        TextView nameAndVersionView = (TextView) rootView.findViewById(R.id.title);
-        nameAndVersionView.setText(Html.fromHtml(getString(R.string.details_title)));
-        TextView aboutBodyView = (TextView) rootView.findViewById(R.id.body);
+        TextView title = (TextView) rootView.findViewById(R.id.title);
+        title.setText(R.string.details);
+        TextView body = (TextView) rootView.findViewById(R.id.body);
         String content;
         GregorianCalendar cal = new GregorianCalendar();
         cal.setTimeInMillis(file.lastModified());
@@ -50,7 +50,7 @@ public class DetailsDialog extends DialogFragment {
             content = getString(R.string.details_body_file,
                     file.getName(), file.getPath(), file.getSizeString(), TimeUtils.toStringLong(cal), "TODO");
         }
-        aboutBodyView.setText(Html.fromHtml(content));
+        body.setText(Html.fromHtml(content));
         return new AlertDialog.Builder(getActivity())
                 .setView(rootView)
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {

@@ -38,8 +38,7 @@ public class AboutDialog extends DialogFragment {
         }
         LayoutInflater layoutInflater = getActivity().getLayoutInflater();
         View rootView = layoutInflater.inflate(R.layout.dialog_custom, null);
-        TextView nameAndVersionView = (TextView) rootView.findViewById(
-                R.id.title);
+        TextView nameAndVersionView = (TextView) rootView.findViewById(R.id.title);
         nameAndVersionView.setText(Html.fromHtml(
                 getString(R.string.app_name_and_version, versionName)));
         TextView aboutBodyView = (TextView) rootView.findViewById(R.id.body);

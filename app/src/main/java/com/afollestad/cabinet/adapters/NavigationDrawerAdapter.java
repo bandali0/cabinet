@@ -2,6 +2,7 @@ package com.afollestad.cabinet.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Environment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -122,6 +123,11 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
         holder.title.setOnClickListener(this);
         holder.title.setOnLongClickListener(this);
         holder.title.setActivated(mCheckedPos == index);
+        if (mCheckedPos == index) {
+            holder.title.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
+        } else {
+            holder.title.setTypeface(Typeface.create("sans-serif-light", Typeface.NORMAL));
+        }
         if (item.isRemote()) {
             holder.title.setText(item.getDisplay(mContext));
         } else {

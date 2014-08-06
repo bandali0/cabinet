@@ -1,7 +1,5 @@
 package com.afollestad.cabinet.cab;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,6 +7,7 @@ import android.view.MenuItem;
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.cab.base.BaseFileCab;
 import com.afollestad.cabinet.file.base.File;
+import com.afollestad.cabinet.fragments.CustomDialog;
 import com.afollestad.cabinet.sftp.SftpClient;
 import com.afollestad.cabinet.zip.Unzipper;
 import com.afollestad.cabinet.zip.Zipper;
@@ -67,25 +66,17 @@ public class MainCab extends BaseFileCab {
                     .setFragment(getFragment()).setFiles(getFiles()).start());
             return super.onActionItemClicked(actionMode, menuItem);
         } else if (menuItem.getItemId() == R.id.delete) {
-            new AlertDialog.Builder(getContext())
-                    .setTitle(R.string.delete)
-                    .setMessage(getFiles().size() == 1 ?
+            CustomDialog.create(R.string.delete, getFiles().size() == 1 ?
                             getContext().getString(R.string.confirm_delete, getFiles().get(0).getName()) :
-                            getContext().getString(R.string.confirm_delete_xfiles, getFiles().size()))
-                    .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                            getContext().getString(R.string.confirm_delete_xfiles, getFiles().size()), R.string.yes, 0, R.string.no,
+                    new CustomDialog.ClickListener() {
                         @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
+                        public void onPositive(int which) {
                             deleteNextFile();
                             finish();
                         }
-                    })
-                    .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                        }
-                    }).create().show();
+                    }
+            ).show(getContext().getFragmentManager(), "DELETE_CONFIRM");
             return false;
         } else if (menuItem.getItemId() == R.id.selectAll) {
             List<File> newSelected = getFragment().mAdapter.checkAll();

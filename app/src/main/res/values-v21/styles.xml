@@ -17,7 +17,7 @@
         <!--<item name="android:navigationBarColor">@android:color/transparent</item>-->
     <!--</style>-->
 
-    <!--<style name="Theme.PopupMenuTheme" parent="android:Theme.Material" />-->
+    <!--<style name="Theme.PopupMenuTheme" parent="android:Theme.Material.Light" />-->
 
     <!--<style name="ButtonCabinet" parent="android:Widget.Material.Light.Button">-->
         <!--<item name="android:background">@drawable/rect_button_ripple_selector</item>-->

@@ -1,7 +1,6 @@
 package com.afollestad.cabinet.utils;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -19,6 +18,7 @@ import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.file.CloudFile;
 import com.afollestad.cabinet.file.LocalFile;
 import com.afollestad.cabinet.file.base.File;
+import com.afollestad.cabinet.fragments.CustomDialog;
 import com.afollestad.cabinet.fragments.DirectoryFragment;
 import com.afollestad.cabinet.services.NetworkService;
 import com.afollestad.cabinet.sftp.SftpClient;
@@ -89,39 +89,15 @@ public class Utils {
         return PreferenceManager.getDefaultSharedPreferences(context).getBoolean("show_hidden", false);
     }
 
-    public static void showConfirmDialog(Activity context, int title, int message, String replacement, final DialogCallback callback) {
-        new AlertDialog.Builder(context)
-                .setTitle(title)
-                .setMessage(context.getString(message, replacement))
-                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                        callback.onPositive();
-                    }
-                })
-                .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                }).create().show();
+    public static void showConfirmDialog(Activity context, int title, int message, String replacement, final CustomDialog.ClickListener callback) {
+        CustomDialog.create(title, context.getString(message, replacement), R.string.yes, 0, R.string.no, callback);
     }
 
     public static void showErrorDialog(final Activity context, final int message, final Exception e) {
         context.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                new AlertDialog.Builder(context)
-                        .setTitle(R.string.error)
-                        .setMessage(context.getString(message, e.getMessage()))
-                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.dismiss();
-                            }
-                        })
-                        .create().show();
+                CustomDialog.create(R.string.error, context.getString(message, e.getMessage()), null);
             }
         });
     }
@@ -130,16 +106,7 @@ public class Utils {
         context.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                new AlertDialog.Builder(context)
-                        .setTitle(R.string.error)
-                        .setMessage(message)
-                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.dismiss();
-                            }
-                        })
-                        .create().show();
+                CustomDialog.create(R.string.error, message, null);
             }
         });
     }
@@ -162,61 +129,45 @@ public class Utils {
         public abstract void onInput(String input);
     }
 
-    public interface DialogCallback {
-        public abstract void onPositive();
-    }
-
     public static void showInputDialog(Activity context, int title, int hint, String prefillInput, final InputCallback callback) {
         View view = context.getLayoutInflater().inflate(R.layout.dialog_input, null);
         final EditText input = (EditText) view.findViewById(R.id.input);
         if (hint != 0) input.setHint(hint);
         if (prefillInput != null) input.append(prefillInput);
-        new AlertDialog.Builder(context)
-                .setTitle(title)
-                .setView(view)
-                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                        if (callback != null) callback.onInput(input.getText().toString().trim());
-                    }
-                })
-                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                }).create().show();
+        CustomDialog.create(title, view, 0, 0, android.R.string.no, new CustomDialog.ClickListener() {
+            @Override
+            public void onPositive(int which) {
+                if (callback != null) callback.onInput(input.getText().toString().trim());
+            }
+        }).show(context.getFragmentManager(), "INPUT_DIALOG");
     }
 
     private static void openLocal(final Activity context, final File file, String mime) {
         if (mime == null) {
-            new AlertDialog.Builder(context)
-                    .setTitle(R.string.open_as)
-                    .setItems(R.array.open_as, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int index) {
-                            String newMime;
-                            switch (index) {
-                                default:
-                                    newMime = "text/*";
-                                    break;
-                                case 1:
-                                    newMime = "image/*";
-                                    break;
-                                case 2:
-                                    newMime = "audio/*";
-                                    break;
-                                case 3:
-                                    newMime = "video/*";
-                                    break;
-                                case 4:
-                                    newMime = "*/*";
-                                    break;
-                            }
-                            openLocal(context, file, newMime);
-                        }
-                    }).create().show();
+            CustomDialog.create(R.string.open_as, R.array.open_as, new CustomDialog.ClickListener() {
+                @Override
+                public void onPositive(int which) {
+                    String newMime;
+                    switch (which) {
+                        default:
+                            newMime = "text/*";
+                            break;
+                        case 1:
+                            newMime = "image/*";
+                            break;
+                        case 2:
+                            newMime = "audio/*";
+                            break;
+                        case 3:
+                            newMime = "video/*";
+                            break;
+                        case 4:
+                            newMime = "*/*";
+                            break;
+                    }
+                    openLocal(context, file, newMime);
+                }
+            }).show(context.getFragmentManager(), "OPEN_AS_DIALOG");
             return;
         }
         try {

@@ -40,7 +40,7 @@
         <item name="android:background">@drawable/ab_solid_cabinet</item>
     </style>
 
-    <style name="PopupMenu.Cabinet" parent="@android:style/Widget.Holo.ListPopupWindow">
+    <style name="PopupMenu.Cabinet" parent="@android:style/Widget.Holo.Light.ListPopupWindow">
         <item name="android:popupBackground">@drawable/menu_dropdown_panel_cabinet</item>
     </style>
 

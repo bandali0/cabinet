@@ -201,9 +201,6 @@
     ]]></string>
 
     <!-- Details dialog -->
-    <string name="details_title"><![CDATA[
-        <b>Details</b>
-    ]]></string>
     <string name="details_body_file"><![CDATA[
         <b>Name:</b>&nbsp;&nbsp;%1$s<br/>
         <b>Path:</b>&nbsp;&nbsp;%2$s<br/>
@@ -217,5 +214,7 @@
         <b>Contents:</b>&nbsp;&nbsp;%3$s<br/>
         <b>Modified:</b>&nbsp;&nbsp;%4$s
     ]]></string>
+    <string name="material_version">Material</string>
+    <string name="material_version_desc">A Material version of Cabinet is available to those running Android L. Do you want to view the Cabinet Google+ community where this version is posted?</string>
 
 </resources>

@@ -21,6 +21,12 @@ import com.afollestad.cabinet.ui.DrawerActivity;
 public class WelcomeFragment extends Fragment {
 
     @Override
+    public void onDetach() {
+        ((DrawerActivity) getActivity()).disableFab(false);
+        super.onDetach();
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_welcome, null);
     }
@@ -32,6 +38,8 @@ public class WelcomeFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        ((DrawerActivity) getActivity()).disableFab(true);
 
         View root = view.findViewById(R.id.root);
         DrawerActivity.setupTranslucentTopPadding(getActivity(), root);
