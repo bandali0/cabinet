@@ -6,6 +6,7 @@ import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.fragments.AboutDialog;
@@ -16,16 +17,44 @@ import com.afollestad.cabinet.utils.ThemeUtils;
  */
 public class SettingsActivity extends PreferenceActivity {
 
+    private ThemeUtils mThemeUtils;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mThemeUtils = new ThemeUtils(this);
+        setTheme(mThemeUtils.getCurrent());
         super.onCreate(savedInstanceState);
+
         getActionBar().setDisplayHomeAsUpEnabled(true);
         addPreferencesFromResource(R.xml.settings);
+        DrawerActivity.setupTransparentTints(this);
 
         CheckBoxPreference translucentStatusbar = (CheckBoxPreference) findPreference("translucent_statusbar");
-        CheckBoxPreference translucentNavbar = (CheckBoxPreference) findPreference("translucent_navbar");
         translucentStatusbar.setChecked(ThemeUtils.isTranslucentStatusbar(this));
+        translucentStatusbar.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object o) {
+                recreate();
+                return true;
+            }
+        });
+        CheckBoxPreference translucentNavbar = (CheckBoxPreference) findPreference("translucent_navbar");
         translucentNavbar.setChecked(ThemeUtils.isTranslucentNavbar(this));
+        translucentNavbar.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object o) {
+                recreate();
+                return true;
+            }
+        });
+
+        findPreference("about").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                new AboutDialog().show(getFragmentManager(), "ABOUT");
+                return true;
+            }
+        });
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
             translucentStatusbar.setEnabled(false);
@@ -39,13 +68,18 @@ public class SettingsActivity extends PreferenceActivity {
 //        }
         // TODO toggle comment for else statement for Material
 
-        findPreference("about").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                new AboutDialog().show(getFragmentManager(), "ABOUT");
-                return true;
-            }
-        });
+        ListView list = (ListView)findViewById(android.R.id.list);
+        list.setClipToPadding(false);
+        DrawerActivity.setupTranslucentPadding(this, list);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mThemeUtils.isChanged()) {
+            setTheme(mThemeUtils.getCurrent());
+            recreate();
+        }
     }
 
     @Override
