@@ -587,10 +587,10 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                         File newFile = file.isRemote() ?
                                 new CloudFile(getActivity(), (CloudFile) file.getParent(), text, file.isDirectory()) :
                                 new LocalFile(getActivity(), file.getParent(), text);
-                        file.rename(newFile, new SftpClient.FileCallback() {
+                        file.rename(newFile, new SftpClient.CompletionCallback() {
                             @Override
-                            public void onComplete(File newFile) {
-                                mAdapter.update(newFile);
+                            public void onComplete() {
+                                reload();
                             }
 
                             @Override

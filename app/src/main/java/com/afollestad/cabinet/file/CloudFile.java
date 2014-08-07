@@ -133,7 +133,7 @@ public class CloudFile extends File {
     }
 
     @Override
-    public void rename(final File newFile, final SftpClient.FileCallback callback) {
+    public void rename(final File newFile, final SftpClient.CompletionCallback callback) {
         final ProgressDialog connectProgress = Utils.showProgressDialog(getContext(), R.string.connecting);
         getContext().getNetworkService().getSftpClient(new NetworkService.SftpGetCallback() {
             @Override
@@ -156,7 +156,7 @@ public class CloudFile extends File {
                                             renameProgress.dismiss();
                                             Toast.makeText(getContext(), getContext().getString(getParent().equals(newFile.getParent()) ?
                                                     R.string.renamed_to : R.string.moved_to, newFile.getPath()), Toast.LENGTH_SHORT).show();
-                                            callback.onComplete(newFile);
+                                            callback.onComplete();
                                         }
                                     });
                                 }
@@ -186,7 +186,7 @@ public class CloudFile extends File {
                                     public void run() {
                                         renameProgress.dismiss();
                                         Toast.makeText(getContext(), getContext().getString(R.string.downloaded_to, newFile.getPath()), Toast.LENGTH_SHORT).show();
-                                        callback.onComplete(result);
+                                        callback.onComplete();
                                     }
                                 });
                             } catch (final Exception e) {

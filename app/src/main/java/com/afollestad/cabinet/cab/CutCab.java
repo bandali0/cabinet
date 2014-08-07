@@ -45,9 +45,9 @@ public class CutCab extends BaseFileCab {
                     File newFile = getDirectory().isRemote() ?
                             new CloudFile(getContext(), (CloudFile) getDirectory(), file.getName(), file.isDirectory()) :
                             new LocalFile(getContext(), getDirectory(), file.getName());
-                    file.rename(newFile, new SftpClient.FileCallback() {
+                    file.rename(newFile, new SftpClient.CompletionCallback() {
                         @Override
-                        public void onComplete(File newFile) {
+                        public void onComplete() {
                             getFragment().reload();
                             if (getFiles().size() > 0)
                                 mDialog.setProgress(mDialog.getProgress() + 1);

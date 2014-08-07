@@ -85,7 +85,7 @@ public class LocalFile extends File {
     }
 
     @Override
-    public void rename(final File newFile, final SftpClient.FileCallback callback) {
+    public void rename(final File newFile, final SftpClient.CompletionCallback callback) {
         if (newFile.isRemote()) {
             final ProgressDialog connectProgress = Utils.showProgressDialog(getContext(), R.string.connecting);
             getContext().getNetworkService().getSftpClient(new NetworkService.SftpGetCallback() {
@@ -97,13 +97,13 @@ public class LocalFile extends File {
                         @Override
                         public void run() {
                             try {
-                                final File result = uploadRecursive(client, LocalFile.this, (CloudFile) newFile, true);
+                                uploadRecursive(client, LocalFile.this, (CloudFile) newFile, true);
                                 getContext().runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
                                         uploadProgress.dismiss();
                                         Toast.makeText(getContext(), getContext().getString(R.string.uploaded_to, newFile.getPath()), Toast.LENGTH_SHORT).show();
-                                        callback.onComplete(result);
+                                        callback.onComplete();
                                     }
                                 });
                             } catch (final Exception e) {
@@ -146,7 +146,7 @@ public class LocalFile extends File {
                                     getContext().runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
-                                            callback.onComplete(newFile);
+                                            callback.onComplete();
                                             Toast.makeText(getContext(), getContext().getString(getParent().equals(newFile.getParent()) ?
                                                     R.string.renamed_to : R.string.moved_to, newFile.getPath()), Toast.LENGTH_SHORT).show();
                                         }
@@ -167,8 +167,9 @@ public class LocalFile extends File {
                         getContext().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                callback.onComplete(newFile);
-                                Toast.makeText(getContext(), getContext().getString(getParent().equals(newFile.getParent()) ? R.string.renamed_to : R.string.moved_to, newFile.getPath()), Toast.LENGTH_SHORT).show();
+                                callback.onComplete();
+                                Toast.makeText(getContext(), getContext().getString(getParent().equals(newFile.getParent()) ?
+                                        R.string.renamed_to : R.string.moved_to, newFile.getPath()), Toast.LENGTH_SHORT).show();
                             }
                         });
                     } else {
