@@ -147,6 +147,7 @@ public class LocalFile extends File {
                                         @Override
                                         public void run() {
                                             callback.onComplete();
+                                            notifyMediaScannerService(newFile);
                                             Toast.makeText(getContext(), getContext().getString(getParent().equals(newFile.getParent()) ?
                                                     R.string.renamed_to : R.string.moved_to, newFile.getPath()), Toast.LENGTH_SHORT).show();
                                         }
@@ -168,6 +169,7 @@ public class LocalFile extends File {
                             @Override
                             public void run() {
                                 callback.onComplete();
+                                notifyMediaScannerService(newFile);
                                 Toast.makeText(getContext(), getContext().getString(getParent().equals(newFile.getParent()) ?
                                         R.string.renamed_to : R.string.moved_to, newFile.getPath()), Toast.LENGTH_SHORT).show();
                             }
@@ -300,6 +302,8 @@ public class LocalFile extends File {
         }
         in.close();
         out.close();
+        File scanFile = new LocalFile(getContext(), newFile);
+        notifyMediaScannerService(scanFile);
         return dest;
     }
 
@@ -433,7 +437,9 @@ public class LocalFile extends File {
     }
 
     public boolean deleteSync() {
-        return mFile.delete();
+        boolean val = mFile.delete();
+        notifyMediaScannerService(this);
+        return val;
     }
 
     @Override

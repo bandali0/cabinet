@@ -1,7 +1,10 @@
 package com.afollestad.cabinet.file.base;
 
 import android.app.Activity;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
 import android.os.Environment;
+import android.util.Log;
 import android.webkit.MimeTypeMap;
 
 import com.afollestad.cabinet.R;
@@ -42,10 +45,10 @@ public abstract class File implements Serializable {
     /* END CARD METHODS */
 
     private String readableFileSize(long size) {
-        if(size <= 0) return "0";
-        final String[] units = new String[] { "B", "KB", "MB", "GB", "TB" };
-        int digitGroups = (int) (Math.log10(size)/Math.log10(1024));
-        return new DecimalFormat("#,##0.#").format(size/Math.pow(1024, digitGroups)) + " " + units[digitGroups];
+        if (size <= 0) return "0";
+        final String[] units = new String[]{"B", "KB", "MB", "GB", "TB"};
+        int digitGroups = (int) (Math.log10(size) / Math.log10(1024));
+        return new DecimalFormat("#,##0.#").format(size / Math.pow(1024, digitGroups)) + " " + units[digitGroups];
     }
 
     private long recursiveSize(java.io.File dir, boolean dirs, boolean bytes) {
@@ -170,5 +173,25 @@ public abstract class File implements Serializable {
     @Override
     public final boolean equals(Object o) {
         return o instanceof File && ((File) o).getPath().equals(getPath());
+    }
+
+    protected final void notifyMediaScannerService(File file) {
+        if (!file.getMimeType().startsWith("image/") &&
+                !file.getMimeType().startsWith("audio/") &&
+                !file.getMimeType().startsWith("video/") &&
+                !file.getExtension().equals("ogg")) {
+            return;
+        }
+        Log.i("Scanner", "Scanning " + file.getPath());
+        MediaScannerConnection.scanFile(mContext,
+                new String[]{file.getPath()}, null,
+                new MediaScannerConnection.OnScanCompletedListener() {
+                    @Override
+                    public void onScanCompleted(String path, Uri uri) {
+                        Log.i("Scanner", "Scanned " + path + ":");
+                        Log.i("Scanner", "-> uri=" + uri);
+                    }
+                }
+        );
     }
 }

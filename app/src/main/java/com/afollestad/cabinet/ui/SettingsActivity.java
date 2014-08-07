@@ -25,7 +25,6 @@ public class SettingsActivity extends PreferenceActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.preference_activity_custom);
 
-
         getActionBar().setDisplayHomeAsUpEnabled(true);
         addPreferencesFromResource(R.xml.settings);
         DrawerActivity.setupTransparentTints(this);
