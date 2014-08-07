@@ -9,12 +9,6 @@ public class LastModifiedComparator implements java.util.Comparator<File> {
 
     @Override
     public int compare(File lhs, File rhs) {
-        if (rhs.lastModified() < lhs.lastModified()) {
-            return -1;
-        } else if (rhs.length() > lhs.length()) {
-            return 1;
-        } else {
-            return 0;
-        }
+        return Long.valueOf(rhs.lastModified()).compareTo(lhs.lastModified());
     }
 }

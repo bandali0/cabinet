@@ -15,14 +15,7 @@ public class LowHighSizeComparator implements java.util.Comparator<File> {
             // Folders after files
             return 1;
         } else if (lhs.isDirectory() && rhs.isDirectory() || !lhs.isDirectory() && !rhs.isDirectory()) {
-            // Once folders and files are separate, sort by size
-            if (rhs.length() < lhs.length()) {
-                return 1; // move smaller files up
-            } else if (rhs.length() > lhs.length()) {
-                return -1; // move larger files down
-            } else {
-                return 0; // equal in size
-            }
+            return Long.valueOf(lhs.length()).compareTo(rhs.length());
         } else if (!lhs.isDirectory() && rhs.isDirectory()) {
             // Files above folders
             return -1;
