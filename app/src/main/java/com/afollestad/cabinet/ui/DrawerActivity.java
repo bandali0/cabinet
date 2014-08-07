@@ -52,8 +52,8 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     private ThemeUtils mThemeUtils;
 
     private FloatingActionButton fab;
-    private float fabLeft;
-    private float fabRight;
+    private float fabTop;
+    private float fabBottom;
     private boolean fabShown = true;
     private FabListener mFabListener;
     private BaseFileCab.PasteMode fabPasteMode = BaseFileCab.PasteMode.DISABLED;
@@ -101,10 +101,12 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     }
 
     public void waitFabInvalidate() {
-        float translation = getResources().getDimension(R.dimen.fab_translation);
-        while (fabLeft == 0) {
-            fabLeft = fab.getX();
-            fabRight = fab.getX() + translation;
+        SystemBarTintManager tintManager = new SystemBarTintManager(this);
+        SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
+        float translation = getResources().getDimension(R.dimen.fab_translation) + config.getPixelInsetBottom();
+        while (fabTop == 0) {
+            fabTop = fab.getY();
+            fabBottom = fab.getY() + translation;
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
@@ -114,21 +116,23 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     }
 
     public void toggleFab(boolean hide) {
-        if (fabLeft == 0) {
-            float translation = getResources().getDimension(R.dimen.fab_translation);
-            fabLeft = fab.getX();
-            fabRight = fab.getX() + translation;
+        if (fabTop == 0) {
+            SystemBarTintManager tintManager = new SystemBarTintManager(this);
+            SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
+            float translation = getResources().getDimension(R.dimen.fab_translation) + config.getPixelInsetBottom();
+            fabTop = fab.getY();
+            fabBottom = fab.getY() + translation;
         }
         if (hide) {
             if (fabShown) {
-                ObjectAnimator outAnim = ObjectAnimator.ofFloat(fab, "x", fabLeft, fabRight);
+                ObjectAnimator outAnim = ObjectAnimator.ofFloat(fab, "y", fabTop, fabBottom);
                 outAnim.setDuration(250);
                 outAnim.start();
                 fabShown = false;
             }
         } else {
             if (!fabShown && !fabDisabled) {
-                ObjectAnimator inAnim = ObjectAnimator.ofFloat(fab, "x", fabRight, fabLeft);
+                ObjectAnimator inAnim = ObjectAnimator.ofFloat(fab, "y", fabBottom, fabTop);
                 inAnim.setDuration(250);
                 inAnim.start();
                 fabShown = true;
