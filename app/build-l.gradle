@@ -1,0 +1,44 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        production {
+            keyAlias 'afollestad'
+            keyPassword 'aidan1995'
+            storeFile file('../keystore')
+            storePassword 'aidan1995'
+        }
+    }
+
+    compileSdkVersion 'android-L'
+    buildToolsVersion '20.0.0'
+
+    defaultConfig {
+        applicationId "com.afollestad.cabinet"
+        minSdkVersion 'L'
+        targetSdkVersion 'L'
+        versionCode 46
+        versionName "1.6.7.1"
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.production
+        }
+        release {
+            signingConfig signingConfigs.production
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':libsuperuser')
+    compile 'com.nostra13.universalimageloader:universal-image-loader:+'
+    compile 'com.readystatesoftware.systembartint:systembartint:+'
+    compile 'com.android.support:recyclerview-v7:+'
+    compile 'com.android.support:support-v4:19.+'
+    compile project(':fab')
+}
