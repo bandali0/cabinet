@@ -182,7 +182,6 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
             if (savedInstanceState.containsKey("cab")) {
                 mFileCab = (BaseFileCab) savedInstanceState.getSerializable("cab");
                 shouldAttachFab = true;
-                Toast.makeText(this, fabVisibleY + "", Toast.LENGTH_SHORT).show();
             }
             fabPasteMode = (BaseFileCab.PasteMode) savedInstanceState.getSerializable("fab_pastemode");
             fabDisabled = savedInstanceState.getBoolean("fab_disabled");
