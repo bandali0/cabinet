@@ -283,10 +283,10 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
                         resId = R.drawable.ic_file_font;
                     } else if (file.getExtension().equals("sh") || file.getExtension().equals("bat")) {
                         resId = R.drawable.ic_file_script;
-                    } else if (mime.startsWith("text/")) {
-                        resId = R.drawable.ic_file_doc;
                     } else if (codeExts.contains(ext.toLowerCase(Locale.getDefault()))) {
                         resId = R.drawable.ic_file_code;
+                    } else if (mime.startsWith("text/")) {
+                        resId = R.drawable.ic_file_doc;
                     }
                 }
                 icon.setImageResource(resId);
