@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
 import android.view.MenuItem;
 
 import com.afollestad.cabinet.R;
@@ -29,16 +30,19 @@ public class SettingsActivity extends PreferenceActivity {
         addPreferencesFromResource(R.xml.settings);
         DrawerActivity.setupTransparentTints(this);
 
-        CheckBoxPreference translucentStatusbar = (CheckBoxPreference) findPreference("translucent_statusbar");
+        final CheckBoxPreference translucentStatusbar = (CheckBoxPreference) findPreference("translucent_statusbar");
+        final CheckBoxPreference translucentNavbar = (CheckBoxPreference) findPreference("translucent_navbar");
+
         translucentStatusbar.setChecked(ThemeUtils.isTranslucentStatusbar(this));
         translucentStatusbar.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object o) {
+                PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit()
+                        .putBoolean("translucent_navbar", false).commit();
                 recreate();
                 return true;
             }
         });
-        CheckBoxPreference translucentNavbar = (CheckBoxPreference) findPreference("translucent_navbar");
         translucentNavbar.setChecked(ThemeUtils.isTranslucentNavbar(this));
         translucentNavbar.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
