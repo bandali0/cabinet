@@ -106,8 +106,8 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         mDirectory = (File) getArguments().getSerializable("path");
         mQuery = getArguments().getString("query");
         super.onCreate(savedInstanceState);
-
         setHasOptionsMenu(true);
+
         if (mQuery != null) mQuery = mQuery.trim();
         showHidden = Utils.getShowHidden(getActivity());
         sorter = Utils.getSorter(getActivity());
@@ -126,7 +126,13 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         BaseFileCab fileCab = ((DrawerActivity) getActivity()).getFileCab();
         if (fileCab != null) {
             mAdapter.restoreCheckedPaths(fileCab.getFiles());
+            if (act.shouldAttachFab) act.invalidateFabPos();
             fileCab.setFragment(this);
+            if (act.shouldAttachFab) {
+                fileCab.invalidateFab();
+                fileCab.start();
+                act.shouldAttachFab = false;
+            }
         }
         ((NavigationDrawerFragment) act.getFragmentManager().findFragmentByTag("NAV_DRAWER")).selectFile(mDirectory);
 

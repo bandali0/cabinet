@@ -27,6 +27,7 @@ public class MainCab extends BaseFileCab {
 
     @Override
     public void paste() {
+        // Not implemented for the main cab
     }
 
     @Override

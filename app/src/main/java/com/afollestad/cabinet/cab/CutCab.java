@@ -26,7 +26,7 @@ public class CutCab extends BaseFileCab {
         return Html.fromHtml(getContext().getString(R.string.cut_xfiles, getFiles().size()));
     }
 
-    private boolean shouldCancel;
+    private transient boolean shouldCancel;
 
     @Override
     public void paste() {

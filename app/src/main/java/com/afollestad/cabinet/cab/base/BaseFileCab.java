@@ -24,7 +24,7 @@ public abstract class BaseFileCab extends BaseCab {
 
     private File mDirectory;
     private final List<File> mFiles;
-    public boolean overrideDestroy;
+    public transient boolean overrideDestroy;
 
     public abstract void paste();
 

@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -44,20 +45,21 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         public abstract void onFabPressed(BaseFileCab.PasteMode pasteMode);
     }
 
-    private BillingProcessor mBP;
-    private boolean canExit;
-    private BaseFileCab mFileCab;
+    private BillingProcessor mBP; // used for donations
+    private boolean canExit; // flag used for press back twice to exit
+    private BaseFileCab mFileCab; // the current contextual action bar, saves state throughout fragments
     private NetworkService mNetworkService;
-    private CloudFile mRemoteSwitch;
-    private ThemeUtils mThemeUtils;
+    private CloudFile mRemoteSwitch; // used by SFTP notification intent
+    private ThemeUtils mThemeUtils; // used to detect theme changes and get current theme
 
-    private FloatingActionButton fab;
-    private float fabTop;
-    private float fabBottom;
-    private boolean fabShown = true;
-    private FabListener mFabListener;
+    private FloatingActionButton fab; // the floating blue add/paste button
+    private float fabVisibleY; // saves y position of the top of the visible fab
+    private float fabHiddenY; // saves y position of the top of the hidden fab
+    private boolean fabShown = true; // flag indicating whether the fab is currently visible
+    private FabListener mFabListener; // a callback used to notify DirectoryFragment of fab press
     private BaseFileCab.PasteMode fabPasteMode = BaseFileCab.PasteMode.DISABLED;
-    private boolean fabDisabled;
+    private boolean fabDisabled; // flag indicating whether fab should stay hidden while scrolling
+    public boolean shouldAttachFab; // used during config change, tells fragment to reattach to cab
 
     public static void setupTransparentTints(Activity context) {
         // TODO change condition for Material
@@ -100,13 +102,23 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         mFileCab = cab;
     }
 
+    public void invalidateFabPos() {
+        if (fabVisibleY != 0) return;
+        SystemBarTintManager tintManager = new SystemBarTintManager(this);
+        SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
+        float translation = getResources().getDimension(R.dimen.fab_translation) + config.getPixelInsetBottom();
+        fabVisibleY = fab.getY();
+        fabHiddenY = fab.getY() + translation;
+        Log.v("Fab", "Invalidate position– top: " + fabVisibleY + ", bottom: " + fabHiddenY);
+    }
+
     public void waitFabInvalidate() {
         SystemBarTintManager tintManager = new SystemBarTintManager(this);
         SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
         float translation = getResources().getDimension(R.dimen.fab_translation) + config.getPixelInsetBottom();
-        while (fabTop == 0) {
-            fabTop = fab.getY();
-            fabBottom = fab.getY() + translation;
+        while (fabVisibleY == 0) {
+            fabVisibleY = fab.getY();
+            fabHiddenY = fab.getY() + translation;
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
@@ -116,23 +128,17 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     }
 
     public void toggleFab(boolean hide) {
-        if (fabTop == 0) {
-            SystemBarTintManager tintManager = new SystemBarTintManager(this);
-            SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
-            float translation = getResources().getDimension(R.dimen.fab_translation) + config.getPixelInsetBottom();
-            fabTop = fab.getY();
-            fabBottom = fab.getY() + translation;
-        }
+        invalidateFabPos();
         if (hide) {
             if (fabShown) {
-                ObjectAnimator outAnim = ObjectAnimator.ofFloat(fab, "y", fabTop, fabBottom);
+                ObjectAnimator outAnim = ObjectAnimator.ofFloat(fab, "y", fabVisibleY, fabHiddenY);
                 outAnim.setDuration(250);
                 outAnim.start();
                 fabShown = false;
             }
         } else {
             if (!fabShown && !fabDisabled) {
-                ObjectAnimator inAnim = ObjectAnimator.ofFloat(fab, "y", fabBottom, fabTop);
+                ObjectAnimator inAnim = ObjectAnimator.ofFloat(fab, "y", fabHiddenY, fabVisibleY);
                 inAnim.setDuration(250);
                 inAnim.start();
                 fabShown = true;
@@ -157,11 +163,30 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     }
 
     @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        if (mFileCab != null && mFileCab.isActive())
+            outState.putSerializable("cab", mFileCab);
+        outState.putSerializable("fab_pastemode", fabPasteMode);
+        outState.putBoolean("fab_disabled", fabDisabled);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         mThemeUtils = new ThemeUtils(this);
         setTheme(mThemeUtils.getCurrent());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
+
+        if (savedInstanceState != null) {
+            if (savedInstanceState.containsKey("cab")) {
+                mFileCab = (BaseFileCab) savedInstanceState.getSerializable("cab");
+                shouldAttachFab = true;
+                Toast.makeText(this, fabVisibleY + "", Toast.LENGTH_SHORT).show();
+            }
+            fabPasteMode = (BaseFileCab.PasteMode) savedInstanceState.getSerializable("fab_pastemode");
+            fabDisabled = savedInstanceState.getBoolean("fab_disabled");
+        }
 
         NavigationDrawerFragment mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.navigation_drawer);
         mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));

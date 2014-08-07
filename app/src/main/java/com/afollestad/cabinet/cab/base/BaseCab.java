@@ -7,13 +7,15 @@ import android.view.MenuItem;
 import com.afollestad.cabinet.fragments.DirectoryFragment;
 import com.afollestad.cabinet.ui.DrawerActivity;
 
-public abstract class BaseCab implements ActionMode.Callback {
+import java.io.Serializable;
+
+public abstract class BaseCab implements ActionMode.Callback, Serializable {
 
     public BaseCab() {
     }
 
-    private ActionMode mActionMode;
-    private DirectoryFragment mContext;
+    private transient ActionMode mActionMode;
+    private transient DirectoryFragment mContext;
 
     public final BaseCab start() {
         getContext().startActionMode(this);
