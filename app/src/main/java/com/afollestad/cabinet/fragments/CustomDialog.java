@@ -17,6 +17,7 @@ public class CustomDialog extends DialogFragment implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
+        dismiss();
         mListener.onPositive((Integer) view.getTag());
     }
 
