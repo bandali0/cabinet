@@ -38,8 +38,7 @@
                 android:lineSpacingMultiplier="1.4"
                 android:textIsSelectable="true"
                 android:textColorLink="@color/cabinet_color"
-                android:fontFamily="sans-serif-light"
-                android:paddingBottom="16dp" />
+                android:fontFamily="sans-serif-light" />
             <!-- TODO remove android:paddingBottom="16dp" for Material -->
 
             <LinearLayout
