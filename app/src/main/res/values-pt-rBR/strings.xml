@@ -165,9 +165,6 @@
         <a href=\'https://github.com/afollestad\'>GitHub</a>&nbsp;&nbsp;
         <a href=\'https://www.linkedin.com/in/afollestad\'>LinkedIn</a>
     ]]></string>
-    <string name="app_name_and_version" translatable="false"><![CDATA[
-        <b>Cabinet</b>&nbsp;<font color="#888888">v%1$s</font>
-    ]]></string>
     <!-- Details dialog -->
     <string name="details_body_file"><![CDATA[
         <b>Nome:</b>&nbsp;&nbsp;%1$s<br/><b>Caminho:</b>&nbsp;&nbsp;%2$s<br/><b>Tamanho:</b>&nbsp;&nbsp;%3$s<br/><b>Modificado:</b>&nbsp;&nbsp;%4$s<br/><b>Permissões:</b>&nbsp;&nbsp;%5$s
