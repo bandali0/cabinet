@@ -17,7 +17,7 @@ android {
         applicationId "com.afollestad.cabinet"
         minSdkVersion 'L'
         targetSdkVersion 'L'
-        versionCode 47
+        versionCode 48
         versionName "1.6.7.5"
     }
 

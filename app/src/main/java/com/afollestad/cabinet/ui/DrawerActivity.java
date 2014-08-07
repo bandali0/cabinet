@@ -62,9 +62,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     public boolean shouldAttachFab; // used during config change, tells fragment to reattach to cab
 
     public static void setupTransparentTints(Activity context) {
-        // TODO change condition for Material
-        if (Build.VERSION.SDK_INT != Build.VERSION_CODES.KITKAT || !ThemeUtils.isTranslucentStatusbar(context))
-            return;
+        if (!ThemeUtils.isTranslucentStatusbar(context)) return;
         SystemBarTintManager tintManager = new SystemBarTintManager(context);
         tintManager.setStatusBarTintEnabled(true);
         tintManager.setStatusBarTintResource(R.color.cabinet_color);
