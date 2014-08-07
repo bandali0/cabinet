@@ -21,6 +21,7 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.cabinet.App;
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.cab.CopyCab;
 import com.afollestad.cabinet.cab.CutCab;
@@ -28,6 +29,7 @@ import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.ui.DrawerActivity;
 import com.afollestad.cabinet.utils.Shortcuts;
 import com.afollestad.cabinet.utils.TimeUtils;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
@@ -247,7 +249,8 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
                     ApplicationInfo appInfo = pi.applicationInfo;
                     if (appInfo.icon != 0) {
                         Uri uri = Uri.parse("android.resource://" + appInfo.packageName + "/" + appInfo.icon);
-                        ImageLoader.getInstance().displayImage(uri.toString(), icon);
+                        DisplayImageOptions options = App.getDisplayOptions(R.drawable.ic_file_apk);
+                        ImageLoader.getInstance().displayImage(uri.toString(), icon, options);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

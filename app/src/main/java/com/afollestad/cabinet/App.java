@@ -15,19 +15,23 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        DisplayImageOptions options = new DisplayImageOptions.Builder()
-                .resetViewBeforeLoading(true)
-                .cacheInMemory(true)
-                .cacheOnDisk(true)
-                .showImageForEmptyUri(R.drawable.ic_file_image)
-                .showImageOnFail(R.drawable.ic_file_image)
-                .cacheInMemory(true)
-                .cacheOnDisk(false)
-                .build();
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
-                .defaultDisplayImageOptions(options)
+                .defaultDisplayImageOptions(getDisplayOptions(0))
                 .imageDownloader(new APKIconDownloader(this))
                 .build();
         ImageLoader.getInstance().init(config);
+    }
+
+    public static DisplayImageOptions getDisplayOptions(int fallback) {
+        if (fallback == 0) fallback = R.drawable.ic_file_image;
+        return new DisplayImageOptions.Builder()
+                .resetViewBeforeLoading(true)
+                .cacheInMemory(true)
+                .cacheOnDisk(true)
+                .showImageForEmptyUri(fallback)
+                .showImageOnFail(fallback)
+                .cacheInMemory(true)
+                .cacheOnDisk(false)
+                .build();
     }
 }
