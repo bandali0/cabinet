@@ -217,4 +217,29 @@
     <string name="material_version">Material</string>
     <string name="material_version_desc">A Material version of Cabinet is available to those running Android L. Do you want to view the Cabinet Google+ community where this version is posted?</string>
 
+    <string-array name="code_extensions" translatable="false">
+        <item>java</item>
+        <item>js</item>
+        <item>py</item>
+        <item>c</item>
+        <item>cpp</item>
+        <item>css</item>
+        <item>html</item>
+        <item>xml</item>
+        <item>fs</item>
+        <item>lua</item>
+        <item>pl</item>
+        <item>h</item>
+        <item>less</item>
+        <item>jade</item>
+        <item>swift</item>
+        <item>lsp</item>
+        <item>m</item>
+        <item>rb</item>
+        <item>coffee</item>
+        <item>actionscript</item>
+        <item>fla</item>
+        <item>class</item>
+    </string-array>
+
 </resources>

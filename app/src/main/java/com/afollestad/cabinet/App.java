@@ -19,8 +19,8 @@ public class App extends Application {
                 .resetViewBeforeLoading(true)
                 .cacheInMemory(true)
                 .cacheOnDisk(true)
-                .showImageForEmptyUri(R.drawable.ic_image)
-                .showImageOnFail(R.drawable.ic_image)
+                .showImageForEmptyUri(R.drawable.ic_file_image)
+                .showImageOnFail(R.drawable.ic_file_image)
                 .cacheInMemory(true)
                 .cacheOnDisk(false)
                 .build();

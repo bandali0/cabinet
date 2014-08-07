@@ -10,6 +10,7 @@ import com.afollestad.cabinet.sftp.SftpClient;
 import com.afollestad.cabinet.ui.DrawerActivity;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 
 public abstract class File implements Serializable {
 
@@ -40,12 +41,11 @@ public abstract class File implements Serializable {
 
     /* END CARD METHODS */
 
-    private String humanReadableByteCount(long bytes, boolean si) {
-        int unit = si ? 1000 : 1024;
-        if (bytes < unit) return bytes + " B";
-        int exp = (int) (Math.log(bytes) / Math.log(unit));
-        String pre = (si ? "kMGTPE" : "KMGTPE").charAt(exp - 1) + (si ? "" : "i");
-        return String.format("%.1f %sB", bytes / Math.pow(unit, exp), pre);
+    private String readableFileSize(long size) {
+        if(size <= 0) return "0";
+        final String[] units = new String[] { "B", "KB", "MB", "GB", "TB" };
+        int digitGroups = (int) (Math.log10(size)/Math.log10(1024));
+        return new DecimalFormat("#,##0.#").format(size/Math.pow(1024, digitGroups)) + " " + units[digitGroups];
     }
 
     private long recursiveSize(java.io.File dir, boolean dirs, boolean bytes) {
@@ -68,9 +68,9 @@ public abstract class File implements Serializable {
         if (isDirectory()) {
             return mContext.getString(R.string.x_files, recursiveSize(toJavaFile(), false, false)) + ", " +
                     mContext.getString(R.string.x_dirs, recursiveSize(toJavaFile(), true, false)) + ", " +
-                    humanReadableByteCount(recursiveSize(toJavaFile(), false, true), true);
+                    readableFileSize(recursiveSize(toJavaFile(), false, true));
         }
-        return humanReadableByteCount(length(), true);
+        return readableFileSize(length());
     }
 
     public final String getExtension() {

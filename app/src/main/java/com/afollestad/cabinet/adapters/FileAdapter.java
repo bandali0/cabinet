@@ -31,9 +31,11 @@ import com.afollestad.cabinet.utils.TimeUtils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
 
 public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder> implements View.OnClickListener, View.OnLongClickListener {
 
@@ -249,24 +251,47 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
-                    icon.setImageResource(R.drawable.ic_file);
+                    icon.setImageResource(R.drawable.ic_file_apk);
                 }
             } else {
-                int resId = R.drawable.ic_file;
+                int resId = R.drawable.ic_file_misc;
                 if (file.isDirectory()) {
                     resId = R.drawable.ic_folder;
                 } else {
-                    if (mime.startsWith("image/")) {
-                        resId = R.drawable.ic_image;
+                    String ext = file.getExtension();
+                    List<String> codeExts = Arrays.asList(context.getResources().getStringArray(R.array.code_extensions));
+                    if (mime.startsWith("audio/") || mime.equals("application/ogg")) {
+                        resId = R.drawable.ic_file_audio;
+                    } else if (mime.startsWith("image/")) {
+                        resId = R.drawable.ic_file_image;
                     } else if (mime.startsWith("video/")) {
-                        resId = R.drawable.ic_video;
-                    } else if (mime.startsWith("audio/") || mime.equals("application/ogg")) {
-                        resId = R.drawable.ic_audio;
+                        resId = R.drawable.ic_file_video;
+                    } else if (mime.equals("application/pdf")) {
+                        resId = R.drawable.ic_file_pdf;
+                    } else if (ext.equals("zip") || ext.equals("gzip") || ext.equals("tar") || ext.equals("tar.gz") ||
+                            ext.equals("rar") || ext.equals("7z") || ext.equals("gz")) {
+                        resId = R.drawable.ic_file_zip;
+                    } else if (mime.startsWith("model/")) {
+                        resId = R.drawable.ic_file_model;
+                    } else if (file.getExtension().equals("doc") || file.getExtension().equals("docx")) {
+                        resId = R.drawable.ic_file_word;
+                    } else if (file.getExtension().equals("ppt") || file.getExtension().equals("pptx")) {
+                        resId = R.drawable.ic_file_present;
+                    } else if (file.getExtension().equals("xls") || file.getExtension().equals("xlsx")) {
+                        resId = R.drawable.ic_file_excel;
+                    } else if (file.getExtension().equals("ttf")) {
+                        resId = R.drawable.ic_file_font;
+                    } else if (file.getExtension().equals("sh") || file.getExtension().equals("bat")) {
+                        resId = R.drawable.ic_file_script;
+                    } else if (mime.startsWith("text/")) {
+                        resId = R.drawable.ic_file_doc;
+                    } else if (codeExts.contains(ext.toLowerCase(Locale.getDefault()))) {
+                        resId = R.drawable.ic_file_code;
                     }
                 }
                 icon.setImageResource(resId);
             }
-        } else icon.setImageResource(R.drawable.ic_file);
+        } else icon.setImageResource(R.drawable.ic_file_misc);
     }
 
     @Override
