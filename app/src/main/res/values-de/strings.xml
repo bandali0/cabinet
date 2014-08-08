@@ -27,7 +27,7 @@
     <string name="directory">Verzeichnis</string>
     <string name="unknown">Unbekannt</string>
     <string name="go_up">Hinauf gehen</string>
-    <string name="press_back_to_exit">Zum Schließen der App Zurück-Taste erneut drücken</string>
+    <string name="press_back_to_exit">"Zum Schließen der App Zurück-Taste erneut drücken"</string>
     <string name="x_files">%1$d Dateien</string>
     <string name="x_dirs">%1$d Verzeichnisse</string>
     <string name="no_x_files">Keine %1$s Dateien</string>
@@ -171,10 +171,10 @@
  <b>Name:</b>&nbsp;&nbsp;%1$s<br/><b>Pfad:</b>&nbsp;&nbsp;%2$s<br/><b>Inhalte:</b>&nbsp;&nbsp;%3$s<br/><b>Verändert:</b>&nbsp;&nbsp;%4$s
     ]]></string>
     <string name="material_version">Material</string>
-    <string name="material_version_desc">Für die mit Android L steht eine Version mit dem Material Design in der Cabinet Google+ Community zur Verfügung. Seite der Cabinet Google+ Community jetzt öffnen?</string>
+    <string name="material_version_desc">Für Android L steht eine Version mit Material Design in der Cabinet Community in Google+ zur Verfügung. Wollen Sie die Seite der Community jetzt öffnen?</string>
     <string name="new_file">Neuer Datei</string>
-    <string name="making_file">Erstelle Datei…</string>
-    <string name="created_file">Erstelle Datei %1$s</string>
+    <string name="making_file">Erstelle Datei...</string>
+    <string name="created_file">Datei %1$s erstellt</string>
     <string name="file_already_exists">Datei existiert bereits</string>
-    <string name="failed_make_file">Problem beim erstellen des Datei: %1$s</string>
+    <string name="failed_make_file">Erstellen der Datei %1$s fehlgeschlagen</string>
 </resources>
