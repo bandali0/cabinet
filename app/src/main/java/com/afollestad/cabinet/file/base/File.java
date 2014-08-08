@@ -175,7 +175,7 @@ public abstract class File implements Serializable {
         return o instanceof File && ((File) o).getPath().equals(getPath());
     }
 
-    protected final void notifyMediaScannerService(File file) {
+    protected final void notifyMediaScannerService(File file, final boolean delete) {
         if (!file.getMimeType().startsWith("image/") &&
                 !file.getMimeType().startsWith("audio/") &&
                 !file.getMimeType().startsWith("video/") &&
@@ -190,6 +190,10 @@ public abstract class File implements Serializable {
                     public void onScanCompleted(String path, Uri uri) {
                         Log.i("Scanner", "Scanned " + path + ":");
                         Log.i("Scanner", "-> uri=" + uri);
+                        if (delete) {
+                            Log.i("Scanner", "Deleting " + uri);
+                            mContext.getContentResolver().delete(uri, null, null);
+                        }
                     }
                 }
         );

@@ -147,7 +147,8 @@ public class LocalFile extends File {
                                         @Override
                                         public void run() {
                                             callback.onComplete();
-                                            notifyMediaScannerService(newFile);
+                                            notifyMediaScannerService(LocalFile.this, true);
+                                            notifyMediaScannerService(newFile, false);
                                             Toast.makeText(getContext(), getContext().getString(getParent().equals(newFile.getParent()) ?
                                                     R.string.renamed_to : R.string.moved_to, newFile.getPath()), Toast.LENGTH_SHORT).show();
                                         }
@@ -169,7 +170,8 @@ public class LocalFile extends File {
                             @Override
                             public void run() {
                                 callback.onComplete();
-                                notifyMediaScannerService(newFile);
+                                notifyMediaScannerService(LocalFile.this, true);
+                                notifyMediaScannerService(newFile, false);
                                 Toast.makeText(getContext(), getContext().getString(getParent().equals(newFile.getParent()) ?
                                         R.string.renamed_to : R.string.moved_to, newFile.getPath()), Toast.LENGTH_SHORT).show();
                             }
@@ -303,7 +305,7 @@ public class LocalFile extends File {
         in.close();
         out.close();
         File scanFile = new LocalFile(getContext(), newFile);
-        notifyMediaScannerService(scanFile);
+        notifyMediaScannerService(scanFile, false);
         return dest;
     }
 
@@ -438,7 +440,7 @@ public class LocalFile extends File {
 
     public boolean deleteSync() {
         boolean val = mFile.delete();
-        notifyMediaScannerService(this);
+        notifyMediaScannerService(this, true);
         return val;
     }
 
