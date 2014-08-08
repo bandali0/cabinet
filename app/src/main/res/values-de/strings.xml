@@ -8,7 +8,7 @@
  hat viele weitere Funktionen wie Remote Access zu Servern via SFTP. Danke das du Cabinet ausprobierst!</string>
     <string name="lets_go">Los geht\'s!</string>
     <!-- File actions-->
-    <string name="open_as">Öffnen als...</string>
+    <string name="open_as">Öffnen als…</string>
     <string name="pin">Anheften</string>
     <string name="copy">Kopieren</string>
     <string name="cut">Ausschneiden</string>
@@ -76,16 +76,16 @@
     <string name="uploaded_to">Hochgeladen zu %1$s</string>
     <string name="downloaded_to">Heruntergeladen von %1$s</string>
     <!-- Status messages -->
-    <string name="connecting">Verbinde...</string>
-    <string name="downloading">Lade herunter...</string>
-    <string name="deleting">Lösche...</string>
-    <string name="making_folder">Erstelle Ordner...</string>
-    <string name="renaming">Umbenenne...</string>
-    <string name="unzipping">Entpacke...</string>
-    <string name="zipping">Verpacke...</string>
-    <string name="moving">Verschiebe...</string>
-    <string name="uploading">Lade hoch...</string>
-    <string name="copying">Kopiere...</string>
+    <string name="connecting">Verbinde…</string>
+    <string name="downloading">Lade herunter…</string>
+    <string name="deleting">Lösche…</string>
+    <string name="making_folder">Erstelle Ordner…</string>
+    <string name="renaming">Umbenenne…</string>
+    <string name="unzipping">Entpacke…</string>
+    <string name="zipping">Verpacke…</string>
+    <string name="moving">Verschiebe…</string>
+    <string name="uploading">Lade hoch…</string>
+    <string name="copying">Kopiere…</string>
     <!-- Error messages -->
     <string name="failed_delete_file">Problem beim löschen der Datei: %1$s</string>
     <string name="failed_make_directory">Problem beim erstellen des Ordner: %1$s</string>
@@ -113,7 +113,7 @@
     <string name="cut_xfiles"><![CDATA[
  <b>Schneide aus:</b>&nbsp;&nbsp;%1$d Dateien
     ]]></string>
-    <string name="search_files">Suche Dateien...</string>
+    <string name="search_files">Suche Dateien…</string>
     <string name="search_x"><![CDATA[
  <b>Suche:</b>&nbsp;%1$s
     ]]></string>
@@ -128,14 +128,11 @@
     <string name="no_thanks">Nein Danke</string>
     <!-- Misc. arrays -->
     <string-array name="new_options">
-    <!-- Misc. arrays -->
+        <item>Datei</item>
         <item>Ordner</item>
-    <!-- Misc. arrays -->
-        <item>Remote Verbindung...</item>
+        <item>Remote Verbindung…</item>
     </string-array>
     <string-array name="open_as">
-    <!-- File actions-->
-        <item>Öffnen als...</item>
         <item>Text</item>
         <item>Bild</item>
         <item>Ton</item>
@@ -175,4 +172,5 @@
     ]]></string>
     <string name="material_version">Material</string>
     <string name="material_version_desc">Für die mit Android L steht eine Version mit dem Material Design in der Cabinet Google+ Community zur Verfügung. Seite der Cabinet Google+ Community jetzt öffnen?</string>
+    <string name="new_file">Neuer Datei</string>
 </resources>

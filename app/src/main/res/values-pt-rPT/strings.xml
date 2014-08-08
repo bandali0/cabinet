@@ -127,6 +127,7 @@
     <string name="no_thanks">Não, obrigado</string>
     <!-- Misc. arrays -->
     <string-array name="new_options">
+        <item>Ficheiro</item>
         <item>Pasta</item>
         <item>Ligação Remota…</item>
     </string-array>
@@ -170,4 +171,5 @@
     ]]></string>
     <string name="material_version">Material</string>
     <string name="material_version_desc">Uma versão Material do Cabinet está disponível para aqueles que usam o Android L. Deseja visitar a comunidade Google+ do Cabinet onde esta versão está publicada?</string>
+    <string name="new_file">Nova Ficheiro</string>
 </resources>

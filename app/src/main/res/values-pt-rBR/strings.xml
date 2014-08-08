@@ -127,14 +127,11 @@
     <string name="no_thanks">Não, obrigado</string>
     <!-- Misc. arrays -->
     <string-array name="new_options">
-    <!-- Misc. arrays -->
+        <item>Arquivo</item>
         <item>Pasta</item>
-    <!-- Misc. arrays -->
         <item>Conexão Remota…</item>
     </string-array>
     <string-array name="open_as">
-    <!-- File actions-->
-        <item>Abrir Como…</item>
         <item>Texto</item>
         <item>Imagem</item>
         <item>Áudio</item>
@@ -174,4 +171,5 @@
     ]]></string>
     <string name="material_version">Material</string>
     <string name="material_version_desc">Uma versão Material Design de Cabinet está disponível para aqueles que rodam o Android L. Deseja ver a comunidade de Cabinet no Google+ onde essa versão é postada?</string>
+    <string name="new_file">Nova Arquivo</string>
 </resources>
