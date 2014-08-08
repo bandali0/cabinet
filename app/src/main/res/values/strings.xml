@@ -3,7 +3,6 @@
 
     <string name="app_name" translatable="false">Cabinet</string>
 
-    <!-- Welcome screen -->
     <string name="welcome">Welcome</string>
     <string name="welcome_intro">Welcome to Cabinet! Cabinet is a simplistic file manager designed to be aesthetically
         pleasing, and just work how a file manager should.\n\nTake a look at this file:</string>
@@ -14,7 +13,6 @@
     <string name="file_stub_size" translatable="false">15 KB</string>
     <string name="lets_go">Let\'s Go!</string>
 
-    <!-- File actions-->
     <string name="open_as">Open As…</string>
     <string name="pin">Pin</string>
     <string name="copy">Copy</string>
@@ -28,7 +26,6 @@
     <string name="selectAll">Select All</string>
     <string name="details">Details</string>
 
-    <!-- Misc. -->
     <string name="no_files">No files</string>
     <string name="storage">Storage</string>
     <string name="root">Root</string>
@@ -62,7 +59,6 @@
     <string name="confirm_delete_xfiles">Are you sure you want to delete %1$d files?</string>
     <string name="unavailable">Unavailable</string>
 
-    <!-- Sort options -->
     <string name="sort_by">Sort By</string>
     <string name="sort_name_folderstop">Name, folders first</string>
     <string name="sort_name">Name</string>
@@ -70,7 +66,6 @@
     <string name="sort_size_lowhigh">Size, low to high</string>
     <string name="sort_size_highlow">Size, high to low</string>
 
-    <!-- SFTP stuff -->
     <string name="new_remote_connection">New Remote Connection</string>
     <string name="network_service_label">Cabinet Network Service</string>
     <string name="connection_notification_content">Connected to %1$s</string>
@@ -87,7 +82,6 @@
     <string name="downloaded_to">Downloaded to %1$s</string>
     <string name="defaultSshPort" translatable="false">22</string>
 
-    <!-- Status messages -->
     <string name="connecting">Connecting…</string>
     <string name="downloading">Downloading…</string>
     <string name="deleting">Deleting…</string>
@@ -99,7 +93,6 @@
     <string name="uploading">Uploading…</string>
     <string name="copying">Copying…</string>
 
-    <!-- Error messages -->
     <string name="failed_delete_file">Failed to delete this file: %1$s</string>
     <string name="failed_make_directory">Failed to make a new folder: %1$s</string>
     <string name="failed_rename_file">Failed to rename/move this file: %1$s</string>
@@ -114,7 +107,6 @@
     <string name="no_apps_for_sharing">No apps are available for sharing this type of file</string>
     <string name="directory_already_exists">Directory already exists</string>
 
-    <!-- Contextual action bar titles -->
     <string name="copy_x">
 <![CDATA[
         <b>Copy:</b>&nbsp;&nbsp;%1$s
@@ -142,7 +134,6 @@
     ]]>
     </string>
 
-    <!-- Donation -->
     <string name="donate">Donate</string>
     <string name="donation1" translatable="false">$0.99</string>
     <string name="donation2" translatable="false">$5.00</string>
@@ -150,14 +141,12 @@
     <string name="donation4" translatable="false">$20.00</string>
     <string name="thank_you">Thank you very much!</string>
 
-    <!-- Rate dialog -->
     <string name="rate">Rate</string>
     <string name="later">Later</string>
     <string name="rate_desc">Do you want to rate Cabinet on Google Play? Good ratings are appreciated!</string>
     <string name="sure">Sure!</string>
     <string name="no_thanks">No thanks</string>
 
-    <!-- Misc. arrays -->
     <string-array name="new_options">
         <item>File</item>
         <item>Folder</item>
@@ -171,7 +160,6 @@
         <item>Other</item>
     </string-array>
 
-    <!-- Settings -->
     <string name="info">Info</string>
     <string name="files">Files</string>
     <string name="show_hidden_files">Show Hidden Files</string>
@@ -187,7 +175,6 @@
     <string name="translucent_statusbar_desc">Translucent (same color as action bar) status bar on KitKat and above.</string>
     <string name="translucent_navbar_desc">Translucent navigation bar on KitKat and above.</string>
 
-    <!-- About dialog -->
     <string name="about_body"><![CDATA[
         A minimalist, intuitive, beautiful file manager for Android 4.1 and above.<br/><br/>
         Designed by <b>Aidan Follestad</b>.<br/>
@@ -201,7 +188,6 @@
         <b>Cabinet</b>&nbsp;<font color="#888888">v%1$s</font>
     ]]></string>
 
-    <!-- Details dialog -->
     <string name="details_body_file"><![CDATA[
         <b>Name:</b>&nbsp;&nbsp;%1$s<br/>
         <b>Path:</b>&nbsp;&nbsp;%2$s<br/>
