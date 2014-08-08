@@ -180,9 +180,12 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         if (savedInstanceState != null) {
             if (savedInstanceState.containsKey("cab")) {
                 mCab = (BaseCab) savedInstanceState.getSerializable("cab");
-                if (mCab instanceof BaseFileCab)
+                if (mCab instanceof BaseFileCab) {
                     shouldAttachFab = true;
-                else mCab.setContext(this).start();
+                } else {
+                    if (mCab instanceof PickerCab) pickMode = true;
+                    mCab.setContext(this).start();
+                }
             }
             fabPasteMode = (BaseFileCab.PasteMode) savedInstanceState.getSerializable("fab_pastemode");
             fabDisabled = savedInstanceState.getBoolean("fab_disabled");
