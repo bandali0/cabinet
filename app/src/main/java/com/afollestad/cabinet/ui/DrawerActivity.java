@@ -179,8 +179,10 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
 
         if (savedInstanceState != null) {
             if (savedInstanceState.containsKey("cab")) {
-                mCab = (BaseFileCab) savedInstanceState.getSerializable("cab");
-                shouldAttachFab = true;
+                mCab = (BaseCab) savedInstanceState.getSerializable("cab");
+                if (mCab instanceof BaseFileCab)
+                    shouldAttachFab = true;
+                else mCab.setContext(this).start();
             }
             fabPasteMode = (BaseFileCab.PasteMode) savedInstanceState.getSerializable("fab_pastemode");
             fabDisabled = savedInstanceState.getBoolean("fab_disabled");
@@ -290,7 +292,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     private void processIntent(Intent intent, Bundle savedInstanceState) {
         pickMode = intent.getAction() != null && intent.getAction().equals(Intent.ACTION_GET_CONTENT);
         if (pickMode) {
-            setCab(new PickerCab().start());
+            setCab(new PickerCab().setContext(this).start());
         }
         if (intent.hasExtra("remote")) {
             mRemoteSwitch = (CloudFile) intent.getSerializableExtra("remote");

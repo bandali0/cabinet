@@ -1,5 +1,6 @@
 package com.afollestad.cabinet.cab.base;
 
+import android.app.Activity;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,15 +16,23 @@ public abstract class BaseCab implements ActionMode.Callback, Serializable {
     }
 
     private transient ActionMode mActionMode;
-    private transient DirectoryFragment mContext;
+    private transient Activity context;
+    private transient DirectoryFragment fragment;
 
     public final BaseCab start() {
         getContext().startActionMode(this);
         return this;
     }
 
+    public BaseCab setContext(Activity context) {
+        this.context = context;
+        invalidate();
+        return this;
+    }
+
     public BaseCab setFragment(DirectoryFragment fragment) {
-        mContext = fragment;
+        this.context = fragment.getActivity();
+        this.fragment = fragment;
         invalidate();
         return this;
     }
@@ -33,11 +42,11 @@ public abstract class BaseCab implements ActionMode.Callback, Serializable {
     }
 
     public DirectoryFragment getFragment() {
-        return mContext;
+        return fragment;
     }
 
     public DrawerActivity getContext() {
-        return (DrawerActivity) mContext.getActivity();
+        return (DrawerActivity) context;
     }
 
     public abstract int getMenu();
