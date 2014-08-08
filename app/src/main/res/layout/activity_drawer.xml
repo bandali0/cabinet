@@ -17,7 +17,7 @@
 
         <com.faizmalkani.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
-            app:color="@color/cabinet_color"
+            app:color="@color/cabinet_accent_color"
             app:drawable="@drawable/ic_add"
             android:layout_width="@dimen/fab_size"
             android:layout_height="@dimen/fab_size"
