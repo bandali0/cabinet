@@ -102,11 +102,17 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     }
 
     @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        setHasOptionsMenu(true);
+        setRetainInstance(true);
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         mDirectory = (File) getArguments().getSerializable("path");
         mQuery = getArguments().getString("query");
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
 
         if (mQuery != null) mQuery = mQuery.trim();
         showHidden = Utils.getShowHidden(getActivity());

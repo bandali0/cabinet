@@ -99,7 +99,7 @@ public class NavigationDrawerFragment extends Fragment {
         DrawerActivity.setupTranslucentBottomPadding(getActivity(), view);
     }
 
-    public void setUp(int fragmentId, DrawerLayout drawerLayout) {
+    public void setUp(int fragmentId, DrawerLayout drawerLayout, boolean selectDefault) {
         mFragmentContainerView = getActivity().findViewById(fragmentId);
         mDrawerLayout = drawerLayout;
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
@@ -164,7 +164,7 @@ public class NavigationDrawerFragment extends Fragment {
             }
         });
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-        selectItem(mCurrentSelectedPosition);
+        if (selectDefault) selectItem(mCurrentSelectedPosition);
     }
 
     private void selectItem(int position) {

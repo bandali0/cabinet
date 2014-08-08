@@ -182,7 +182,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         }
 
         NavigationDrawerFragment mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.navigation_drawer);
-        mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
+        mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), savedInstanceState == null);
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -202,7 +202,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         setupTransparentTints(this);
 
         mBP = new BillingProcessor(this, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlPBB2hP/R0PrXtK8NPeDX7QV1fvk1hDxPVbIwRZLIgO5l/ZnAOAf8y9Bq57+eO5CD+ZVTgWcAVrS/QsiqDI/MwbfXcDydSkZLJoFofOFXRuSL7mX/jNwZBNtH0UrmcyFx1RqaHIe9KZFONBWLeLBmr47Hvs7dKshAto2Iy0v18kN48NqKxlWtj/PHwk8uIQ4YQeLYiXDCGhfBXYS861guEr3FFUnSLYtIpQ8CiGjwfU60+kjRMmXEGnmhle5lqzj6QeL6m2PNrkbJ0T9w2HM+bR7buHcD8e6tHl2Be6s/j7zn1Ypco/NCbqhtPgCnmLpeYm8EwwTnH4Yei7ACR7mXQIDAQAB", this);
-        processIntent(getIntent());
+        processIntent(getIntent(), savedInstanceState);
     }
 
     @Override
@@ -217,7 +217,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        processIntent(intent);
+        processIntent(intent, null);
     }
 
     public void checkMaterialAndRating() {
@@ -278,7 +278,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         }).show(getFragmentManager(), "DISCONNECT_CONFIRM");
     }
 
-    private void processIntent(Intent intent) {
+    private void processIntent(Intent intent, Bundle savedInstanceState) {
         if (intent.hasExtra("remote")) {
             mRemoteSwitch = (CloudFile) intent.getSerializableExtra("remote");
             if (mNetworkService != null) {
@@ -286,7 +286,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
                 displayDisconnectPrompt();
                 mRemoteSwitch = null;
             }
-        } else {
+        } else if (savedInstanceState == null) {
             if (!PreferenceManager.getDefaultSharedPreferences(this).getBoolean("shown_welcome", false)) {
                 getFragmentManager().beginTransaction().replace(R.id.container, new WelcomeFragment()).commit();
             } else {
