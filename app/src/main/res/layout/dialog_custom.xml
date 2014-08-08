@@ -40,6 +40,7 @@
                 android:textSize="19sp"
                 android:lineSpacingMultiplier="1.4"
                 android:textIsSelectable="true"
+                android:textColor="#606060"
                 android:textColorLink="@color/cabinet_color"
                 android:fontFamily="sans-serif-light" />
 
