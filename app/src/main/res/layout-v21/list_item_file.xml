@@ -53,11 +53,11 @@
                     android:ellipsize="end"
                     android:fontFamily="sans-serif-light"
                     android:layout_alignParentLeft="true"
-                    android:layout_toLeftOf="@+id/size"
-                    android:layout_marginRight="5dp" />
+                    android:layout_toLeftOf="@android:id/summary"
+                    android:layout_marginRight="10dp" />
 
                 <TextView
-                    android:id="@+id/size"
+                    android:id="@android:id/summary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"

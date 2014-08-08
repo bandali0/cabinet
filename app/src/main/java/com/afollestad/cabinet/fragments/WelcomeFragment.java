@@ -83,8 +83,8 @@ public class WelcomeFragment extends Fragment {
         title.setText(R.string.file_sub_title);
         title.setTextColor(getResources().getColor(R.color.accent_color));
 
-        ((TextView) fileCard.findViewById(android.R.id.content)).setText(R.string.file_stub_content);
-        ((TextView) fileCard.findViewById(R.id.size)).setText(R.string.file_stub_size);
+        ((TextView) fileCard.findViewById(android.R.id.content)).setText(R.string.file_stub_size);
+        ((TextView) fileCard.findViewById(android.R.id.summary)).setText(R.string.file_stub_content);
 
         View menuButton = fileCard.findViewById(R.id.menu);
         ContextThemeWrapper context = new ContextThemeWrapper(getActivity(), R.style.Theme_PopupMenuTheme);
