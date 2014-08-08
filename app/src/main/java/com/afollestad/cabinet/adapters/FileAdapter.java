@@ -3,9 +3,6 @@ package com.afollestad.cabinet.adapters;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.preference.PreferenceManager;
@@ -156,15 +153,15 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
         notifyDataSetChanged();
     }
 
-    public void update(File file) {
-        for (int i = 0; i < mFiles.size(); i++) {
-            if (mFiles.get(i).getPath().equals(file.getPath())) {
-                mFiles.set(i, file);
-                break;
-            }
-        }
-        notifyDataSetChanged();
-    }
+//    public void update(File file) {
+//        for (int i = 0; i < mFiles.size(); i++) {
+//            if (mFiles.get(i).getPath().equals(file.getPath())) {
+//                mFiles.set(i, file);
+//                break;
+//            }
+//        }
+//        notifyDataSetChanged();
+//    }
 
     public void remove(File file) {
         for (int i = 0; i < mFiles.size(); i++) {
@@ -242,21 +239,8 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
                 Uri uri = Uri.fromFile(file.toJavaFile());
                 ImageLoader.getInstance().displayImage(Uri.decode(uri.toString()), icon);
             } else if (mime.equals("application/vnd.android.package-archive")) {
-                PackageManager pm = context.getPackageManager();
-                PackageInfo pi = pm.getPackageArchiveInfo(file.getPath(), 0);
-                try {
-                    pi.applicationInfo.sourceDir = file.getPath();
-                    pi.applicationInfo.publicSourceDir = file.getPath();
-                    ApplicationInfo appInfo = pi.applicationInfo;
-                    if (appInfo.icon != 0) {
-                        Uri uri = Uri.parse("android.resource://" + appInfo.packageName + "/" + appInfo.icon);
-                        DisplayImageOptions options = App.getDisplayOptions(R.drawable.ic_file_apk);
-                        ImageLoader.getInstance().displayImage(uri.toString(), icon, options);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    icon.setImageResource(R.drawable.ic_file_apk);
-                }
+                DisplayImageOptions options = App.getDisplayOptions(R.drawable.ic_file_apk);
+                ImageLoader.getInstance().displayImage(file.getPath(), icon, options);
             } else {
                 int resId = R.drawable.ic_file_misc;
                 if (file.isDirectory()) {
