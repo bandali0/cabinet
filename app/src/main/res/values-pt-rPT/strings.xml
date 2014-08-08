@@ -176,4 +176,5 @@
     <string name="created_file">Ficheiro criada %1$s</string>
     <string name="file_already_exists">O Ficheiro já existe</string>
     <string name="failed_make_file">Falha ao criar uma nova ficheiro: %1$s</string>
+    <string name="pick_a_file">Pick a file…</string>
 </resources>

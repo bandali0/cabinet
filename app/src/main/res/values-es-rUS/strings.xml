@@ -163,9 +163,9 @@
     <string name="material_version">Material</string>
     <string name="material_version_desc">Una versión con Material de Cabinet esta disponible para aquellos con Android L. ¿Quieres ver la comunidad de Cabinet  en Google+ donde está publicada esta versión?</string>
     <string name="new_file">Nueva Archivo</string>
-    <string name="making_file">Creando archivo...</string>
+    <string name="making_file">Creando archivo…</string>
     <string name="created_file">Archivo creado %1$s</string>
     <string name="file_already_exists">El archivo ya existe</string>
     <string name="failed_make_file">Error al crear un nuevo archivo: %1$s</string>
-    <string name="pick_a_file">Seleccione un archivo...</string>
+    <string name="pick_a_file">Seleccione un archivo…</string>
 </resources>

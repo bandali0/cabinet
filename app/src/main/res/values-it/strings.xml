@@ -177,4 +177,5 @@
     <string name="created_file">Creata File %1$s</string>
     <string name="file_already_exists">File già esistente</string>
     <string name="failed_make_file">Impossibile creare un nuova file: %1$s</string>
+    <string name="pick_a_file">Pick a file…</string>
 </resources>
