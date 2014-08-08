@@ -38,8 +38,7 @@
                 android:lineSpacingMultiplier="1.4"
                 android:textIsSelectable="true"
                 android:textColor="#606060"
-                android:textColorLink="@color/cabinet_color"
-                android:paddingBottom="16dp" />
+                android:textColorLink="@color/cabinet_color" />
             <!-- TODO remove android:paddingBottom="16dp" for Material -->
 
             <LinearLayout
