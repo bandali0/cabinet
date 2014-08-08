@@ -290,9 +290,9 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 ((DrawerActivity) getActivity()).getFileCab().paste();
             } else {
                 final Activity context = getActivity();
-                CustomDialog.create(R.string.newStr, R.array.new_options, new CustomDialog.ClickListener() {
+                CustomDialog.create(R.string.newStr, R.array.new_options, new CustomDialog.SimpleClickListener() {
                     @Override
-                    public void onPositive(int which) {
+                    public void onPositive(int which, View view) {
                         switch (which) {
                             case 0: // Folder
                                 showNewFolderDialog(context);
@@ -638,9 +638,9 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 }
                 break;
             case R.id.delete:
-                Utils.showConfirmDialog(getActivity(), R.string.delete, R.string.confirm_delete, file.getName(), new CustomDialog.ClickListener() {
+                Utils.showConfirmDialog(getActivity(), R.string.delete, R.string.confirm_delete, file.getName(), new CustomDialog.SimpleClickListener() {
                     @Override
-                    public void onPositive(int which) {
+                    public void onPositive(int which, View view) {
                         file.delete(new SftpClient.CompletionCallback() {
                             @Override
                             public void onComplete() {

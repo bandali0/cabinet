@@ -89,7 +89,7 @@ public class Utils {
         return PreferenceManager.getDefaultSharedPreferences(context).getBoolean("show_hidden", false);
     }
 
-    public static void showConfirmDialog(Activity context, int title, int message, String replacement, final CustomDialog.ClickListener callback) {
+    public static void showConfirmDialog(Activity context, int title, int message, String replacement, final CustomDialog.SimpleClickListener callback) {
         CustomDialog.create(title, context.getString(message, replacement), R.string.yes, 0, R.string.no, callback).show(context.getFragmentManager(), "CONFIRM");
     }
 
@@ -130,23 +130,26 @@ public class Utils {
     }
 
     public static void showInputDialog(Activity context, int title, int hint, String prefillInput, final InputCallback callback) {
-        View view = context.getLayoutInflater().inflate(R.layout.dialog_input, null);
-        final EditText input = (EditText) view.findViewById(R.id.input);
+        CustomDialog dialog = CustomDialog.create(title, null, 0, R.layout.dialog_input, 0, 0, android.R.string.no, new CustomDialog.SimpleClickListener() {
+            @Override
+            public void onPositive(int which, View view) {
+                if (callback != null) {
+                    EditText input = (EditText) view.findViewById(R.id.input);
+                    callback.onInput(input.getText().toString().trim());
+                }
+            }
+        });
+        final EditText input = (EditText) dialog.getInflatedView().findViewById(R.id.input);
         if (hint != 0) input.setHint(hint);
         if (prefillInput != null) input.append(prefillInput);
-        CustomDialog.create(title, view, 0, 0, android.R.string.no, new CustomDialog.ClickListener() {
-            @Override
-            public void onPositive(int which) {
-                if (callback != null) callback.onInput(input.getText().toString().trim());
-            }
-        }).show(context.getFragmentManager(), "INPUT_DIALOG");
+        dialog.show(context.getFragmentManager(), "INPUT_DIALOG");
     }
 
     private static void openLocal(final Activity context, final File file, String mime) {
         if (mime == null) {
-            CustomDialog.create(R.string.open_as, R.array.open_as, new CustomDialog.ClickListener() {
+            CustomDialog.create(R.string.open_as, R.array.open_as, new CustomDialog.SimpleClickListener() {
                 @Override
-                public void onPositive(int which) {
+                public void onPositive(int which, View view) {
                     String newMime;
                     switch (which) {
                         default:

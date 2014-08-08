@@ -76,9 +76,9 @@ public class NavigationDrawerFragment extends Fragment {
             public void onLongClick(final int index) {
                 Shortcuts.Item item = mAdapter.getItem(index);
                 Utils.showConfirmDialog(getActivity(), R.string.remove_shortcut,
-                        R.string.confirm_remove_shortcut, item.getDisplay(getActivity()), new CustomDialog.ClickListener() {
+                        R.string.confirm_remove_shortcut, item.getDisplay(getActivity()), new CustomDialog.SimpleClickListener() {
                             @Override
-                            public void onPositive(int which) {
+                            public void onPositive(int which, View view) {
                                 Shortcuts.remove(getActivity(), index);
                                 mAdapter.reload(getActivity());
                             }

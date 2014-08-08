@@ -248,11 +248,15 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         if (!prefs.getBoolean("shown_rating_dialog", false)) {
             CustomDialog.create(R.string.rate, getString(R.string.rate_desc), R.string.sure, R.string.later, R.string.no_thanks, new CustomDialog.ClickListener() {
                 @Override
-                public void onPositive(int which) {
+                public void onPositive(int which, View view) {
                     PreferenceManager.getDefaultSharedPreferences(DrawerActivity.this)
                             .edit().putBoolean("shown_rating_dialog", true).commit();
                     startActivity(new Intent(Intent.ACTION_VIEW)
                             .setData(Uri.parse("market://details?id=com.afollestad.cabinet")));
+                }
+
+                @Override
+                public void onNeutral() {
                 }
 
                 @Override
@@ -265,9 +269,9 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     }
 
     private void displayDisconnectPrompt() {
-        CustomDialog.create(R.string.disconnect, getString(R.string.disconnect_prompt), R.string.yes, 0, R.string.no, new CustomDialog.ClickListener() {
+        CustomDialog.create(R.string.disconnect, getString(R.string.disconnect_prompt), R.string.yes, 0, R.string.no, new CustomDialog.SimpleClickListener() {
             @Override
-            public void onPositive(int which) {
+            public void onPositive(int which, View view) {
                 startService(new Intent(DrawerActivity.this, NetworkService.class)
                         .setAction(NetworkService.DISCONNECT_SFTP));
             }

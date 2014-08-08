@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.afollestad.cabinet.R;
@@ -78,9 +79,9 @@ public class MainCab extends BaseFileCab {
             CustomDialog.create(R.string.delete, getFiles().size() == 1 ?
                             getContext().getString(R.string.confirm_delete, getFiles().get(0).getName()) :
                             getContext().getString(R.string.confirm_delete_xfiles, getFiles().size()), R.string.yes, 0, R.string.no,
-                    new CustomDialog.ClickListener() {
+                    new CustomDialog.SimpleClickListener() {
                         @Override
-                        public void onPositive(int which) {
+                        public void onPositive(int which, View view) {
                             deleteNextFile();
                             finish();
                         }

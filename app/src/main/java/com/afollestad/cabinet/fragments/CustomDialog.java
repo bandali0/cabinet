@@ -1,5 +1,6 @@
 package com.afollestad.cabinet.fragments;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -18,17 +19,17 @@ public class CustomDialog extends DialogFragment implements View.OnClickListener
     @Override
     public void onClick(View view) {
         dismiss();
-        mListener.onPositive((Integer) view.getTag());
+        mListener.onPositive((Integer) view.getTag(), inflatedView);
     }
 
-    public static abstract class ClickListener {
-        public abstract void onPositive(int which);
+    public interface SimpleClickListener {
+        public abstract void onPositive(int which, View view);
+    }
 
-        public void onNeutral() {
-        }
+    public interface ClickListener extends SimpleClickListener {
+        public abstract void onNeutral();
 
-        public void onNegative() {
-        }
+        public abstract void onNegative();
     }
 
     public CustomDialog() {
@@ -37,33 +38,69 @@ public class CustomDialog extends DialogFragment implements View.OnClickListener
     int title;
     String body;
     int itemsRes;
-    View view;
-    ClickListener mListener;
+    int view;
     int positive;
     int neutral;
     int negative;
+    SimpleClickListener mListener;
+    View inflatedView;
 
-    public static CustomDialog create(int title, String body, CustomDialog.ClickListener listener) {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setRetainInstance(true);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putInt("title", title);
+        outState.putString("body", body);
+        outState.putInt("item_res", itemsRes);
+        outState.putInt("view", view);
+        outState.putInt("positive", positive);
+        outState.putInt("neutral", neutral);
+        outState.putInt("negative", negative);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        if (savedInstanceState != null) {
+            title = savedInstanceState.getInt("title");
+            body = savedInstanceState.getString("body");
+            itemsRes = savedInstanceState.getInt("item_res");
+            view = savedInstanceState.getInt("view");
+            positive = savedInstanceState.getInt("positive");
+            neutral = savedInstanceState.getInt("neutral");
+            negative = savedInstanceState.getInt("negative");
+            if (view != 0) inflatedView = getActivity().getLayoutInflater().inflate(view, null);
+        }
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (view != 0) inflatedView = activity.getLayoutInflater().inflate(view, null);
+    }
+
+    public View getInflatedView() {
+        return inflatedView;
+    }
+
+    public static CustomDialog create(int title, String body, CustomDialog.SimpleClickListener listener) {
         return create(title, body, 0, 0, 0, listener);
     }
 
-    public static CustomDialog create(int title, int itemsRes, CustomDialog.ClickListener listener) {
-        return create(title, itemsRes, 0, 0, 0, listener);
+    public static CustomDialog create(int title, int itemsRes, CustomDialog.SimpleClickListener listener) {
+        return create(title, null, itemsRes, 0, 0, 0, 0, listener);
     }
 
-    public static CustomDialog create(int title, String body, int positive, int neutral, int negative, CustomDialog.ClickListener listener) {
-        return create(title, body, 0, null, positive, neutral, negative, listener);
+    public static CustomDialog create(int title, String body, int positive, int neutral, int negative, CustomDialog.SimpleClickListener listener) {
+        return create(title, body, 0, 0, positive, neutral, negative, listener);
     }
 
-    public static CustomDialog create(int title, int itemsRes, int positive, int neutral, int negative, CustomDialog.ClickListener listener) {
-        return create(title, null, itemsRes, null, positive, neutral, negative, listener);
-    }
-
-    public static CustomDialog create(int title, View view, int positive, int neutral, int negative, CustomDialog.ClickListener listener) {
-        return create(title, null, 0, view, positive, neutral, negative, listener);
-    }
-
-    public static CustomDialog create(int title, String body, int itemsRes, View view, int positive, int neutral, int negative, CustomDialog.ClickListener listener) {
+    public static CustomDialog create(int title, String body, int itemsRes, int view, int positive, int neutral, int negative, CustomDialog.SimpleClickListener listener) {
         CustomDialog dialog = new CustomDialog();
         dialog.title = title;
         dialog.body = body;
@@ -106,7 +143,7 @@ public class CustomDialog extends DialogFragment implements View.OnClickListener
         } else {
             body.setVisibility(View.GONE);
             list.setVisibility(View.VISIBLE);
-            list.addView(view);
+            list.addView(inflatedView);
             list.requestLayout();
         }
 
@@ -116,7 +153,7 @@ public class CustomDialog extends DialogFragment implements View.OnClickListener
                 @Override
                 public void onClick(DialogInterface dialog, int i) {
                     dialog.dismiss();
-                    if (mListener != null) mListener.onPositive(-1);
+                    if (mListener != null) mListener.onPositive(-1, inflatedView);
                 }
             });
         }
@@ -125,7 +162,8 @@ public class CustomDialog extends DialogFragment implements View.OnClickListener
                 @Override
                 public void onClick(DialogInterface dialog, int i) {
                     dialog.dismiss();
-                    if (mListener != null) mListener.onNeutral();
+                    if (mListener != null && mListener instanceof ClickListener)
+                        ((ClickListener) mListener).onNeutral();
                 }
             });
         }
@@ -134,7 +172,8 @@ public class CustomDialog extends DialogFragment implements View.OnClickListener
                 @Override
                 public void onClick(DialogInterface dialog, int i) {
                     dialog.dismiss();
-                    if (mListener != null) mListener.onNegative();
+                    if (mListener != null && mListener instanceof ClickListener)
+                        ((ClickListener) mListener).onNegative();
                 }
             });
         }
