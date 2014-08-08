@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.IBinder;
@@ -100,16 +99,6 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         mFileCab = cab;
     }
 
-    public void invalidateFabPos() {
-        if (fabVisibleY != 0) return;
-        SystemBarTintManager tintManager = new SystemBarTintManager(this);
-        SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
-        float translation = getResources().getDimension(R.dimen.fab_translation) + config.getPixelInsetBottom();
-        fabVisibleY = fab.getY();
-        fabHiddenY = fab.getY() + translation;
-        Log.v("Fab", "Invalidate position– top: " + fabVisibleY + ", bottom: " + fabHiddenY);
-    }
-
     public void waitFabInvalidate() {
         SystemBarTintManager tintManager = new SystemBarTintManager(this);
         SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
@@ -126,7 +115,14 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     }
 
     public void toggleFab(boolean hide) {
-        invalidateFabPos();
+        if (fabVisibleY == 0) {
+            SystemBarTintManager tintManager = new SystemBarTintManager(this);
+            SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
+            float translation = getResources().getDimension(R.dimen.fab_translation) + config.getPixelInsetBottom();
+            fabVisibleY = fab.getY();
+            fabHiddenY = fab.getY() + translation;
+            Log.v("Fab", "Invalidate position– top: " + fabVisibleY + ", bottom: " + fabHiddenY);
+        }
         if (hide) {
             if (fabShown) {
                 ObjectAnimator outAnim = ObjectAnimator.ofFloat(fab, "y", fabVisibleY, fabHiddenY);

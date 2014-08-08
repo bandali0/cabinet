@@ -126,16 +126,28 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         BaseFileCab fileCab = ((DrawerActivity) getActivity()).getFileCab();
         if (fileCab != null) {
             mAdapter.restoreCheckedPaths(fileCab.getFiles());
-            if (act.shouldAttachFab) act.invalidateFabPos();
-            fileCab.setFragment(this);
             if (act.shouldAttachFab) {
-                fileCab.invalidateFab();
-                fileCab.start();
-                act.shouldAttachFab = false;
-            }
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        ((DrawerActivity) getActivity()).waitFabInvalidate();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                DrawerActivity act = (DrawerActivity) getActivity();
+                                BaseFileCab cab = act.getFileCab();
+                                cab.setFragment(DirectoryFragment.this);
+                                cab.invalidateFab();
+                                cab.start();
+                                act.shouldAttachFab = false;
+                            }
+                        });
+                    }
+                }).start();
+            } else fileCab.setFragment(this);
         }
-        ((NavigationDrawerFragment) act.getFragmentManager().findFragmentByTag("NAV_DRAWER")).selectFile(mDirectory);
 
+        ((NavigationDrawerFragment) act.getFragmentManager().findFragmentByTag("NAV_DRAWER")).selectFile(mDirectory);
         if (showHidden != Utils.getShowHidden(getActivity())) {
             showHidden = Utils.getShowHidden(getActivity());
             reload();
