@@ -41,6 +41,11 @@ public class CloudFile extends File {
     private boolean mDirectory;
     private long mLength = -1;
 
+    @Override
+    public boolean isHidden() {
+        return getName().startsWith(".");
+    }
+
     public Remote getRemote() {
         return mRemote;
     }

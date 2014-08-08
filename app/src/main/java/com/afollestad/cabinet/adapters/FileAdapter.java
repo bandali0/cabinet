@@ -259,7 +259,8 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
             } else {
                 int resId = R.drawable.ic_file_misc;
                 if (file.isDirectory()) {
-                    resId = R.drawable.ic_folder;
+                    if (file.isHidden()) resId = R.drawable.ic_folder_hidden;
+                    else resId = R.drawable.ic_folder;
                 } else {
                     String ext = file.getExtension();
                     List<String> codeExts = Arrays.asList(context.getResources().getStringArray(R.array.code_extensions));

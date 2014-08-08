@@ -46,6 +46,11 @@ public class LocalFile extends File {
     private java.io.File mFile;
     public boolean isSearchResult;
 
+    @Override
+    public boolean isHidden() {
+        return mFile.isHidden() || mFile.getName().startsWith(".");
+    }
+
     private List<String> runAsRoot(String command) throws Exception {
         Log.v("Cabinet-SU", command);
         boolean suAvailable = Shell.SU.available();

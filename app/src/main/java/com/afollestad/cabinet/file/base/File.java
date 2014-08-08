@@ -99,6 +99,8 @@ public abstract class File implements Serializable {
         return getPath().equals("/");
     }
 
+    public abstract boolean isHidden();
+
     public final boolean isStorageDirectory() {
         return !isRemote() && getPath().equals(Environment.getExternalStorageDirectory().getAbsolutePath());
     }
