@@ -116,7 +116,6 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
         ImageView icon;
         TextView title;
         TextView content;
-        TextView summary;
         TextView directory;
         View menu;
 
@@ -126,7 +125,6 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
             icon = (ImageView) itemView.findViewById(R.id.image);
             title = (TextView) itemView.findViewById(android.R.id.title);
             content = (TextView) itemView.findViewById(android.R.id.content);
-            summary = (TextView) itemView.findViewById(android.R.id.summary);
             directory = (TextView) itemView.findViewById(R.id.directory);
             menu = itemView.findViewById(R.id.menu);
         }
@@ -200,11 +198,8 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
         holder.title.setText(file.getName());
         if (file.isDirectory()) {
             holder.content.setText(R.string.directory);
-            holder.summary.setVisibility(View.GONE);
         } else {
             holder.content.setText(file.getSizeString());
-            holder.summary.setText(file.getMimeType());
-            holder.summary.setVisibility(View.VISIBLE);
         }
 
         loadThumbnail(mContext, file, holder.icon);
