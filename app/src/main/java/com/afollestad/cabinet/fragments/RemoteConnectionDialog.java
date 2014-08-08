@@ -77,7 +77,6 @@ public class RemoteConnectionDialog implements SftpClient.CompletionCallback {
         });
 
         dialog = new AlertDialog.Builder(mContext)
-                .setTitle(R.string.new_remote_connection)
                 .setView(view)
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
