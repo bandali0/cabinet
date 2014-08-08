@@ -202,7 +202,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
             holder.content.setText(R.string.directory);
             holder.size.setVisibility(View.GONE);
         } else {
-            holder.content.setText(file.getMimeType());
+            holder.content.setText("." + file.getExtension());
             holder.size.setText(file.getSizeString());
             holder.size.setVisibility(View.VISIBLE);
         }
