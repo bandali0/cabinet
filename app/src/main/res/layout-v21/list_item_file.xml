@@ -37,7 +37,8 @@
                 android:textColor="#000"
                 android:singleLine="true"
                 android:fontFamily="sans-serif"
-                android:layout_marginBottom="4dp" />
+                android:layout_marginBottom="4dp"
+                android:ellipsize="middle" />
 
             <TextView
                 android:id="@android:id/content"
@@ -45,7 +46,6 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:singleLine="true"
-                android:ellipsize="end"
                 android:fontFamily="sans-serif-light"
                 android:layout_marginBottom="4dp" />
 
