@@ -134,6 +134,8 @@ public abstract class File implements Serializable {
         return mPath;
     }
 
+    public abstract void createFile(SftpClient.CompletionCallback callback);
+
     public abstract void mkdir(SftpClient.CompletionCallback callback);
 
     public abstract void rename(File newFile, SftpClient.CompletionCallback callback);

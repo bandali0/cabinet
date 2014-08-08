@@ -173,4 +173,8 @@
     <string name="material_version">Material</string>
     <string name="material_version_desc">Für die mit Android L steht eine Version mit dem Material Design in der Cabinet Google+ Community zur Verfügung. Seite der Cabinet Google+ Community jetzt öffnen?</string>
     <string name="new_file">Neuer Datei</string>
+    <string name="making_file">Erstelle Datei…</string>
+    <string name="created_file">Erstelle Datei %1$s</string>
+    <string name="file_already_exists">Datei existiert bereits</string>
+    <string name="failed_make_file">Problem beim erstellen des Datei: %1$s</string>
 </resources>

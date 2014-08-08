@@ -66,6 +66,23 @@ public class LocalFile extends File {
     }
 
     @Override
+    public void createFile(final SftpClient.CompletionCallback callback) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    if (!toJavaFile().createNewFile())
+                        throw new Exception("An unknown error occurred while creating your file.");
+                    callback.onComplete();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    callback.onError(e);
+                }
+            }
+        }).start();
+    }
+
+    @Override
     public void mkdir(final SftpClient.CompletionCallback callback) {
         new Thread(new Runnable() {
             @Override

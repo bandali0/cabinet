@@ -244,5 +244,10 @@
     </string-array>
 
     <string name="new_file">New File</string>
+    <string name="making_file">Creating file…</string>
+    <string name="created_file">Created file %1$s</string>
+    <string name="file_already_exists">File already exists</string>
+    <string name="failed_make_file">Failed to make a new file: %1$s</string>
+
 
 </resources>

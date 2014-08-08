@@ -174,4 +174,8 @@
     <string name="material_version">Material</string>
     <string name="material_version_desc">运行在Android L上的全新Material Design版本的Cabinet已经发布了。你想要查看发布全新版本Caninet的Google+社区吗？</string>
     <string name="new_file">新文件</string>
+    <string name="making_file">Creating file…</string>
+    <string name="created_file">Created file %1$s</string>
+    <string name="file_already_exists">File already exists</string>
+    <string name="failed_make_file">Failed to make a new file: %1$s</string>
 </resources>

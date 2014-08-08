@@ -283,6 +283,56 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         );
     }
 
+    private void showNewFileDialog(final Activity context) {
+        Utils.showInputDialog(context, R.string.new_file, R.string.untitled, null,
+                new Utils.InputCallback() {
+                    @Override
+                    public void onInput(String newName) {
+                        if (newName.isEmpty())
+                            newName = getString(R.string.untitled);
+                        final File dir = mDirectory.isRemote() ?
+                                new CloudFile(context, (CloudFile) mDirectory, newName, false) :
+                                new LocalFile(context, mDirectory, newName);
+                        dir.exists(new File.BooleanCallback() {
+                            @Override
+                            public void onComplete(boolean result) {
+                                if (!result) {
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            dir.createFile(new SftpClient.CompletionCallback() {
+                                                @Override
+                                                public void onComplete() {
+                                                    runOnUiThread(new Runnable() {
+                                                        @Override
+                                                        public void run() {
+                                                            reload();
+                                                        }
+                                                    });
+                                                }
+
+                                                @Override
+                                                public void onError(Exception e) {
+                                                    Utils.showErrorDialog(context, e.getMessage());
+                                                }
+                                            });
+                                        }
+                                    });
+                                } else {
+                                    Utils.showErrorDialog(context, getString(R.string.file_already_exists));
+                                }
+                            }
+
+                            @Override
+                            public void onError(Exception e) {
+                                Utils.showErrorDialog(context, e.getMessage());
+                            }
+                        });
+                    }
+                }
+        );
+    }
+
     @Override
     public void onFabPressed(BaseFileCab.PasteMode pasteMode) {
         if (getActivity() != null) {
@@ -294,10 +344,13 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                     @Override
                     public void onPositive(int which, View view) {
                         switch (which) {
-                            case 0: // Folder
+                            case 0: // File
+                                showNewFileDialog(context);
+                                break;
+                            case 1: // Folder
                                 showNewFolderDialog(context);
                                 break;
-                            case 1: // Remote connection
+                            case 2: // Remote connection
                                 new RemoteConnectionDialog(context).show();
                                 break;
                         }

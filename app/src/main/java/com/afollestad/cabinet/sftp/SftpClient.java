@@ -127,6 +127,34 @@ public class SftpClient {
         mChannel.put(local, remote);
     }
 
+    public void put(final String local, final String remote, final CancelableCompletionCallback callback) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    mChannel.put(remote, local, new SftpProgressMonitor() {
+                        @Override
+                        public void init(int i, String s, String s2, long l) {
+                        }
+
+                        @Override
+                        public boolean count(long l) {
+                            return !callback.shouldCancel();
+                        }
+
+                        @Override
+                        public void end() {
+                            callback.onComplete();
+                        }
+                    });
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    callback.onError(e);
+                }
+            }
+        }).start();
+    }
+
     public void get(final String remote, final String local, final CancelableCompletionCallback callback) {
         new Thread(new Runnable() {
             @Override

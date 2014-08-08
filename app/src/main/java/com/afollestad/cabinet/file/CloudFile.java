@@ -2,6 +2,7 @@ package com.afollestad.cabinet.file;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -14,6 +15,7 @@ import com.afollestad.cabinet.utils.Utils;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.SftpATTRS;
 
+import java.io.IOException;
 import java.util.List;
 
 public class CloudFile extends File {
@@ -48,6 +50,80 @@ public class CloudFile extends File {
 
     public Remote getRemote() {
         return mRemote;
+    }
+
+    @Override
+    public void createFile(final SftpClient.CompletionCallback callback) {
+        final ProgressDialog connectProgress = Utils.showProgressDialog(getContext(), R.string.connecting);
+        getContext().getNetworkService().getSftpClient(new NetworkService.SftpGetCallback() {
+            @Override
+            public void onSftpClient(SftpClient client) {
+                connectProgress.dismiss();
+                final ProgressDialog makeProgress = Utils.showProgressDialog(getContext(), R.string.making_file, new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialogInterface) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                java.io.File tempFile;
+                try {
+                    tempFile = java.io.File.createTempFile(getName(), null, getContext().getCacheDir());
+                } catch (final IOException e) {
+                    e.printStackTrace();
+                    getContext().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            makeProgress.dismiss();
+                            callback.onError(null);
+                            Utils.showErrorDialog(getContext(), R.string.failed_make_file, e);
+                        }
+                    });
+                    return;
+                }
+                client.put(tempFile.getAbsolutePath(), getPath(), new SftpClient.CancelableCompletionCallback() {
+                    @Override
+                    public boolean shouldCancel() {
+                        return !makeProgress.isShowing();
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        getContext().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                makeProgress.dismiss();
+                                Toast.makeText(getContext(), getContext().getString(R.string.created_file, getName()), Toast.LENGTH_SHORT).show();
+                                callback.onComplete();
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onError(final Exception e) {
+                        getContext().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                makeProgress.dismiss();
+                                callback.onError(null);
+                                Utils.showErrorDialog(getContext(), R.string.failed_make_file, e);
+                            }
+                        });
+                    }
+                });
+            }
+
+            @Override
+            public void onError(final Exception e) {
+                getContext().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        connectProgress.dismiss();
+                        callback.onError(null);
+                        Utils.showErrorDialog(getContext(), R.string.failed_connect_server, e);
+                    }
+                });
+            }
+        }, this);
     }
 
     @Override
