@@ -90,7 +90,7 @@
             android:padding="8dp"
             android:focusableInTouchMode="false"
             android:focusable="false"
-            android:layout_marginRight="14dp"/>
+            android:layout_marginRight="14dp" />
 
     </RelativeLayout>
 
