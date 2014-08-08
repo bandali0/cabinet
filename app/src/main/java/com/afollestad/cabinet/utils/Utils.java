@@ -90,14 +90,14 @@ public class Utils {
     }
 
     public static void showConfirmDialog(Activity context, int title, int message, String replacement, final CustomDialog.SimpleClickListener callback) {
-        CustomDialog.create(title, context.getString(message, replacement), R.string.yes, 0, R.string.no, callback).show(context.getFragmentManager(), "CONFIRM");
+        CustomDialog.create(context, title, context.getString(message, replacement), R.string.yes, 0, R.string.no, callback).show(context.getFragmentManager(), "CONFIRM");
     }
 
     public static void showErrorDialog(final Activity context, final int message, final Exception e) {
         context.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                CustomDialog.create(R.string.error, context.getString(message, e.getMessage()), null).show(context.getFragmentManager(), "ERROR");
+                CustomDialog.create(context, R.string.error, context.getString(message, e.getMessage()), null).show(context.getFragmentManager(), "ERROR");
             }
         });
     }
@@ -106,7 +106,7 @@ public class Utils {
         context.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                CustomDialog.create(R.string.error, message, null).show(context.getFragmentManager(), "ERROR");
+                CustomDialog.create(context, R.string.error, message, null).show(context.getFragmentManager(), "ERROR");
             }
         });
     }
@@ -130,7 +130,7 @@ public class Utils {
     }
 
     public static void showInputDialog(Activity context, int title, int hint, String prefillInput, final InputCallback callback) {
-        CustomDialog dialog = CustomDialog.create(title, null, 0, R.layout.dialog_input, 0, 0, android.R.string.no, new CustomDialog.SimpleClickListener() {
+        CustomDialog dialog = CustomDialog.create(context, title, null, 0, R.layout.dialog_input, 0, 0, android.R.string.no, new CustomDialog.SimpleClickListener() {
             @Override
             public void onPositive(int which, View view) {
                 if (callback != null) {
@@ -147,7 +147,7 @@ public class Utils {
 
     private static void openLocal(final Activity context, final File file, String mime) {
         if (mime == null) {
-            CustomDialog.create(R.string.open_as, R.array.open_as, new CustomDialog.SimpleClickListener() {
+            CustomDialog.create(context, R.string.open_as, R.array.open_as, new CustomDialog.SimpleClickListener() {
                 @Override
                 public void onPositive(int which, View view) {
                     String newMime;

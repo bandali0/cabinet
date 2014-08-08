@@ -340,7 +340,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 ((DrawerActivity) getActivity()).getFileCab().paste();
             } else {
                 final Activity context = getActivity();
-                CustomDialog.create(R.string.newStr, R.array.new_options, new CustomDialog.SimpleClickListener() {
+                CustomDialog.create(getActivity(), R.string.newStr, R.array.new_options, new CustomDialog.SimpleClickListener() {
                     @Override
                     public void onPositive(int which, View view) {
                         switch (which) {

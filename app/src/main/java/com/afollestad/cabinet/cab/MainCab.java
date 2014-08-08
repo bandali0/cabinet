@@ -76,7 +76,7 @@ public class MainCab extends BaseFileCab {
                     .setFragment(getFragment()).setFiles(getFiles()).invalidateFab().start());
             return super.onActionItemClicked(actionMode, menuItem);
         } else if (menuItem.getItemId() == R.id.delete) {
-            CustomDialog.create(R.string.delete, getFiles().size() == 1 ?
+            CustomDialog.create(getContext(), R.string.delete, getFiles().size() == 1 ?
                             getContext().getString(R.string.confirm_delete, getFiles().get(0).getName()) :
                             getContext().getString(R.string.confirm_delete_xfiles, getFiles().size()), R.string.yes, 0, R.string.no,
                     new CustomDialog.SimpleClickListener() {

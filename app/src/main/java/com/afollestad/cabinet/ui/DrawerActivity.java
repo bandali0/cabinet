@@ -246,7 +246,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     private void checkRating() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         if (!prefs.getBoolean("shown_rating_dialog", false)) {
-            CustomDialog.create(R.string.rate, getString(R.string.rate_desc), R.string.sure, R.string.later, R.string.no_thanks, new CustomDialog.ClickListener() {
+            CustomDialog.create(this, R.string.rate, getString(R.string.rate_desc), R.string.sure, R.string.later, R.string.no_thanks, new CustomDialog.ClickListener() {
                 @Override
                 public void onPositive(int which, View view) {
                     PreferenceManager.getDefaultSharedPreferences(DrawerActivity.this)
@@ -269,7 +269,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     }
 
     private void displayDisconnectPrompt() {
-        CustomDialog.create(R.string.disconnect, getString(R.string.disconnect_prompt), R.string.yes, 0, R.string.no, new CustomDialog.SimpleClickListener() {
+        CustomDialog.create(this, R.string.disconnect, getString(R.string.disconnect_prompt), R.string.yes, 0, R.string.no, new CustomDialog.SimpleClickListener() {
             @Override
             public void onPositive(int which, View view) {
                 startService(new Intent(DrawerActivity.this, NetworkService.class)

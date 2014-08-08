@@ -78,34 +78,29 @@ public class CustomDialog extends DialogFragment implements View.OnClickListener
         }
     }
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        if (view != 0) inflatedView = activity.getLayoutInflater().inflate(view, null);
-    }
-
     public View getInflatedView() {
         return inflatedView;
     }
 
-    public static CustomDialog create(int title, String body, CustomDialog.SimpleClickListener listener) {
-        return create(title, body, 0, 0, 0, listener);
+    public static CustomDialog create(Activity context, int title, String body, CustomDialog.SimpleClickListener listener) {
+        return create(context, title, body, 0, 0, 0, listener);
     }
 
-    public static CustomDialog create(int title, int itemsRes, CustomDialog.SimpleClickListener listener) {
-        return create(title, null, itemsRes, 0, 0, 0, 0, listener);
+    public static CustomDialog create(Activity context, int title, int itemsRes, CustomDialog.SimpleClickListener listener) {
+        return create(context, title, null, itemsRes, 0, 0, 0, 0, listener);
     }
 
-    public static CustomDialog create(int title, String body, int positive, int neutral, int negative, CustomDialog.SimpleClickListener listener) {
-        return create(title, body, 0, 0, positive, neutral, negative, listener);
+    public static CustomDialog create(Activity context, int title, String body, int positive, int neutral, int negative, CustomDialog.SimpleClickListener listener) {
+        return create(context, title, body, 0, 0, positive, neutral, negative, listener);
     }
 
-    public static CustomDialog create(int title, String body, int itemsRes, int view, int positive, int neutral, int negative, CustomDialog.SimpleClickListener listener) {
+    public static CustomDialog create(Activity context, int title, String body, int itemsRes, int view, int positive, int neutral, int negative, CustomDialog.SimpleClickListener listener) {
         CustomDialog dialog = new CustomDialog();
         dialog.title = title;
         dialog.body = body;
         dialog.itemsRes = itemsRes;
         dialog.view = view;
+        if (view != 0) dialog.inflatedView = context.getLayoutInflater().inflate(view, null);
         dialog.mListener = listener;
         if (positive == 0 && itemsRes == 0) positive = android.R.string.ok;
         dialog.positive = positive;
