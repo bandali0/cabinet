@@ -8,14 +8,15 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:fontFamily="sans-serif"
         android:singleLine="true"
         android:paddingTop="24dp"
         android:paddingBottom="6dp"
         android:paddingLeft="24dp"
         android:paddingRight="24dp"
-        android:textColor="#1E1E1E" />
+        android:textColor="#1E1E1E"
+        android:text="@string/new_remote_connection"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -26,9 +27,11 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="6dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp">
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp">
+            <!-- TODO remove android:paddingBottom="16dp" for Material -->
 
             <EditText
                 android:id="@+id/host"
