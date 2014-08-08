@@ -24,6 +24,8 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.afollestad.cabinet.R;
+import com.afollestad.cabinet.cab.PickerCab;
+import com.afollestad.cabinet.cab.base.BaseCab;
 import com.afollestad.cabinet.cab.base.BaseFileCab;
 import com.afollestad.cabinet.file.CloudFile;
 import com.afollestad.cabinet.file.LocalFile;
@@ -47,7 +49,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
 
     private BillingProcessor mBP; // used for donations
     private boolean canExit; // flag used for press back twice to exit
-    private BaseFileCab mFileCab; // the current contextual action bar, saves state throughout fragments
+    private BaseCab mCab; // the current contextual action bar, saves state throughout fragments
     private NetworkService mNetworkService;
     private CloudFile mRemoteSwitch; // used by SFTP notification intent
     private ThemeUtils mThemeUtils; // used to detect theme changes and get current theme
@@ -60,6 +62,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     private BaseFileCab.PasteMode fabPasteMode = BaseFileCab.PasteMode.DISABLED;
     private boolean fabDisabled; // flag indicating whether fab should stay hidden while scrolling
     public boolean shouldAttachFab; // used during config change, tells fragment to reattach to cab
+    public boolean pickMode; // flag indicating whether user is picking a file for another app
 
     public static void setupTransparentTints(Activity context) {
         if (!ThemeUtils.isTranslucentStatusbar(context)) return;
@@ -92,12 +95,12 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         view.setLayoutParams(params);
     }
 
-    public BaseFileCab getFileCab() {
-        return mFileCab;
+    public BaseCab getCab() {
+        return mCab;
     }
 
-    public void setFileCab(BaseFileCab cab) {
-        mFileCab = cab;
+    public void setCab(BaseCab cab) {
+        mCab = cab;
     }
 
     public void waitFabInvalidate() {
@@ -153,14 +156,15 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     public void setPasteMode(BaseFileCab.PasteMode pasteMode) {
         Log.v("Fab", "DrawerActivity.setPasteMode(" + pasteMode + ")");
         fabPasteMode = pasteMode;
-        if (getFileCab() != null) getFileCab().invalidateFab();
+        if (getCab() != null && getCab() instanceof BaseFileCab)
+            ((BaseFileCab) getCab()).invalidateFab();
         fab.setDrawable(getResources().getDrawable(pasteMode == BaseFileCab.PasteMode.ENABLED ? R.drawable.ic_paste : R.drawable.ic_add));
     }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
-        if (mFileCab != null && mFileCab.isActive())
-            outState.putSerializable("cab", mFileCab);
+        if (mCab != null && mCab.isActive())
+            outState.putSerializable("cab", mCab);
         outState.putSerializable("fab_pastemode", fabPasteMode);
         outState.putBoolean("fab_disabled", fabDisabled);
         super.onSaveInstanceState(outState);
@@ -175,7 +179,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
 
         if (savedInstanceState != null) {
             if (savedInstanceState.containsKey("cab")) {
-                mFileCab = (BaseFileCab) savedInstanceState.getSerializable("cab");
+                mCab = (BaseFileCab) savedInstanceState.getSerializable("cab");
                 shouldAttachFab = true;
             }
             fabPasteMode = (BaseFileCab.PasteMode) savedInstanceState.getSerializable("fab_pastemode");
@@ -284,6 +288,10 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     }
 
     private void processIntent(Intent intent, Bundle savedInstanceState) {
+        pickMode = intent.getAction() != null && intent.getAction().equals(Intent.ACTION_GET_CONTENT);
+        if (pickMode) {
+            setCab(new PickerCab().start());
+        }
         if (intent.hasExtra("remote")) {
             mRemoteSwitch = (CloudFile) intent.getSerializableExtra("remote");
             if (mNetworkService != null) {
@@ -345,7 +353,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {
         if (event.getKeyCode() == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
-            if (mFileCab != null && mFileCab.isActive()) {
+            if (mCab != null && mCab.isActive()) {
                 onBackPressed();
                 return true;
             }

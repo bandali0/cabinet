@@ -66,13 +66,15 @@ public class MainCab extends BaseFileCab {
     @Override
     public boolean onActionItemClicked(final ActionMode actionMode, final MenuItem menuItem) {
         if (menuItem.getItemId() == R.id.copy) {
-            getContext().getFileCab().overrideDestroy = true;
-            getContext().setFileCab((BaseFileCab) new CopyCab()
+            if (getContext().getCab() instanceof BaseFileCab)
+                ((BaseFileCab) getContext().getCab()).overrideDestroy = true;
+            getContext().setCab(new CopyCab()
                     .setFragment(getFragment()).setFiles(getFiles()).invalidateFab().start());
             return super.onActionItemClicked(actionMode, menuItem);
         } else if (menuItem.getItemId() == R.id.cut) {
-            getContext().getFileCab().overrideDestroy = true;
-            getContext().setFileCab((BaseFileCab) new CutCab()
+            if (getContext().getCab() instanceof BaseFileCab)
+                ((BaseFileCab) getContext().getCab()).overrideDestroy = true;
+            getContext().setCab(new CutCab()
                     .setFragment(getFragment()).setFiles(getFiles()).invalidateFab().start());
             return super.onActionItemClicked(actionMode, menuItem);
         } else if (menuItem.getItemId() == R.id.delete) {

@@ -32,6 +32,7 @@ import com.afollestad.cabinet.adapters.FileAdapter;
 import com.afollestad.cabinet.cab.CopyCab;
 import com.afollestad.cabinet.cab.CutCab;
 import com.afollestad.cabinet.cab.MainCab;
+import com.afollestad.cabinet.cab.base.BaseCab;
 import com.afollestad.cabinet.cab.base.BaseFileCab;
 import com.afollestad.cabinet.comparators.AlphabeticalComparator;
 import com.afollestad.cabinet.comparators.ExtensionComparator;
@@ -129,9 +130,9 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             act.setTitle(Html.fromHtml(getString(R.string.search_x, mQuery)));
         } else act.setTitle(mDirectory.getDisplay());
 
-        BaseFileCab fileCab = ((DrawerActivity) getActivity()).getFileCab();
-        if (fileCab != null) {
-            mAdapter.restoreCheckedPaths(fileCab.getFiles());
+        BaseCab cab = ((DrawerActivity) getActivity()).getCab();
+        if (cab != null && cab instanceof BaseFileCab) {
+            mAdapter.restoreCheckedPaths(((BaseFileCab) cab).getFiles());
             if (act.shouldAttachFab) {
                 new Thread(new Runnable() {
                     @Override
@@ -141,7 +142,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                             @Override
                             public void run() {
                                 DrawerActivity act = (DrawerActivity) getActivity();
-                                BaseFileCab cab = act.getFileCab();
+                                BaseFileCab cab = (BaseFileCab) act.getCab();
                                 cab.setFragment(DirectoryFragment.this);
                                 cab.invalidateFab();
                                 cab.start();
@@ -150,7 +151,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                         });
                     }
                 }).start();
-            } else fileCab.setFragment(this);
+            } else cab.setFragment(this);
         }
 
         ((NavigationDrawerFragment) act.getFragmentManager().findFragmentByTag("NAV_DRAWER")).selectFile(mDirectory);
@@ -343,7 +344,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     public void onFabPressed(BaseFileCab.PasteMode pasteMode) {
         if (getActivity() != null) {
             if (pasteMode == BaseFileCab.PasteMode.ENABLED) {
-                ((DrawerActivity) getActivity()).getFileCab().paste();
+                ((BaseFileCab) ((DrawerActivity) getActivity()).getCab()).paste();
             } else {
                 final Activity context = getActivity();
                 CustomDialog.create(getActivity(), R.string.newStr, R.array.new_options, new CustomDialog.SimpleClickListener() {
@@ -609,18 +610,20 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 
     @Override
     public void onIconClicked(int index, File file, boolean added) {
-        BaseFileCab cab = ((DrawerActivity) getActivity()).getFileCab();
-        if (cab != null && (cab instanceof CopyCab || cab instanceof CutCab) && cab.isActive()) {
-            if (added) ((DrawerActivity) getActivity()).getFileCab().addFile(file);
-            else ((DrawerActivity) getActivity()).getFileCab().removeFile(file);
-        } else {
-            boolean shouldCreateCab = cab == null || !cab.isActive() || !(cab instanceof MainCab) && added;
-            if (shouldCreateCab)
-                ((DrawerActivity) getActivity()).setFileCab((BaseFileCab) new MainCab()
-                        .setFragment(this).setFile(file).start());
-            else {
-                if (added) ((DrawerActivity) getActivity()).getFileCab().addFile(file);
-                else ((DrawerActivity) getActivity()).getFileCab().removeFile(file);
+        if (((DrawerActivity) getActivity()).getCab() instanceof BaseFileCab) {
+            BaseFileCab cab = (BaseFileCab) ((DrawerActivity) getActivity()).getCab();
+            if (cab != null && (cab instanceof CopyCab || cab instanceof CutCab) && cab.isActive()) {
+                if (added) cab.addFile(file);
+                else cab.removeFile(file);
+            } else {
+                boolean shouldCreateCab = cab == null || !cab.isActive() || !(cab instanceof MainCab) && added;
+                if (shouldCreateCab)
+                    ((DrawerActivity) getActivity()).setCab(new MainCab()
+                            .setFragment(this).setFile(file).start());
+                else {
+                    if (added) cab.addFile(file);
+                    else cab.removeFile(file);
+                }
             }
         }
     }
@@ -630,7 +633,15 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         if (file.isDirectory()) {
             ((DrawerActivity) getActivity()).switchDirectory(file, false);
         } else {
-            Utils.openFile((DrawerActivity) getActivity(), file, false);
+            if (((DrawerActivity) getActivity()).pickMode) {
+                Activity act = getActivity();
+                Intent intent = act.getIntent()
+                        .setData(Uri.fromFile(file.toJavaFile()));
+                act.setResult(Activity.RESULT_OK, intent);
+                act.finish();
+            } else {
+                Utils.openFile((DrawerActivity) getActivity(), file, false);
+            }
         }
     }
 
@@ -645,23 +656,27 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 Utils.openFile((DrawerActivity) getActivity(), file, true);
                 break;
             case R.id.copy: {
-                BaseFileCab cab = ((DrawerActivity) getActivity()).getFileCab();
+                BaseCab cab = ((DrawerActivity) getActivity()).getCab();
                 boolean shouldCreateCopy = cab == null || !cab.isActive() || !(cab instanceof CopyCab);
                 if (shouldCreateCopy) {
-                    if (cab != null) cab.overrideDestroy = true;
-                    ((DrawerActivity) getActivity()).setFileCab((BaseFileCab) new CopyCab()
+                    if (cab != null && cab instanceof BaseFileCab) {
+                        ((BaseFileCab) cab).overrideDestroy = true;
+                    }
+                    ((DrawerActivity) getActivity()).setCab(new CopyCab()
                             .setFragment(this).setFile(file).invalidateFab().start());
-                } else cab.setFragment(this).addFile(file);
+                } else ((BaseFileCab) cab).setFragment(this).addFile(file);
                 break;
             }
             case R.id.cut: {
-                BaseFileCab cab = ((DrawerActivity) getActivity()).getFileCab();
+                BaseCab cab = ((DrawerActivity) getActivity()).getCab();
                 boolean shouldCreateCut = cab == null || !cab.isActive() || !(cab instanceof CutCab);
                 if (shouldCreateCut) {
-                    if (cab != null) cab.overrideDestroy = true;
-                    ((DrawerActivity) getActivity()).setFileCab((BaseFileCab) new CutCab()
+                    if (cab != null && cab instanceof BaseFileCab) {
+                        ((BaseFileCab) cab).overrideDestroy = true;
+                    }
+                    ((DrawerActivity) getActivity()).setCab(new CutCab()
                             .setFragment(this).setFile(file).invalidateFab().start());
-                } else cab.setFragment(this).addFile(file);
+                } else ((BaseFileCab) cab).setFragment(this).addFile(file);
                 break;
             }
             case R.id.rename:

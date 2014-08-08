@@ -25,6 +25,7 @@ import com.afollestad.cabinet.App;
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.cab.CopyCab;
 import com.afollestad.cabinet.cab.CutCab;
+import com.afollestad.cabinet.cab.base.BaseFileCab;
 import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.ui.DrawerActivity;
 import com.afollestad.cabinet.utils.Shortcuts;
@@ -72,10 +73,10 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
             boolean foundInCopyCab = false;
             boolean foundInCutCab = false;
             DrawerActivity act = (DrawerActivity) mContext;
-            if (act.getFileCab() instanceof CopyCab) {
-                foundInCopyCab = act.getFileCab().containsFile(file);
-            } else if (act.getFileCab() instanceof CutCab) {
-                foundInCutCab = act.getFileCab().containsFile(file);
+            if (act.getCab() instanceof CopyCab) {
+                foundInCopyCab = ((BaseFileCab) act.getCab()).containsFile(file);
+            } else if (act.getCab() instanceof CutCab) {
+                foundInCutCab = ((BaseFileCab) act.getCab()).containsFile(file);
             }
             mPopupMenu.getMenu().findItem(R.id.copy).setVisible(!foundInCopyCab);
             mPopupMenu.getMenu().findItem(R.id.cut).setVisible(!foundInCutCab);
