@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="10dp"
+    android:paddingTop="@dimen/file_item_spacing"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:background="@drawable/list_selector"
@@ -100,7 +100,7 @@
         android:layout_height="1dp"
         android:background="@color/divider_color"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/file_item_spacing"
         android:layout_marginLeft="64dp"
         android:layout_below="@android:id/widget_frame" />
 
