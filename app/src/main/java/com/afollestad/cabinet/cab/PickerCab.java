@@ -9,7 +9,7 @@ public class PickerCab extends BaseCab {
 
     @Override
     public int getMenu() {
-        return 0;
+        return -1;
     }
 
     @Override
