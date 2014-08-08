@@ -496,6 +496,9 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         setListShown(false);
         mAdapter.showLastModified = (sorter == 5);
         mDirectory.setContext(getActivity());
+        if (mDirectory.isRemote()) {
+            ((DrawerActivity) getActivity()).disableFab(true);
+        }
         mDirectory.listFiles(showHidden, new File.ArrayCallback() {
             @Override
             public void onComplete(final File[] results) {
@@ -508,6 +511,9 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                             for (File fi : results) {
                                 mAdapter.add(fi);
                             }
+                        }
+                        if (mDirectory.isRemote()) {
+                            ((DrawerActivity) getActivity()).disableFab(false);
                         }
                         try {
                             setListShown(true);
@@ -523,6 +529,9 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        if (mDirectory.isRemote()) {
+                            ((DrawerActivity) getActivity()).disableFab(false);
+                        }
                         try {
                             String message = e.getMessage();
                             if (message.trim().isEmpty())
