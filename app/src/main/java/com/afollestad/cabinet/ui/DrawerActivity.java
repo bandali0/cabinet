@@ -230,7 +230,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         processIntent(intent, null);
     }
 
-    public void checkMaterialAndRating() {
+    private void checkMaterialAndRating() {
 //        checkRating();
         // TODO toggle commented area for Material
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -308,6 +308,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
             if (!PreferenceManager.getDefaultSharedPreferences(this).getBoolean("shown_welcome", false)) {
                 getFragmentManager().beginTransaction().replace(R.id.container, new WelcomeFragment()).commit();
             } else {
+                checkMaterialAndRating();
                 switchDirectory(null, true);
             }
         }

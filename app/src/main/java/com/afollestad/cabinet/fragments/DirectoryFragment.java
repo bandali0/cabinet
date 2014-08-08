@@ -162,8 +162,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             sorter = Utils.getSorter(getActivity());
             reload();
         }
-
-        act.checkMaterialAndRating();
     }
 
     @Override
