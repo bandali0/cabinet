@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Welcome screen -->
-    <string name="welcome">Bienvenido </string>
+    <string name="welcome">Bienvenido</string>
     <string name="welcome_intro">¡Bienvenido a Cabinet! Cabinet es un administrador de archivos simple diseñado para ser estéticamente
         agradable, y sólo funciona como un administrador de archivos.\n\nEcha un vistazo a este archivo:</string>
     <string name="welcome_conclusion">Toca la imagen de vista previa o en el icono de tres puntos. Al tocar la imagen de vista previa se selecciona el archivo para la lista de acciones, esto también se puede hacer al tocar y mantener archivos. El icono de 3 puntos muestra un menú emergente con las opciones de archivo individuales.\n\nCabinet
        tiene otras diversas características, tales como el acceso remoto a los servidores a través de SFTP que se puede encontrar mediante la exploración. Gracias por probar Cabinet!</string>
     <string name="lets_go">¡Comencemos!</string>
-    <!-- File actions-->
     <string name="open_as">Abrir como…</string>
     <string name="pin">Fijar</string>
     <string name="copy">Copiar</string>
@@ -20,14 +18,13 @@
     <string name="unzip">Unzip</string>
     <string name="selectAll">Seleccionar todo</string>
     <string name="details">Detalles</string>
-    <!-- Misc. -->
     <string name="no_files">No hay archivos</string>
     <string name="storage">Almacenamiento</string>
     <string name="root">Root</string>
     <string name="directory">Directorio</string>
     <string name="unknown">Desconocido</string>
     <string name="go_up">Subir</string>
-    <string name="press_back_to_exit">Presiona otra vez para salir</string>
+    <string name="press_back_to_exit">"Presiona otra vez para salir"</string>
     <string name="x_files">%1$d archivos</string>
     <string name="x_dirs">%1$d directorios</string>
     <string name="no_x_files">No %1$s archivos</string>
@@ -53,14 +50,12 @@
     <string name="confirm_delete">¿Esta seguro de eliminar %1$s?</string>
     <string name="confirm_delete_xfiles">¿Esta seguro de eliminar %1$d archivos?</string>
     <string name="unavailable">No disponible</string>
-    <!-- Sort options -->
     <string name="sort_by">Ordenar por</string>
     <string name="sort_name_folderstop">Nombre, carpetas primero</string>
     <string name="sort_name">Nombre</string>
     <string name="sort_extension">Extensión</string>
     <string name="sort_size_lowhigh">Tamaño, ascendente</string>
     <string name="sort_size_highlow">Tamaño, descendente</string>
-    <!-- SFTP stuff -->
     <string name="new_remote_connection">Nueva conección remota</string>
     <string name="network_service_label">Cabinet Servicio de Red</string>
     <string name="connection_notification_content">Conectado a %1$s</string>
@@ -75,7 +70,7 @@
     <string name="disconnect_prompt">¿Quieres desconectarte de %1$s?</string>
     <string name="uploaded_to">Subido a %1$s</string>
     <string name="downloaded_to">Descargado a %1$s</string>
-    <!-- Status messages -->
+    <string name="defaultSshPort" translatable="false">22</string>
     <string name="connecting">Conectando…</string>
     <string name="downloading">Descargando…</string>
     <string name="deleting">Eliminando…</string>
@@ -86,7 +81,6 @@
     <string name="moving">Moviendo…</string>
     <string name="uploading">Subiendo…</string>
     <string name="copying">Copiando…</string>
-    <!-- Error messages -->
     <string name="failed_delete_file">Error al borrar el archivo: %1$s</string>
     <string name="failed_make_directory">Error al crear la carpeta: %1$s</string>
     <string name="failed_rename_file">Error al renombrar/mover este archivo: %1$s</string>
@@ -100,7 +94,6 @@
     <string name="failed_copy_file">Error al copiar el archivo: %1$s</string>
     <string name="no_apps_for_sharing">No hay aplicaciones para compartir este tipo de archivo</string>
     <string name="directory_already_exists">Directorio ya existe</string>
-    <!-- Contextual action bar titles -->
     <string name="copy_x"><![CDATA[
         <b>Copiar:</b>&nbsp;&nbsp;%1$s
     ]]></string>
@@ -117,16 +110,13 @@
     <string name="search_x"><![CDATA[
         <b>Buscar:</b>&nbsp;%1$s
     ]]></string>
-    <!-- Donation -->
     <string name="donate">Donar</string>
     <string name="thank_you">¡Muchas gracias!</string>
-    <!-- Rate dialog -->
     <string name="rate">Calificar</string>
     <string name="later">Después</string>
     <string name="rate_desc">¿Quiere calificar a Cabinet en Google Play? ¡Buenas calificaciones son apreciadas!</string>
     <string name="sure">¡Seguro!</string>
     <string name="no_thanks">No gracias</string>
-    <!-- Misc. arrays -->
     <string-array name="new_options">
         <item>Archivo</item>
         <item>Carpeta</item>
@@ -139,22 +129,20 @@
         <item>Video</item>
         <item>Otro</item>
     </string-array>
-    <!-- Settings -->
     <string name="info">Info</string>
     <string name="files">Archivos</string>
     <string name="show_hidden_files">Mostrar archivos ocultos</string>
     <string name="about">Acerca</string>
     <string name="about_desc">Acerca de la aplicación y su diseñador</string>
-    <string name="show_hidden_files_desc">Activada o no Cabinet mostrará los archivos ocultos.</string>
+    <string name="show_hidden_files_desc">Activa para que Cabinet muestre los archivos ocultos.</string>
     <string name="ui">Interfaz</string>
     <string name="settings">Configuración</string>
     <string name="translucentstatusbar_disabled">No se puede cambiar en Android L.</string>
     <string name="translucency_not_supported">La transparencia no es soportada en esta versión de android</string>
     <string name="translucent_statusbar">Status Bar Transparente</string>
     <string name="translucent_navbar">Nav Bar Transparente</string>
-    <string name="translucent_statusbar_desc">Transparente (mismo color de la barra de acciones) status bar en KitKat o mayores versiones.</string>
+    <string name="translucent_statusbar_desc">Status bar Transparente (mismo color de la barra de acciones) en KitKat o mayores versiones.</string>
     <string name="translucent_navbar_desc">Barra de navegacion transparente en KitKat o mayores versiones.</string>
-    <!-- About dialog -->
     <string name="about_body"><![CDATA[
         Un minimalista, intuitivo y bello administrador de archivos para Android 4.1 o mayores versiones.<br/><br/>
         Diseñado por <b>Aidan Follestad</b>.<br/><a href=\'http://aidanfollestad.com\'>Pagina web</a>&nbsp;&nbsp;
@@ -163,7 +151,9 @@
         <a href=\'https://github.com/afollestad\'>GitHub</a>&nbsp;&nbsp;
         <a href=\'https://www.linkedin.com/in/afollestad\'>LinkedIn</a>
     ]]></string>
-    <!-- Details dialog -->
+    <string name="app_name_and_version" translatable="false"><![CDATA[
+        <b>Cabinet</b>&nbsp;<font color="#888888">v%1$s</font>
+    ]]></string>
     <string name="details_body_file"><![CDATA[
         <b>Nombre:</b>&nbsp;&nbsp;%1$s<br/><b>Ruta:</b>&nbsp;&nbsp;%2$s<br/><b>Tamaño:</b>&nbsp;&nbsp;%3$s<br/><b>Modificado:</b>&nbsp;&nbsp;%4$s<br/><b>Permisos:</b>&nbsp;&nbsp;%5$s
     ]]></string>
@@ -173,8 +163,9 @@
     <string name="material_version">Material</string>
     <string name="material_version_desc">Una versión con Material de Cabinet esta disponible para aquellos con Android L. ¿Quieres ver la comunidad de Cabinet  en Google+ donde está publicada esta versión?</string>
     <string name="new_file">Nueva Archivo</string>
-    <string name="making_file">Creando Archivo…</string>
-    <string name="created_file">Creada Archivo %1$s</string>
-    <string name="file_already_exists">La archivo ya existe</string>
-    <string name="failed_make_file">Fallo al crear nueva archivo: %1$s</string>
+    <string name="making_file">Creando archivo...</string>
+    <string name="created_file">Archivo creado %1$s</string>
+    <string name="file_already_exists">El archivo ya existe</string>
+    <string name="failed_make_file">Error al crear un nuevo archivo: %1$s</string>
+    <string name="pick_a_file">Seleccione un archivo...</string>
 </resources>
