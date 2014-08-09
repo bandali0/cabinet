@@ -70,7 +70,6 @@
     <string name="disconnect_prompt">¿Quieres desconectarte de %1$s?</string>
     <string name="uploaded_to">Subido a %1$s</string>
     <string name="downloaded_to">Descargado a %1$s</string>
-    <string name="defaultSshPort" translatable="false">22</string>
     <string name="connecting">Conectando…</string>
     <string name="downloading">Descargando…</string>
     <string name="deleting">Eliminando…</string>
@@ -151,9 +150,6 @@
         <a href=\'https://github.com/afollestad\'>GitHub</a>&nbsp;&nbsp;
         <a href=\'https://www.linkedin.com/in/afollestad\'>LinkedIn</a>
     ]]></string>
-    <string name="app_name_and_version" translatable="false"><![CDATA[
-        <b>Cabinet</b>&nbsp;<font color="#888888">v%1$s</font>
-    ]]></string>
     <string name="details_body_file"><![CDATA[
         <b>Nombre:</b>&nbsp;&nbsp;%1$s<br/><b>Ruta:</b>&nbsp;&nbsp;%2$s<br/><b>Tamaño:</b>&nbsp;&nbsp;%3$s<br/><b>Modificado:</b>&nbsp;&nbsp;%4$s<br/><b>Permisos:</b>&nbsp;&nbsp;%5$s
     ]]></string>
@@ -163,9 +159,9 @@
     <string name="material_version">Material</string>
     <string name="material_version_desc">Una versión con Material de Cabinet esta disponible para aquellos con Android L. ¿Quieres ver la comunidad de Cabinet  en Google+ donde está publicada esta versión?</string>
     <string name="new_file">Nueva Archivo</string>
-    <string name="making_file">Creando archivo...</string>
+    <string name="making_file">Creando archivo…</string>
     <string name="created_file">Archivo creado %1$s</string>
     <string name="file_already_exists">El archivo ya existe</string>
     <string name="failed_make_file">Error al crear un nuevo archivo: %1$s</string>
-    <string name="pick_a_file">Seleccione un archivo...</string>
+    <string name="pick_a_file">Seleccione un archivo…</string>
 </resources>
