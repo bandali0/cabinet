@@ -6,7 +6,7 @@
 
     <color name="cabinet_color">#4e6cef</color>
     <color name="cabinet_color_darker">#455ede</color>
-    <color name="cabinet_accent_color">#4e6cef</color>
+    <color name="cabinet_accent_color">#e91e63</color>
 
     <!--<color name="drawer_background">#3D3D3D</color>-->
     <color name="drawer_background">#fff</color>

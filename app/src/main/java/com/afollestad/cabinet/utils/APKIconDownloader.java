@@ -28,11 +28,6 @@ public class APKIconDownloader extends BaseImageDownloader {
         mContext = context;
     }
 
-    public APKIconDownloader(Context context, int connectTimeout, int readTimeout) {
-        super(context, connectTimeout, readTimeout);
-        mContext = context;
-    }
-
     @Override
     protected InputStream getStreamFromOtherSource(String path, Object extra) throws IOException {
         PackageManager pm = mContext.getPackageManager();
