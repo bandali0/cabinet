@@ -13,7 +13,11 @@
         <item name="android:textSelectHandleRight">@drawable/cabinet_text_select_handle_right</item>
         <item name="android:textSelectHandle">@drawable/cabinet_text_select_handle_middle</item>
 
-        <item name="android:popupMenuStyle">@style/PopupMenu.Cabinet</item>
+        <item name="android:popupMenuStyle">@style/Theme.PopupMenu</item>
+        <item name="android:dropDownListViewStyle">
+            @android:style/Widget.Holo.Light.ListView.DropDown
+        </item>
+
         <item name="android:actionBarStyle">@style/ActionBar.Solid.Cabinet</item>
         <item name="android:actionModeBackground">@drawable/ab_solid_cabinet</item>
         <item name="android:actionModeSplitBackground">@drawable/ab_solid_cabinet</item>
@@ -21,8 +25,7 @@
 
         <item name="android:actionBarSize">56dp</item>
         <item name="android:actionOverflowButtonStyle">@style/OverflowRecoup</item>
+        <item name="android:actionMenuTextColor">@color/soft_black</item>
     </style>
-
-    <style name="Theme.PopupMenuTheme" parent="@android:style/Theme.Holo" />
 
 </resources>

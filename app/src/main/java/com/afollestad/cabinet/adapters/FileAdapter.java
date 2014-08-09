@@ -64,7 +64,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
             if (mIconListener != null)
                 mIconListener.onIconClicked(index, file, checked);
         } else {  // menu
-            ContextThemeWrapper context = new ContextThemeWrapper(mContext, R.style.Theme_PopupMenuTheme);
+            ContextThemeWrapper context = new ContextThemeWrapper(mContext, R.style.Theme_PopupMenu);
             PopupMenu mPopupMenu = new PopupMenu(context, view);
             mPopupMenu.inflate(file.isDirectory() ? R.menu.dir_options : R.menu.file_options);
             boolean foundInCopyCab = false;
@@ -260,7 +260,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
                     } else if (file.getExtension().equals("doc") || file.getExtension().equals("docx")) {
                         resId = R.drawable.ic_file_word;
                     } else if (file.getExtension().equals("ppt") || file.getExtension().equals("pptx")) {
-                        resId = R.drawable.ic_file_present;
+                        resId = R.drawable.ic_file_ppt;
                     } else if (file.getExtension().equals("xls") || file.getExtension().equals("xlsx")) {
                         resId = R.drawable.ic_file_excel;
                     } else if (file.getExtension().equals("ttf")) {

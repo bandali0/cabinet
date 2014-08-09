@@ -13,5 +13,6 @@
     <color name="accent_color">#333</color>
     <color name="divider_color">#ddd</color>
     <color name="search_view_hint">#BBFFFFFF</color>
+    <color name="soft_black">#2E2E2E</color>
 
 </resources>

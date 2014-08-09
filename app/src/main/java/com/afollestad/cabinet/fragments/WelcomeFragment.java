@@ -86,7 +86,7 @@ public class WelcomeFragment extends Fragment {
         ((TextView) fileCard.findViewById(android.R.id.content)).setText(R.string.file_stub_size);
 
         View menuButton = fileCard.findViewById(R.id.menu);
-        ContextThemeWrapper context = new ContextThemeWrapper(getActivity(), R.style.Theme_PopupMenuTheme);
+        ContextThemeWrapper context = new ContextThemeWrapper(getActivity(), R.style.Theme_PopupMenu);
         menu = new PopupMenu(context, menuButton);
         menu.inflate(R.menu.file_options);
         menuButton.setOnClickListener(new View.OnClickListener() {
