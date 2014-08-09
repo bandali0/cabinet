@@ -41,7 +41,7 @@ public class APKIconDownloader extends BaseImageDownloader {
         pi.applicationInfo.publicSourceDir = path;
         Drawable apkIcon = pi.applicationInfo.loadIcon(pm);
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        ((BitmapDrawable) apkIcon).getBitmap().compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        ((BitmapDrawable) apkIcon).getBitmap().compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] imageInByte = stream.toByteArray();
         stream.close();
         return new ByteArrayInputStream(imageInByte);
