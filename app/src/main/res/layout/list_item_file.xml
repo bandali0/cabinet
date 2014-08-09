@@ -69,7 +69,9 @@
             android:layout_alignParentRight="true"
             android:background="?android:selectableItemBackground"
             android:layout_centerVertical="true"
-            android:padding="8dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
             android:focusableInTouchMode="false"
             android:focusable="false"
             android:layout_marginRight="14dp" />
