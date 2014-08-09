@@ -51,14 +51,6 @@ public class SettingsActivity extends PreferenceActivity {
             }
         });
 
-        // TODO comment out for Material
-//        if (Build.VERSION.SDK_INT >= 20) {
-//            translucentStatusbar.setEnabled(false);
-//            translucentStatusbar.setSummary(R.string.translucentstatusbar_disabled);
-//            translucentNavbar.setEnabled(false);
-//            translucentNavbar.setSummary(R.string.translucentstatusbar_disabled);
-//        }
-
         findPreference("about").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
