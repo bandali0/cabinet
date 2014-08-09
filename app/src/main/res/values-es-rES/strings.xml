@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Welcome screen -->
     <string name="welcome">Bienvenido</string>
     <string name="welcome_intro">Bienvenido a Cabinet! Cabinet es un gestor de archivos sencillo, diseñado para ser estéticamente
  agradable, y que funciona como debería hacerlo un gestor de archivos.\n\nMira este archivo:</string>
     <string name="welcome_conclusion">Intenta pulsar sobre la imagen de pre-visualización o sobre el icono de los 3-puntos. Pulsando sobre la pre-visualización se selecciona el archivo para tareas en grupo, esto también puede hacerse con una pulsación larga sobre los archivos. El icono de 3-puntos muestra un menú con opciones individuales.\n\nCabinet
  tiene otras funciones varias, como acceso remoto a servidores vía SFTP que puedes encontrar explorando. Gracias por probar Cabinet!</string>
     <string name="lets_go">Vamos!</string>
-    <!-- File actions-->
     <string name="open_as">Abrir como…</string>
     <string name="pin">Fijar</string>
     <string name="copy">Copiar</string>
@@ -20,14 +18,13 @@
     <string name="unzip">Unzip</string>
     <string name="selectAll">Seleccionar Todo</string>
     <string name="details">Detalles</string>
-    <!-- Misc. -->
     <string name="no_files">Sin archivos</string>
     <string name="storage">Almacenamiento</string>
     <string name="root">Principal</string>
     <string name="directory">Carpeta</string>
     <string name="unknown">Desconocido</string>
     <string name="go_up">Subir</string>
-    <string name="press_back_to_exit">Pulsa Atrás otra vez para salir…</string>
+    <string name="press_back_to_exit">"Pulsa Atrás otra vez para salir…"</string>
     <string name="x_files">%1$d archivos</string>
     <string name="x_dirs">%1$d directorios</string>
     <string name="no_x_files">No %1$s archivos</string>
@@ -53,14 +50,12 @@
     <string name="confirm_delete">¿Seguro que quieres borrar %1$s?</string>
     <string name="confirm_delete_xfiles">¿Seguro que quieres borrar %1$d archivos?</string>
     <string name="unavailable">No disponible</string>
-    <!-- Sort options -->
     <string name="sort_by">Ordenar Por</string>
     <string name="sort_name_folderstop">Nombre, carpetas primero</string>
     <string name="sort_name">Nombre</string>
     <string name="sort_extension">Extensión</string>
     <string name="sort_size_lowhigh">Tamaño, pequeño a grande</string>
     <string name="sort_size_highlow">Tamaño, grande a pequeño</string>
-    <!-- SFTP stuff -->
     <string name="new_remote_connection">Nueva Conexión Remota</string>
     <string name="network_service_label">Cabinet Servicio de Red</string>
     <string name="connection_notification_content">Conectado a %1$s</string>
@@ -75,7 +70,6 @@
     <string name="disconnect_prompt">¿Quieres cerrar la conexión con %1$s?</string>
     <string name="uploaded_to">Subido a %1$s</string>
     <string name="downloaded_to">Descargado en %1$s</string>
-    <!-- Status messages -->
     <string name="connecting">Conectando…</string>
     <string name="downloading">Descargando…</string>
     <string name="deleting">Borrando…</string>
@@ -86,7 +80,6 @@
     <string name="moving">Moviendo…</string>
     <string name="uploading">Subiendo…</string>
     <string name="copying">Copiando…</string>
-    <!-- Error messages -->
     <string name="failed_delete_file">Fallo al borrar archivo: %1$s</string>
     <string name="failed_make_directory">Fallo al crear nueva carpeta: %1$s</string>
     <string name="failed_rename_file">Fallo al renombrar/mover archivo: %1$s</string>
@@ -100,7 +93,6 @@
     <string name="failed_copy_file">Fallo al copiar archivo: %1$s</string>
     <string name="no_apps_for_sharing">No hay aplicaciones disponibles para compartir este tipo de archivo</string>
     <string name="directory_already_exists">La carpeta ya existe</string>
-    <!-- Contextual action bar titles -->
     <string name="copy_x"><![CDATA[
  <b>Copiar:</b>&nbsp;&nbsp;%1$s
     ]]></string>
@@ -117,16 +109,13 @@
     <string name="search_x"><![CDATA[
  <b>Buscar:</b>&nbsp;%1$s
     ]]></string>
-    <!-- Donation -->
     <string name="donate">Donar</string>
     <string name="thank_you">¡Muchas gracias!</string>
-    <!-- Rate dialog -->
     <string name="rate">Valorar</string>
     <string name="later">Más tarde</string>
     <string name="rate_desc">¿Quieres valorar Cabinet en Google Play? ¡Las buenas valoraciones son apreciadas!</string>
     <string name="sure">¡Seguro!</string>
     <string name="no_thanks">No gracias</string>
-    <!-- Misc. arrays -->
     <string-array name="new_options">
         <item>Archivo</item>
         <item>Carpeta</item>
@@ -139,7 +128,6 @@
         <item>Video</item>
         <item>Otro</item>
     </string-array>
-    <!-- Settings -->
     <string name="info">Info</string>
     <string name="files">Archivos</string>
     <string name="show_hidden_files">Mostrar archivos ocultos</string>
@@ -154,7 +142,6 @@
     <string name="translucent_navbar">Barra de navegación transparente.</string>
     <string name="translucent_statusbar_desc">Barra de estado en KitKat y superior transparente (mismo color barra de acción).</string>
     <string name="translucent_navbar_desc">Barra de navegación en KitKat y superior transparente.</string>
-    <!-- About dialog -->
     <string name="about_body"><![CDATA[
  Un minimalista, intuitivo y bonito gestor de archivos para Android 4.1 y superior.<br/><br/>
  Diseñado por <b>Aidan Follestad</b>.<br/><a href=\'http://aidanfollestad.com\'>Website</a>&nbsp;&nbsp;
@@ -163,7 +150,6 @@
         <a href=\'https://github.com/afollestad\'>GitHub</a>&nbsp;&nbsp;
         <a href=\'https://www.linkedin.com/in/afollestad\'>LinkedIn</a>
     ]]></string>
-    <!-- Details dialog -->
     <string name="details_body_file"><![CDATA[
         <b>Nombre:</b>&nbsp;&nbsp;%1$s<br/><b>Ruta:</b>&nbsp;&nbsp;%2$s<br/><b>Tamaño:</b>&nbsp;&nbsp;%3$s<br/><b>Modificado:</b>&nbsp;&nbsp;%4$s<br/><b>Permisos:</b>&nbsp;&nbsp;%5$s
     ]]></string>
@@ -173,9 +159,9 @@
     <string name="material_version">Material</string>
     <string name="material_version_desc">Una version con Material esta disponible para quien tenga Android L. ¿Quiere ver la comunidad Cabinet en Google+  donde esta disponible esta versión ?</string>
     <string name="new_file">Nueva Archivo</string>
-    <string name="making_file">Creando Archivo…</string>
-    <string name="created_file">Creada Archivo %1$s</string>
-    <string name="file_already_exists">La archivo ya existe</string>
-    <string name="failed_make_file">Fallo al crear nueva archivo: %1$s</string>
-    <string name="pick_a_file">Pick a file…</string>
+    <string name="making_file">Creando archivo…</string>
+    <string name="created_file">Archivo %1$s creado</string>
+    <string name="file_already_exists">El archivo ya existe</string>
+    <string name="failed_make_file">No se ha podido crear el archivo nuevo: %1$s</string>
+    <string name="pick_a_file">Escoge un archivo…</string>
 </resources>
