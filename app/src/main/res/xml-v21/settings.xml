@@ -25,14 +25,15 @@
         <CheckBoxPreference
             android:key="translucent_statusbar"
             android:title="@string/translucent_statusbar"
-            android:summary="@string/translucentstatusbar_disabled"
-            android:enabled="false" />
+            android:summary="@string/translucent_statusbar_desc"
+            android:persistent="true" />
 
         <CheckBoxPreference
             android:key="translucent_navbar"
             android:title="@string/translucent_navbar"
-            android:summary="@string/translucentstatusbar_disabled"
-            android:enabled="false" />
+            android:summary="@string/translucent_navbar_desc"
+            android:persistent="true"
+            android:dependency="translucent_statusbar" />
 
     </PreferenceCategory>
 

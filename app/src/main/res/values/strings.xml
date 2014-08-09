@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name" translatable="false">Cabinet</string>
+    <string name="app_name" translatable="false">Cabinet Beta</string>
 
     <string name="welcome">Welcome</string>
     <string name="welcome_intro">Welcome to Cabinet! Cabinet is a simplistic file manager designed to be aesthetically

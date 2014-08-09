@@ -19,13 +19,17 @@ public class ThemeUtils {
     private boolean translucentNavbar;
 
     public static boolean isTranslucentStatusbar(Context context) {
-        if (Build.VERSION.SDK_INT >= 20 || Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) return false; // always disabled on L+ or below KitKat
+        // TODO toggle comments for Material
+//        if (Build.VERSION.SDK_INT >= 20 || Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) return false;
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) return false;
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         return prefs.getBoolean("translucent_statusbar", true);
     }
 
     public static boolean isTranslucentNavbar(Context context) {
-        if (Build.VERSION.SDK_INT >= 20 || Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) return false; // always disabled on L+ or below KitKat
+        // TODO toggle comments for Material
+//        if (Build.VERSION.SDK_INT >= 20 || Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) return false;
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) return false;
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         return prefs.getBoolean("translucent_navbar", Build.VERSION.SDK_INT < 20);
     }
