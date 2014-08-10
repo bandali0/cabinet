@@ -175,7 +175,7 @@ public abstract class File implements Serializable {
     }
 
     @Override
-    public final boolean equals(Object o) {
+    public boolean equals(Object o) {
         return o instanceof File && ((File) o).getPath().equals(getPath());
     }
 

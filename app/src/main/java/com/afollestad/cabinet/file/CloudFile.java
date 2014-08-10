@@ -526,4 +526,11 @@ public class CloudFile extends File {
             return new CloudFile(getContext(), str, getRemote());
         } else return null;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof CloudFile)) return false;
+        CloudFile cf = (CloudFile) o;
+        return cf.getPath().equals(getPath()) && cf.getRemote().equals(getRemote());
+    }
 }
