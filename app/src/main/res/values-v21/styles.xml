@@ -20,7 +20,6 @@
     </style>
 
     <style name="Theme.PopupMenu" parent="android:Widget.Material.Light.PopupMenu">
-        <item name="android:background">@drawable/menu_dropdown_panel_cabinet</item>
         <item name="android:dividerHorizontal">@null</item>
         <item name="android:dividerHeight">0dp</item>
     </style>
