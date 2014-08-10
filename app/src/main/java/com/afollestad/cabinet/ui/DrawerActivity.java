@@ -334,8 +334,12 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         unbindService(mConnection);
     }
 
+    public void reloadNavDrawer(boolean open) {
+        ((NavigationDrawerFragment) getFragmentManager().findFragmentByTag("NAV_DRAWER")).reload(open);
+    }
+
     public void reloadNavDrawer() {
-        ((NavigationDrawerFragment) getFragmentManager().findFragmentByTag("NAV_DRAWER")).reload();
+        reloadNavDrawer(false);
     }
 
     public void switchDirectory(Shortcuts.Item to) {

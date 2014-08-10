@@ -124,8 +124,6 @@
         <item>Conexão Remota…</item>
     </string-array>
     <string-array name="open_as">
-    <!-- File actions-->
-        <item>Abrir Como…</item>
         <item>Texto</item>
         <item>Imagem</item>
         <item>Áudio</item>
@@ -168,4 +166,8 @@
     <string name="file_already_exists">O arquivo já existe</string>
     <string name="failed_make_file">Falha ao criar um novo arquivo: %1$s</string>
     <string name="pick_a_file">Escolha um arquivo…</string>
+    <string name="cabinet_text_editor">Cabinet Text Editor</string>
+    <string name="save">Save</string>
+    <string name="unsaved_changes">Unsaved Changes</string>
+    <string name="unsaved_changes_desc">You have unsaved changes, do you want to save them before exiting?</string>
 </resources>

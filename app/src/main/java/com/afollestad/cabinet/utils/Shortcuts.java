@@ -167,14 +167,15 @@ public class Shortcuts {
         save(context, items);
     }
 
-    public static void remove(Activity context, File file) {
+    public static boolean remove(Activity context, File file) {
         List<Item> items = getAll(context);
         for (int i = 0; i < items.size(); i++) {
             Item item = items.get(i);
             if (item.toFile(context).equals(file)) {
                 remove(context, i);
-                break;
+                return true;
             }
         }
+        return false;
     }
 }

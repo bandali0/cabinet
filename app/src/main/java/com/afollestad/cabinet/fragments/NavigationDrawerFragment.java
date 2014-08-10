@@ -208,11 +208,11 @@ public class NavigationDrawerFragment extends Fragment {
         return getActivity().getActionBar();
     }
 
-    public void reload() {
+    public void reload(boolean open) {
         Activity act = getActivity();
         if (act != null) {
             mAdapter.reload(act);
-            mDrawerLayout.openDrawer(Gravity.START);
+            if (open) mDrawerLayout.openDrawer(Gravity.START);
         }
     }
 }

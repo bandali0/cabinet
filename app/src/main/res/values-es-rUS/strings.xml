@@ -164,4 +164,8 @@
     <string name="file_already_exists">El archivo ya existe</string>
     <string name="failed_make_file">Error al crear un nuevo archivo: %1$s</string>
     <string name="pick_a_file">Seleccione un archivo…</string>
+    <string name="cabinet_text_editor">Cabinet Text Editor</string>
+    <string name="save">Save</string>
+    <string name="unsaved_changes">Unsaved Changes</string>
+    <string name="unsaved_changes_desc">You have unsaved changes, do you want to save them before exiting?</string>
 </resources>

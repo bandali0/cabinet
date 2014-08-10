@@ -646,7 +646,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         switch (item.getItemId()) {
             case R.id.pin:
                 Shortcuts.add(getActivity(), new Shortcuts.Item(file));
-                ((DrawerActivity) getActivity()).reloadNavDrawer();
+                ((DrawerActivity) getActivity()).reloadNavDrawer(true);
                 break;
             case R.id.openAs:
                 Utils.openFile((DrawerActivity) getActivity(), file, true);
@@ -729,8 +729,8 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                         file.delete(new SftpClient.CompletionCallback() {
                             @Override
                             public void onComplete() {
-                                Shortcuts.remove(getActivity(), file);
-                                ((DrawerActivity) getActivity()).reloadNavDrawer();
+                                if (Shortcuts.remove(getActivity(), file))
+                                    ((DrawerActivity) getActivity()).reloadNavDrawer();
                                 mAdapter.remove(file);
                             }
 
