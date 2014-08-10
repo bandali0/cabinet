@@ -117,15 +117,15 @@
     <string name="sure">Sicher!</string>
     <string name="no_thanks">Nein Danke</string>
     <string-array name="new_options">
-    <!-- Misc. arrays -->
+        <!-- Misc. arrays -->
         <item>Datei</item>
-    <!-- Misc. arrays -->
+        <!-- Misc. arrays -->
         <item>Ordner</item>
-    <!-- Misc. arrays -->
+        <!-- Misc. arrays -->
         <item>Remote Verbindung…</item>
     </string-array>
     <string-array name="open_as">
-    <!-- File actions-->
+        <!-- File actions-->
         <item>Öffnen als…</item>
         <item>Text</item>
         <item>Bild</item>
@@ -173,4 +173,5 @@
     <string name="unsaved_changes">Ungespeicherte Änderungen</string>
     <string name="unsaved_changes_desc">Sie haben ungespeicherte Änderungen, möchten Sie diese vor dem Verlassen speichern?</string>
     <string name="saving">Speichern...</string>
+    <string name="save">Save</string>
 </resources>

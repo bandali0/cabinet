@@ -172,4 +172,5 @@
     <string name="unsaved_changes">Alterações não salvas</string>
     <string name="unsaved_changes_desc">Você tem alterações não salvas, deseja salvá-las antes de sair?</string>
     <string name="saving">Salvando...</string>
+    <string name="save">Save</string>
 </resources>

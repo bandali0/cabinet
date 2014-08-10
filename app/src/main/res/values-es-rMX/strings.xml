@@ -173,4 +173,5 @@
     <string name="unsaved_changes">Cambios no guardados</string>
     <string name="unsaved_changes_desc">Tienes cambios no guardados, ¿quieres guardarlos antes de salir?</string>
     <string name="saving">Guardando...</string>
+    <string name="save">Save</string>
 </resources>

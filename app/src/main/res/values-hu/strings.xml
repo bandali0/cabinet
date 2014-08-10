@@ -173,4 +173,5 @@
     <string name="unsaved_changes">Nem mentett változtatások</string>
     <string name="unsaved_changes_desc">Változtatások mentése, kilépés előtt?</string>
     <string name="saving">Mentés...</string>
+    <string name="save">Save</string>
 </resources>

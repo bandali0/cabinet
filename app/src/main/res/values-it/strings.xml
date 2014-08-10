@@ -173,4 +173,5 @@
     <string name="unsaved_changes">Modifiche non salvate</string>
     <string name="unsaved_changes_desc">Sono presenti modifiche non salvate. Salvarle prima di uscire?</string>
     <string name="saving">Salvataggio...</string>
+    <string name="save">Save</string>
 </resources>

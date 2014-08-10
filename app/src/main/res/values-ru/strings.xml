@@ -3,6 +3,8 @@
     <string name="welcome">Добропожаловать</string>
     <string name="welcome_intro">Добро пожаловать в Cabinet! Cabinet это простой файловый менеджер разработанный для эстетического
  удовольствия и работы, которую должен выполнять файловый менеджер.\n\nВзгляните на данный файл:</string>
+    <string name="welcome_conclusion">Try tapping the preview image or the 3-dot icon. Tapping the preview image selects the file for batch actions, this can also be done by tapping and holding files. The 3-dot icon shows a popup menu with individual file options.\n\nCabinet
+        has other various features, such as remote access to servers via SFTP that you can find by exploring. Thanks for trying out Cabinet!</string>
     <string name="lets_go">Использовать!</string>
     <string name="open_as">Открыть как...</string>
     <string name="pin">Закрепить</string>
@@ -171,4 +173,5 @@
     <string name="unsaved_changes">Несохраненные изменения</string>
     <string name="unsaved_changes_desc">У вас есть несохраненные изменения, вы хотите сохранить их прежде чем выйти?</string>
     <string name="saving">Сохранение...</string>
+    <string name="save">Save</string>
 </resources>

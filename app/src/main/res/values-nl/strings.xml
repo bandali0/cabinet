@@ -173,4 +173,5 @@ Een minimalistische, vernuftige, mooie bestands beheerder voor Android 4.1 en ho
     <string name="unsaved_changes">Niet opgeslagen aanpassingen</string>
     <string name="unsaved_changes_desc">Je hebt niet opgeslagen aanpassingen, wil je deze opslaan voordat je het programma sluit?</string>
     <string name="saving">Opslaan...</string>
+    <string name="save">Save</string>
 </resources>

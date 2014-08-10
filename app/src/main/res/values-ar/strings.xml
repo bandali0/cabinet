@@ -3,7 +3,11 @@
     <string name="welcome">مرحبا</string>
     <string name="welcome_intro">مرحباً بكم في Cabinet !Cabinet هو متصفح ملفات بسيط مصمم ليكون جميلاً
 السرور ، والعمل في مدير الملفات. \n\n نظرة على الملف:</string>
+    <string name="welcome_conclusion">Try tapping the preview image or the 3-dot icon. Tapping the preview image selects the file for batch actions, this can also be done by tapping and holding files. The 3-dot icon shows a popup menu with individual file options.\n\nCabinet
+        has other various features, such as remote access to servers via SFTP that you can find by exploring. Thanks for trying out Cabinet!</string>
     <string name="lets_go">هيا بنا</string>
+    <string name="drawer_longpress_hint">Tip: long press pinned shortcuts to remove them!</string>
+    <string name="cabinet_text_editor">Cabinet Text Editor</string>
     <string name="open_as">فتح ك...</string>
     <string name="pin">تعليق</string>
     <string name="copy">نسخ</string>
@@ -169,4 +173,8 @@
     <string name="file_already_exists">الملف موجود مسبقاً</string>
     <string name="failed_make_file">فشل في جعل مجلد جديد: %1$s</string>
     <string name="pick_a_file">اختيار ملف ...</string>
+    <string name="unsaved_changes">Unsaved Changes</string>
+    <string name="unsaved_changes_desc">You have unsaved changes, do you want to save them before exiting?</string>
+    <string name="saving">Saving…</string>
+    <string name="save">Save</string>
 </resources>
