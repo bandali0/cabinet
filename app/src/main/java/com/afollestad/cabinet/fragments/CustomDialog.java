@@ -118,6 +118,7 @@ public class CustomDialog extends DialogFragment implements View.OnClickListener
 
         TextView body = (TextView) rootView.findViewById(R.id.body);
         LinearLayout list = (LinearLayout) rootView.findViewById(R.id.list);
+        list.removeAllViews();
         if (this.body != null) {
             body.setText(this.body);
             body.setMovementMethod(new LinkMovementMethod());
