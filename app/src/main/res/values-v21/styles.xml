@@ -8,9 +8,8 @@
         <item name="android:colorAccent">@color/cabinet_accent_color</item>
         <item name="android:actionModeBackground">@color/cabinet_color</item>
         <item name="android:buttonStyle">@style/ButtonCabinet</item>
-        <item name="android:dropDownListViewStyle">@android:style/Widget.Material.Light.ListView.DropDown</item>
-        <item name="android:popupMenuStyle">@android:style/Widget.Material.Light.PopupMenu</item>
         <item name="android:actionModeCloseDrawable">@drawable/ic_action_close</item>
+        <item name="android:popupMenuStyle">@style/Theme.PopupMenu</item>
     </style>
 
     <style name="Theme.Cabinet" parent="@style/CabinetUIParent" />
@@ -20,7 +19,8 @@
         <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
 
-    <style name="Theme.PopupMenu" parent="android:Widget.Material.Light.PopupMenu">
+    <style name="Theme.PopupMenu" parent="android:Widget.Material.Light.ListPopupWindow">
+        <item name="android:background">@drawable/menu_dropdown_panel_cabinet</item>
         <item name="android:dividerHorizontal">@null</item>
         <item name="android:dividerHeight">0dp</item>
     </style>
