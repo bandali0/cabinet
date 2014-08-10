@@ -117,11 +117,16 @@
     <string name="sure">当然！</string>
     <string name="no_thanks">拒绝！</string>
     <string-array name="new_options">
+    <!-- Misc. arrays -->
         <item>文件</item>
+    <!-- Misc. arrays -->
         <item>目录</item>
+    <!-- Misc. arrays -->
         <item>远程连接…</item>
     </string-array>
     <string-array name="open_as">
+    <!-- File actions-->
+        <item>打开为</item>
         <item>文本</item>
         <item>图像</item>
         <item>音频</item>

@@ -77,6 +77,25 @@ public abstract class BaseFileCab extends BaseCab {
         return this;
     }
 
+    public final int findFile(File file) {
+        for (int i = 0; i < getFiles().size(); i++) {
+            if (getFiles().get(i).equals(file)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public final void setFile(int index, File file) {
+        // Uncheck old file
+        getFragment().mAdapter.setItemChecked(getFiles().get(index), false);
+        // Replace old file with new one
+        getFiles().set(index, file);
+        // Check new file
+        getFragment().mAdapter.setItemChecked(file, true);
+        invalidate();
+    }
+
     public final BaseFileCab removeFile(File file) {
         getFragment().mAdapter.setItemChecked(file, false);
         for (int i = 0; i < mFiles.size(); i++) {

@@ -1,5 +1,6 @@
 package com.afollestad.cabinet.fragments;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -20,8 +21,19 @@ import java.util.Calendar;
 public class AboutDialog extends DialogFragment {
 
     private static final String VERSION_UNAVAILABLE = "N/A";
+    private DismissListener mListener;
 
-    public AboutDialog() {
+    public interface DismissListener {
+        public void onDismiss();
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (!(activity instanceof DismissListener)) {
+            throw new RuntimeException("The activity showing the about dialog must implement AboutDialog.DismissListener");
+        }
+        mListener = (DismissListener) getActivity();
     }
 
     @Override
@@ -52,5 +64,11 @@ public class AboutDialog extends DialogFragment {
                         dialog.dismiss();
                     }
                 }).create();
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        super.onDismiss(dialog);
+        mListener.onDismiss();
     }
 }

@@ -14,9 +14,10 @@ import com.afollestad.cabinet.utils.ThemeUtils;
 /**
  * @author Aidan Follestad (afollestad)
  */
-public class SettingsActivity extends PreferenceActivity {
+public class SettingsActivity extends PreferenceActivity implements AboutDialog.DismissListener {
 
     private ThemeUtils mThemeUtils;
+    private boolean aboutDialogShown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,8 @@ public class SettingsActivity extends PreferenceActivity {
         findPreference("about").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
+                if (aboutDialogShown) return false;
+                aboutDialogShown = true; // double clicking without this causes the dialog to be shown twice
                 new AboutDialog().show(getFragmentManager(), "ABOUT");
                 return true;
             }
@@ -76,5 +79,10 @@ public class SettingsActivity extends PreferenceActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onDismiss() {
+        aboutDialogShown = false;
     }
 }

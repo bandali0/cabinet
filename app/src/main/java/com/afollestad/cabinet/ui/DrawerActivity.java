@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.IBinder;
@@ -20,6 +19,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
@@ -130,14 +131,16 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         if (hide) {
             if (fabShown) {
                 ObjectAnimator outAnim = ObjectAnimator.ofFloat(fab, "y", fabVisibleY, fabHiddenY);
-                outAnim.setDuration(250);
+                outAnim.setDuration(500);
+                outAnim.setInterpolator(new AccelerateInterpolator());
                 outAnim.start();
                 fabShown = false;
             }
         } else {
             if (!fabShown && !fabDisabled) {
                 ObjectAnimator inAnim = ObjectAnimator.ofFloat(fab, "y", fabHiddenY, fabVisibleY);
-                inAnim.setDuration(250);
+                inAnim.setDuration(500);
+                inAnim.setInterpolator(new DecelerateInterpolator());
                 inAnim.start();
                 fabShown = true;
             }

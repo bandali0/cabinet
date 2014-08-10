@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Welcome screen -->
     <string name="welcome">Willkommen!</string>
     <string name="welcome_intro">Willkommen bei Cabinet! Cabinet ist ein einfacher Dateimanager, gemacht um ästhetisch
  auszusehen und zu funktionieren wie es ein Dateimanager soll. \n\n Wirf einen Blick auf diese Datei:</string>
     <string name="welcome_conclusion">Tippe auf das Vorschaubild oder auf die drei Punkte auf der rechten Seite. Durch das Tippen auf das Vorschaubild wird die Datei für weitere Aktionen markiert. Eine andere Möglichkeit Dateien zu markieren ist zu tippen und zu halten. Durch das Tippen auf die drei Punkte wird ein Menü mit individuellen Dateioptionen aufgerufen.\n\nCabinet
  hat viele weitere Funktionen wie Remote Access zu Servern via SFTP. Danke das du Cabinet ausprobierst!</string>
     <string name="lets_go">Los geht\'s!</string>
-    <!-- File actions-->
     <string name="open_as">Öffnen als…</string>
     <string name="pin">Anheften</string>
     <string name="copy">Kopieren</string>
@@ -20,7 +18,6 @@
     <string name="unzip">Entpacken</string>
     <string name="selectAll">Alles auswählen</string>
     <string name="details">Details</string>
-    <!-- Misc. -->
     <string name="no_files">Keine Dateien</string>
     <string name="storage">Speicher</string>
     <string name="root">Root</string>
@@ -53,14 +50,12 @@
     <string name="confirm_delete">Sind Sie sicher dass Sie %1$s löschen möchten?</string>
     <string name="confirm_delete_xfiles">Sind Sie sicher dass Sie %1$d Dateien löschen möchten?</string>
     <string name="unavailable">Unverfügbar</string>
-    <!-- Sort options -->
     <string name="sort_by">Sortieren nach</string>
     <string name="sort_name_folderstop">Name, Ordner zuerst</string>
     <string name="sort_name">Name</string>
     <string name="sort_extension">Erweiterung</string>
     <string name="sort_size_lowhigh">Größe, klein bis groß</string>
     <string name="sort_size_highlow">Größe, groß bis klein</string>
-    <!-- SFTP stuff -->
     <string name="new_remote_connection">Neue Remote Verbindung</string>
     <string name="network_service_label">Kabinett Netzwerkservice</string>
     <string name="connection_notification_content">Verbunden mit %1$s</string>
@@ -75,7 +70,6 @@
     <string name="disconnect_prompt">Wollen sie Verbindung zu %1$s trennen?</string>
     <string name="uploaded_to">Hochgeladen zu %1$s</string>
     <string name="downloaded_to">Heruntergeladen von %1$s</string>
-    <!-- Status messages -->
     <string name="connecting">Verbinde…</string>
     <string name="downloading">Lade herunter…</string>
     <string name="deleting">Lösche…</string>
@@ -86,7 +80,6 @@
     <string name="moving">Verschiebe…</string>
     <string name="uploading">Lade hoch…</string>
     <string name="copying">Kopiere…</string>
-    <!-- Error messages -->
     <string name="failed_delete_file">Problem beim löschen der Datei: %1$s</string>
     <string name="failed_make_directory">Problem beim erstellen des Ordner: %1$s</string>
     <string name="failed_rename_file">Problem beim umbenennen/verschieben der Datei: %1$s</string>
@@ -100,7 +93,6 @@
     <string name="failed_copy_file">Problem beim kopieren der Datei: %1$s</string>
     <string name="no_apps_for_sharing">Es sind keine Apps zum Teilen dieses Typs von Datei verfügbar</string>
     <string name="directory_already_exists">Verzeichnis existiert bereits</string>
-    <!-- Contextual action bar titles -->
     <string name="copy_x"><![CDATA[
  <b>Kopiere:</b>&nbsp;&nbsp;%1$s
     ]]></string>
@@ -117,29 +109,30 @@
     <string name="search_x"><![CDATA[
  <b>Suche:</b>&nbsp;%1$s
     ]]></string>
-    <!-- Donation -->
     <string name="donate">Spenden</string>
     <string name="thank_you">Vielen Dank!</string>
-    <!-- Rate dialog -->
     <string name="rate">Bewerten</string>
     <string name="later">Später</string>
     <string name="rate_desc">Wollen Sie Kabinett in Google Play bewerten? Gute Bewertung werden geschätzt!</string>
     <string name="sure">Sicher!</string>
     <string name="no_thanks">Nein Danke</string>
-    <!-- Misc. arrays -->
     <string-array name="new_options">
+    <!-- Misc. arrays -->
         <item>Datei</item>
+    <!-- Misc. arrays -->
         <item>Ordner</item>
+    <!-- Misc. arrays -->
         <item>Remote Verbindung…</item>
     </string-array>
     <string-array name="open_as">
+    <!-- File actions-->
+        <item>Öffnen als…</item>
         <item>Text</item>
         <item>Bild</item>
         <item>Ton</item>
         <item>Video</item>
         <item>Anderes</item>
     </string-array>
-    <!-- Settings -->
     <string name="info">Information</string>
     <string name="files">Dateien</string>
     <string name="show_hidden_files">Zeige versteckte Dateien</string>
@@ -154,7 +147,6 @@
     <string name="translucent_navbar">Durscheinende Navigationbar</string>
     <string name="translucent_statusbar_desc">Durscheinende (gleiche Farbe wie die Actionbar) Statusbar in KitKat und darüber.</string>
     <string name="translucent_navbar_desc">Durscheinende Navigationbar in KitKat und darüber.</string>
-    <!-- About dialog -->
     <string name="about_body"><![CDATA[
  Ein minimalistischer, intuitiver, schöner Dateimanager für Android 4.1 und darüber. <br/><br/>
  Entworfen von <b>Aidan Follestad</b>.<br/><a href=\'http://aidanfollestad.com\'>Webseite</a>&nbsp;&nbsp;
@@ -163,7 +155,6 @@
  <a href=\'https://github.com/afollestad\'>GitHub</a>&nbsp;&nbsp;
  <a href=\'https://www.linkedin.com/in/afollestad\'>LinkedIn</a>
     ]]></string>
-    <!-- Details dialog -->
     <string name="details_body_file"><![CDATA[
  <b>Name:</b>&nbsp;&nbsp;%1$s<br/><b>Pfad:</b>&nbsp;&nbsp;%2$s<br/><b>Größe:</b>&nbsp;&nbsp;%3$s<br/><b>Verändert:</b>&nbsp;&nbsp;%4$s<br/><b>Berechtigung:</b>&nbsp;&nbsp;%5$s
     ]]></string>
@@ -177,5 +168,5 @@
     <string name="created_file">Datei %1$s erstellt</string>
     <string name="file_already_exists">Datei existiert bereits</string>
     <string name="failed_make_file">Erstellen der Datei %1$s fehlgeschlagen</string>
-    <string name="pick_a_file">Pick a file…</string>
+    <string name="pick_a_file">Wählen sie eine Datei…</string>
 </resources>

@@ -12,6 +12,7 @@
         <item name="android:textSelectHandleLeft">@drawable/cabinet_text_select_handle_left</item>
         <item name="android:textSelectHandleRight">@drawable/cabinet_text_select_handle_right</item>
         <item name="android:textSelectHandle">@drawable/cabinet_text_select_handle_middle</item>
+        <item name="android:actionModeCloseDrawable">@drawable/ic_action_close</item>
 
         <item name="android:popupMenuStyle">@style/Theme.PopupMenu</item>
         <item name="android:dropDownListViewStyle">

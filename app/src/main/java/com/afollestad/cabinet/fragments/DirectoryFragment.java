@@ -681,13 +681,19 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                     public void onInput(String text) {
                         if (!text.contains("."))
                             text += file.getExtension();
-                        File newFile = file.isRemote() ?
+                        final File newFile = file.isRemote() ?
                                 new CloudFile(getActivity(), (CloudFile) file.getParent(), text, file.isDirectory()) :
                                 new LocalFile(getActivity(), file.getParent(), text);
                         file.rename(newFile, new SftpClient.CompletionCallback() {
                             @Override
                             public void onComplete() {
                                 reload();
+                                if (((DrawerActivity) getActivity()).getCab() != null &&
+                                        ((DrawerActivity) getActivity()).getCab() instanceof BaseFileCab) {
+                                    int cabIndex = ((BaseFileCab) ((DrawerActivity) getActivity()).getCab()).findFile(file);
+                                    if (cabIndex > -1)
+                                        ((BaseFileCab) ((DrawerActivity) getActivity()).getCab()).setFile(cabIndex, newFile);
+                                }
                             }
 
                             @Override

@@ -7,7 +7,7 @@
  Cabinet ha diverse altre funzionalità, come l\'accesso remoto ai server attraverso SFTP, che possono essere trovate usando l\'app. Grazie per usare Cabinet!</string>
     <string name="lets_go">Iniziamo!</string>
     <string name="open_as">Apri come…</string>
-    <string name="pin">Pin</string>
+    <string name="pin">Scorciatoia</string>
     <string name="copy">Copia</string>
     <string name="cut">Taglia</string>
     <string name="rename">Rinomina</string>
@@ -117,11 +117,16 @@
     <string name="sure">Certo!</string>
     <string name="no_thanks">No grazie</string>
     <string-array name="new_options">
+    <!-- Misc. arrays -->
         <item>File</item>
+    <!-- Misc. arrays -->
         <item>Cartella</item>
+    <!-- Misc. arrays -->
         <item>Connessione remota…</item>
     </string-array>
     <string-array name="open_as">
+    <!-- File actions-->
+        <item>Apri come…</item>
         <item>Testo</item>
         <item>Immagine</item>
         <item>Audio</item>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="welcome">Üdvözöljük</string>
-    <string name="welcome_intro">Üdvözöljük a Kabinetben! A Kabinet egy leegyszerűsített Fájlkezelő ami esztétikusan lett tervezve
-Kellemes, és úgy működik ahogy egy Fájlkezelőnek működni-e kell. \n\n Végy egy pillantást a fájra:</string>
-    <string name="welcome_conclusion">Próbálja megnyomni az előzetesképet vagy a 3-pont ikont. Ha megnyomja az előzetesképet előjönnek a többi opciók. Ezt a fájl hosszú nyomva tartásával is elérhetjük. A 3-pont ikon előhozza a fájl többi hasznos opcióit. \n\nKabinet
- másik különféle jellemzői, mint például a szerverekhez való távoli hozzáférés a Biztos állománytovábbító protokoll  keresztül, amit meg tudsz találni azáltal, hogy keresgélsz. Köszönjük hogy a Kabinetet használják!</string>
+    <string name="welcome_intro">Üdvözöljük! A Cabinet egy egyszerű Fájlkezelő ami esztétikusra lett tervezve
+ Kellemes, és úgy működik ahogy egy Fájlkezelőnek működni-e kell. \n\n Vegyen egy pillantást a fájra:</string>
+    <string name="welcome_conclusion">Érintse meg az előzetesképet vagy a 3-as pont ikont. Ha megnyomja az előzetesképet előjönnek a többi opciók. Ezt a fájl hosszú nyomva tartásával is elérhetjükelérheti. A 3-as pont ikon előhozza a fájl többi opcióit. \n\nCabinet
+ másik különféle jellemzői, mint például a szerverekhez való távoli hozzáférés SFTPn keresztül, amit meg tud találni azáltal, hogy keresgél. Köszönjük hogy a Cabinetet használja!</string>
     <string name="lets_go">Indulás!</string>
     <string name="open_as">Megnyitás Mint…</string>
     <string name="pin">Kitűz</string>
@@ -15,7 +15,7 @@ Kellemes, és úgy működik ahogy egy Fájlkezelőnek működni-e kell. \n\n V�
     <string name="paste">Beillesztés</string>
     <string name="share">Küldés</string>
     <string name="zip">Becsomagolás</string>
-    <string name="unzip">Kicsomagolás</string>
+    <string name="unzip">Kibontás</string>
     <string name="selectAll">Összes Kiválasztása</string>
     <string name="details">Adatok</string>
     <string name="no_files">Nincsenek fájlok</string>
@@ -24,16 +24,16 @@ Kellemes, és úgy működik ahogy egy Fájlkezelőnek működni-e kell. \n\n V�
     <string name="directory">Könyvtár</string>
     <string name="unknown">Ismeretlen</string>
     <string name="go_up">Ugrás Fel</string>
-    <string name="press_back_to_exit">"Vissza Gomb 2x a Kilépéshez"</string>
+    <string name="press_back_to_exit">"Nyomja meg ujra a vissza gombot a Kilépéshez"</string>
     <string name="x_files">%1$d fájlok</string>
     <string name="x_dirs">%1$d könyvtár</string>
     <string name="no_x_files">Nincsenek %1$s fájlok</string>
     <string name="done">Kész</string>
     <string name="remove_shortcut">Parancsikon Eltávolítása</string>
-    <string name="confirm_remove_shortcut">Biztos vagy benne, hogy el akarod távolítani a %1$s parancsikonodat?</string>
+    <string name="confirm_remove_shortcut">Biztos el távolítja a %1$s parancsikont?</string>
     <string name="sort_modified">Utóljára módosított</string>
     <string name="modified_x">Módosítva %1$s</string>
-    <string name="iconpress_hint">Érintsd meg fájl ikonját hogy gyorsan válaszd ki azt!</string>
+    <string name="iconpress_hint">Érintse meg fájl ikonját hogy gyorsan ki tudja választani azt!</string>
     <string name="drawer_longpress_hint">Tipp: hosszú érintés a kitűzött parancsikonok eltávolításához!</string>
     <string name="navigation_drawer_open">Navigációs Fiók nyitása</string>
     <string name="navigation_drawer_close">Navigációs Fiók bezárása</string>
@@ -47,19 +47,19 @@ Kellemes, és úgy működik ahogy egy Fájlkezelőnek működni-e kell. \n\n V�
     <string name="yes">Igen</string>
     <string name="newStr">Új</string>
     <string name="search">Keresés</string>
-    <string name="confirm_delete">Biztos vagy benne hogy törlöd %1$s?</string>
-    <string name="confirm_delete_xfiles">Biztos vagy benne hogy törlöd a %1$d fájlokat?</string>
+    <string name="confirm_delete">Biztos hogy törli %1$s?</string>
+    <string name="confirm_delete_xfiles">Biztos hogy törli a %1$d fájlokat?</string>
     <string name="unavailable">Nem áll rendelkezésre</string>
     <string name="sort_by">Rendezés</string>
     <string name="sort_name_folderstop">Név, mappák előbb</string>
     <string name="sort_name">Név</string>
-    <string name="sort_extension">Bővítés</string>
-    <string name="sort_size_lowhigh">Növekvő</string>
-    <string name="sort_size_highlow">Csökkenő</string>
+    <string name="sort_extension">Kiterjesztés</string>
+    <string name="sort_size_lowhigh">Növekvő Méret</string>
+    <string name="sort_size_highlow">Csökkenő Méret</string>
     <string name="new_remote_connection">Új távoli kapcsolat</string>
-    <string name="network_service_label">Kabinet Hálózati szolgáltatás</string>
-    <string name="connection_notification_content">Csatlakozva %1$s</string>
-    <string name="cabinet_sftp">Kabinet SFTP</string>
+    <string name="network_service_label">Cabinet Hálózati szolgáltatás</string>
+    <string name="connection_notification_content">Csatlakozva ide: %1$s</string>
+    <string name="cabinet_sftp">Cabinet SFTP</string>
     <string name="disconnect">Lecsatlakozás</string>
     <string name="host">Host</string>
     <string name="port">Port</string>
@@ -67,7 +67,7 @@ Kellemes, és úgy működik ahogy egy Fájlkezelőnek működni-e kell. \n\n V�
     <string name="password">Jelszó</string>
     <string name="test_connection">Teszt Csatlakozás</string>
     <string name="connection_successful">Sikeres Csatlakozás</string>
-    <string name="disconnect_prompt">Szeretné hogy csatlakozzon a%1$s-hoz?</string>
+    <string name="disconnect_prompt">Szeretné hogy csatlakozzon a(z) %1$s-hoz?</string>
     <string name="uploaded_to">Feltöltve ide: %1$s</string>
     <string name="downloaded_to">Letöltve ide: %1$s</string>
     <string name="connecting">Csatlakozás…</string>
@@ -80,17 +80,17 @@ Kellemes, és úgy működik ahogy egy Fájlkezelőnek működni-e kell. \n\n V�
     <string name="moving">Áthelyezés…</string>
     <string name="uploading">Feltöltés…</string>
     <string name="copying">Másolás…</string>
-    <string name="failed_delete_file">Sikertelen a: %1$s Törlése</string>
-    <string name="failed_make_directory">Sikertelen a: %1$s mappa Létrehozása</string>
-    <string name="failed_rename_file">Sikertelen a: %1$s fájl Áthelyezése/Mozgatása</string>
-    <string name="failed_unzip_file">Sikertelen a: %1$s fájl Kibontása</string>
-    <string name="failed_zip_files">Sikertelen a: %1$s fájl(ok) Becsomagolása</string>
+    <string name="failed_delete_file">Sikertelen a(z): %1$s Törlése</string>
+    <string name="failed_make_directory">Sikertelen a(z): %1$s mappa Létrehozása</string>
+    <string name="failed_rename_file">Sikertelen a(z): %1$s fájl Áthelyezése/Mozgatása</string>
+    <string name="failed_unzip_file">Sikertelen a(z): %1$s fájl Kibontása</string>
+    <string name="failed_zip_files">Sikertelen a(z): %1$s fájl(ok) Becsomagolása</string>
     <string name="error">Hiba</string>
-    <string name="failed_download_file">Egy hiba történt amíg megpróbálta letölteni ezt a fájlt: %1$s</string>
-    <string name="failed_connect_server">Sikertelen a: %1$s szerverhez való csatlakozás</string>
+    <string name="failed_download_file">Hiba történt a fájl: %1$s letöltése közben</string>
+    <string name="failed_connect_server">Sikertelen a(z): %1$s szerverhez való csatlakozás</string>
     <string name="activity_not_found">Nincs használható alkalmazás a fájl megnyitására</string>
-    <string name="failed_upload_file">Sikertelen a: %1$s fájl feltöltése</string>
-    <string name="failed_copy_file">Sikertelen a: %1$s fájl másolása</string>
+    <string name="failed_upload_file">Sikertelen a(z): %1$s fájl feltöltése</string>
+    <string name="failed_copy_file">Sikertelen a(z): %1$s fájl másolása</string>
     <string name="no_apps_for_sharing">Nincs használható Alkalmazás a fájl küldésére</string>
     <string name="directory_already_exists">A mappa már létezik</string>
     <string name="copy_x"><![CDATA[
@@ -113,15 +113,20 @@ Kellemes, és úgy működik ahogy egy Fájlkezelőnek működni-e kell. \n\n V�
     <string name="thank_you">Köszönjük Szépen!</string>
     <string name="rate">Értékelés</string>
     <string name="later">Később</string>
-    <string name="rate_desc">Szeretnéd értékelni a Kabinetet a Play Áruházban?</string>
+    <string name="rate_desc">Szeretné értékelni a Cabinetet a Play Áruházban?</string>
     <string name="sure">Persze!</string>
     <string name="no_thanks">Nem Köszönöm</string>
     <string-array name="new_options">
+    <!-- Misc. arrays -->
         <item>Fájl</item>
+    <!-- Misc. arrays -->
         <item>Mappa</item>
+    <!-- Misc. arrays -->
         <item>Távoli Kapcsolat…</item>
     </string-array>
     <string-array name="open_as">
+    <!-- File actions-->
+        <item>Megnyitás Mint…</item>
         <item>Szöveg</item>
         <item>Kép</item>
         <item>Hang</item>
@@ -131,9 +136,9 @@ Kellemes, és úgy működik ahogy egy Fájlkezelőnek működni-e kell. \n\n V�
     <string name="info">Információ</string>
     <string name="files">Fájlok</string>
     <string name="show_hidden_files">Mutatja a rejtett fájlokat</string>
-    <string name="about">Rólunk</string>
+    <string name="about">Névjegy</string>
     <string name="about_desc">Az alkalmazásról és a tervezőjéről.</string>
-    <string name="show_hidden_files_desc">A Kabinet mutatni fogja a rejtett fájlokat.</string>
+    <string name="show_hidden_files_desc">A Cabinet mutatni fogja a rejtett fájlokat.</string>
     <string name="ui">Felhasználói Felület</string>
     <string name="settings">Beallítások</string>
     <string name="translucentstatusbar_disabled">Android L-en nem tudja ezt megváltoztatni.</string>
@@ -143,7 +148,7 @@ Kellemes, és úgy működik ahogy egy Fájlkezelőnek működni-e kell. \n\n V�
     <string name="translucent_statusbar_desc">Átlászó (egyszinű a műveleti Sávval) Értesítési Sáv KitKat vagy újabb verziónn.</string>
     <string name="translucent_navbar_desc">Átlászó Navigációs Sáv KitKat vagy újabb verzión.</string>
     <string name="about_body"><![CDATA[
- Egy minimalista, intuitív, és szép Fájlkezelő android 4.1-re és ujjabbakra.<br/><br/>
+ Egy minimalista, intuitív, és szép Fájlkezelő android 4.1+ ra.<br/><br/>
  Tervező <b>Aidan Follestad</b>.<br/><a href=\'http://aidanfollestad.com\'>Weboldal</a>&nbsp;&nbsp;
  <a href=\'https://twitter.com/afollestad\'>Twitter</a>&nbsp;&nbsp;
  <a href=\'https://google.com/+AidanFollestad\'>Google+</a>&nbsp;&nbsp;
@@ -157,7 +162,7 @@ Kellemes, és úgy működik ahogy egy Fájlkezelőnek működni-e kell. \n\n V�
  <b>Név:</b>&nbsp;&nbsp;%1$s<br/><b>Elérési Út:</b>&nbsp;&nbsp;%2$s<br/><b>Tartalom:</b>&nbsp;&nbsp;%3$s<br/><b>Módosítva:</b>&nbsp;&nbsp;%4$s
     ]]></string>
     <string name="material_version">Material</string>
-    <string name="material_version_desc">A Kabinet Material verziója elérhető azoknak, akiknek Android L fut, meg akarod nézni a Kabinet Google+  közösségét, ahol ezt a verziót találják?</string>
+    <string name="material_version_desc">A Cabinet Material verziója csak Android L- re érhető el, Látogasson el Cabinet Google+ közösségi oldalára, ahol ezt a verziót le tudja tölteni.</string>
     <string name="new_file">Új Fájl</string>
     <string name="making_file">Fájl létrehozása…</string>
     <string name="created_file">%1$s fájl létrehozva</string>

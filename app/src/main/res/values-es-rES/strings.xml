@@ -117,11 +117,16 @@
     <string name="sure">¡Seguro!</string>
     <string name="no_thanks">No gracias</string>
     <string-array name="new_options">
+    <!-- Misc. arrays -->
         <item>Archivo</item>
+    <!-- Misc. arrays -->
         <item>Carpeta</item>
+    <!-- Misc. arrays -->
         <item>Conexión Remota…</item>
     </string-array>
     <string-array name="open_as">
+    <!-- File actions-->
+        <item>Abrir como…</item>
         <item>Texto</item>
         <item>Imagen</item>
         <item>Audio</item>
