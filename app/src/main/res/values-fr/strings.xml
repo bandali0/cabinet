@@ -174,4 +174,5 @@
     <string name="unsaved_changes_desc">Vous avez des modifications non sauvegardées, voulez-vous les sauvegarder avant de quitter ?</string>
     <string name="saving">Sauvegarde...</string>
     <string name="save">Save</string>
+    <string name="loading">Loading…</string>
 </resources>

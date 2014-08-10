@@ -174,4 +174,5 @@
     <string name="unsaved_changes_desc">Sie haben ungespeicherte Änderungen, möchten Sie diese vor dem Verlassen speichern?</string>
     <string name="saving">Speichern...</string>
     <string name="save">Save</string>
+    <string name="loading">Loading…</string>
 </resources>

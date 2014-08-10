@@ -174,4 +174,5 @@
     <string name="unsaved_changes">Unsaved Changes</string>
     <string name="unsaved_changes_desc">You have unsaved changes, do you want to save them before exiting?</string>
     <string name="saving">Saving…</string>
+    <string name="loading">Loading…</string>
 </resources>

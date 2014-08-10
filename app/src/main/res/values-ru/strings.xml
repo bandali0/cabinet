@@ -174,4 +174,5 @@
     <string name="unsaved_changes_desc">У вас есть несохраненные изменения, вы хотите сохранить их прежде чем выйти?</string>
     <string name="saving">Сохранение...</string>
     <string name="save">Save</string>
+    <string name="loading">Loading…</string>
 </resources>
