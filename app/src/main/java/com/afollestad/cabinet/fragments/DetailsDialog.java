@@ -58,9 +58,11 @@ public class DetailsDialog extends DialogFragment {
                     }).start();
                 }
             }
+            if (getActivity() == null) return null;
             content = getString(R.string.details_body_dir,
                     file.getName(), file.getPath(), size, TimeUtils.toStringLong(cal));
         } else {
+            if (getActivity() == null) return null;
             content = getString(R.string.details_body_file,
                     file.getName(), file.getPath(), file.getSizeString(), TimeUtils.toStringLong(cal), "TODO");
         }
