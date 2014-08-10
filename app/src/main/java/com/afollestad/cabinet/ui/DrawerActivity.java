@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.IBinder;
@@ -19,9 +20,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.afollestad.cabinet.R;
@@ -91,8 +94,12 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         if (!ThemeUtils.isTranslucentNavbar(context)) return;
         SystemBarTintManager tintManager = new SystemBarTintManager(context);
         SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
-        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) view.getLayoutParams();
-        params.bottomMargin = config.getPixelInsetBottom();
+        ViewGroup.LayoutParams params = view.getLayoutParams();
+        if (view.getLayoutParams() instanceof FrameLayout.LayoutParams) {
+            ((FrameLayout.LayoutParams) params).bottomMargin = config.getPixelInsetBottom();
+        } else {
+            ((RelativeLayout.LayoutParams) params).bottomMargin = config.getPixelInsetBottom();
+        }
         view.setLayoutParams(params);
     }
 
@@ -231,30 +238,30 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     }
 
     private void checkMaterialAndRating() {
-        checkRating();
+//        checkRating();
         // TODO toggle commented area for Material
-//        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-//        if (!prefs.getBoolean("shown_material_dialog", false) && Build.VERSION.SDK_INT >= 20) {
-//            CustomDialog.create(this, R.string.material_version, getString(R.string.material_version_desc), R.string.yes, R.string.later, R.string.no, new CustomDialog.ClickListener() {
-//                @Override
-//                public void onPositive(int which, View view) {
-//                    PreferenceManager.getDefaultSharedPreferences(DrawerActivity.this)
-//                            .edit().putBoolean("shown_material_dialog", true).commit();
-//                    startActivity(new Intent(Intent.ACTION_VIEW)
-//                            .setData(Uri.parse("https://plus.google.com/u/0/communities/110440751142118056139")));
-//                }
-//
-//                @Override
-//                public void onNeutral() {
-//                }
-//
-//                @Override
-//                public void onNegative() {
-//                    PreferenceManager.getDefaultSharedPreferences(DrawerActivity.this)
-//                            .edit().putBoolean("shown_material_dialog", true).commit();
-//                }
-//            }).show(getFragmentManager(), "MATERIAL_DIALOG");
-//        } else checkRating();
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        if (!prefs.getBoolean("shown_material_dialog", false) && Build.VERSION.SDK_INT >= 20) {
+            CustomDialog.create(this, R.string.material_version, getString(R.string.material_version_desc), R.string.yes, R.string.later, R.string.no, new CustomDialog.ClickListener() {
+                @Override
+                public void onPositive(int which, View view) {
+                    PreferenceManager.getDefaultSharedPreferences(DrawerActivity.this)
+                            .edit().putBoolean("shown_material_dialog", true).commit();
+                    startActivity(new Intent(Intent.ACTION_VIEW)
+                            .setData(Uri.parse("https://plus.google.com/u/0/communities/110440751142118056139")));
+                }
+
+                @Override
+                public void onNeutral() {
+                }
+
+                @Override
+                public void onNegative() {
+                    PreferenceManager.getDefaultSharedPreferences(DrawerActivity.this)
+                            .edit().putBoolean("shown_material_dialog", true).commit();
+                }
+            }).show(getFragmentManager(), "MATERIAL_DIALOG");
+        } else checkRating();
     }
 
     private void checkRating() {

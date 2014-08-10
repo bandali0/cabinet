@@ -5,6 +5,7 @@ import android.text.Html;
 import android.text.Spanned;
 import android.view.ActionMode;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.cab.base.BaseFileCab;
@@ -27,6 +28,8 @@ public class CopyCab extends BaseFileCab {
     }
 
     private transient boolean shouldCancel;
+    private transient int copyCount;
+    private transient int copyTotal;
 
     @Override
     public void paste() {
@@ -37,6 +40,8 @@ public class CopyCab extends BaseFileCab {
             mDialog.setMax(getFiles().size());
         } else mDialog.setIndeterminate(true);
         mDialog.show();
+        copyCount = 0;
+        copyTotal = getFiles().size();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -51,6 +56,14 @@ public class CopyCab extends BaseFileCab {
                             getFragment().reload();
                             if (getFiles().size() > 0)
                                 mDialog.setProgress(mDialog.getProgress() + 1);
+                            copyCount++;
+                            if (copyCount == copyTotal) {
+                                if (getDirectory().isRemote()) {
+                                    Toast.makeText(getContext(), getContext().getString(R.string.uploaded_to, getDirectory().getPath()), Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(getContext(), getContext().getString(R.string.copied_to, getDirectory().getPath()), Toast.LENGTH_SHORT).show();
+                                }
+                            }
                         }
 
                         @Override

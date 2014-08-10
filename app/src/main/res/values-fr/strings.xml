@@ -3,10 +3,10 @@
     <string name="welcome">Bienvenue</string>
     <string name="welcome_intro">Bienvenue dans Cabinet ! Cabinet est un gestionnaire de fichier simpliste conçu pour être esthétiquement
  agréable, et fonctionner juste comme il se doit.\n\n Jetez un œil à ce fichier :</string>
-    <string name="welcome_conclusion">Essayez d\'appuyer sur l\'aperçu ou l\'icône "…". Appuyer sur l\'aperçu sélectionne le fichier pour des actions par lot, ce qui peut également être effectué en restant appuyé sur d\'autres fichiers. L\'icône "…" ouvre un menu avec des options de fichier individuel.\n\nCabinet
- a d\'autres fonctionnalités diverses telles que l\'accès à un serveur distant via SFTP, que vous trouverez en explorant. Merci d\'essayer Cabinet !</string>
+    <string name="welcome_conclusion">Essayez d\'appuyer sur l\'aperçu ou l\'icône "...". Appuyer sur l\'aperçu sélectionne le fichier pour des actions groupées, ce qui est également possible en restant appuyé sur le fichier. L\'icône "..." ouvre un menu pour traiter le fichier individuellement.\n\nCabinet
+ a d\'autres fonctionnalités comme l\'accès à un serveur distant via SFTP, que vous trouverez dans l\'application. Merci d\'utiliser Cabinet !</string>
     <string name="lets_go">Allons-y !</string>
-    <string name="open_as">Ouvrir comme…</string>
+    <string name="open_as">Ouvrir comme...</string>
     <string name="pin">Épingler</string>
     <string name="copy">Copier</string>
     <string name="cut">Couper</string>
@@ -24,7 +24,7 @@
     <string name="directory">Répertoire</string>
     <string name="unknown">Inconnu</string>
     <string name="go_up">Remonter</string>
-    <string name="press_back_to_exit">"Appuyez à nouveau sur retour pour fermer…"</string>
+    <string name="press_back_to_exit">"Appuyez à nouveau sur retour pour fermer..."</string>
     <string name="x_files">%1$d fichiers</string>
     <string name="x_dirs">%1$d répertoires</string>
     <string name="no_x_files">Pas de fichier %1$s</string>
@@ -70,16 +70,16 @@
     <string name="disconnect_prompt">Voulez-vous vous déconnecter de %1$s ?</string>
     <string name="uploaded_to">Envoyé vers %1$s</string>
     <string name="downloaded_to">Téléchargé dans %1$s</string>
-    <string name="connecting">Connexion…</string>
-    <string name="downloading">Téléchargement…</string>
-    <string name="deleting">Suppression…</string>
-    <string name="making_folder">Création du dossier…</string>
-    <string name="renaming">Renommage…</string>
-    <string name="unzipping">Décompression…</string>
-    <string name="zipping">Compression…</string>
-    <string name="moving">Déplacement…</string>
-    <string name="uploading">Envoi…</string>
-    <string name="copying">Copie…</string>
+    <string name="connecting">Connexion...</string>
+    <string name="downloading">Téléchargement...</string>
+    <string name="deleting">Suppression...</string>
+    <string name="making_folder">Création du dossier...</string>
+    <string name="renaming">Renommage...</string>
+    <string name="unzipping">Décompression...</string>
+    <string name="zipping">Compression...</string>
+    <string name="moving">Déplacement...</string>
+    <string name="uploading">Envoi...</string>
+    <string name="copying">Copie...</string>
     <string name="failed_delete_file">Erreur lors de la suppression du fichier : %1$s</string>
     <string name="failed_make_directory">Erreur lors de la création du dossier : %1$s</string>
     <string name="failed_rename_file">Erreur lors du renommage/déplacement du fichier : %1$s</string>
@@ -105,7 +105,7 @@
     <string name="cut_xfiles"><![CDATA[
  <b>Couper :</b>&nbsp;&nbsp;%1$d fichiers
     ]]></string>
-    <string name="search_files">Recherche de fichiers…</string>
+    <string name="search_files">Recherche de fichiers...</string>
     <string name="search_x"><![CDATA[
  <b>Rechercher :</b>&nbsp;%1$s
     ]]></string>
@@ -117,14 +117,16 @@
     <string name="sure">Bien sûr !</string>
     <string name="no_thanks">Non merci</string>
     <string-array name="new_options">
-        <!-- Misc. arrays -->
+    <!-- Misc. arrays -->
         <item>Fichier</item>
-        <!-- Misc. arrays -->
+    <!-- Misc. arrays -->
         <item>Dossier</item>
-        <!-- Misc. arrays -->
-        <item>Connexion distante…</item>
+    <!-- Misc. arrays -->
+        <item>Connexion distante...</item>
     </string-array>
     <string-array name="open_as">
+    <!-- File actions-->
+        <item>Ouvrir comme...</item>
         <item>Texte</item>
         <item>Image</item>
         <item>Audio</item>
@@ -162,14 +164,13 @@
     <string name="material_version">Matériel</string>
     <string name="material_version_desc">Une version Matériel de Cabinet est disponible pour Android L. Voulez-vous accéder à la communauté Google+ de Cabinet où cette version est postée ?</string>
     <string name="new_file">Nouveau fichier</string>
-    <string name="making_file">Création du fichier…</string>
+    <string name="making_file">Création du fichier...</string>
     <string name="created_file">Fichier %1$s créé</string>
     <string name="file_already_exists">Le fichier existe déjà</string>
     <string name="failed_make_file">Erreur lors de la création du fichier : %1$s</string>
-    <string name="pick_a_file">Pick a file…</string>
-    <string name="cabinet_text_editor">Cabinet Text Editor</string>
-    <string name="save">Save</string>
-    <string name="unsaved_changes">Unsaved Changes</string>
-    <string name="unsaved_changes_desc">You have unsaved changes, do you want to save them before exiting?</string><string name="saving">Saving…</string>
-
+    <string name="pick_a_file">Choisissez un fichier...</string>
+    <string name="cabinet_text_editor">Éditeur texte Cabinet</string>
+    <string name="unsaved_changes">Modifications non sauvegardées</string>
+    <string name="unsaved_changes_desc">Vous avez des modifications non sauvegardées, voulez-vous les sauvegarder avant de quitter ?</string>
+    <string name="saving">Sauvegarde...</string>
 </resources>

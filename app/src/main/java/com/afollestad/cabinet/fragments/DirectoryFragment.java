@@ -692,6 +692,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                                     int cabIndex = ((BaseFileCab) ((DrawerActivity) getActivity()).getCab()).findFile(file);
                                     if (cabIndex > -1)
                                         ((BaseFileCab) ((DrawerActivity) getActivity()).getCab()).setFile(cabIndex, newFile);
+                                    Toast.makeText(getActivity(), getString(R.string.renamed_to, newFile.getPath()), Toast.LENGTH_SHORT).show();
                                 }
                             }
 

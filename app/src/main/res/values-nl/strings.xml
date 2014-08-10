@@ -6,7 +6,7 @@
     <string name="welcome_conclusion">Probeer te tikken op de voorbeeld pictogram of de 3-punt icoon. Tikken op het voorbeeld pictogram selecteerd het bestand voor multi acties, dit kan ook gedaan worden door te tikken en ingedrukt te houden van bestanden. De 3-punt icoon laat een popup menu zien met opties voor het specifieke bestand.\n\nCabinet
  heeft daarnaast nog andere features, zoals toegang tot servers op afstand via SFTP dat je kan vinden tijden het gebruik van Cabinet. Bedankt voor het uitproberen van Cabinet!</string>
     <string name="lets_go">Laten we beginnen!</string>
-    <string name="open_as">Open als…</string>
+    <string name="open_as">Open als...</string>
     <string name="pin">Vastzetten</string>
     <string name="copy">Kopiëren</string>
     <string name="cut">Knippen</string>
@@ -24,7 +24,7 @@
     <string name="directory">Map</string>
     <string name="unknown">Onbekend</string>
     <string name="go_up">Ga omhoog</string>
-    <string name="press_back_to_exit">"Druk nog een keer op terug om af te sluiten…"</string>
+    <string name="press_back_to_exit">"Druk nog een keer op terug om af te sluiten..."</string>
     <string name="x_files">%1$d bestanden</string>
     <string name="x_dirs">%1$d mappen</string>
     <string name="no_x_files">Geen %1$s bestanden</string>
@@ -70,15 +70,15 @@
     <string name="disconnect_prompt">Wil je de verbinding met %1$s verbreken?</string>
     <string name="uploaded_to">Geupload naar %1$s</string>
     <string name="downloaded_to">Gedownload naar %1$s</string>
-    <string name="connecting">Verbinden…</string>
-    <string name="downloading">Downloaden…</string>
-    <string name="deleting">Verwijderen…</string>
-    <string name="making_folder">Nieuwe map aanmaken…</string>
-    <string name="renaming">Naam wijzigen…</string>
-    <string name="unzipping">Uitpakken…</string>
-    <string name="zipping">Inpakken…</string>
-    <string name="moving">Verplaatsen…</string>
-    <string name="uploading">Uploaden…</string>
+    <string name="connecting">Verbinden...</string>
+    <string name="downloading">Downloaden...</string>
+    <string name="deleting">Verwijderen...</string>
+    <string name="making_folder">Nieuwe map aanmaken...</string>
+    <string name="renaming">Naam wijzigen...</string>
+    <string name="unzipping">Uitpakken...</string>
+    <string name="zipping">Inpakken...</string>
+    <string name="moving">Verplaatsen...</string>
+    <string name="uploading">Uploaden...</string>
     <string name="copying">kopiëren</string>
     <string name="failed_delete_file">Het verwijderen van het volgende bestand is mislukt: %1$s</string>
     <string name="failed_make_directory">Het maken van de volgende map is mislukt: %1$s</string>
@@ -105,7 +105,7 @@
     <string name="cut_xfiles"><![CDATA[
 <b>Knip:</b>&nbsp;&nbsp;%1$d bestanden
     ]]></string>
-    <string name="search_files">Zoek bestanden…</string>
+    <string name="search_files">Zoek bestanden...</string>
     <string name="search_x"><![CDATA[
 <b>Zoek:</b>&nbsp;%1$s
     ]]></string>
@@ -122,9 +122,11 @@
     <!-- Misc. arrays -->
         <item>Map</item>
     <!-- Misc. arrays -->
-        <item>Verbinding op afstand…</item>
+        <item>Verbinding op afstand...</item>
     </string-array>
     <string-array name="open_as">
+    <!-- File actions-->
+        <item>Open als...</item>
         <item>Tekst</item>
         <item>Afbeelding</item>
         <item>Geluidsbestand</item>
@@ -162,14 +164,13 @@ Een minimalistische, vernuftige, mooie bestands beheerder voor Android 4.1 en ho
     <string name="material_version">Material</string>
     <string name="material_version_desc">Een Material versie van Cabinet is beschikbaar voor de personen die Android L draaien. Wil je de Google+ community bekijken waar deze versie beschikbaar is?</string>
     <string name="new_file">Nieuw bestand</string>
-    <string name="making_file">Bestand aan het aanmaken…</string>
+    <string name="making_file">Bestand aan het aanmaken...</string>
     <string name="created_file">Bestand gemaakt: %1$s</string>
     <string name="file_already_exists">Bestand bestaat al</string>
     <string name="failed_make_file">Het maken van het volgende bestand is mislukt: %1$s</string>
-    <string name="pick_a_file">Kies een bestand…</string>
-    <string name="cabinet_text_editor">Cabinet Text Editor</string>
-    <string name="save">Save</string>
-    <string name="unsaved_changes">Unsaved Changes</string>
-    <string name="unsaved_changes_desc">You have unsaved changes, do you want to save them before exiting?</string>
-    <string name="saving">Saving…</string>
+    <string name="pick_a_file">Kies een bestand...</string>
+    <string name="cabinet_text_editor">Cabinet Tekst Verwerker</string>
+    <string name="unsaved_changes">Niet opgeslagen aanpassingen</string>
+    <string name="unsaved_changes_desc">Je hebt niet opgeslagen aanpassingen, wil je deze opslaan voordat je het programma sluit?</string>
+    <string name="saving">Opslaan...</string>
 </resources>

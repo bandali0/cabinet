@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Environment;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.file.base.File;
@@ -124,7 +123,6 @@ public class LocalFile extends File {
                                     @Override
                                     public void run() {
                                         uploadProgress.dismiss();
-                                        Toast.makeText(getContext(), getContext().getString(R.string.uploaded_to, newFile.getPath()), Toast.LENGTH_SHORT).show();
                                         callback.onComplete();
                                     }
                                 });
@@ -170,8 +168,6 @@ public class LocalFile extends File {
                                         public void run() {
                                             callback.onComplete();
                                             notifyMediaScannerService(newFile);
-                                            Toast.makeText(getContext(), getContext().getString(getParent().equals(newFile.getParent()) ?
-                                                    R.string.renamed_to : R.string.moved_to, newFile.getPath()), Toast.LENGTH_SHORT).show();
                                         }
                                     });
                                 } catch (final Exception e) {
@@ -192,8 +188,6 @@ public class LocalFile extends File {
                             public void run() {
                                 callback.onComplete();
                                 notifyMediaScannerService(newFile);
-                                Toast.makeText(getContext(), getContext().getString(getParent().equals(newFile.getParent()) ?
-                                        R.string.renamed_to : R.string.moved_to, newFile.getPath()), Toast.LENGTH_SHORT).show();
                             }
                         });
                     } else {
@@ -231,7 +225,6 @@ public class LocalFile extends File {
                                             @Override
                                             public void run() {
                                                 uploadProgress.dismiss();
-                                                Toast.makeText(getContext(), getContext().getString(R.string.uploaded_to, dest.getPath()), Toast.LENGTH_SHORT).show();
                                                 callback.onComplete(dest);
                                             }
                                         });
@@ -269,7 +262,6 @@ public class LocalFile extends File {
                             getContext().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(getContext(), getContext().getString(R.string.copied_to, dest.getPath()), Toast.LENGTH_SHORT).show();
                                     callback.onComplete(dest);
                                 }
                             });
@@ -289,7 +281,6 @@ public class LocalFile extends File {
                             getContext().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(getContext(), getContext().getString(R.string.copied_to, dest.getPath()), Toast.LENGTH_SHORT).show();
                                     callback.onComplete(result);
                                 }
                             });

@@ -37,6 +37,8 @@
         <item name="android:textColorHint">@color/search_view_hint</item>
         <item name="android:popupMenuStyle">@style/Theme.PopupMenu</item>
         <item name="android:textColor">@color/soft_black</item>
+        <item name="android:checkboxStyle">@style/CheckBoxCabinet</item>
+        <item name="android:radioButtonStyle">@style/RadioButtonCabinet</item>
     </style>
 
     <style name="Theme.PopupMenu" parent="@android:style/Widget.Holo.Light.PopupMenu">

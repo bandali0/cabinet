@@ -46,9 +46,9 @@ public class TextEditor extends Activity implements TextWatcher {
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
         DrawerActivity.setupTransparentTints(this);
-        DrawerActivity.setupTranslucentBottomMargin(this, mInput);
 
         if (getIntent().getData() != null) load(getIntent().getData());
+        else mInput.setVisibility(View.VISIBLE);
     }
 
     private void setProgress(boolean show) {

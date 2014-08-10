@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="@string/info">
+    <PreferenceCategory
+        android:title="@string/info"
+        android:layout="@layout/preference_category_custom">
 
         <Preference
             android:key="about"
@@ -11,7 +13,9 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/files">
+    <PreferenceCategory
+        android:title="@string/files"
+        android:layout="@layout/preference_category_custom">
 
         <CheckBoxPreference
             android:key="show_hidden"
@@ -22,7 +26,9 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/ui">
+    <PreferenceCategory
+        android:title="@string/ui"
+        android:layout="@layout/preference_category_custom">
 
         <CheckBoxPreference
             android:key="translucent_statusbar"

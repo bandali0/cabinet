@@ -5,6 +5,7 @@ import android.text.Html;
 import android.text.Spanned;
 import android.view.ActionMode;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.cab.base.BaseFileCab;
@@ -27,6 +28,8 @@ public class CutCab extends BaseFileCab {
     }
 
     private transient boolean shouldCancel;
+    private transient int cutCount;
+    private transient int cutTOtal;
 
     @Override
     public void paste() {
@@ -37,12 +40,14 @@ public class CutCab extends BaseFileCab {
             mDialog.setMax(getFiles().size());
         } else mDialog.setIndeterminate(true);
         mDialog.show();
+        cutCount = 0;
+        cutTOtal = getFiles().size();
         new Thread(new Runnable() {
             @Override
             public void run() {
                 for (final File file : getFiles()) {
                     if (shouldCancel) break;
-                    File newFile = getDirectory().isRemote() ?
+                    final File newFile = getDirectory().isRemote() ?
                             new CloudFile(getContext(), (CloudFile) getDirectory(), file.getName(), file.isDirectory()) :
                             new LocalFile(getContext(), getDirectory(), file.getName());
                     file.rename(newFile, new SftpClient.CompletionCallback() {
@@ -51,6 +56,14 @@ public class CutCab extends BaseFileCab {
                             getFragment().reload();
                             if (getFiles().size() > 0)
                                 mDialog.setProgress(mDialog.getProgress() + 1);
+                            cutCount++;
+                            if (cutCount == cutTOtal) {
+                                if (getDirectory().isRemote()) {
+                                    Toast.makeText(getContext(), getContext().getString(R.string.uploaded_to, getDirectory().getPath()), Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(getContext(), getContext().getString(R.string.moved_to, newFile.getPath()), Toast.LENGTH_SHORT).show();
+                                }
+                            }
                         }
 
                         @Override

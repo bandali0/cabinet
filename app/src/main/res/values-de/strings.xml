@@ -125,6 +125,8 @@
         <item>Remote Verbindung…</item>
     </string-array>
     <string-array name="open_as">
+    <!-- File actions-->
+        <item>Öffnen als…</item>
         <item>Text</item>
         <item>Bild</item>
         <item>Ton</item>
@@ -162,14 +164,13 @@
     <string name="material_version">Material</string>
     <string name="material_version_desc">Für Android L steht eine Version mit Material Design in der Cabinet Community in Google+ zur Verfügung. Wollen Sie die Seite der Community jetzt öffnen?</string>
     <string name="new_file">Neuer Datei</string>
-    <string name="making_file">Erstelle Datei…</string>
+    <string name="making_file">Erstelle Datei...</string>
     <string name="created_file">Datei %1$s erstellt</string>
     <string name="file_already_exists">Datei existiert bereits</string>
     <string name="failed_make_file">Erstellen der Datei %1$s fehlgeschlagen</string>
-    <string name="pick_a_file">Wählen sie eine Datei…</string>
-    <string name="cabinet_text_editor">Cabinet Text Editor</string>
-    <string name="save">Save</string>
-    <string name="unsaved_changes">Unsaved Changes</string>
-    <string name="unsaved_changes_desc">You have unsaved changes, do you want to save them before exiting?</string>
-    <string name="saving">Saving…</string>
+    <string name="pick_a_file">Wählen sie eine Datei...</string>
+    <string name="cabinet_text_editor">Cabinet Texteditor</string>
+    <string name="unsaved_changes">Ungespeicherte Änderungen</string>
+    <string name="unsaved_changes_desc">Sie haben ungespeicherte Änderungen, möchten Sie diese vor dem Verlassen speichern?</string>
+    <string name="saving">Speichern...</string>
 </resources>
