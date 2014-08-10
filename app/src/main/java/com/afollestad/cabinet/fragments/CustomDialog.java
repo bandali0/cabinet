@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -118,7 +119,6 @@ public class CustomDialog extends DialogFragment implements View.OnClickListener
 
         TextView body = (TextView) rootView.findViewById(R.id.body);
         LinearLayout list = (LinearLayout) rootView.findViewById(R.id.list);
-        list.removeAllViews();
         if (this.body != null) {
             body.setText(this.body);
             body.setMovementMethod(new LinkMovementMethod());
@@ -139,6 +139,9 @@ public class CustomDialog extends DialogFragment implements View.OnClickListener
         } else {
             body.setVisibility(View.GONE);
             list.setVisibility(View.VISIBLE);
+            if (inflatedView.getParent() != null) {
+                ((ViewGroup) inflatedView.getParent()).removeView(inflatedView);
+            }
             list.addView(inflatedView);
             list.requestLayout();
         }

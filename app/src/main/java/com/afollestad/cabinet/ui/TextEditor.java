@@ -66,6 +66,21 @@ public class TextEditor extends Activity implements TextWatcher {
                     finish();
                     return;
                 }
+                String mime = new LocalFile(TextEditor.this, mFile).getMimeType();
+                if (mime.startsWith("image/*")) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            CustomDialog.create(TextEditor.this, R.string.unsupported_extension, getString(R.string.unsupported_extension_desc), new CustomDialog.SimpleClickListener() {
+                                @Override
+                                public void onPositive(int which, View view) {
+                                    finish();
+                                }
+                            });
+                        }
+                    });
+                    return;
+                }
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
