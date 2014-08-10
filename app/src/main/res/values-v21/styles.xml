@@ -2,35 +2,35 @@
 <resources>
 
     <!-- TODO toggle comment for Material -->
-    <!--<style name="CabinetUIParent" parent="android:Theme.Material.Light.DarkActionBar">-->
-        <!--<item name="android:colorPrimary">@color/cabinet_color</item>-->
-        <!--<item name="android:colorPrimaryDark">@color/cabinet_color_darker</item>-->
-        <!--<item name="android:colorAccent">@color/cabinet_accent_color</item>-->
-        <!--<item name="android:actionModeBackground">@color/cabinet_color</item>-->
-        <!--<item name="android:buttonStyle">@style/ButtonCabinet</item>-->
-        <!--<item name="android:actionModeCloseDrawable">@drawable/ic_action_close</item>-->
-        <!--<item name="android:popupMenuStyle">@style/Theme.PopupMenu</item>-->
-    <!--</style>-->
+    <style name="CabinetUIParent" parent="android:Theme.Material.Light.DarkActionBar">
+        <item name="android:colorPrimary">@color/cabinet_color</item>
+        <item name="android:colorPrimaryDark">@color/cabinet_color_darker</item>
+        <item name="android:colorAccent">@color/cabinet_accent_color</item>
+        <item name="android:actionModeBackground">@color/cabinet_color</item>
+        <item name="android:buttonStyle">@style/ButtonCabinet</item>
+        <item name="android:actionModeCloseDrawable">@drawable/ic_action_close</item>
+        <item name="android:popupMenuStyle">@style/Theme.PopupMenu</item>
+    </style>
 
-    <!--<style name="Theme.Cabinet" parent="@style/CabinetUIParent" />-->
+    <style name="Theme.Cabinet" parent="@style/CabinetUIParent" />
 
-    <!--<style name="Theme.CabinetNavTranslucent" parent="@style/CabinetUIParent">-->
-        <!--<item name="android:windowTranslucentNavigation">@bool/translucent_nav</item>-->
-        <!--<item name="android:navigationBarColor">@android:color/transparent</item>-->
-    <!--</style>-->
+    <style name="Theme.CabinetNavTranslucent" parent="@style/CabinetUIParent">
+        <item name="android:windowTranslucentNavigation">@bool/translucent_nav</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
 
-    <!--<style name="Theme.PopupMenu" parent="android:Widget.Material.Light.ListPopupWindow">-->
-        <!--<item name="android:background">@drawable/menu_dropdown_panel_cabinet</item>-->
-        <!--<item name="android:dividerHorizontal">@null</item>-->
-        <!--<item name="android:dividerHeight">0dp</item>-->
-    <!--</style>-->
+    <style name="Theme.PopupMenu" parent="android:Widget.Material.Light.PopupMenu">
+        <item name="android:background">@drawable/menu_dropdown_panel_cabinet</item>
+        <item name="android:dividerHorizontal">@null</item>
+        <item name="android:dividerHeight">0dp</item>
+    </style>
 
-    <!--<style name="ButtonCabinet" parent="android:Widget.Material.Light.Button">-->
-        <!--<item name="android:background">@drawable/rect_button_ripple_selector</item>-->
-        <!--<item name="android:textColor">@color/button_text_selector</item>-->
-        <!--<item name="android:minHeight">48dp</item>-->
-        <!--<item name="android:minWidth">64dp</item>-->
-        <!--<item name="android:elevation">2dp</item>-->
-    <!--</style>-->
+    <style name="ButtonCabinet" parent="android:Widget.Material.Light.Button">
+        <item name="android:background">@drawable/rect_button_ripple_selector</item>
+        <item name="android:textColor">@color/button_text_selector</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:minWidth">64dp</item>
+        <item name="android:elevation">2dp</item>
+    </style>
 
 </resources>
