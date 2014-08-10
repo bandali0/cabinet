@@ -53,6 +53,7 @@ public class Unzipper {
                     for (File fi : files) {
                         unzip(context, (LocalFile) fi);
                     }
+                    if (context.getActivity() == null) return;
                     context.getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -63,6 +64,7 @@ public class Unzipper {
                     });
                 } catch (final Exception e) {
                     e.printStackTrace();
+                    if (context.getActivity() == null) return;
                     context.getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {

@@ -1,5 +1,6 @@
 package com.afollestad.cabinet.fragments;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -36,16 +37,16 @@ public class WelcomeFragment extends Fragment {
     private ImageView icon;
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public void onAttach(final Activity activity) {
+        super.onAttach(activity);
         new Thread(new Runnable() {
             @Override
             public void run() {
-                ((DrawerActivity) getActivity()).waitFabInvalidate();
-                getActivity().runOnUiThread(new Runnable() {
+                ((DrawerActivity) activity).waitFabInvalidate();
+                activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        ((DrawerActivity) getActivity()).disableFab(true);
+                        ((DrawerActivity) activity).disableFab(true);
                     }
                 });
             }

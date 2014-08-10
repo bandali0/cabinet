@@ -107,10 +107,15 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     public void waitFabInvalidate() {
         SystemBarTintManager tintManager = new SystemBarTintManager(this);
         SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
-        float translation = getResources().getDimension(R.dimen.fab_translation) + config.getPixelInsetBottom();
+        final float translation = getResources().getDimension(R.dimen.fab_translation) + config.getPixelInsetBottom();
         while (fabVisibleY == 0) {
-            fabVisibleY = fab.getY();
-            fabHiddenY = fab.getY() + translation;
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    fabVisibleY = fab.getY();
+                    fabHiddenY = fab.getY() + translation;
+                }
+            });
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {

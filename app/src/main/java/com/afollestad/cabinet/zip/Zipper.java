@@ -2,6 +2,7 @@ package com.afollestad.cabinet.zip;
 
 import android.app.ProgressDialog;
 import android.util.Log;
+
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.file.LocalFile;
 import com.afollestad.cabinet.file.base.File;
@@ -32,6 +33,7 @@ public class Zipper {
                             ZipOutputStream zout = new ZipOutputStream(fout);
                             writeFiles("", zout, files);
                             zout.close();
+                            if (context.getActivity() == null) return;
                             context.getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -44,6 +46,7 @@ public class Zipper {
                             e.printStackTrace();
                             if (((LocalFile) dest).existsSync())
                                 ((LocalFile) dest).deleteSync();
+                            if (context.getActivity() == null) return;
                             context.getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
