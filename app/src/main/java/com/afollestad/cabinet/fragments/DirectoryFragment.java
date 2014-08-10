@@ -142,9 +142,8 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                             @Override
                             public void run() {
                                 DrawerActivity act = (DrawerActivity) getActivity();
-                                BaseFileCab cab = (BaseFileCab) act.getCab();
-                                cab.setFragment(DirectoryFragment.this);
-                                cab.invalidateFab();
+                                BaseFileCab cab = (BaseFileCab) act.getCab()
+                                        .setFragment(DirectoryFragment.this);
                                 cab.start();
                                 act.shouldAttachFab = false;
                             }
@@ -659,7 +658,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                         ((BaseFileCab) cab).overrideDestroy = true;
                     }
                     ((DrawerActivity) getActivity()).setCab(new CopyCab()
-                            .setFragment(this).setFile(file).invalidateFab().start());
+                            .setFragment(this).setFile(file).start());
                 } else ((BaseFileCab) cab).setFragment(this).addFile(file);
                 break;
             }
@@ -671,7 +670,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                         ((BaseFileCab) cab).overrideDestroy = true;
                     }
                     ((DrawerActivity) getActivity()).setCab(new CutCab()
-                            .setFragment(this).setFile(file).invalidateFab().start());
+                            .setFragment(this).setFile(file).start());
                 } else ((BaseFileCab) cab).setFragment(this).addFile(file);
                 break;
             }

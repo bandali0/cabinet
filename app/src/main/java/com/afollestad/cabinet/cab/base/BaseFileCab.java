@@ -2,7 +2,9 @@ package com.afollestad.cabinet.cab.base;
 
 import android.util.Log;
 import android.view.ActionMode;
+import android.view.Menu;
 
+import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.fragments.DirectoryFragment;
 
@@ -30,10 +32,18 @@ public abstract class BaseFileCab extends BaseCab {
 
     public abstract PasteMode canPaste();
 
+    @Override
+    public final boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
+        boolean result = super.onCreateActionMode(actionMode, menu);
+        invalidateFab();
+        return result;
+    }
+
     public BaseFileCab invalidateFab() {
         Log.v("Fab", "invalidateFab()");
         boolean hide = false;
         Log.v("Fab", "Mode: " + canPaste());
+        getContext().fabPasteMode = canPaste();
         if (canPaste() != PasteMode.NOT_AVAILABLE) {
             if (isActive() && canPaste() == PasteMode.DISABLED) {
                 Log.v("Fab", "Can't paste");
@@ -52,6 +62,7 @@ public abstract class BaseFileCab extends BaseCab {
             else Log.v("Fab", "Fab is not disabled");
         } else Log.v("Fab", "Paste mode not available");
         getContext().disableFab(hide);
+        getContext().fab.setDrawable(getContext().getResources().getDrawable(canPaste() == BaseFileCab.PasteMode.ENABLED ? R.drawable.ic_paste : R.drawable.ic_add));
         return this;
     }
 
@@ -59,7 +70,7 @@ public abstract class BaseFileCab extends BaseCab {
     public BaseFileCab setFragment(DirectoryFragment fragment) {
         mDirectory = fragment.getDirectory();
         super.setFragment(fragment);
-        getContext().setPasteMode(canPaste());
+        invalidateFab();
         return this;
     }
 
@@ -161,7 +172,10 @@ public abstract class BaseFileCab extends BaseCab {
         if (!overrideDestroy) {
             clearFiles();
             getFragment().mAdapter.resetChecked();
-            if (canPaste() == PasteMode.ENABLED) getContext().setPasteMode(PasteMode.DISABLED);
+            if (canPaste() == PasteMode.ENABLED) {
+                getContext().fabPasteMode = PasteMode.DISABLED;
+                getContext().fab.setDrawable(getContext().getResources().getDrawable(R.drawable.ic_add));
+            }
         }
         super.onDestroyActionMode(actionMode);
     }

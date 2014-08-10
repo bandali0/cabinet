@@ -69,13 +69,13 @@ public class MainCab extends BaseFileCab {
             if (getContext().getCab() instanceof BaseFileCab)
                 ((BaseFileCab) getContext().getCab()).overrideDestroy = true;
             getContext().setCab(new CopyCab()
-                    .setFragment(getFragment()).setFiles(getFiles()).invalidateFab().start());
+                    .setFragment(getFragment()).setFiles(getFiles()).start());
             return super.onActionItemClicked(actionMode, menuItem);
         } else if (menuItem.getItemId() == R.id.cut) {
             if (getContext().getCab() instanceof BaseFileCab)
                 ((BaseFileCab) getContext().getCab()).overrideDestroy = true;
             getContext().setCab(new CutCab()
-                    .setFragment(getFragment()).setFiles(getFiles()).invalidateFab().start());
+                    .setFragment(getFragment()).setFiles(getFiles()).start());
             return super.onActionItemClicked(actionMode, menuItem);
         } else if (menuItem.getItemId() == R.id.delete) {
             CustomDialog.create(getContext(), R.string.delete, getFiles().size() == 1 ?

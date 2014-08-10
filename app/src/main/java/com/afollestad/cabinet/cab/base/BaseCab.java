@@ -65,7 +65,7 @@ public abstract class BaseCab implements ActionMode.Callback, Serializable {
     }
 
     @Override
-    public final boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
+    public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
         mActionMode = actionMode;
         if (getMenu() != -1)
             actionMode.getMenuInflater().inflate(getMenu(), menu);

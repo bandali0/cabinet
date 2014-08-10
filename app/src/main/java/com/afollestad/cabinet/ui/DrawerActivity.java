@@ -55,12 +55,12 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     private CloudFile mRemoteSwitch; // used by SFTP notification intent
     private ThemeUtils mThemeUtils; // used to detect theme changes and get current theme
 
-    private FloatingActionButton fab; // the floating blue add/paste button
+    public FloatingActionButton fab; // the floating blue add/paste button
     private float fabVisibleY; // saves y position of the top of the visible fab
     private float fabHiddenY; // saves y position of the top of the hidden fab
     private boolean fabShown = true; // flag indicating whether the fab is currently visible
     private FabListener mFabListener; // a callback used to notify DirectoryFragment of fab press
-    private BaseFileCab.PasteMode fabPasteMode = BaseFileCab.PasteMode.DISABLED;
+    public BaseFileCab.PasteMode fabPasteMode = BaseFileCab.PasteMode.DISABLED;
     private boolean fabDisabled; // flag indicating whether fab should stay hidden while scrolling
     public boolean shouldAttachFab; // used during config change, tells fragment to reattach to cab
     public boolean pickMode; // flag indicating whether user is picking a file for another app
@@ -159,14 +159,6 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
 
     public void setFabListener(FabListener mFabListener) {
         this.mFabListener = mFabListener;
-    }
-
-    public void setPasteMode(BaseFileCab.PasteMode pasteMode) {
-        Log.v("Fab", "DrawerActivity.setPasteMode(" + pasteMode + ")");
-        fabPasteMode = pasteMode;
-        if (getCab() != null && getCab() instanceof BaseFileCab)
-            ((BaseFileCab) getCab()).invalidateFab();
-        fab.setDrawable(getResources().getDrawable(pasteMode == BaseFileCab.PasteMode.ENABLED ? R.drawable.ic_paste : R.drawable.ic_add));
     }
 
     @Override
