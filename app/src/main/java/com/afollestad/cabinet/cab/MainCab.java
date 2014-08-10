@@ -53,8 +53,10 @@ public class MainCab extends BaseFileCab {
         boolean showUnzip = true;
         boolean showShare = true;
         for (File fi : getFiles()) {
-            if (fi.isDirectory()) showShare = false;
-            else if (!fi.getExtension().equals("zip")) {
+            if (fi.isDirectory()) {
+                showShare = false;
+                showUnzip = false;
+            } else if (!fi.getExtension().equals("zip")) {
                 showUnzip = false;
             }
         }
