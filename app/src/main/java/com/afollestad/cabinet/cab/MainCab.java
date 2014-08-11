@@ -37,6 +37,11 @@ public class MainCab extends BaseFileCab {
     }
 
     @Override
+    public boolean canPasteIntoSameDir() {
+        return false;
+    }
+
+    @Override
     public CharSequence getTitle() {
         if (getFiles().size() == 1)
             return getFiles().get(0).getName();
