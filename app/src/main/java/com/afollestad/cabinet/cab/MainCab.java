@@ -3,6 +3,7 @@ package com.afollestad.cabinet.cab;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -97,7 +98,6 @@ public class MainCab extends BaseFileCab {
                         @Override
                         public void onPositive(int which, View view) {
                             deleteNextFile();
-                            finish();
                         }
                     }
             ).show(getContext().getFragmentManager(), "DELETE_CONFIRM");
@@ -149,15 +149,18 @@ public class MainCab extends BaseFileCab {
     }
 
     private void deleteNextFile() {
+        Log.v("FabDelete", "Deleting next file...");
         if (getFiles().size() == 0) {
+            Log.v("FabDelete", "No files left in CAB, invalidating empty text and CAB.");
             getFragment().setListShown(true); // invalidates empty text
             invalidate();
             return;
         }
+        Log.v("FabDelete", "Deleting: " + getFiles().get(0));
         getFiles().get(0).delete(new SftpClient.CompletionCallback() {
             @Override
             public void onComplete() {
-                getFragment().mAdapter.remove(getFiles().get(0));
+                getFragment().mAdapter.remove(getFiles().get(0), false);
                 getFiles().remove(0);
                 deleteNextFile();
             }

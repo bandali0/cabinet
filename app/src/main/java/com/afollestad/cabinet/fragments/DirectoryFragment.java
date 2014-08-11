@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
@@ -212,8 +211,8 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             SearchView searchView = (SearchView) search.getActionView();
             // TODO uncomment if statement for Material
 //            if (Build.VERSION.SDK_INT < 20) {
-                View view = searchView.findViewById(searchView.getContext().getResources().getIdentifier("android:id/search_plate", null, null));
-                view.setBackgroundResource(R.drawable.cabinet_edit_text_holo_light);
+            View view = searchView.findViewById(searchView.getContext().getResources().getIdentifier("android:id/search_plate", null, null));
+            view.setBackgroundResource(R.drawable.cabinet_edit_text_holo_light);
 //            }
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
@@ -469,7 +468,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 v.findViewById(android.R.id.progress).setVisibility(View.GONE);
                 boolean showEmpty = mAdapter.getItemCount() == 0;
                 v.findViewById(android.R.id.empty).setVisibility(showEmpty ? View.VISIBLE : View.GONE);
-                v.findViewById(android.R.id.list).setVisibility(showEmpty ? View.GONE : View.VISIBLE);
+                ((RecyclerView) v.findViewById(android.R.id.list)).setAdapter(mAdapter);
             } else {
                 v.findViewById(R.id.listFrame).setVisibility(View.GONE);
                 v.findViewById(android.R.id.progress).setVisibility(View.VISIBLE);
@@ -483,7 +482,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             public void run() {
                 View v = getView();
                 if (v != null) {
-                    ((TextView) v.findViewById(android.R.id.empty)).setText(text);
+                    ((TextView) v.findViewById(R.id.emptyText)).setText(text);
                 }
             }
         });
@@ -792,7 +791,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                                 if (act.getCab() != null && act.getCab() instanceof BaseFileCab) {
                                     ((BaseFileCab) act.getCab()).removeFile(file);
                                 }
-                                mAdapter.remove(file);
+                                mAdapter.remove(file, true);
                             }
 
                             @Override

@@ -16,18 +16,36 @@
             android:layout_height="match_parent"
             android:clipToPadding="false" />
 
-        <TextView
+        <LinearLayout
             android:id="@android:id/empty"
+            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
-            android:layout_centerInParent="true"
-            android:textSize="22sp"
-            android:gravity="center"
-            android:lineSpacingMultiplier="1.4"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:text="@string/no_files" />
+            android:layout_centerInParent="true">
+
+            <ImageView
+                android:layout_width="108dp"
+                android:layout_height="108dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_empty_image"
+                android:scaleType="fitXY"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:id="@+id/emptyText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:layout_gravity="center_horizontal"
+                android:textSize="22sp"
+                android:textColor="#9C9C9C"
+                android:gravity="center"
+                android:lineSpacingMultiplier="1.4"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:text="@string/no_files" />
+
+        </LinearLayout>
 
     </RelativeLayout>
 
