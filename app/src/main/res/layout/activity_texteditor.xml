@@ -11,7 +11,7 @@
         android:fontFamily="sans-serif-light"
         android:textColorLink="@color/cabinet_color"
         android:textSize="18sp"
-        android:inputType="textCapSentences"
+        android:inputType="textCapSentences|textMultiLine"
         android:layout_margin="16dp" />
 
     <ProgressBar
