@@ -12,9 +12,8 @@
         android:textColorLink="@color/cabinet_color"
         android:textSize="18sp"
         android:inputType="textCapSentences|textMultiLine"
-        android:scrollbars="vertical"
-        android:background="@null"
-        android:layout_margin="16dp" />
+        android:layout_margin="16dp"
+        android:scrollbars="vertical" />
 
     <ProgressBar
         android:id="@+id/progress"
