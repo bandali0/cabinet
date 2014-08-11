@@ -69,12 +69,13 @@
             android:scaleType="fitXY"
             android:layout_marginLeft="8dp"
             android:layout_alignParentRight="true"
-            android:background="@drawable/menu_ripple_selector"
+            android:background="@drawable/menu_selector"
             android:layout_centerVertical="true"
             android:padding="8dp"
             android:focusableInTouchMode="false"
             android:focusable="false"
             android:layout_marginRight="14dp" />
+        <!-- TODO replace menu_selector with menu_ripple_selector for Material -->
 
     </RelativeLayout>
 
