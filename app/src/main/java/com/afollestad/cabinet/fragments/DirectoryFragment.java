@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
@@ -212,8 +211,8 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             SearchView searchView = (SearchView) search.getActionView();
             // TODO uncomment if statement for Material
 //            if (Build.VERSION.SDK_INT < 20) {
-                View view = searchView.findViewById(searchView.getContext().getResources().getIdentifier("android:id/search_plate", null, null));
-                view.setBackgroundResource(R.drawable.cabinet_edit_text_holo_light);
+            View view = searchView.findViewById(searchView.getContext().getResources().getIdentifier("android:id/search_plate", null, null));
+            view.setBackgroundResource(R.drawable.cabinet_edit_text_holo_light);
 //            }
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
@@ -732,6 +731,10 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                             public void onComplete() {
                                 if (Shortcuts.remove(getActivity(), file))
                                     ((DrawerActivity) getActivity()).reloadNavDrawer();
+                                DrawerActivity act = (DrawerActivity) getActivity();
+                                if (act.getCab() != null && act.getCab() instanceof BaseFileCab) {
+                                    ((BaseFileCab) act.getCab()).removeFile(file);
+                                }
                                 mAdapter.remove(file);
                             }
 
