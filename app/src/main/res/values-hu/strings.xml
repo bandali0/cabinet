@@ -175,4 +175,6 @@
     <string name="saving">Mentés...</string>
     <string name="save">Save</string>
     <string name="loading">Loading…</string>
+    <string name="unsupported_extension">Unsupported Extension</string>
+    <string name="unsupported_extension_desc">You cannot open this type of file for text editing.</string>
 </resources>

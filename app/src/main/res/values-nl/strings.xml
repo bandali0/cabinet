@@ -175,4 +175,6 @@ Een minimalistische, vernuftige, mooie bestands beheerder voor Android 4.1 en ho
     <string name="saving">Opslaan...</string>
     <string name="save">Save</string>
     <string name="loading">Loading…</string>
+    <string name="unsupported_extension">Unsupported Extension</string>
+    <string name="unsupported_extension_desc">You cannot open this type of file for text editing.</string>
 </resources>
