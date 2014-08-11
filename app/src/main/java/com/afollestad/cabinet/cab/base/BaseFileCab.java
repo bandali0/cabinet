@@ -5,7 +5,6 @@ import android.view.ActionMode;
 import android.view.Menu;
 
 import com.afollestad.cabinet.R;
-import com.afollestad.cabinet.cab.CopyCab;
 import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.fragments.DirectoryFragment;
 
@@ -33,6 +32,8 @@ public abstract class BaseFileCab extends BaseCab {
 
     public abstract PasteMode canPaste();
 
+    public abstract boolean canPasteIntoSameDir();
+
     @Override
     public final boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
         boolean result = super.onCreateActionMode(actionMode, menu);
@@ -50,7 +51,7 @@ public abstract class BaseFileCab extends BaseCab {
                 Log.v("Fab", "Can't paste");
             } else {
                 if (getFiles().size() == 0) Log.v("Fab", "No files are in the CAB");
-                if (!(getContext().getCab() instanceof CopyCab)) {
+                if (!canPasteIntoSameDir()) {
                     for (File fi : getFiles()) {
                         Log.v("Fab", "Checking if " + fi.getParent().getPath() + " == " + getDirectory().getPath());
                         if (fi.getParent().equals(getDirectory())) {

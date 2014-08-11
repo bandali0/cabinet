@@ -73,7 +73,7 @@ public class NavigationDrawerFragment extends Fragment {
             }
 
             @Override
-            public void onLongClick(final int index) {
+            public boolean onLongClick(final int index) {
                 if (index > 1) {
                     Shortcuts.Item item = mAdapter.getItem(index);
                     Utils.showConfirmDialog(getActivity(), R.string.remove_shortcut,
@@ -85,7 +85,9 @@ public class NavigationDrawerFragment extends Fragment {
                                 }
                             }
                     );
+                    return false;
                 }
+                return true;
             }
         });
         mRecyclerView.setAdapter(mAdapter);

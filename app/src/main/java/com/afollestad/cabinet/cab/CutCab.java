@@ -89,6 +89,11 @@ public class CutCab extends BaseFileCab {
     }
 
     @Override
+    public boolean canPasteIntoSameDir() {
+        return false;
+    }
+
+    @Override
     public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
         return false;
     }

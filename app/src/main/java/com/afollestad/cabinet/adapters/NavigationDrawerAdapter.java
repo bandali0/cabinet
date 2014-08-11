@@ -34,7 +34,7 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
     public interface ClickListener {
         public abstract void onClick(int index);
 
-        public abstract void onLongClick(int index);
+        public abstract boolean onLongClick(int index);
     }
 
     public NavigationDrawerAdapter(Activity context, ClickListener listener) {
