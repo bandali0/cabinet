@@ -188,6 +188,7 @@ public abstract class BaseFileCab extends BaseCab {
                 getContext().fab.setDrawable(getContext().getResources().getDrawable(R.drawable.ic_add));
             }
         }
+        if (!canShowFab()) getContext().disableFab(false);
         super.onDestroyActionMode(actionMode);
     }
 }
