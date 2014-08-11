@@ -46,7 +46,7 @@ public abstract class BaseFileCab extends BaseCab {
     public BaseFileCab invalidateFab() {
         Log.v("Fab", "invalidateFab()");
         boolean hide = false;
-        if (!canShowFab()) {
+        if (!canShowFab() && isActive()) {
             Log.v("Fab", "Cannot use the FAB in the current mode.");
             hide = true;
         } else {
