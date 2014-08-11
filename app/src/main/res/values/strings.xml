@@ -146,18 +146,27 @@
     <string name="sure">Sure!</string>
     <string name="no_thanks">No thanks</string>
 
-    <string-array name="new_options">
-        <item>File</item>
-        <item>Folder</item>
-        <item>Remote Connection…</item>
+    <string-array name="new_options" translatable="false">
+        <item>@string/file</item>
+        <item>@string/folder</item>
+        <item>@string/remote_connection</item>
     </string-array>
-    <string-array name="open_as">
-        <item>Text</item>
-        <item>Image</item>
-        <item>Audio</item>
-        <item>Video</item>
-        <item>Other</item>
+    <string-array name="open_as_array" translatable="false">
+        <item>@string/text</item>
+        <item>@string/image</item>
+        <item>@string/audio</item>
+        <item>@string/video</item>
+        <item>@string/other</item>
     </string-array>
+
+    <string name="file">File</string>
+    <string name="folder">Folder</string>
+    <string name="remote_connection">Remote Connection…</string>
+    <string name="text">Text</string>
+    <string name="image">Image</string>
+    <string name="audio">Audio</string>
+    <string name="video">Video</string>
+    <string name="other">Other</string>
 
     <string name="info">Info</string>
     <string name="files">Files</string>

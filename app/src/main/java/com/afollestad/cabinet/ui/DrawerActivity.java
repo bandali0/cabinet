@@ -293,17 +293,18 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
 
     private void displayDisconnectPrompt() {
         String host = getString(R.string.unknown);
-        if(mNetworkService != null) {
+        if (mNetworkService != null) {
             host = mNetworkService.getRemote().getRemote().getHost();
         }
         CustomDialog.create(this, R.string.disconnect, getString(R.string.disconnect_prompt, host),
                 R.string.yes, 0, R.string.no, new CustomDialog.SimpleClickListener() {
-            @Override
-            public void onPositive(int which, View view) {
-                startService(new Intent(DrawerActivity.this, NetworkService.class)
-                        .setAction(NetworkService.DISCONNECT_SFTP));
-            }
-        }).show(getFragmentManager(), "DISCONNECT_CONFIRM");
+                    @Override
+                    public void onPositive(int which, View view) {
+                        startService(new Intent(DrawerActivity.this, NetworkService.class)
+                                .setAction(NetworkService.DISCONNECT_SFTP));
+                    }
+                }
+        ).show(getFragmentManager(), "DISCONNECT_CONFIRM");
     }
 
     private void processIntent(Intent intent, Bundle savedInstanceState) {
@@ -440,8 +441,10 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
 
     @Override
     public void onBillingError(int errorCode, Throwable error) {
-        Toast.makeText(this, "Billing error: code = " + errorCode + ", error: " +
-                (error != null ? error.getMessage() : "?"), Toast.LENGTH_LONG).show();
+        if (errorCode != 110) {
+            Toast.makeText(this, "Billing error: code = " + errorCode + ", error: " +
+                    (error != null ? error.getMessage() : "?"), Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override

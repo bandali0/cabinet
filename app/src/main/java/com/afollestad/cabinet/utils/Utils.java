@@ -147,7 +147,7 @@ public class Utils {
 
     private static void openLocal(final Activity context, final File file, String mime) {
         if (mime == null) {
-            CustomDialog.create(context, R.string.open_as, R.array.open_as, new CustomDialog.SimpleClickListener() {
+            CustomDialog.create(context, R.string.open_as, R.array.open_as_array, new CustomDialog.SimpleClickListener() {
                 @Override
                 public void onPositive(int which, View view) {
                     String newMime;
