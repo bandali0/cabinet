@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome">مرحبا</string>
+    <string name="welcome_intro">مرحباً بكم في Cabinet !Cabinet هو متصفح ملفات بسيط مصمم ليكون جميلاً
+السرور ، والعمل في مدير الملفات. \n\n نظرة على الملف:</string>
+    <string name="welcome_conclusion">Try tapping the preview image or the 3-dot icon. Tapping the preview image selects the file for batch actions, this can also be done by tapping and holding files. The 3-dot icon shows a popup menu with individual file options.\n\nCabinet
+        has other various features, such as remote access to servers via SFTP that you can find by exploring. Thanks for trying out Cabinet!</string>
+    <string name="lets_go">هيا بنا</string>
+    <string name="open_as">فتح ك...</string>
+    <string name="drawer_longpress_hint">Tip: long press pinned shortcuts to remove them!</string>
+    <string name="cabinet_text_editor">Cabinet Text Editor</string>
+    <string name="save">Save</string>
+    <string name="pin">تعليق</string>
+    <string name="copy">نسخ</string>
+    <string name="cut">قص</string>
+    <string name="file_already_exists_warning">Warning: this file already exists. Your new file will appear as a duplicate.</string>
+    <string name="rename">إعادة التسميه</string>
+    <string name="delete">حذف</string>
+    <string name="paste">لصق</string>
+    <string name="share">نشر</string>
+    <string name="zip">ضغط</string>
+    <string name="saving">Saving…</string>
+    <string name="unzip">فك</string>
+    <string name="unsupported_extension">Unsupported Extension</string>
+    <string name="unsupported_extension_desc">You cannot open this type of file for text editing.</string>
+    <string name="selectAll">حدد الكل</string>
+    <string name="loading">Loading…</string>
+    <string name="details">بيانات</string>
+    <string name="unsaved_changes">Unsaved Changes</string>
+    <string name="unsaved_changes_desc">You have unsaved changes, do you want to save them before exiting?</string>
+    <string name="no_files">لا يوجد ملفات</string>
+    <string name="storage">التخزين</string>
+    <string name="root">الجذر (روت)</string>
+    <string name="directory">الدليل</string>
+    <string name="unknown">غير معروف</string>
+    <string name="go_up">الى اعلى</string>
+    <string name="press_back_to_exit">"اضغط رجوع مرة اخرى للخروج"</string>
+    <string name="x_files">%1$d ملفات</string>
+    <string name="x_dirs">%1$d الدلائل</string>
+    <string name="no_x_files">"لا يوجد %1$s ملفات
+"</string>
+    <string name="done">تم</string>
+    <string name="remove_shortcut">حذف الأختصار</string>
+    <string name="confirm_remove_shortcut">هل أنت متأكد أنك تريد إزالة الاختصار إلى %1$s ؟</string>
+    <string name="sort_modified">أخر تعديل لـ</string>
+    <string name="modified_x">تعديل %1$s</string>
+    <string name="iconpress_hint">يمكنك الضغط على أيقونة الملف لتحديده بسرعة !</string>
+    <string name="navigation_drawer_open">فتح درج المستكشف</string>
+    <string name="navigation_drawer_close">إغلاق درج المستكشف</string>
+    <string name="new_folder">مجلد جديد</string>
+    <string name="created_folder">إنشاء مجلد %1$s</string>
+    <string name="untitled">بدون عنوان</string>
+    <string name="renamed_to">إعيدت تسميته إلى %1$s</string>
+    <string name="moved_to">انتقل إلى %1$s</string>
+    <string name="copied_to">نسخها إلى %1$s</string>
+    <string name="no">لا</string>
+    <string name="yes">نعم</string>
+    <string name="newStr">جديد</string>
+    <string name="search">بحث</string>
+    <string name="confirm_delete">هل أنت متأكد أنك تريد الحذف %1$s ؟</string>
+    <string name="confirm_delete_xfiles">هل أنت متأكد أنك تريد الحذف %1$d الملفات؟</string>
+    <string name="unavailable">غير متوفر</string>
+    <string name="sort_by">الترتيب حسب</string>
+    <string name="sort_name_folderstop">اسم ، والمجلدات أولاً</string>
+    <string name="sort_name">اسم</string>
+    <string name="sort_extension">تمديد</string>
+    <string name="sort_size_lowhigh">الحجم، من الاعلى الى الادنى</string>
+    <string name="sort_size_highlow">حجم، من الاعلى الى الادنى</string>
+    <string name="new_remote_connection">اتصال عن بعد جديد</string>
+    <string name="network_service_label">Cabinet خدمة الشبكة</string>
+    <string name="connection_notification_content">متصلاً %1$s</string>
+    <string name="cabinet_sftp">Cabinet SFTP</string>
+    <string name="disconnect">قطع الأتصال</string>
+    <string name="host">مضيف</string>
+    <string name="port">بورت</string>
+    <string name="username">اسم المستخدم</string>
+    <string name="password">كلمة المرور</string>
+    <string name="test_connection">فحص الأتصال</string>
+    <string name="connection_successful">نجح الأتصال !</string>
+    <string name="disconnect_prompt">هل تريد قطع الاتصال من %1$s ؟</string>
+    <string name="uploaded_to">رفعها على %1$s</string>
+    <string name="downloaded_to">تحميلها على %1$s</string>
+    <string name="connecting">اتصال ...</string>
+    <string name="downloading">تحميل ...</string>
+    <string name="deleting">حذف ...</string>
+    <string name="making_folder">انشاء مجلد ...</string>
+    <string name="renaming">إعادة التسمية ...</string>
+    <string name="unzipping">فك الضغط ...</string>
+    <string name="zipping">ضغط ...</string>
+    <string name="moving">نقل ...</string>
+    <string name="uploading">رفع ...</string>
+    <string name="copying">نسخ ...</string>
+    <string name="failed_delete_file">فشل في حذف هذا الملف: %1$s</string>
+    <string name="failed_make_directory">فشل في أنشاء مجلد جديد: %1$s</string>
+    <string name="failed_rename_file">فشل في إعادة تسمية / نقل هذا الملف: %1$s</string>
+    <string name="failed_unzip_file">فشل فك ضغط هذا الملف: %1$s</string>
+    <string name="failed_zip_files">فشل في ضغط هذا الملفات: %1$s</string>
+    <string name="error">خطأ</string>
+    <string name="failed_download_file">حدث خطأ أثناء محاولة تحميل هذا الملف: %1$s</string>
+    <string name="failed_connect_server">فشل الاتصال بالخادم: %1$s</string>
+    <string name="activity_not_found">لم يتم العثور على تطبيق لفتح هذا الملف</string>
+    <string name="failed_upload_file">فشل في رفع هذا الملف: %1$s</string>
+    <string name="failed_copy_file">فشل في نسخ هذا الملف: %1$s</string>
+    <string name="no_apps_for_sharing">لا يوجد تطبيقات المتاحة لمشاركة هذا النوع من الملفات</string>
+    <string name="directory_already_exists">الدليل موجود بالفعل</string>
+    <string name="copy_x"><![CDATA[
+        <b>نسخ:</b>&nbsp;&nbsp;%1$s
+    ]]></string>
+    <string name="cut_x"><![CDATA[
+        <b>قص:</b>&nbsp;&nbsp;%1$s
+    ]]></string>
+    <string name="copy_xfiles"><![CDATA[
+        <b>نسخ:</b>&nbsp;&nbsp;%1$d files
+    ]]></string>
+    <string name="cut_xfiles"><![CDATA[
+        <b>قص:</b>&nbsp;&nbsp;%1$d files
+    ]]></string>
+    <string name="search_files">البحث عن الملفات</string>
+    <string name="search_x"><![CDATA[
+<b>بحث:</b>&nbsp;%1$s
+
+    ]]></string>
+    <string name="donate">التبرع</string>
+    <string name="thank_you">شكراً جزيلاً لك !</string>
+    <string name="rate">تقييم</string>
+    <string name="later">فيما بعد</string>
+    <string name="rate_desc">هل تريد تقييم Cabinet على متجر جوجل بلاي؟ لدينا تقييمات جيدة !</string>
+    <string name="sure">بالتأكيد !</string>
+    <string name="no_thanks">لا شكراً</string>
+    <string-array name="new_options">
+    <!-- Misc. arrays -->
+        <item>ملف</item>
+    <!-- Misc. arrays -->
+        <item>مجلد</item>
+    <!-- Misc. arrays -->
+        <item>اتصال عن بعد ...</item>
+    </string-array>
+    <string-array name="open_as">
+    <!-- File actions-->
+        <item>فتح ك...</item>
+        <item>نص</item>
+        <item>صور</item>
+        <item>صوت</item>
+        <item>فيديو</item>
+        <item>اخرى</item>
+    </string-array>
+    <string name="info">معلومات</string>
+    <string name="files">ملفات</string>
+    <string name="show_hidden_files">مشاهدة الملفات المخفية</string>
+    <string name="about">حول</string>
+    <string name="about_desc">حول التطبيق والمطور</string>
+    <string name="show_hidden_files_desc">تبديل أم لا Cabinet سوف يظهر الملفات المخفية</string>
+    <string name="ui">الواجهة</string>
+    <string name="settings">الضبط</string>
+    <string name="translucentstatusbar_disabled">لا يمكنك تغيير هذا على اندرويد L</string>
+    <string name="translucency_not_supported">لا يتم اعتماد الشفافية على هذا الإصدار من أندرويد.</string>
+    <string name="translucent_statusbar">شفافية شريط الحالة</string>
+    <string name="translucent_navbar">شفافة شريط التنقل</string>
+    <string name="translucent_statusbar_desc">شفاف (نفس لون شريط العمل) على شريط كيت كات وما فوق.</string>
+    <string name="translucent_navbar_desc">شريط التنقل شفاف على كيت كات وما فوق.</string>
+    <string name="about_body"><![CDATA[
+بسيط ، بديهية ، مدير ملفات جميل على الأندرويد 4.1 ومافوق<br/><br/>
+تطوير <b>.</b>Aidan Follestad<br/><a href=\'http://aidanfollestad.com\'>موقع</a>&nbsp;&nbsp;
+
+<a href=\'https://twitter.com/afollestad\'>تويتر</a>&nbsp;&nbsp;
+        <a href=\'https://google.com/+AidanFollestad\'>Google+</a>&nbsp;&nbsp;
+        <a href=\'https://github.com/afollestad\'>GitHub</a>&nbsp;&nbsp;
+<a href=\'https://www.linkedin.com/in/afollestad\'>لينكد إن</a>
+    ]]></string>
+    <string name="details_body_file"><![CDATA[
+        <b>الاسم:</b>&nbsp;&nbsp;%1$s<br/><b>المسار:</b>&nbsp;&nbsp;%2$s<br/><b>الحجم:</b>&nbsp;&nbsp;%3$s<br/><b>تم التعديل:</b>&nbsp;&nbsp;%4$s<br/><b>الصلاحيات:</b>&nbsp;&nbsp;%5$s
+    ]]></string>
+    <string name="details_body_dir"><![CDATA[
+        <b>الاسم:</b>&nbsp;&nbsp;%1$s<br/><b>المسار:</b>&nbsp;&nbsp;%2$s<br/><b>المحتويات:</b>&nbsp;&nbsp;%3$s<br/><b>تم التعديل:</b>&nbsp;&nbsp;%4$s
+    ]]></string>
+    <string name="material_version">Material</string>
+    <string name="material_version_desc">هناك نسخة من Cabinet متاحة للتشغيل على أندرويد L. هل تريد عرض المجتمع Cabinet في + Google حيث يتم نشر هذا الإصدار؟</string>
+    <string name="new_file">ملف جديد</string>
+    <string name="making_file">انشاء ملف ...</string>
+    <string name="created_file">إنشاء ملف %1$s</string>
+    <string name="file_already_exists">الملف موجود مسبقاً</string>
+    <string name="failed_make_file">فشل في جعل مجلد جديد: %1$s</string>
+    <string name="pick_a_file">اختيار ملف ...</string>
+</resources>

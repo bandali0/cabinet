@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome">Üdvözöljük!</string>
+    <string name="welcome_intro">A Cabinet egy egyszerű Fájlkezelő ami esztétikusra lett tervezve.
+ Kellemes és úgy működik ahogy azt egy fájlkezelőtől elvárjuk. \n\n Vegyen egy pillantást a fájra:</string>
+    <string name="welcome_conclusion">Érintse meg az ikonképet vagy a 3-as pont ikont. Ha az ikonképet megnyomja feltűnnek az opciók. Ezt a fájl hosszú nyomva tartásával is elérheti. A 3-as pont ikon megjeleníti a fájl többi opcióit. \n\nA Cabinet
+ másik különféle jellemzői, mint például a szerverekhez való távoli hozzáférés SFTPn keresztül. Köszönjük hogy ezt az alkalmazást használja!</string>
+    <string name="lets_go">Kezdjünk is hozzá!</string>
+    <string name="open_as">Megnyitás Mint...</string>
+    <string name="pin">Kedvencekhez</string>
+    <string name="copy">Másolás</string>
+    <string name="cut">Kivágás</string>
+    <string name="save">Save</string>
+    <string name="rename">Átnevezés</string>
+    <string name="delete">Törlés</string>
+    <string name="paste">Beillesztés</string>
+    <string name="share">Küldés</string>
+    <string name="zip">Becsomagolás</string>
+    <string name="unzip">Kibontás</string>
+    <string name="selectAll">Összes Kiválasztása</string>
+    <string name="details">Adatok</string>
+    <string name="no_files">Üres</string>
+    <string name="storage">Tárhely</string>
+    <string name="root">Gyökér</string>
+    <string name="directory">Könyvtár</string>
+    <string name="unknown">Ismeretlen</string>
+    <string name="go_up">Ugrás Fel</string>
+    <string name="press_back_to_exit">"Vissza gomb újra a kilépéshez..."</string>
+    <string name="x_files">%1$d fájlok</string>
+    <string name="x_dirs">%1$d könyvtárak</string>
+    <string name="no_x_files">Nincsenek %1$s fájlok</string>
+    <string name="done">Kész</string>
+    <string name="remove_shortcut">Eltávolítás a Kedvencekből</string>
+    <string name="confirm_remove_shortcut">Biztos el távolítja a(z) %1$s mappát a kedvencekből?</string>
+    <string name="sort_modified">Legutóbb Módosítva</string>
+    <string name="modified_x">Módosítva %1$s</string>
+    <string name="iconpress_hint">Érintse meg a fájl ikonját a gyorsabb kiválasztás miatt!</string>
+    <string name="drawer_longpress_hint">TIPP: hosszú érintés a már hozzáadott kedvenc mappa eltávolításához!</string>
+    <string name="navigation_drawer_open">Navigációs Fiók nyitása</string>
+    <string name="navigation_drawer_close">Navigációs Fiók bezárása</string>
+    <string name="new_folder">Új Mappa</string>
+    <string name="created_folder">Létrehozott Mappa %1$s</string>
+    <string name="untitled">Névtelen</string>
+    <string name="renamed_to">Átnevezve %1$s</string>
+    <string name="moved_to">Áthelyezve %1$s</string>
+    <string name="copied_to">Másolva %1$s</string>
+    <string name="no">Nem</string>
+    <string name="yes">Igen</string>
+    <string name="newStr">Új</string>
+    <string name="search">Keresés</string>
+    <string name="confirm_delete">Biztos hogy törli %1$s?</string>
+    <string name="confirm_delete_xfiles">Biztos hogy törli a %1$d fájlokat?</string>
+    <string name="unavailable">Nem áll rendelkezésre</string>
+    <string name="sort_by">Rendezés</string>
+    <string name="sort_name_folderstop">Mappák Elől</string>
+    <string name="sort_name">Név</string>
+    <string name="sort_extension">Kiterjesztés</string>
+    <string name="sort_size_lowhigh">Növekvő</string>
+    <string name="sort_size_highlow">Csökkenő</string>
+    <string name="new_remote_connection">Új távoli kapcsolat</string>
+    <string name="network_service_label">Cabinet Hálózati szolgáltatás</string>
+    <string name="connection_notification_content">Csatlakozva ide: %1$s</string>
+    <string name="cabinet_sftp">Cabinet SFTP</string>
+    <string name="disconnect">Lecsatlakozás</string>
+    <string name="host">Host</string>
+    <string name="port">Port</string>
+    <string name="username">Felhasználónév</string>
+    <string name="password">Jelszó</string>
+    <string name="test_connection">Teszt Csatlakozás</string>
+    <string name="connection_successful">Sikeres Csatlakozás</string>
+    <string name="disconnect_prompt">Szeretné hogy csatlakozzon a(z) %1$s-hoz?</string>
+    <string name="uploaded_to">Feltöltve ide: %1$s</string>
+    <string name="downloaded_to">Letöltve ide: %1$s</string>
+    <string name="connecting">Csatlakozás...</string>
+    <string name="downloading">Letöltés...</string>
+    <string name="deleting">Törlés...</string>
+    <string name="making_folder">Mappa létrehozása...</string>
+    <string name="renaming">Átnevezés...</string>
+    <string name="unzipping">Kibontás...</string>
+    <string name="zipping">Becsomagolás...</string>
+    <string name="moving">Áthelyezés...</string>
+    <string name="uploading">Feltöltés...</string>
+    <string name="copying">Másolás...</string>
+    <string name="failed_delete_file">Sikertelen a(z): %1$s törlése</string>
+    <string name="failed_make_directory">Sikertelen a(z): %1$s mappa létrehozása</string>
+    <string name="failed_rename_file">Sikertelen a(z): %1$s fájl átnevezése/mozgatása</string>
+    <string name="failed_unzip_file">Sikertelen a(z): %1$s fájl kibontása</string>
+    <string name="failed_zip_files">Sikertelen a(z): %1$s fájl(ok) becsomagolása</string>
+    <string name="error">Hiba</string>
+    <string name="failed_download_file">Hiba történt a fájl: %1$s letöltése közben</string>
+    <string name="failed_connect_server">Sikertelen a(z): %1$s szerverhez való csatlakozás</string>
+    <string name="activity_not_found">Nincs használható alkalmazás a fájl megnyitására</string>
+    <string name="failed_upload_file">Sikertelen a(z): %1$s fájl feltöltése</string>
+    <string name="failed_copy_file">Sikertelen a(z): %1$s fájl másolása</string>
+    <string name="no_apps_for_sharing">Nincs használható Alkalmazás a fájl küldésére</string>
+    <string name="directory_already_exists">A mappa már létezik</string>
+    <string name="copy_x"><![CDATA[
+ <b>Másolás:</b>&nbsp;&nbsp;%1$s
+    ]]></string>
+    <string name="cut_x"><![CDATA[
+ <b>Kivágás:</b>&nbsp;&nbsp;%1$s
+    ]]></string>
+    <string name="copy_xfiles"><![CDATA[
+ <b>Másolás:</b>&nbsp;&nbsp;%1$d fájlok
+    ]]></string>
+    <string name="cut_xfiles"><![CDATA[
+ <b>Kivágás:</b>&nbsp;&nbsp;%1$d fájlok
+    ]]></string>
+    <string name="search_files">Fájlok keresése...</string>
+    <string name="search_x"><![CDATA[
+ <b>Keresés:</b>&nbsp;%1$s
+    ]]></string>
+    <string name="donate">Támogatás</string>
+    <string name="thank_you">Köszönjük!</string>
+    <string name="rate">Értékelés</string>
+    <string name="later">Később</string>
+    <string name="rate_desc">Szeretné értékelni a Play Áruházban?</string>
+    <string name="sure">Persze!</string>
+    <string name="no_thanks">Nem Köszönöm</string>
+    <string-array name="new_options">
+    <!-- Misc. arrays -->
+        <item>Fájl</item>
+    <!-- Misc. arrays -->
+        <item>Mappa</item>
+    <!-- Misc. arrays -->
+        <item>Távoli Kapcsolat...</item>
+    </string-array>
+    <string-array name="open_as">
+    <!-- File actions-->
+        <item>Megnyitás Mint...</item>
+        <item>Szöveg</item>
+        <item>Kép</item>
+        <item>Hang</item>
+        <item>Videó</item>
+        <item>Egyéb</item>
+    </string-array>
+    <string name="info">Információ</string>
+    <string name="files">Fájlok</string>
+    <string name="show_hidden_files">Rejtett Fájlok</string>
+    <string name="about">Névjegy</string>
+    <string name="about_desc">Az alkalmazásról és fejleszőjéről.</string>
+    <string name="show_hidden_files_desc">A rejtett fájlok és mappák mutatása.</string>
+    <string name="ui">Felhasználói Felület</string>
+    <string name="settings">Beállítások</string>
+    <string name="translucentstatusbar_disabled">Ezt nem tudja megváltoztatni.</string>
+    <string name="translucency_not_supported">Az áttetszőség nem támogatott.</string>
+    <string name="translucent_statusbar">Áttetsző Értesítési Sáv</string>
+    <string name="translucent_navbar">Áttetsző Navigációs Sáv</string>
+    <string name="translucent_statusbar_desc">Áttetsző (egyszínű a műveleti sávval) Értesítési Sáv Kitkat vagy újabb verzión.</string>
+    <string name="translucent_navbar_desc">Áttetsző Navigációs Sáv Kitkat vagy újabb verzión.</string>
+    <string name="about_body"><![CDATA[
+ Egy minimalista, intuitív és szép fájlkezelő androidra (Jelly Bean és feletti). <br/><br/>
+ Fejlesztő <b>Aidan Follestad</b>.<br/><a href=\'http://aidanfollestad.com\'>Weboldal</a>&nbsp;&nbsp;
+ <a href=\'https://twitter.com/afollestad\'>Twitter</a>&nbsp;&nbsp;
+ <a href=\'https://google.com/+AidanFollestad\'>Google+</a>&nbsp;&nbsp;
+ <a href=\'https://github.com/afollestad\'>GitHub</a>&nbsp;&nbsp;
+ <a href=\'https://www.linkedin.com/in/afollestad\'>LinkedIn</a>
+    ]]></string>
+    <string name="details_body_file"><![CDATA[
+ <b>Név:</b>&nbsp;&nbsp;%1$s<br/><b>Elérési Út:</b>&nbsp;&nbsp;%2$s<br/><b>Méret:</b>&nbsp;&nbsp;%3$s<br/><b>Módosítva:</b>&nbsp;&nbsp;%4$s<br/><b>Jogosultság:</b>&nbsp;&nbsp;%5$s
+    ]]></string>
+    <string name="details_body_dir"><![CDATA[
+ <b>Név:</b>&nbsp;&nbsp;%1$s<br/><b>Elérési Út:</b>&nbsp;&nbsp;%2$s<br/><b>Tartalom:</b>&nbsp;&nbsp;%3$s<br/><b>Módosítva:</b>&nbsp;&nbsp;%4$s
+    ]]></string>
+    <string name="material_version">Material</string>
+    <string name="material_version_desc">A Cabinet Material verziója csak Android L- re érhető el. látogasson el a Google+ közösségi oldalunkra, ha azt a verziót szetetné letölteni.</string>
+    <string name="new_file">Új Fájl</string>
+    <string name="making_file">Fájl létrehozása...</string>
+    <string name="created_file">%1$s fájl létrehozva</string>
+    <string name="file_already_exists">Ez a fájl már létezik</string>
+    <string name="failed_make_file">Sikertelen a(z): %1$s új fájl létrehozása</string>
+    <string name="pick_a_file">Válasszon egy fájlt...</string>
+    <string name="cabinet_text_editor">Szöveg Szerkesztő</string>
+    <string name="unsaved_changes">Nem mentett változtatások</string>
+    <string name="unsaved_changes_desc">Változtatások mentése kilépés előtt?</string>
+    <string name="saving">Mentés...</string>
+    <string name="loading">Betöltés...</string>
+    <string name="unsupported_extension">Nem Támogatott Kiterjesztés</string>
+    <string name="unsupported_extension_desc">Ezt a fájltipust nem lehet szerkezteni.</string>
+    <string name="file_already_exists_warning">Figyelmeztetés: Ez a fájl már létezik. Az új fájl egy másolatként jelenik meg.</string>
+</resources>
