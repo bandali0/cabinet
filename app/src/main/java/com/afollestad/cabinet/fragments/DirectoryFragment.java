@@ -323,7 +323,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                                         }
                                     });
                                 } else {
-                                    Utils.showErrorDialog(context, getString(R.string.file_already_exists));
+                                    CustomDialog.create(getActivity(), R.string.file_already_exists, getString(R.string.file_already_exists_warning), null);
                                 }
                             }
 

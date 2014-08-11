@@ -242,5 +242,6 @@
     <string name="loading">Loading…</string>
     <string name="unsupported_extension">Unsupported Extension</string>
     <string name="unsupported_extension_desc">You cannot open this type of file for text editing.</string>
+    <string name="file_already_exists_warning">Warning: this file already exists. Your new file will appear as a duplicate.</string>
 
 </resources>
