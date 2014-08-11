@@ -28,6 +28,8 @@ public abstract class BaseFileCab extends BaseCab {
     private final List<File> mFiles;
     public transient boolean overrideDestroy;
 
+    public abstract boolean canShowFab();
+
     public abstract void paste();
 
     public abstract PasteMode canPaste();
@@ -44,27 +46,32 @@ public abstract class BaseFileCab extends BaseCab {
     public BaseFileCab invalidateFab() {
         Log.v("Fab", "invalidateFab()");
         boolean hide = false;
-        Log.v("Fab", "Mode: " + canPaste());
-        getContext().fabPasteMode = canPaste();
-        if (canPaste() != PasteMode.NOT_AVAILABLE) {
-            if (isActive() && canPaste() == PasteMode.DISABLED) {
-                Log.v("Fab", "Can't paste");
-            } else {
-                if (getFiles().size() == 0) Log.v("Fab", "No files are in the CAB");
-                if (!canPasteIntoSameDir()) {
-                    for (File fi : getFiles()) {
-                        Log.v("Fab", "Checking if " + fi.getParent().getPath() + " == " + getDirectory().getPath());
-                        if (fi.getParent().equals(getDirectory())) {
-                            Log.v("Fab", "They are equal");
-                            hide = true;
-                            break;
+        if (!canShowFab()) {
+            Log.v("Fab", "Cannot use the FAB in the current mode.");
+            hide = true;
+        } else {
+            Log.v("Fab", "Mode: " + canPaste());
+            getContext().fabPasteMode = canPaste();
+            if (canPaste() != PasteMode.NOT_AVAILABLE) {
+                if (isActive() && canPaste() == PasteMode.DISABLED) {
+                    Log.v("Fab", "Can't paste");
+                } else {
+                    if (getFiles().size() == 0) Log.v("Fab", "No files are in the CAB");
+                    if (!canPasteIntoSameDir()) {
+                        for (File fi : getFiles()) {
+                            Log.v("Fab", "Checking if " + fi.getParent().getPath() + " == " + getDirectory().getPath());
+                            if (fi.getParent().equals(getDirectory())) {
+                                Log.v("Fab", "They are equal");
+                                hide = true;
+                                break;
+                            }
                         }
                     }
                 }
-            }
-            if (hide) Log.v("Fab", "Fab is disabled");
-            else Log.v("Fab", "Fab is not disabled");
-        } else Log.v("Fab", "Paste mode not available");
+                if (hide) Log.v("Fab", "Fab is disabled");
+                else Log.v("Fab", "Fab is not disabled");
+            } else Log.v("Fab", "Paste mode not available");
+        }
         getContext().disableFab(hide);
         getContext().fab.setDrawable(getContext().getResources().getDrawable(canPaste() == BaseFileCab.PasteMode.ENABLED ? R.drawable.ic_paste : R.drawable.ic_add));
         return this;

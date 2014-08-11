@@ -287,6 +287,45 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         );
     }
 
+    private void createNewFileDuplicate(final Activity context, final File file) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    File newFile = Utils.checkDuplicatesSync(context, file);
+                    newFile.createFile(new SftpClient.CompletionCallback() {
+                        @Override
+                        public void onComplete() {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    reload();
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onError(final Exception e) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Utils.showErrorDialog(context, e.getMessage());
+                                }
+                            });
+                        }
+                    });
+                } catch (final Exception e) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Utils.showErrorDialog(context, e.getMessage());
+                        }
+                    });
+                }
+            }
+        }).start();
+    }
+
     private void showNewFileDialog(final Activity context) {
         Utils.showInputDialog(context, R.string.new_file, R.string.untitled, null,
                 new Utils.InputCallback() {
@@ -294,17 +333,17 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                     public void onInput(String newName) {
                         if (newName.isEmpty())
                             newName = getString(R.string.untitled);
-                        final File dir = mDirectory.isRemote() ?
+                        final File newFile = mDirectory.isRemote() ?
                                 new CloudFile(context, (CloudFile) mDirectory, newName, false) :
                                 new LocalFile(context, mDirectory, newName);
-                        dir.exists(new File.BooleanCallback() {
+                        newFile.exists(new File.BooleanCallback() {
                             @Override
                             public void onComplete(boolean result) {
                                 if (!result) {
                                     runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
-                                            dir.createFile(new SftpClient.CompletionCallback() {
+                                            newFile.createFile(new SftpClient.CompletionCallback() {
                                                 @Override
                                                 public void onComplete() {
                                                     runOnUiThread(new Runnable() {
@@ -316,14 +355,31 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                                                 }
 
                                                 @Override
-                                                public void onError(Exception e) {
-                                                    Utils.showErrorDialog(context, e.getMessage());
+                                                public void onError(final Exception e) {
+                                                    runOnUiThread(new Runnable() {
+                                                        @Override
+                                                        public void run() {
+                                                            Utils.showErrorDialog(context, e.getMessage());
+                                                        }
+                                                    });
                                                 }
                                             });
                                         }
                                     });
                                 } else {
-                                    CustomDialog.create(getActivity(), R.string.file_already_exists, getString(R.string.file_already_exists_warning), null);
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            CustomDialog.create(getActivity(), R.string.file_already_exists, getString(R.string.file_already_exists_warning),
+                                                    android.R.string.ok, 0, android.R.string.cancel, new CustomDialog.SimpleClickListener() {
+                                                        @Override
+                                                        public void onPositive(int which, View view) {
+                                                            createNewFileDuplicate(context, newFile);
+                                                        }
+                                                    }
+                                            ).show(getFragmentManager(), "DUPLICATE_WARNING");
+                                        }
+                                    });
                                 }
                             }
 

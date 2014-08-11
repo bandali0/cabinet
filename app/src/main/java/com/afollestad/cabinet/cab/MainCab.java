@@ -32,6 +32,11 @@ public class MainCab extends BaseFileCab {
     }
 
     @Override
+    public boolean canShowFab() {
+        return false;
+    }
+
+    @Override
     public PasteMode canPaste() {
         return PasteMode.NOT_AVAILABLE;
     }

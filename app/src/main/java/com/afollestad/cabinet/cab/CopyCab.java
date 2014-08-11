@@ -32,6 +32,11 @@ public class CopyCab extends BaseFileCab {
     private transient int copyTotal;
 
     @Override
+    public boolean canShowFab() {
+        return true;
+    }
+
+    @Override
     public void paste() {
         final ProgressDialog mDialog = new ProgressDialog(getContext());
         mDialog.setMessage(getContext().getString(R.string.copying));
