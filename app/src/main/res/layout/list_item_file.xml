@@ -67,7 +67,7 @@
             android:scaleType="fitXY"
             android:layout_marginLeft="8dp"
             android:layout_alignParentRight="true"
-            android:background="?android:selectableItemBackground"
+            android:background="@drawable/menu_selector"
             android:layout_centerVertical="true"
             android:padding="8dp"
             android:focusableInTouchMode="false"
