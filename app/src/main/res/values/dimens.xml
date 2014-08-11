@@ -5,7 +5,6 @@
     <dimen name="nav_drawer_textsize">20sp</dimen>
     <dimen name="nav_drawer_item_vert_pad">18sp</dimen>
     <dimen name="nav_drawer_item_hor_pad">24sp</dimen>
-    <dimen name="additional_list_padding">5dp</dimen>
     <dimen name="welcome_header">32sp</dimen>
     <dimen name="welcome_header_margin_top">20dp</dimen>
     <dimen name="welcome_summary_textsize">20sp</dimen>
