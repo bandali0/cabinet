@@ -292,7 +292,12 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     }
 
     private void displayDisconnectPrompt() {
-        CustomDialog.create(this, R.string.disconnect, getString(R.string.disconnect_prompt), R.string.yes, 0, R.string.no, new CustomDialog.SimpleClickListener() {
+        String host = getString(R.string.unknown);
+        if(mNetworkService != null) {
+            host = mNetworkService.getRemote().getRemote().getHost();
+        }
+        CustomDialog.create(this, R.string.disconnect, getString(R.string.disconnect_prompt, host),
+                R.string.yes, 0, R.string.no, new CustomDialog.SimpleClickListener() {
             @Override
             public void onPositive(int which, View view) {
                 startService(new Intent(DrawerActivity.this, NetworkService.class)

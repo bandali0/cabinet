@@ -18,6 +18,11 @@ public class NetworkService extends Service {
 
     private final IBinder mBinder = new LocalBinder();
     private SftpClient mSftp;
+    private CloudFile mRemote;
+
+    public CloudFile getRemote() {
+        return mRemote;
+    }
 
     public class LocalBinder extends Binder {
         public NetworkService getService() {
