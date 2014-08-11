@@ -27,6 +27,9 @@
         <item name="android:actionBarSize">56dp</item>
         <item name="android:actionOverflowButtonStyle">@style/OverflowRecoup</item>
         <item name="android:actionMenuTextColor">@color/soft_black</item>
+
+        <item name="android:dialogTheme">@android:style/Theme.Holo.Light.Dialog</item>
+
     </style>
 
 </resources>
