@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.widget.DrawerLayout;
 import android.view.ContextThemeWrapper;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +25,9 @@ public class WelcomeFragment extends Fragment {
 
     @Override
     public void onDetach() {
-        ((DrawerActivity) getActivity()).disableFab(false);
+        DrawerActivity act = (DrawerActivity) getActivity();
+        act.disableFab(false);
+        act.mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED, Gravity.START);
         super.onDetach();
     }
 
@@ -42,11 +46,13 @@ public class WelcomeFragment extends Fragment {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                ((DrawerActivity) activity).waitFabInvalidate();
+                final DrawerActivity act = (DrawerActivity) activity;
+                act.waitFabInvalidate();
                 activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        ((DrawerActivity) activity).disableFab(true);
+                        act.disableFab(true);
+                        act.mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED, Gravity.START);
                     }
                 });
             }

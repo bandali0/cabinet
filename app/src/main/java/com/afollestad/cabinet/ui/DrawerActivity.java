@@ -67,6 +67,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     private boolean fabDisabled; // flag indicating whether fab should stay hidden while scrolling
     public boolean shouldAttachFab; // used during config change, tells fragment to reattach to cab
     public boolean pickMode; // flag indicating whether user is picking a file for another app
+    public DrawerLayout mDrawerLayout;
 
     public static void setupTransparentTints(Activity context) {
         if (!ThemeUtils.isTranslucentStatusbar(context)) return;
@@ -198,8 +199,9 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
             fabDisabled = savedInstanceState.getBoolean("fab_disabled");
         }
 
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationDrawerFragment mNavigationDrawerFragment = (NavigationDrawerFragment) getFragmentManager().findFragmentById(R.id.navigation_drawer);
-        mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout), savedInstanceState == null);
+        mNavigationDrawerFragment.setUp(R.id.navigation_drawer, mDrawerLayout, savedInstanceState == null);
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
