@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -58,16 +59,20 @@ public class TextEditor extends Activity implements TextWatcher {
 
     private void load(final Uri uri) {
         setProgress(true);
+        Log.v("TextEditor", "Loading...");
         new Thread(new Runnable() {
             @Override
             public void run() {
                 mFile = new java.io.File(uri.getPath());
                 if (!mFile.exists()) {
+                    Log.v("TextEditor", "File doesn't exist...");
                     finish();
                     return;
                 }
                 String mime = new LocalFile(TextEditor.this, mFile).getMimeType();
-                if (mime.startsWith("image/*")) {
+                Log.v("TextEditor", "Mime: " + mime);
+                if (!mime.startsWith("text/") && !mime.equals("application/json")) {
+                    Log.v("TextEditor", "Unsupported extension");
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -76,7 +81,7 @@ public class TextEditor extends Activity implements TextWatcher {
                                 public void onPositive(int which, View view) {
                                     finish();
                                 }
-                            });
+                            }).show(getFragmentManager(), "UNSUPPORTED_DIALOG");
                         }
                     });
                     return;
@@ -87,6 +92,7 @@ public class TextEditor extends Activity implements TextWatcher {
                         setTitle(mFile.getName());
                     }
                 });
+                Log.v("TextEditor", "Reading file...");
                 try {
                     BufferedReader br = new BufferedReader(new FileReader(mFile));
                     String line;
@@ -95,6 +101,7 @@ public class TextEditor extends Activity implements TextWatcher {
                         text.append(line);
                         text.append('\n');
                     }
+                    Log.v("TextEditor", "Setting contents to input area...");
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -104,6 +111,7 @@ public class TextEditor extends Activity implements TextWatcher {
                         }
                     });
                 } catch (final IOException e) {
+                    Log.v("TextEditor", "Error: " + e.getMessage());
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
