@@ -115,14 +115,14 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         mCab = cab;
     }
 
+    public void invalidateSystemBarTintManager() {
+        mTintManager = new SystemBarTintManager(DrawerActivity.this);
+        mTintConfig = mTintManager.getConfig();
+    }
+
     public void waitFabInvalidate() {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mTintManager = new SystemBarTintManager(DrawerActivity.this);
-                mTintConfig = mTintManager.getConfig();
-            }
-        });
+        if (mTintManager == null || mTintConfig == null)
+            throw new RuntimeException("Tint manager and config have not be initialized yet.");
         final float translation = getResources().getDimension(R.dimen.fab_translation) + mTintConfig.getPixelInsetBottom();
         while (fabVisibleY == 0) {
             runOnUiThread(new Runnable() {
