@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Cabinet Beta</string>
+    <string name="welcome">Bienvenido</string>
+    <string name="welcome_intro">¡Bienvenido a Cabinet! Cabinet es un administrador de archivos simple diseñado para ser estéticamente
+        agradable, y sólo funciona como un administrador de archivos.\n\nEcha un vistazo a este archivo:</string>
+    <string name="welcome_conclusion">Toca la imagen de vista previa o en el icono de tres puntos. Al tocar la imagen de vista previa se selecciona el archivo para la lista de acciones, esto también se puede hacer al tocar y mantener archivos. El icono de 3 puntos muestra un menú emergente con las opciones de archivo individuales.\n\nCabinet
+       tiene otras diversas características, tales como el acceso remoto a los servidores a través de SFTP que se puede encontrar mediante la exploración. Gracias por probar Cabinet!</string>
+    <string name="lets_go">¡Comencemos!</string>
+    <string name="open_as">Abrir como…</string>
+    <string name="pin">Fijar</string>
+    <string name="copy">Copiar</string>
+    <string name="cut">Cortar</string>
+    <string name="rename">Renombrar</string>
+    <string name="delete">Eliminar</string>
+    <string name="paste">Pegar</string>
+    <string name="share">Compartir</string>
+    <string name="zip">Zip</string>
+    <string name="unzip">Unzip</string>
+    <string name="selectAll">Seleccionar todo</string>
+    <string name="details">Detalles</string>
+    <string name="no_files">No hay archivos</string>
+    <string name="storage">Almacenamiento</string>
+    <string name="root">Root</string>
+    <string name="directory">Directorio</string>
+    <string name="unknown">Desconocido</string>
+    <string name="go_up">Subir</string>
+    <string name="press_back_to_exit">"Presiona otra vez para salir"</string>
+    <string name="x_files">%1$d archivos</string>
+    <string name="x_dirs">%1$d directorios</string>
+    <string name="no_x_files">No %1$s archivos</string>
+    <string name="done">Hecho</string>
+    <string name="remove_shortcut">Eliminar acceso directo</string>
+    <string name="confirm_remove_shortcut">¿Esta seguro de eliminar el acceso directo a %1$s?</string>
+    <string name="sort_modified">Última modificación</string>
+    <string name="modified_x">Modificado %1$s</string>
+    <string name="iconpress_hint">¡Toca el icono de un archivo para seleccionarlo rápidamente!</string>
+    <string name="drawer_longpress_hint">¡Consejo: mantén presionado los accesos directos fijados para eliminarlos!</string>
+    <string name="navigation_drawer_open">Abrir el cajón de navegación</string>
+    <string name="navigation_drawer_close">Cerrar el cajón de navegación</string>
+    <string name="new_folder">Nueva carpeta</string>
+    <string name="created_folder">Carpeta creada %1$s</string>
+    <string name="untitled">Sin título</string>
+    <string name="renamed_to">Renombrado a  %1$s</string>
+    <string name="moved_to">Movido a %1$s</string>
+    <string name="copied_to">Copiado a %1$s</string>
+    <string name="no">No</string>
+    <string name="yes">Si</string>
+    <string name="newStr">Nuevo</string>
+    <string name="search">Buscar</string>
+    <string name="confirm_delete">¿Esta seguro de eliminar %1$s?</string>
+    <string name="confirm_delete_xfiles">¿Esta seguro de eliminar %1$d archivos?</string>
+    <string name="unavailable">No disponible</string>
+    <string name="sort_by">Ordenar por</string>
+    <string name="sort_name_folderstop">Nombre, carpetas primero</string>
+    <string name="sort_name">Nombre</string>
+    <string name="sort_extension">Extensión</string>
+    <string name="sort_size_lowhigh">Tamaño, ascendente</string>
+    <string name="sort_size_highlow">Tamaño, descendente</string>
+    <string name="new_remote_connection">Nueva conección remota</string>
+    <string name="network_service_label">Cabinet Servicio de Red</string>
+    <string name="connection_notification_content">Conectado a %1$s</string>
+    <string name="cabinet_sftp">Cabinet SFTP</string>
+    <string name="disconnect">Desconectado</string>
+    <string name="host">Anfitrión</string>
+    <string name="port">Puerto</string>
+    <string name="username">Nombre Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="test_connection">Prueba de coneccion</string>
+    <string name="connection_successful">¡Conexión exitosa!</string>
+    <string name="disconnect_prompt">¿Quieres desconectarte de %1$s?</string>
+    <string name="uploaded_to">Subido a %1$s</string>
+    <string name="downloaded_to">Descargado a %1$s</string>
+    <string name="connecting">Conectando…</string>
+    <string name="downloading">Descargando…</string>
+    <string name="deleting">Eliminando…</string>
+    <string name="making_folder">Creando carpeta…</string>
+    <string name="renaming">Renombrando…</string>
+    <string name="unzipping">Descomprimiendo…</string>
+    <string name="zipping">Comprimiendo…</string>
+    <string name="moving">Moviendo…</string>
+    <string name="uploading">Subiendo…</string>
+    <string name="copying">Copiando…</string>
+    <string name="failed_delete_file">Error al borrar el archivo: %1$s</string>
+    <string name="failed_make_directory">Error al crear la carpeta: %1$s</string>
+    <string name="failed_rename_file">Error al renombrar/mover este archivo: %1$s</string>
+    <string name="failed_unzip_file">Error al descomprimir el archivo: %1$s</string>
+    <string name="failed_zip_files">Error al comprimir el/los archivo(s): %1$s</string>
+    <string name="error">Error</string>
+    <string name="failed_download_file">Ocurrió un error al descargar el archivo: %1$s</string>
+    <string name="failed_connect_server">Error al connectar al servidor: %1$s</string>
+    <string name="activity_not_found">No se encontraron aplicaciones para abrir este archivo</string>
+    <string name="failed_upload_file">Error al subir el archivo: %1$s</string>
+    <string name="failed_copy_file">Error al copiar el archivo: %1$s</string>
+    <string name="no_apps_for_sharing">No hay aplicaciones para compartir este tipo de archivo</string>
+    <string name="directory_already_exists">Directorio ya existe</string>
+    <string name="copy_x"><![CDATA[
+        <b>Copiar:</b>&nbsp;&nbsp;%1$s
+    ]]></string>
+    <string name="cut_x"><![CDATA[
+        <b>Cortar:</b>&nbsp;&nbsp;%1$s
+    ]]></string>
+    <string name="copy_xfiles"><![CDATA[
+        <b>Copiar:</b>&nbsp;&nbsp;%1$d archivos
+    ]]></string>
+    <string name="cut_xfiles"><![CDATA[
+        <b>Cortar:</b>&nbsp;&nbsp;%1$d archivos
+    ]]></string>
+    <string name="search_files">Buscando archivos…</string>
+    <string name="search_x"><![CDATA[
+        <b>Buscar:</b>&nbsp;%1$s
+    ]]></string>
+    <string name="donate">Donar</string>
+    <string name="thank_you">¡Muchas gracias!</string>
+    <string name="rate">Calificar</string>
+    <string name="later">Después</string>
+    <string name="rate_desc">¿Quiere calificar a Cabinet en Google Play? ¡Buenas calificaciones son apreciadas!</string>
+    <string name="sure">¡Seguro!</string>
+    <string name="no_thanks">No gracias</string>
+    <string-array name="new_options" translatable="false">
+    <!-- Misc. arrays -->
+        <item>Archivo</item>
+    <!-- Misc. arrays -->
+        <item>Carpeta</item>
+    <!-- Misc. arrays -->
+        <item>Conección remota</item>
+    </string-array>
+    <string name="file">Archivo</string>
+    <string name="folder">Carpeta</string>
+    <string name="remote_connection">Conexión remota...</string>
+    <string name="text">Texto</string>
+    <string name="image">Imagen</string>
+    <string name="audio">Audio</string>
+    <string name="video">Video</string>
+    <string name="other">Otro</string>
+    <string name="info">Info</string>
+    <string name="files">Archivos</string>
+    <string name="show_hidden_files">Mostrar archivos ocultos</string>
+    <string name="about">Acerca</string>
+    <string name="about_desc">Acerca de la aplicación y su diseñador</string>
+    <string name="show_hidden_files_desc">Activa para que Cabinet muestre los archivos ocultos.</string>
+    <string name="ui">Interfaz</string>
+    <string name="settings">Configuración</string>
+    <string name="translucentstatusbar_disabled">No se puede cambiar en Android L.</string>
+    <string name="translucency_not_supported">La transparencia no es soportada en esta versión de android</string>
+    <string name="translucent_statusbar">Status Bar Transparente</string>
+    <string name="translucent_navbar">Nav Bar Transparente</string>
+    <string name="translucent_statusbar_desc">Status bar Transparente (mismo color de la barra de acciones) en KitKat o mayores versiones.</string>
+    <string name="translucent_navbar_desc">Barra de navegacion transparente en KitKat o mayores versiones.</string>
+    <string name="about_body"><![CDATA[
+        Un minimalista, intuitivo y bello administrador de archivos para Android 4.1 o mayores versiones.<br/><br/>
+        Diseñado por <b>Aidan Follestad</b>.<br/><a href=\'http://aidanfollestad.com\'>Pagina web</a>&nbsp;&nbsp;
+        <a href=\'https://twitter.com/afollestad\'>Twitter</a>&nbsp;&nbsp;
+        <a href=\'https://google.com/+AidanFollestad\'>Google+</a>&nbsp;&nbsp;
+        <a href=\'https://github.com/afollestad\'>GitHub</a>&nbsp;&nbsp;
+        <a href=\'https://www.linkedin.com/in/afollestad\'>LinkedIn</a>
+    ]]></string>
+    <string name="details_body_file"><![CDATA[
+        <b>Nombre:</b>&nbsp;&nbsp;%1$s<br/><b>Ruta:</b>&nbsp;&nbsp;%2$s<br/><b>Tamaño:</b>&nbsp;&nbsp;%3$s<br/><b>Modificado:</b>&nbsp;&nbsp;%4$s<br/><b>Permisos:</b>&nbsp;&nbsp;%5$s
+    ]]></string>
+    <string name="details_body_dir"><![CDATA[
+        <b>Nombre:</b>&nbsp;&nbsp;%1$s<br/><b>Ruta:</b>&nbsp;&nbsp;%2$s<br/><b>Contenido:</b>&nbsp;&nbsp;%3$s<br/><b>Modificado:</b>&nbsp;&nbsp;%4$s
+    ]]></string>
+    <string name="material_version">Material</string>
+    <string name="material_version_desc">Una versión con Material de Cabinet esta disponible para aquellos con Android L. ¿Quieres ver la comunidad de Cabinet  en Google+ donde está publicada esta versión?</string>
+    <string name="new_file">Nueva Archivo</string>
+    <string name="making_file">Creando archivo...</string>
+    <string name="created_file">Archivo creado %1$s</string>
+    <string name="file_already_exists">El archivo ya existe</string>
+    <string name="failed_make_file">Error al crear un nuevo archivo: %1$s</string>
+    <string name="pick_a_file">Seleccione un archivo...</string>
+    <string name="cabinet_text_editor">Cabinet editor de texto</string>
+    <string name="save">Guardar</string>
+    <string name="unsaved_changes">Cambios no guardados</string>
+    <string name="unsaved_changes_desc">Tienes cambios no guardados, ¿quieres guardarlos antes de salir?</string>
+    <string name="saving">Guardando...</string>
+    <string name="loading">Cargando...</string>
+    <string name="unsupported_extension">Extension no soportada</string>
+    <string name="unsupported_extension_desc">No puedes abrir este tipo de archivo con el editor de texto.</string>
+    <string name="file_already_exists_warning">Advertencia: este archivo ya existe. El nuevo archivo aparecerá como un duplicado.</string>
+</resources>
