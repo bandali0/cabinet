@@ -14,6 +14,7 @@ import android.widget.EditText;
 
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.file.LocalFile;
+import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.fragments.CustomDialog;
 import com.afollestad.cabinet.fragments.DetailsDialog;
 import com.afollestad.cabinet.utils.ThemeUtils;
@@ -69,7 +70,8 @@ public class TextEditor extends Activity implements TextWatcher {
                     finish();
                     return;
                 }
-                String mime = new LocalFile(TextEditor.this, mFile).getMimeType();
+
+                String mime = File.getMimeType(File.getExtension(TextEditor.this, mFile.getName()));
                 Log.v("TextEditor", "Mime: " + mime);
                 if (!mime.startsWith("text/") && !mime.equals("application/json")) {
                     Log.v("TextEditor", "Unsupported extension");

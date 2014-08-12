@@ -1,6 +1,7 @@
 package com.afollestad.cabinet.file.base;
 
 import android.app.Activity;
+import android.content.Context;
 import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Environment;
@@ -76,23 +77,30 @@ public abstract class File implements Serializable {
         return readableFileSize(length());
     }
 
-    public final String getExtension() {
-        if (isDirectory()) return "";
-        String name = getName().toLowerCase();
+    public static String getExtension(Context context, String name) {
+        name = name.toLowerCase();
         if (name.startsWith(".") || !name.substring(1).contains("."))
-            return getContext().getString(R.string.unknown);
+            return context.getString(R.string.unknown);
         return name.substring(name.lastIndexOf('.') + 1);
     }
 
-    public final String getMimeType() {
+    public final String getExtension() {
+        if (isDirectory()) return "";
+        return getExtension(getContext(), getName());
+    }
+
+    public static String getMimeType(String extension) {
         String type = null;
-        String extension = getExtension();
         if (extension != null) {
             MimeTypeMap mime = MimeTypeMap.getSingleton();
             type = mime.getMimeTypeFromExtension(extension);
             if (type == null) return extension;
         }
         return type;
+    }
+
+    public final String getMimeType() {
+        return getMimeType(getExtension());
     }
 
     public final boolean isRoot() {
