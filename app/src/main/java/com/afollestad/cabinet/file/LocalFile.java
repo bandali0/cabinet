@@ -477,12 +477,13 @@ public class LocalFile extends File {
 
     @Override
     public void exists(BooleanCallback callback) {
-        callback.onComplete(new java.io.File(getPath()).exists());
+        callback.onComplete(existsSync());
     }
 
     @Override
     public boolean existsSync() {
-        return new java.io.File(getPath()).exists();
+        java.io.File mFile = new java.io.File(getPath());
+        return mFile.exists() && isDirectory() == mFile.isDirectory();
     }
 
     @Override
