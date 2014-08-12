@@ -7,7 +7,6 @@ import android.graphics.Rect;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -165,7 +164,6 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
     public void remove(File file, boolean notify) {
         for (int i = 0; i < mFiles.size(); i++) {
             if (mFiles.get(i).getPath().equals(file.getPath())) {
-                Log.v("FabDelete", "(Adapter) Removed: " + mFiles.get(i).getPath());
                 mFiles.remove(i);
                 break;
             }

@@ -787,11 +787,21 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                             public void onComplete() {
                                 if (Shortcuts.remove(getActivity(), file))
                                     ((DrawerActivity) getActivity()).reloadNavDrawer();
+                                mAdapter.remove(file, true);
                                 DrawerActivity act = (DrawerActivity) getActivity();
                                 if (act.getCab() != null && act.getCab() instanceof BaseFileCab) {
-                                    ((BaseFileCab) act.getCab()).removeFile(file);
+                                    BaseFileCab cab = (BaseFileCab) act.getCab();
+                                    if (cab.getFiles().size() > 0) {
+                                        List<File> files = new ArrayList<File>();
+                                        files.addAll(cab.getFiles()); // copy so it doesn't get modified by CAB functions
+                                        cab.removeFile(file);
+                                        for (File fi : files) {
+                                            if (fi.getPath().startsWith(file.getPath())) {
+                                                cab.removeFile(fi);
+                                            }
+                                        }
+                                    }
                                 }
-                                mAdapter.remove(file, true);
                             }
 
                             @Override

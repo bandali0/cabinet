@@ -14,6 +14,7 @@ import com.afollestad.cabinet.utils.Utils;
 import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -29,24 +30,21 @@ public class LocalFile extends File {
 
     public LocalFile(Activity context, String path) {
         super(context, path);
-        mFile = new java.io.File(path);
     }
 
     public LocalFile(Activity context, java.io.File local) {
         super(context, local.getAbsolutePath());
-        mFile = local;
     }
 
     public LocalFile(Activity context, File parent, String name) {
         super(context, parent.getPath() + (parent.getPath().equals("/") ? "" : "/") + name);
-        mFile = new java.io.File(getPath());
     }
 
-    private java.io.File mFile;
     public boolean isSearchResult;
 
     @Override
     public boolean isHidden() {
+        java.io.File mFile = new java.io.File(getPath());
         return mFile.isHidden() || mFile.getName().startsWith(".");
     }
 
@@ -100,7 +98,9 @@ public class LocalFile extends File {
     public void mkdirSync() throws Exception {
         if (requiresRoot()) {
             runAsRoot("mkdir -P \"" + getPath() + "\"");
-        } else mFile.mkdirs();
+        } else {
+            new java.io.File(getPath()).mkdirs();
+        }
         if (!new java.io.File(getPath()).exists())
             throw new Exception("Unknown error");
     }
@@ -122,6 +122,7 @@ public class LocalFile extends File {
                                 getContext().runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
+                                        setPath(newFile.getPath());
                                         uploadProgress.dismiss();
                                         callback.onComplete();
                                     }
@@ -166,6 +167,7 @@ public class LocalFile extends File {
                                     getContext().runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
+                                            setPath(newFile.getPath());
                                             callback.onComplete();
                                             notifyMediaScannerService(newFile);
                                         }
@@ -182,10 +184,11 @@ public class LocalFile extends File {
                                 }
                             }
                         }).start();
-                    } else if (mFile.renameTo(newFile.toJavaFile())) {
+                    } else if (new java.io.File(getPath()).renameTo(newFile.toJavaFile())) {
                         getContext().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                setPath(newFile.getPath());
                                 callback.onComplete();
                                 notifyMediaScannerService(newFile);
                             }
@@ -434,6 +437,7 @@ public class LocalFile extends File {
                 }
             }).start();
         } else {
+            java.io.File mFile = new java.io.File(getPath());
             if (mFile.isDirectory()) {
                 try {
                     wipeDirectory(this, callback);
@@ -450,7 +454,7 @@ public class LocalFile extends File {
     }
 
     public boolean deleteSync() {
-        boolean val = mFile.delete();
+        boolean val = new java.io.File(getPath()).delete();
         notifyMediaScannerService(this);
         return val;
     }
@@ -462,22 +466,28 @@ public class LocalFile extends File {
 
     @Override
     public boolean isDirectory() {
-        return mFile.isDirectory();
+        java.io.File mFile = new java.io.File(getPath());
+        try {
+            return mFile.getCanonicalFile().isDirectory();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return mFile.isDirectory();
+        }
     }
 
     @Override
     public void exists(BooleanCallback callback) {
-        callback.onComplete(mFile.exists());
+        callback.onComplete(new java.io.File(getPath()).exists());
     }
 
     @Override
     public boolean existsSync() {
-        return mFile.exists();
+        return new java.io.File(getPath()).exists();
     }
 
     @Override
     public long length() {
-        return mFile.length();
+        return new java.io.File(getPath()).length();
     }
 
     @Override
@@ -488,7 +498,7 @@ public class LocalFile extends File {
 
     @Override
     public long lastModified() {
-        return mFile.lastModified();
+        return new java.io.File(getPath()).lastModified();
     }
 
     public List<File> listFilesSync(boolean includeHidden) {
@@ -497,8 +507,8 @@ public class LocalFile extends File {
 
     public List<File> listFilesSync(boolean includeHidden, FileFilter filter) {
         java.io.File[] list;
-        if (filter != null) list = mFile.listFiles(filter);
-        else list = mFile.listFiles();
+        if (filter != null) list = new java.io.File(getPath()).listFiles(filter);
+        else list = new java.io.File(getPath()).listFiles();
         if (list == null || list.length == 0) return new ArrayList<File>();
         List<File> results = new ArrayList<File>();
         for (java.io.File local : list) {
@@ -511,6 +521,7 @@ public class LocalFile extends File {
     }
 
     public List<File> searchRecursive(boolean includeHidden, FileFilter filter) {
+        java.io.File mFile = new java.io.File(getPath());
         Log.v("SearchRecursive", "Searching: " + mFile.getAbsolutePath());
         List<File> all = listFilesSync(includeHidden);
         if (all == null || all.size() == 0) {
