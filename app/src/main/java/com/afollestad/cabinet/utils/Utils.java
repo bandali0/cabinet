@@ -6,6 +6,8 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Environment;
 import android.preference.PreferenceManager;
@@ -28,6 +30,15 @@ public class Utils {
 
     public static interface DuplicateCheckResult {
         public abstract void onResult(File file);
+    }
+
+    public static int getVersion(Context context) {
+        try {
+            PackageInfo info = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            return info.versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            return -1;
+        }
     }
 
     public static void checkDuplicates(final Activity context, final File file, final DuplicateCheckResult callback) {
