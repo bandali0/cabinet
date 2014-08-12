@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Cabinet Beta</string>
     <string name="welcome">Bem-Vindo</string>
     <string name="welcome_intro">Bem-Vindo ao Cabinet! Cabinet é minimalista gerenciador de arquivos desenhado para ser esteticamente agradável, e que funciona como um gerenciador de arquivos deve funcionar.\n\nDê uma olhada neste arquivo:</string>
     <string name="welcome_conclusion">Experimente tocar na imagem de pré-visualização ou no ícone de 3 pontos. Tocar na imagem de visualização seleciona o arquivo para ações em lote, isto também pode ser feito tocando e segurando arquivos. O ícone de 3 pontos mostra um menu com opções individuais do arquivo.\n\nCabinet
@@ -116,14 +115,6 @@
     <string name="rate_desc">Deseja classificar o Cabinet no Google Play? Boas classificações são apreciadas!</string>
     <string name="sure">Claro!</string>
     <string name="no_thanks">Não, obrigado</string>
-    <string-array name="new_options" translatable="false">
-    <!-- Misc. arrays -->
-        <item>Arquivo</item>
-    <!-- Misc. arrays -->
-        <item>Pasta</item>
-    <!-- Misc. arrays -->
-        <item>Conexão Remota…</item>
-    </string-array>
     <string name="file">Arquivo</string>
     <string name="folder">Pasta</string>
     <string name="remote_connection">Conexão remota...</string>

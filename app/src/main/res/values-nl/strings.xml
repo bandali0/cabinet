@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Cabinet Beta</string>
     <string name="welcome">Welkom</string>
     <string name="welcome_intro">Welkom bij Cabinet! Cabinet is een simpel bestand beheer ontworpen om gebruiksvriendelijk te zijn,
  en om te werken zoals een bestand beheer app zal moeten.\n\n Kijk een naar het onderstaande bestand:</string>
@@ -117,14 +116,6 @@
     <string name="rate_desc">Wil je Cabinet beoordelen op Google Play? Goede beoordelingen worden gewaardeerd!</string>
     <string name="sure">Zeker!</string>
     <string name="no_thanks">Nee bedankt</string>
-    <string-array name="new_options" translatable="false">
-    <!-- Misc. arrays -->
-        <item>Bestand</item>
-    <!-- Misc. arrays -->
-        <item>Map</item>
-    <!-- Misc. arrays -->
-        <item>Verbinding op afstand...</item>
-    </string-array>
     <string name="file">Bestand</string>
     <string name="folder">Map</string>
     <string name="remote_connection">Verbinding op afstand...</string>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Cabinet Beta</string>
     <string name="welcome">Witaj !</string>
     <string name="welcome_intro">Witamy w aplikacji Cabinet! Cabinet to prosty menadżer plików, zaprojektowany tak by wyglądał estetycznie 
 i działał jak menadżer plików powinien.\n\n                       Spójrz na ten plik:</string>
@@ -117,14 +116,6 @@ posiada również inne funkcje, takie jak m.in. zdolny dostęp do serwerów popr
     <string name="rate_desc">Czy chcesz ocenić Cabinet w Google Play? Dobre słowo mile widziane!</string>
     <string name="sure">Jasne!</string>
     <string name="no_thanks">Nie, dzięki</string>
-    <string-array name="new_options" translatable="false">
-    <!-- Misc. arrays -->
-        <item>Plik</item>
-    <!-- Misc. arrays -->
-        <item>Folder</item>
-    <!-- Misc. arrays -->
-        <item>Połączenie zdalne...</item>
-    </string-array>
     <string name="file">Plik</string>
     <string name="folder">Folder</string>
     <string name="remote_connection">Połączenie zdalne...</string>

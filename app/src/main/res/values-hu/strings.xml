@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Cabinet Béta</string>
     <string name="welcome">Üdvözöljük!</string>
     <string name="welcome_intro">A Cabinet egy egyszerű Fájlkezelő ami esztétikusra lett tervezve.
  Kellemes és úgy működik ahogy azt egy fájlkezelőtől elvárjuk. \n\n Vegyen egy pillantást a fájra:</string>
@@ -117,14 +116,6 @@
     <string name="rate_desc">Szeretné értékelni a Play Áruházban?</string>
     <string name="sure">Persze!</string>
     <string name="no_thanks">Nem Köszönöm</string>
-    <string-array name="new_options" translatable="false">
-    <!-- Misc. arrays -->
-        <item>Fájl</item>
-    <!-- Misc. arrays -->
-        <item>Mappa</item>
-    <!-- Misc. arrays -->
-        <item>Távoli Kapcsolat...</item>
-    </string-array>
     <string name="file">Fájl</string>
     <string name="folder">Mappa</string>
     <string name="remote_connection">Távoli Kapcsolat...</string>

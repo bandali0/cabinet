@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Cabinet Beta</string>
     <string name="welcome">Benvenuti</string>
     <string name="welcome_intro">Benvenuti in Cabinet, un semplice gestore di file progettato per essere esteticamente
  bello, e che funzioni come dovrebbe fare un gestore di file.\n\nDai un\'occhiata a questo file:</string>
@@ -117,14 +116,6 @@
     <string name="rate_desc">Vuoi valutare Cabinet su Google Play? Le buone valutazioni sono molto apprezzate!</string>
     <string name="sure">Certo!</string>
     <string name="no_thanks">No grazie</string>
-    <string-array name="new_options" translatable="false">
-    <!-- Misc. arrays -->
-        <item>File</item>
-    <!-- Misc. arrays -->
-        <item>Cartella</item>
-    <!-- Misc. arrays -->
-        <item>Connessione remota…</item>
-    </string-array>
     <string name="file">File</string>
     <string name="folder">Cartella</string>
     <string name="remote_connection">Connessione remota...</string>
