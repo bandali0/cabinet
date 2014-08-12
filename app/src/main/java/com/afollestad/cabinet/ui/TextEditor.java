@@ -107,8 +107,12 @@ public class TextEditor extends Activity implements TextWatcher {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            mOriginal = text.toString();
-                            mInput.setText(mOriginal);
+                            try {
+                                mOriginal = text.toString();
+                                mInput.setText(mOriginal);
+                            } catch (OutOfMemoryError e) {
+                                Utils.showErrorDialog(TextEditor.this, e.getLocalizedMessage());
+                            }
                             setProgress(false);
                         }
                     });
