@@ -143,7 +143,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         if (hide) {
             if (fabShown) {
                 ObjectAnimator outAnim = ObjectAnimator.ofFloat(fab, "y", fabVisibleY, fabHiddenY);
-                outAnim.setDuration(500);
+                outAnim.setDuration(250);
                 outAnim.setInterpolator(new AccelerateInterpolator());
                 outAnim.start();
                 fabShown = false;
@@ -151,7 +151,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         } else {
             if (!fabShown && !fabDisabled) {
                 ObjectAnimator inAnim = ObjectAnimator.ofFloat(fab, "y", fabHiddenY, fabVisibleY);
-                inAnim.setDuration(500);
+                inAnim.setDuration(250);
                 inAnim.setInterpolator(new DecelerateInterpolator());
                 inAnim.start();
                 fabShown = true;
