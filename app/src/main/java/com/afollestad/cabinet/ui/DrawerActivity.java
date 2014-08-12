@@ -70,6 +70,10 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     public boolean pickMode; // flag indicating whether user is picking a file for another app
     public DrawerLayout mDrawerLayout;
 
+    // Both fields used in waitFabInvalidate() so that they can be initialized on UI thread
+    private SystemBarTintManager mTintManager;
+    SystemBarTintManager.SystemBarConfig mTintConfig;
+
     public static void setupTransparentTints(Activity context) {
         if (!ThemeUtils.isTranslucentStatusbar(context)) return;
         SystemBarTintManager tintManager = new SystemBarTintManager(context);
@@ -114,9 +118,14 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     }
 
     public void waitFabInvalidate() {
-        SystemBarTintManager tintManager = new SystemBarTintManager(this);
-        SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
-        final float translation = getResources().getDimension(R.dimen.fab_translation) + config.getPixelInsetBottom();
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mTintManager = new SystemBarTintManager(DrawerActivity.this);
+                mTintConfig = mTintManager.getConfig();
+            }
+        });
+        final float translation = getResources().getDimension(R.dimen.fab_translation) + mTintConfig.getPixelInsetBottom();
         while (fabVisibleY == 0) {
             runOnUiThread(new Runnable() {
                 @Override
@@ -131,6 +140,9 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
                 e.printStackTrace();
             }
         }
+        // Make sure memory is released
+        mTintManager = null;
+        mTintConfig = null;
     }
 
     public void toggleFab(boolean hide) {
