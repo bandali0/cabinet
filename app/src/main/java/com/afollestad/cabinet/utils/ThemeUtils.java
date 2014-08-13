@@ -11,7 +11,6 @@ import com.afollestad.cabinet.R;
 public class ThemeUtils {
 
     public ThemeUtils(Activity context) {
-        context.getActionBar().setIcon(R.drawable.ic_file_ab);
         mContext = context;
         isChanged(); // invalidate stored booleans
     }
