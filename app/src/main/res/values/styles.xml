@@ -29,7 +29,7 @@
     </style>
 
     <style name="ActionBar.Solid.Cabinet" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
-        <item name="android:icon">@drawable/ic_file_ab</item>
+        <item name="android:icon">@drawable/ic_launcher_white</item>
         <item name="android:background">@drawable/ab_solid_cabinet</item>
     </style>
 
