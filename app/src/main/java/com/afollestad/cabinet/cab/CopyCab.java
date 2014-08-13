@@ -46,6 +46,7 @@ public class CopyCab extends BaseFileCab {
             mDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
             mDialog.setMax(getFiles().size());
         } else mDialog.setIndeterminate(true);
+        mDialog.setCancelable(false);
         mDialog.show();
         copyCount = 0;
         copyTotal = getFiles().size();

@@ -46,6 +46,7 @@ public class CutCab extends BaseFileCab {
             mDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
             mDialog.setMax(getFiles().size());
         } else mDialog.setIndeterminate(true);
+        mDialog.setCancelable(false);
         mDialog.show();
         cutCount = 0;
         cutTotal = getFiles().size();
