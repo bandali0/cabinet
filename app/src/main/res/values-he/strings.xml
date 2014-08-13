@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome">ברוכים הבאים</string>
+    <string name="welcome_intro">ברוכים הבאים ל-Cabinet !Cabinet הוא מנהל קבצים פשוט ונוח שמעוצב אסתטית
+ קל להבנה, ובדיוק איך שמנהל קבצים צריך להיראות.\n\n התבונן בקובץ זה:</string>
+    <string name="welcome_conclusion">נסה ללחוץ על התמונה של הקובץ או על כפתור האפשרויות (שלושת הנקודות). לחיצה על תמונת הקובץ בוחרת אותו כדי לעשות פעולה אחת על מספר קבצים, כמו כן, זה יכול להיעשות באמצעות לחיצה ממושכת על הקובץ. כפתור האפשרויות מראה תפריט עם פעולות אינדיוידואלית לקובץ הספציפי. \n\n ל-Cabinet
+ יש עוד אפשרויות שונות, כמו גישה מרחוק לשרתים באמצעות SFTP שאפשר למצוא באמצעות חיפוש. תודה שאתה מנסה את Cabinet!</string>
+    <string name="lets_go">בואו נתחיל!</string>
+    <string name="open_as">פתח כ...</string>
+    <string name="pin">סמן כמועדף</string>
+    <string name="copy">העתק</string>
+    <string name="cut">גזור</string>
+    <string name="rename">שנה שם</string>
+    <string name="delete">מחק</string>
+    <string name="paste">הדבק</string>
+    <string name="share">שתף</string>
+    <string name="zip">דחוס ל-ZIP</string>
+    <string name="unzip">חלץ קבצים מ-ZIP</string>
+    <string name="selectAll">סמן הכל</string>
+    <string name="details">פרטים</string>
+    <string name="no_files">אין קבצים</string>
+    <string name="storage">אחסון</string>
+    <string name="root">מערכת</string>
+    <string name="directory">מיקום</string>
+    <string name="unknown">לא ידוע</string>
+    <string name="go_up">עלה למעלה</string>
+    <string name="press_back_to_exit">"לחץ חזרה עוד הפעם כדי לצאת..."</string>
+    <string name="x_files">קבצי %1$d</string>
+    <string name="x_dirs">%1$d מיקומים</string>
+    <string name="no_x_files">אין קבצי %1$s</string>
+    <string name="done">גמור</string>
+    <string name="remove_shortcut">מחק קיצור דרך</string>
+    <string name="confirm_remove_shortcut">האם אתה בטוח שאתה רוצה למחוק את קיצור הדרך שלך ל-%1$s ?</string>
+    <string name="sort_modified">שונה לאחרונה</string>
+    <string name="modified_x">%1$s שונה</string>
+    <string name="iconpress_hint">אתה יכול ללחוץ על הסמל של הקובץ בשביל לבחור בו במהירות!</string>
+    <string name="drawer_longpress_hint">עצה: לחץ לחיצה ממושכת על קיצורי דרך כדי להסירם!</string>
+    <string name="navigation_drawer_open">פתח את חלון הניווט</string>
+    <string name="navigation_drawer_close">סגור את חלון הניווט</string>
+    <string name="new_folder">תיקייה חדשה</string>
+    <string name="created_folder">תיקייה נוצרה %1$s</string>
+    <string name="untitled">ללא שם</string>
+    <string name="renamed_to">השם שונה ל-%1$s</string>
+    <string name="moved_to">הוזז ל-%1$s</string>
+    <string name="copied_to">הועתק ל-%1$s</string>
+    <string name="no">לא</string>
+    <string name="yes">כן</string>
+    <string name="newStr">חדש</string>
+    <string name="search">חיפוש</string>
+    <string name="confirm_delete">האם אתה בטוח שאתה רוצה למחוק את %1$s?</string>
+    <string name="confirm_delete_xfiles">האם אתה בטוח שאתה רוצה למחוק %1$d קבצים?</string>
+    <string name="unavailable">לא זמין</string>
+    <string name="sort_by">מיין לפי</string>
+    <string name="sort_name_folderstop">א\'-ת\', תיקיות קודם.</string>
+    <string name="sort_name">שם</string>
+    <string name="sort_extension">סוג קובץ</string>
+    <string name="sort_size_lowhigh">משקל, מקל לכבד</string>
+    <string name="sort_size_highlow">משקל, מכבד לקל</string>
+    <string name="new_remote_connection">גישה חדשה מרחוק</string>
+    <string name="network_service_label">שירותי רשת של Cabinet</string>
+    <string name="connection_notification_content">מחובר ל %1$s</string>
+    <string name="cabinet_sftp">SFTP של Cabinet</string>
+    <string name="disconnect">מנותק</string>
+    <string name="host">שרת</string>
+    <string name="port">Port</string>
+    <string name="username">שם משתמש</string>
+    <string name="password">סיסמא</string>
+    <string name="test_connection">בדוק גישה</string>
+    <string name="connection_successful">הגישה הוצלחה!</string>
+    <string name="disconnect_prompt">האם אתה רוצה להתנתק מ %1$s?</string>
+    <string name="uploaded_to">הועלה ל-%1$s</string>
+    <string name="downloaded_to">הורד ל-%1$s</string>
+    <string name="connecting">מתחבר...</string>
+    <string name="downloading">מוריד...</string>
+    <string name="deleting">מוחק...</string>
+    <string name="making_folder">יוצר תיקייה...</string>
+    <string name="renaming">משנה שם...</string>
+    <string name="unzipping">מחלץ קבצים מZIP...</string>
+    <string name="zipping">דוחס לZIP...</string>
+    <string name="moving">מזיז...</string>
+    <string name="uploading">מעלה...</string>
+    <string name="copying">מעתיק...</string>
+    <string name="failed_delete_file">נכשלה מחיקת הקובץ: %1$s</string>
+    <string name="failed_make_directory">נכשלה יצירת התיקייה: %1$s</string>
+    <string name="failed_rename_file">נכשלה הזזה/שינוי שם של הקובץ: %1$s</string>
+    <string name="failed_unzip_file">נכשל חילוץ הקבצים מ-ZIP זה: %1$s</string>
+    <string name="failed_zip_files">נכשלה דחיסת הקבצים ל-ZIP זה: %1$s</string>
+    <string name="error">תקלה</string>
+    <string name="failed_download_file">תקלה התרחשה כשהיה ניסיון להוריד קובץ זה: %1$s</string>
+    <string name="failed_connect_server">נכשלה הגישה לשרת: %1$s</string>
+    <string name="activity_not_found">לא נמצא ישום הפותח קובץ זה:</string>
+    <string name="failed_upload_file">נכשלה העלאת הקובץ: %1$s</string>
+    <string name="failed_copy_file">נכשלה העתקת הקובץ: %1$s</string>
+    <string name="no_apps_for_sharing">אין ישומים זמינים לשיתוף סוג הקובץ הזה</string>
+    <string name="directory_already_exists">מיקום זה כבר קיים</string>
+    <string name="copy_x"><![CDATA[
+        <b>העתק:</b>&nbsp;&nbsp;%1$s
+    ]]></string>
+    <string name="cut_x"><![CDATA[
+        <b>הדבק:</b>&nbsp;&nbsp;%1$s
+    ]]></string>
+    <string name="copy_xfiles"><![CDATA[
+        <b>העתק:</b>&nbsp;&nbsp;%1$d קבצים
+    ]]></string>
+    <string name="cut_xfiles"><![CDATA[
+        <b>גזור:</b>&nbsp;&nbsp;%1$d קבצים
+    ]]></string>
+    <string name="search_files">חפש קבצים...</string>
+    <string name="search_x"><![CDATA[
+        <b>חפש:</b>&nbsp;%1$s
+    ]]></string>
+    <string name="donate">תרום</string>
+    <string name="thank_you">אנו מודים לך מאוד!</string>
+    <string name="rate">דרג</string>
+    <string name="later">מאוחר יותר</string>
+    <string name="rate_desc">האם תרצה לדרג את Cabinet בגוגל פליי? אנו מעריכים דירוגים טובים!</string>
+    <string name="sure">ברור!</string>
+    <string name="no_thanks">לא תודה</string>
+    <string name="file">קובץ</string>
+    <string name="folder">תיקיה</string>
+    <string name="remote_connection">גישה מרחוק...</string>
+    <string name="text">טקסט</string>
+    <string name="image">תמונה</string>
+    <string name="audio">קול</string>
+    <string name="video">וידאו</string>
+    <string name="other">אחר</string>
+    <string name="info">מידע</string>
+    <string name="files">קבצים</string>
+    <string name="show_hidden_files">הראה קבצים מוסתרים</string>
+    <string name="about">עלינו</string>
+    <string name="about_desc">על האפליקציה ועל המעצב שלה.</string>
+    <string name="show_hidden_files_desc">בחר Cabinet יראה קבצים מוסתרים או לא.</string>
+    <string name="ui">ממשק</string>
+    <string name="settings">הגדרות</string>
+    <string name="translucentstatusbar_disabled">אתה לא יכול לשנות את זה באנדרואיד L</string>
+    <string name="translucency_not_supported">אין תמיכה בשקיפות בגירסת אנדרואיד זו.</string>
+    <string name="translucent_statusbar">פס התראות שקוף</string>
+    <string name="translucent_navbar">כפתורי ניווט שקופים</string>
+    <string name="translucent_statusbar_desc">פס פעולות שקוף(אותו צבע כמו בפס הפעולות) בגרסת KitKat ומעלה.</string>
+    <string name="translucent_navbar_desc">כפתורי ניווט שקופים בגרסת KitKat ומעלה.</string>
+    <string name="about_body"><![CDATA[
+        מנהל קבצים מינימליסאי, אינטואיטיבי ויפיפה לאנדרואיד 4.1 ומעלה.<br/><br/>
+        מעוצב ע"י <b>Aidan Follestad</b>.<br/><a href=\'http://aidanfollestad.com\'>אתר</a>&nbsp;&nbsp;
+        <a href=\'https://twitter.com/afollestad\'>Twitter</a>&nbsp;&nbsp;
+        <a href=\'https://google.com/+AidanFollestad\'>Google+</a>&nbsp;&nbsp;
+        <a href=\'https://github.com/afollestad\'>GitHub</a>&nbsp;&nbsp;
+        <a href=\'https://www.linkedin.com/in/afollestad\'>LinkedIn</a>
+    ]]></string>
+    <string name="details_body_file"><![CDATA[
+        <b>שם:</b>&nbsp;&nbsp;%1$s<br/><b>מיקום:</b>&nbsp;&nbsp;%2$s<br/><b>משקל:</b>&nbsp;&nbsp;%3$s<br/><b>נערך:</b>&nbsp;&nbsp;%4$s<br/><b>הרשאות:</b>&nbsp;&nbsp;%5$s
+    ]]></string>
+    <string name="details_body_dir"><![CDATA[
+        <b>שם:</b>&nbsp;&nbsp;%1$s<br/><b>מיקום:</b>&nbsp;&nbsp;%2$s<br/><b>תוכן:</b>&nbsp;&nbsp;%3$s<br/><b>נערך:</b>&nbsp;&nbsp;%4$s
+    ]]></string>
+    <string name="material_version">Material (חומרי)</string>
+    <string name="material_version_desc">עיצוב חומרי (Material) זמין לאלו שמריצים את אנדרואיד L. האם אתה רוצה לראות איפה פרסמו גירסא זו בקהילת הGoogle+ של Cabinet?</string>
+    <string name="new_file">קובץ חדש</string>
+    <string name="making_file">יוצר קובץ...</string>
+    <string name="created_file">נוצר הקובץ %1$s</string>
+    <string name="file_already_exists">קובץ זה כבר קיים</string>
+    <string name="failed_make_file">נכשלה יצירת הקובץ החדש: %1$s</string>
+    <string name="pick_a_file">בחר קובץ...</string>
+    <string name="cabinet_text_editor">עורך הטקסט של Cabinet</string>
+    <string name="save">שמור</string>
+    <string name="unsaved_changes">שינויים לא נשמרו</string>
+    <string name="unsaved_changes_desc">יש לך שינויים לא שמורים, האם תרצה לשמור אותם לפני שאתה יוצא?</string>
+    <string name="saving">שומר...</string>
+    <string name="loading">טוען...</string>
+    <string name="unsupported_extension">אין תמיכה בסוג קובץ זה.</string>
+    <string name="unsupported_extension_desc">אתה לא יכול לפתוח קובץ מסוג זה על מנת לערוך טקסט.</string>
+    <string name="file_already_exists_warning">הזהרה: קובץ זה כבר קיים. הקובץ החדש יופיע כמשוכפל</string>
+</resources>

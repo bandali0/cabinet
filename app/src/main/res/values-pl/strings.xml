@@ -24,7 +24,7 @@ posiada również inne funkcje, takie jak m.in. zdolny dostęp do serwerów popr
     <string name="directory">Katalog</string>
     <string name="unknown">Nieznany</string>
     <string name="go_up">W górę</string>
-    <string name="press_back_to_exit">"Wciśnij wstecz jeszcze raz by wyjść..."</string>
+    <string name="press_back_to_exit">"Naciśnij jeszcze raz wstecz, aby wyjść"</string>
     <string name="x_files">%1$d pliki</string>
     <string name="x_dirs">%1$d Katalogi</string>
     <string name="no_x_files">Brak %1$s plików</string>
@@ -34,7 +34,7 @@ posiada również inne funkcje, takie jak m.in. zdolny dostęp do serwerów popr
     <string name="sort_modified">Ostatnio modyfikowane</string>
     <string name="modified_x">Modyfikowane %1$s</string>
     <string name="iconpress_hint">"Możesz dotknąć ikonki pliku by go szybko zaznaczyć! "</string>
-    <string name="drawer_longpress_hint">Wskazówka: długie przyciśnięcie skrótów zaznacza je do usunięcia!</string>
+    <string name="drawer_longpress_hint">Wskazówka: dłuższe przyciśnięcie skrótów zaznacza je do usunięcia!</string>
     <string name="navigation_drawer_open">Otwórz szufladę</string>
     <string name="navigation_drawer_close">Zamknij szufladę</string>
     <string name="new_folder">Nowy Folder</string>
@@ -105,12 +105,12 @@ posiada również inne funkcje, takie jak m.in. zdolny dostęp do serwerów popr
     <string name="cut_xfiles"><![CDATA[
  <b>Wytnij:</b>&nbsp:&;%1$d pliki
     ]]></string>
-    <string name="search_files">Wyszukiwanie plików...</string>
+    <string name="search_files">Szukaj plików...</string>
     <string name="search_x"><![CDATA[
  <b>Szukaj:</b>&nbsp;%1$s
     ]]></string>
     <string name="donate">Wspomóż</string>
-    <string name="thank_you">Dzięki Ci bardzo !</string>
+    <string name="thank_you">Dziękujemy za wsparcie!</string>
     <string name="rate">Oceń</string>
     <string name="later">Później</string>
     <string name="rate_desc">Czy chcesz ocenić Cabinet w Google Play? Dobre słowo mile widziane!</string>

@@ -37,7 +37,7 @@
     <string name="drawer_longpress_hint">Truco: pulsación larga sobre los accesos directos para eliminarlos!</string>
     <string name="navigation_drawer_open">Abrir cajón de navegación</string>
     <string name="navigation_drawer_close">Cerrar cajón de navegación</string>
-    <string name="new_folder">Nueva Carpeta</string>
+    <string name="new_folder">Nuevo Carpeta</string>
     <string name="created_folder">Creada carpeta %1$s</string>
     <string name="untitled">Sin nombre</string>
     <string name="renamed_to">Renombrado a %1$s</string>
@@ -56,7 +56,7 @@
     <string name="sort_extension">Extensión</string>
     <string name="sort_size_lowhigh">Tamaño, pequeño a grande</string>
     <string name="sort_size_highlow">Tamaño, grande a pequeño</string>
-    <string name="new_remote_connection">Nueva Conexión Remota</string>
+    <string name="new_remote_connection">Nuevo Conexión Remota</string>
     <string name="network_service_label">Cabinet Servicio de Red</string>
     <string name="connection_notification_content">Conectado a %1$s</string>
     <string name="cabinet_sftp">Cabinet SFTP</string>
@@ -81,7 +81,7 @@
     <string name="uploading">Subiendo…</string>
     <string name="copying">Copiando…</string>
     <string name="failed_delete_file">Fallo al borrar archivo: %1$s</string>
-    <string name="failed_make_directory">Fallo al crear nueva carpeta: %1$s</string>
+    <string name="failed_make_directory">Fallo al crear nuevo carpeta: %1$s</string>
     <string name="failed_rename_file">Fallo al renombrar/mover archivo: %1$s</string>
     <string name="failed_unzip_file">Fallo al descomprimir archivo: %1$s</string>
     <string name="failed_zip_files">Fallo al comprimir archivo(s): %1$s</string>
@@ -154,7 +154,7 @@
     ]]></string>
     <string name="material_version">Material</string>
     <string name="material_version_desc">Una version con Material esta disponible para quien tenga Android L. ¿Quiere ver la comunidad Cabinet en Google+  donde esta disponible esta versión ?</string>
-    <string name="new_file">Nueva Archivo</string>
+    <string name="new_file">Nuevo Archivo</string>
     <string name="making_file">Creando archivo...</string>
     <string name="created_file">Archivo %1$s creado</string>
     <string name="file_already_exists">El archivo ya existe</string>

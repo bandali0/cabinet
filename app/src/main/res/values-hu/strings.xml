@@ -5,7 +5,7 @@
  Kellemes és úgy működik ahogy azt egy fájlkezelőtől elvárjuk. \n\n Vegyen egy pillantást a fájra:</string>
     <string name="welcome_conclusion">Érintse meg az ikonképet vagy a 3-as pont ikont. Ha az ikonképet megnyomja feltűnnek az opciók. Ezt a fájl hosszú nyomva tartásával is elérheti. A 3-as pont ikon megjeleníti a fájl többi opcióit. \n\nA Cabinet
  másik különféle jellemzői, mint például a szerverekhez való távoli hozzáférés SFTPn keresztül. Köszönjük hogy ezt az alkalmazást használja!</string>
-    <string name="lets_go">Kezdjünk is hozzá!</string>
+    <string name="lets_go">Tovább...</string>
     <string name="open_as">Megnyitás Mint...</string>
     <string name="pin">Kedvencekhez</string>
     <string name="copy">Másolás</string>
@@ -18,7 +18,7 @@
     <string name="unzip">Kibontás</string>
     <string name="selectAll">Összes Kiválasztása</string>
     <string name="details">Adatok</string>
-    <string name="no_files">Üres</string>
+    <string name="no_files">Üres Mappa</string>
     <string name="storage">Tárhely</string>
     <string name="root">Gyökér</string>
     <string name="directory">Könyvtár</string>
@@ -33,8 +33,8 @@
     <string name="confirm_remove_shortcut">Biztos el távolítja a(z) %1$s mappát a kedvencekből?</string>
     <string name="sort_modified">Legutóbb Módosítva</string>
     <string name="modified_x">Módosítva %1$s</string>
-    <string name="iconpress_hint">Érintse meg a fájl ikonját a gyorsabb kiválasztás miatt!</string>
-    <string name="drawer_longpress_hint">TIPP: hosszú érintés a már hozzáadott kedvenc mappa eltávolításához!</string>
+    <string name="iconpress_hint">TIPP: Érintse meg a fájl ikonját a gyorsabb kiválasztás miatt!</string>
+    <string name="drawer_longpress_hint">TIPP: Hosszú érintés a már hozzáadott kedvenc mappa eltávolításához!</string>
     <string name="navigation_drawer_open">Navigációs Fiók nyitása</string>
     <string name="navigation_drawer_close">Navigációs Fiók bezárása</string>
     <string name="new_folder">Új Mappa</string>
@@ -133,7 +133,7 @@
     <string name="ui">Felhasználói Felület</string>
     <string name="settings">Beállítások</string>
     <string name="translucentstatusbar_disabled">Ezt nem tudja megváltoztatni.</string>
-    <string name="translucency_not_supported">Az áttetszőség nem támogatott.</string>
+    <string name="translucency_not_supported">Ez az opció nem támogatott.</string>
     <string name="translucent_statusbar">Áttetsző Értesítési Sáv</string>
     <string name="translucent_navbar">Áttetsző Navigációs Sáv</string>
     <string name="translucent_statusbar_desc">Áttetsző (egyszínű a műveleti sávval) Értesítési Sáv Kitkat vagy újabb verzión.</string>

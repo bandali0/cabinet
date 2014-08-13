@@ -37,7 +37,7 @@
     <string name="drawer_longpress_hint">¡Consejo: mantén presionado los accesos directos fijados para eliminarlos!</string>
     <string name="navigation_drawer_open">Abrir el cajón de navegación</string>
     <string name="navigation_drawer_close">Cerrar el cajón de navegación</string>
-    <string name="new_folder">Nueva carpeta</string>
+    <string name="new_folder">Nuevo carpeta</string>
     <string name="created_folder">Carpeta creada %1$s</string>
     <string name="untitled">Sin título</string>
     <string name="renamed_to">Renombrado a  %1$s</string>
@@ -56,7 +56,7 @@
     <string name="sort_extension">Extensión</string>
     <string name="sort_size_lowhigh">Tamaño, ascendente</string>
     <string name="sort_size_highlow">Tamaño, descendente</string>
-    <string name="new_remote_connection">Nueva conección remota</string>
+    <string name="new_remote_connection">Nuevo conección remota</string>
     <string name="network_service_label">Cabinet Servicio de Red</string>
     <string name="connection_notification_content">Conectado a %1$s</string>
     <string name="cabinet_sftp">Cabinet SFTP</string>
@@ -154,7 +154,7 @@
     ]]></string>
     <string name="material_version">Material</string>
     <string name="material_version_desc">Una versión con Material de Cabinet esta disponible para aquellos con Android L. ¿Quieres ver la comunidad de Cabinet  en Google+ donde está publicada esta versión?</string>
-    <string name="new_file">Nueva Archivo</string>
+    <string name="new_file">Nuevo Archivo</string>
     <string name="making_file">Creando archivo...</string>
     <string name="created_file">Archivo creado %1$s</string>
     <string name="file_already_exists">El archivo ya existe</string>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome">Vítejte</string>
+    <string name="welcome_intro">Vítejte v aplikaci Cabinet! Cabinet je jednoduchý správce souborů navržený s důrazem na estetiku a zážitek z používání. Funguje přesně tak, jak by správný správce souborů fungovat měl.
+\n\nVěnujte pozornost tomuto souboru:</string>
+    <string name="welcome_conclusion">Zkuste stisknout náhledový obrázek nebo ikonu s 3 tečkami. Stisknutím obrázku se soubor označí pro práci s více soubory. Toho lze docílit také stisknutím a podržením požadovaného souboru. Ikona s 3 tečkami zobrazí vyskakovací menu s různými možnostmi pro každý soubor.\n\nCabinet
+disponuje také dalšími různými funkcemi, jako vzdálený přístup k serverům přes SFTP. Můžete je později najít prozkoumáním aplikace. Díky, že jste si nainstalovali Cabinet!</string>
+    <string name="lets_go">Jdeme na to!</string>
+    <string name="open_as">Otevřít jako...</string>
+    <string name="pin">Připnout</string>
+    <string name="copy">Kopírovat</string>
+    <string name="cut">Vyjmout</string>
+    <string name="rename">Přejmenovat</string>
+    <string name="delete">Smazat</string>
+    <string name="paste">Vložit</string>
+    <string name="share">Sdílet</string>
+    <string name="zip">Zabalit</string>
+    <string name="unzip">Rozbalit</string>
+    <string name="selectAll">Vybrat vše</string>
+    <string name="details">Podrobnosti</string>
+    <string name="no_files">Žádné soubory</string>
+    <string name="storage">Úložiště</string>
+    <string name="root">Root</string>
+    <string name="directory">Adresář</string>
+    <string name="unknown">Neznámé</string>
+    <string name="go_up">Nahoru</string>
+    <string name="press_back_to_exit">"Stiskněte zpět znovu pro ukončení..."</string>
+    <string name="x_files">%1$d souborů</string>
+    <string name="x_dirs">%1$d adresářů</string>
+    <string name="no_x_files">Žádné %1$s soubory</string>
+    <string name="done">Hotovo</string>
+    <string name="remove_shortcut">Odstranit zástupce</string>
+    <string name="confirm_remove_shortcut">Jste si jisti, že chcete odstranit zástupce pro %1$s?</string>
+    <string name="sort_modified">Poslední změna</string>
+    <string name="modified_x">Změněno %1$s</string>
+    <string name="iconpress_hint">Pro rychlé označení souboru můžete stisknout jeho ikonu.</string>
+    <string name="drawer_longpress_hint">Tip: pro odstranění zástupce jej dlouze stiskněte</string>
+    <string name="navigation_drawer_open">Otevřít navigační lištu</string>
+    <string name="navigation_drawer_close">Zavřít navigační lištu</string>
+    <string name="new_folder">Nová složka</string>
+    <string name="created_folder">Vytvořena složka %1$s</string>
+    <string name="untitled">Bez názvu</string>
+    <string name="renamed_to">Přejmenováno na %1$s</string>
+    <string name="moved_to">Přesunuto do %1$s</string>
+    <string name="copied_to">Zkopírováno do %1$s</string>
+    <string name="no">Ne</string>
+    <string name="yes">Ano</string>
+    <string name="newStr">Nový</string>
+    <string name="search">Hledat</string>
+    <string name="confirm_delete">Opravdu chcete smazat %1$s?</string>
+    <string name="confirm_delete_xfiles">Opravdu chcete smazat %1$d souborů?</string>
+    <string name="unavailable">Nedostupný</string>
+    <string name="sort_by">Seřadit podle</string>
+    <string name="sort_name_folderstop">Jméno, složky první</string>
+    <string name="sort_name">Jméno</string>
+    <string name="sort_extension">Přípona</string>
+    <string name="sort_size_lowhigh">Od nejmenší</string>
+    <string name="sort_size_highlow">Od největší</string>
+    <string name="new_remote_connection">Nové vzdálené připojení</string>
+    <string name="network_service_label">Cabinet Network Service</string>
+    <string name="connection_notification_content">Připojeno k %1$s</string>
+    <string name="cabinet_sftp">Cabinet SFTP</string>
+    <string name="disconnect">Odpojeno</string>
+    <string name="host">Host</string>
+    <string name="port">Port</string>
+    <string name="username">Uživ. jméno</string>
+    <string name="password">Heslo</string>
+    <string name="test_connection">Test připojení</string>
+    <string name="connection_successful">Připojení bylo úspěšné!</string>
+    <string name="disconnect_prompt">Chcete se odpojit od %1$s?</string>
+    <string name="uploaded_to">Nahráno na %1$s</string>
+    <string name="downloaded_to">Staženo do %1$s</string>
+    <string name="connecting">Připojování...</string>
+    <string name="downloading">Stahování...</string>
+    <string name="deleting">Odstraňování...</string>
+    <string name="making_folder">Vytváření složky...</string>
+    <string name="renaming">Přejmenovávání...</string>
+    <string name="unzipping">Rozbalování...</string>
+    <string name="zipping">Zabalování...</string>
+    <string name="moving">Přesouvání...</string>
+    <string name="uploading">Nahrávání...</string>
+    <string name="copying">Kopírování...</string>
+    <string name="failed_delete_file">Tento soubor se nepovedlo odstranit: %1$s</string>
+    <string name="failed_make_directory">Nepovedlo se vytvořit novou složku: %1$s</string>
+    <string name="failed_rename_file">Nepovedlo se přejmenovat/přesunout tento soubor: %1$s</string>
+    <string name="failed_unzip_file">Nepovedlo se rozbalit tento soubor: %1$s</string>
+    <string name="failed_zip_files">Nepovedlo se zabalit tyto soubory: %1$s</string>
+    <string name="error">Chyba</string>
+    <string name="failed_download_file">Při pokusu o stažení tohoto souboru došlo k chybě: %1$s</string>
+    <string name="failed_connect_server">Nepovedlo se připojit k serveru: %1$s</string>
+    <string name="activity_not_found">Pro otevření tohoto souboru není k dispozici žádná aplikace</string>
+    <string name="failed_upload_file">Nepovedlo se nahrát tento soubor: %1$s</string>
+    <string name="failed_copy_file">Nepovedlo se zkopírovat tento soubor: %1$s</string>
+    <string name="no_apps_for_sharing">Není k dispozici žádná aplikace pro sdílení tohoto typu souboru</string>
+    <string name="directory_already_exists">Adresář již existuje</string>
+    <string name="copy_x"><![CDATA[
+        <b>Kopírovat:</b>&nbsp;&nbsp;%1$s
+    ]]></string>
+    <string name="cut_x"><![CDATA[
+        <b>Vyjmout:</b>&nbsp;&nbsp;%1$s
+    ]]></string>
+    <string name="copy_xfiles"><![CDATA[
+        <b>Kopírovat:</b>&nbsp;&nbsp;%1$d souborů
+    ]]></string>
+    <string name="cut_xfiles"><![CDATA[
+        <b>Vyjmout:</b>&nbsp;&nbsp;%1$d souborů
+    ]]></string>
+    <string name="search_files">Hledat soubory...</string>
+    <string name="search_x"><![CDATA[
+        <b>Hledat:</b>&nbsp;%1$s
+    ]]></string>
+    <string name="donate">Přispět</string>
+    <string name="thank_you">Mockrát děkuji!</string>
+    <string name="rate">Ohodnotit</string>
+    <string name="later">Později</string>
+    <string name="rate_desc">Chcete Cabinet ohodnotit na Google Play? Dobrá hodnocení jsou vítána!</string>
+    <string name="sure">Určitě!</string>
+    <string name="no_thanks">Ne, díky</string>
+    <string name="file">Soubor</string>
+    <string name="folder">Složka</string>
+    <string name="remote_connection">Vzdálené připojení...</string>
+    <string name="text">Text</string>
+    <string name="image">Obrázek</string>
+    <string name="audio">Zvuk</string>
+    <string name="video">Video</string>
+    <string name="other">Ostatní</string>
+    <string name="info">Info</string>
+    <string name="files">Soubory</string>
+    <string name="show_hidden_files">Zobrazovat skryté soubory</string>
+    <string name="about">O aplikaci</string>
+    <string name="about_desc">O aplikaci a jejím vývojáři.</string>
+    <string name="show_hidden_files_desc">Zaškrtněte, pokud chcete zobrazit skryté soubory.</string>
+    <string name="ui">Uživatelské rozhraní</string>
+    <string name="settings">Nastavení</string>
+    <string name="translucentstatusbar_disabled">Android L tohle neumožňuje změnit.</string>
+    <string name="translucency_not_supported">Průsvitnost není v této verzi Androidu podporována.</string>
+    <string name="translucent_statusbar">Průsvitná stavová lišta</string>
+    <string name="translucent_navbar">Průsvitná navigační lišta</string>
+    <string name="translucent_statusbar_desc">Průsvitná (stejná barva jako lišta akcí) stavová lišta na KitKatu a výše.</string>
+    <string name="translucent_navbar_desc">Průsvitná navigační lišta na KitKatu a výše.</string>
+    <string name="about_body"><![CDATA[
+Minimalistický, intuitivní a krásný souborový manažer pro Android 4.1 a vyšší.<br/><br/>
+Vytvořil <b>Aidan Follestad</b>.<br/><a href=\'http://aidanfollestad.com\'>Web</a>&nbsp;&nbsp;
+<a href=\'https://twitter.com/afollestad\'>Twitter</a>&nbsp;&nbsp;
+<a href=\'https://google.com/+AidanFollestad\'>Google+</a>&nbsp;&nbsp;
+<a href=\'https://github.com/afollestad\'>GitHub</a>&nbsp;&nbsp;
+<a href=\'https://www.linkedin.com/in/afollestad\'>LinkedIn</a>
+    ]]></string>
+    <string name="details_body_file"><![CDATA[
+        <b>Jméno:</b>&nbsp;&nbsp;%1$s<br/><b>Umístění:</b>&nbsp;&nbsp;%2$s<br/><b>Velikost:</b>&nbsp;&nbsp;%3$s<br/><b>Změněno:</b>&nbsp;&nbsp;%4$s<br/><b>Oprávnění:</b>&nbsp;&nbsp;%5$s
+    ]]></string>
+    <string name="details_body_dir"><![CDATA[
+        <b>Jméno:</b>&nbsp;&nbsp;%1$s<br/><b>Umístění:</b>&nbsp;&nbsp;%2$s<br/><b>Obsah:</b>&nbsp;&nbsp;%3$s<br/><b>Změněno:</b>&nbsp;&nbsp;%4$s
+    ]]></string>
+    <string name="material_version">Material</string>
+    <string name="material_version_desc">Cabinet s Material Designem je k dispozici pro zařízení s Androidem L. Chcete navštívit Cabinet Google+ komunitu, kde je tato verze umístěna?</string>
+    <string name="new_file">Nový soubor</string>
+    <string name="making_file">Vytváření souboru...</string>
+    <string name="created_file">Vytvořen soubor %1$s</string>
+    <string name="file_already_exists">Soubor již existuje</string>
+    <string name="failed_make_file">Nepovedlo se vytvořit nový soubor: %1$s</string>
+    <string name="pick_a_file">Vyberte soubor...</string>
+    <string name="cabinet_text_editor">Cabinet textový editor</string>
+    <string name="save">Uložit</string>
+    <string name="unsaved_changes">Neuložené změny</string>
+    <string name="unsaved_changes_desc">Máte neuložené změny, chcete je před ukončením uložit?</string>
+    <string name="saving">Ukládání...</string>
+    <string name="loading">Načítání...</string>
+    <string name="unsupported_extension">Nepodporovaná přípona</string>
+    <string name="unsupported_extension_desc">Nemůžete otevřít tento typ souboru pro editaci textu.</string>
+    <string name="file_already_exists_warning">Varování: tento soubor již existuje. Váš nový soubor se objeví jako duplicita.</string>
+</resources>
