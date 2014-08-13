@@ -13,6 +13,7 @@ import com.afollestad.cabinet.file.CloudFile;
 import com.afollestad.cabinet.file.LocalFile;
 import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.sftp.SftpClient;
+import com.afollestad.cabinet.utils.Utils;
 
 public class CopyCab extends BaseFileCab {
 
@@ -38,6 +39,7 @@ public class CopyCab extends BaseFileCab {
 
     @Override
     public void paste() {
+        Utils.lockOrientation(getContext());
         final ProgressDialog mDialog = new ProgressDialog(getContext());
         mDialog.setMessage(getContext().getString(R.string.copying));
         if (getFiles().size() > 1) {
@@ -63,6 +65,7 @@ public class CopyCab extends BaseFileCab {
                                 mDialog.setProgress(mDialog.getProgress() + 1);
                             copyCount++;
                             if (copyCount == copyTotal) {
+                                Utils.unlockOrientation(getContext());
                                 if (getDirectory().isRemote()) {
                                     Toast.makeText(getContext(), getContext().getString(R.string.uploaded_to, getDirectory().getPath()), Toast.LENGTH_SHORT).show();
                                 } else {
@@ -73,6 +76,7 @@ public class CopyCab extends BaseFileCab {
 
                         @Override
                         public void onError(Exception e) {
+                            Utils.unlockOrientation(getContext());
                             shouldCancel = true;
                         }
                     });

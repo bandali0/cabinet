@@ -118,8 +118,10 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     }
 
     public void invalidateSystemBarTintManager() {
-        mTintManager = new SystemBarTintManager(DrawerActivity.this);
-        mTintConfig = mTintManager.getConfig();
+        if (mTintManager == null)
+            mTintManager = new SystemBarTintManager(DrawerActivity.this);
+        if (mTintConfig == null)
+            mTintConfig = mTintManager.getConfig();
     }
 
     public void waitFabInvalidate() {

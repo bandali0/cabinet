@@ -13,6 +13,7 @@ import com.afollestad.cabinet.file.CloudFile;
 import com.afollestad.cabinet.file.LocalFile;
 import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.sftp.SftpClient;
+import com.afollestad.cabinet.utils.Utils;
 
 public class CutCab extends BaseFileCab {
 
@@ -29,7 +30,7 @@ public class CutCab extends BaseFileCab {
 
     private transient boolean shouldCancel;
     private transient int cutCount;
-    private transient int cutTOtal;
+    private transient int cutTotal;
 
     @Override
     public boolean canShowFab() {
@@ -38,6 +39,7 @@ public class CutCab extends BaseFileCab {
 
     @Override
     public void paste() {
+        Utils.lockOrientation(getContext());
         final ProgressDialog mDialog = new ProgressDialog(getContext());
         mDialog.setMessage(getContext().getString(R.string.copying));
         if (getFiles().size() > 1) {
@@ -46,7 +48,7 @@ public class CutCab extends BaseFileCab {
         } else mDialog.setIndeterminate(true);
         mDialog.show();
         cutCount = 0;
-        cutTOtal = getFiles().size();
+        cutTotal = getFiles().size();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -62,7 +64,8 @@ public class CutCab extends BaseFileCab {
                             if (getFiles().size() > 0)
                                 mDialog.setProgress(mDialog.getProgress() + 1);
                             cutCount++;
-                            if (cutCount == cutTOtal) {
+                            if (cutCount == cutTotal) {
+                                Utils.unlockOrientation(getContext());
                                 if (getDirectory().isRemote()) {
                                     Toast.makeText(getContext(), getContext().getString(R.string.uploaded_to, getDirectory().getPath()), Toast.LENGTH_SHORT).show();
                                 } else {
@@ -73,6 +76,7 @@ public class CutCab extends BaseFileCab {
 
                         @Override
                         public void onError(Exception e) {
+                            Utils.unlockOrientation(getContext());
                             shouldCancel = true;
                         }
                     });
