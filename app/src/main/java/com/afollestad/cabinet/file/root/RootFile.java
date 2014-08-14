@@ -86,7 +86,7 @@ public class RootFile extends File {
                     @Override
                     public void run() {
                         try {
-                            RootFile.runAsRoot("mv \"" + getPath() + "\" \"" + newFile.getPath() + "\"");
+                            RootFile.runAsRoot("mv -f \"" + getPath() + "\" \"" + newFile.getPath() + "\"");
                             getContext().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
