@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome">歡迎</string>
+    <string name="welcome_intro">歡迎使用 Cabinet ！Cabinet 是一個簡約、優美、宜人的文檔管理器。
+ 想要瞭解如何使用。\n\n請閱讀本檔案：</string>
+    <string name="welcome_conclusion">請嘗試點擊文件映像或者右側的三點圖示。點擊文件映像可以進行檔案的批量選擇。長按檔案亦可達到同樣效果。點擊三點圖示則可以彈出快显功能表
+，以對檔案進行更多的操作。\n\nCabinet
+ 還有更多功能等待您的探索，如通過 SFTP 遠程連接伺服。非常感謝您試用 Cabinet ！</string>
+    <string name="lets_go">讓我們開始吧！</string>
+    <string name="open_as">開啓爲</string>
+    <string name="pin">固定</string>
+    <string name="copy">複製</string>
+    <string name="cut">剪下</string>
+    <string name="rename">重新命名</string>
+    <string name="delete">刪除</string>
+    <string name="paste">貼上</string>
+    <string name="share">共用</string>
+    <string name="zip">壓縮</string>
+    <string name="unzip">解壓縮</string>
+    <string name="selectAll">全部選擇</string>
+    <string name="details">詳細</string>
+    <string name="no_files">無檔案</string>
+    <string name="storage">儲存</string>
+    <string name="root">Root</string>
+    <string name="directory">目錄</string>
+    <string name="unknown">未知</string>
+    <string name="go_up">向上</string>
+    <string name="press_back_to_exit">"再次按返回鍵退出程式"</string>
+    <string name="x_files">%1$d 檔案</string>
+    <string name="x_dirs">%1$d 目錄</string>
+    <string name="no_x_files">無 %1$s 檔案</string>
+    <string name="done">完畢</string>
+    <string name="remove_shortcut">移除捷徑</string>
+    <string name="confirm_remove_shortcut">確定移除 %1$s 的捷徑麼？</string>
+    <string name="sort_modified">修改時間</string>
+    <string name="modified_x">修改時間 %1$s</string>
+    <string name="iconpress_hint">您可以通過點擊檔案圖示來進行快速選擇！</string>
+    <string name="drawer_longpress_hint">貼士：長按可刪除已固定的捷徑。</string>
+    <string name="navigation_drawer_open">打開導航欄</string>
+    <string name="navigation_drawer_close">關閉導航欄</string>
+    <string name="new_folder">新資料夾</string>
+    <string name="created_folder">創建資料夾 %1$s</string>
+    <string name="untitled">未命名</string>
+    <string name="renamed_to">重新命名到  %1$s</string>
+    <string name="moved_to">移動到 %1$s</string>
+    <string name="copied_to">複製到 %1$s</string>
+    <string name="no">否</string>
+    <string name="yes">是</string>
+    <string name="newStr">新增</string>
+    <string name="search">搜尋</string>
+    <string name="confirm_delete">確認要刪除 %1$s ？</string>
+    <string name="confirm_delete_xfiles">確認要刪除 %1$d 檔案？</string>
+    <string name="unavailable">不可用</string>
+    <string name="sort_by">排序</string>
+    <string name="sort_name_folderstop">名稱，資料夾優先</string>
+    <string name="sort_name">名稱</string>
+    <string name="sort_extension">類型</string>
+    <string name="sort_size_lowhigh">大小，從小到大</string>
+    <string name="sort_size_highlow">大小，從大到小</string>
+    <string name="new_remote_connection">新增遠程連接</string>
+    <string name="network_service_label">Cabinet 網路服務</string>
+    <string name="connection_notification_content">連接到 %1$s</string>
+    <string name="cabinet_sftp">Cabinet SFTP</string>
+    <string name="disconnect">斷開</string>
+    <string name="host">主機</string>
+    <string name="port">埠</string>
+    <string name="username">使用者名稱</string>
+    <string name="password">密碼</string>
+    <string name="test_connection">測試連接</string>
+    <string name="connection_successful">連接成功！</string>
+    <string name="disconnect_prompt">想要從 %1$s 斷開麼？</string>
+    <string name="uploaded_to">上載到 %1$s</string>
+    <string name="downloaded_to">下載到 %1$s</string>
+    <string name="connecting">正在連接……</string>
+    <string name="downloading">正在下載……</string>
+    <string name="deleting">正在刪除……</string>
+    <string name="making_folder">正在新增資料夾……</string>
+    <string name="renaming">正在重新命名……</string>
+    <string name="unzipping">正在解壓縮……</string>
+    <string name="zipping">正在壓縮……</string>
+    <string name="moving">正在移動……</string>
+    <string name="uploading">正在上載……</string>
+    <string name="copying">正在複製……</string>
+    <string name="failed_delete_file">刪除檔案 %1$s 失敗</string>
+    <string name="failed_make_directory">新增資料夾 %1$s 失敗</string>
+    <string name="failed_rename_file">重新命名/移動檔案 %1$s 失敗</string>
+    <string name="failed_unzip_file">解壓縮檔案 %1$s 失敗</string>
+    <string name="failed_zip_files">壓縮檔案 %1$s 失敗</string>
+    <string name="error">錯誤</string>
+    <string name="failed_download_file">下載檔案時反生錯誤：%1$s</string>
+    <string name="failed_connect_server">伺服器連接失敗：%1$s</string>
+    <string name="activity_not_found">沒有找到可以打開這個檔案的程式</string>
+    <string name="failed_upload_file">上傳檔案失敗：%1$s</string>
+    <string name="failed_copy_file">複製檔案失敗： %1$s</string>
+    <string name="no_apps_for_sharing">沒有可以共享此類型文檔的程式</string>
+    <string name="directory_already_exists">目錄已存在</string>
+    <string name="copy_x"><![CDATA[
+        <b>複製：</b>&nbsp;&nbsp;%1$s
+    ]]></string>
+    <string name="cut_x"><![CDATA[
+        <b>剪下：</b>&nbsp;&nbsp;%1$s
+    ]]></string>
+    <string name="copy_xfiles"><![CDATA[
+        <b>複製：</b>&nbsp;&nbsp;%1$d files
+    ]]></string>
+    <string name="cut_xfiles"><![CDATA[
+        <b>剪下：</b>&nbsp;&nbsp;%1$d files
+    ]]></string>
+    <string name="search_files">搜尋文檔……</string>
+    <string name="search_x"><![CDATA[
+        <b>搜尋：</b>&nbsp;%1$s
+    ]]></string>
+    <string name="donate">捐贈</string>
+    <string name="thank_you">非常感謝！</string>
+    <string name="rate">打分</string>
+    <string name="later">稍後</string>
+    <string name="rate_desc">您想要在 Google Play 上給 Cabinet 打分麼？非常期待您的認可！</string>
+    <string name="sure">當然！</string>
+    <string name="no_thanks">不，謝謝！</string>
+    <string name="file">檔案</string>
+    <string name="folder">資料夾</string>
+    <string name="remote_connection">遠程連接中……</string>
+    <string name="text">文本</string>
+    <string name="image">映像</string>
+    <string name="audio">音訊</string>
+    <string name="video">視訊</string>
+    <string name="other">其他</string>
+    <string name="info">資訊</string>
+    <string name="files">檔案</string>
+    <string name="show_hidden_files">顯示隱藏檔案</string>
+    <string name="about">關於</string>
+    <string name="about_desc">關於程式和設計師</string>
+    <string name="show_hidden_files_desc">選擇是否顯示隱藏資料夾</string>
+    <string name="ui">UI</string>
+    <string name="settings">設定</string>
+    <string name="translucentstatusbar_disabled">Android L下不可修改。</string>
+    <string name="translucency_not_supported">當前的Android版本不支持半透明。</string>
+    <string name="translucent_statusbar">狀態列半透明</string>
+    <string name="translucent_navbar">導航列半透明</string>
+    <string name="translucent_statusbar_desc">在 KitKat 及以上版本使用半透明狀態列（與操作列顏色相同）</string>
+    <string name="translucent_navbar_desc">在 KitKat 及以上版本使用半透明導航列</string>
+    <string name="about_body"><![CDATA[
+    一個簡約、直觀、優美的檔案管理器， Android 4.1 以上版本可用。<br/><br/>
+    由 <b>Aidan Follestad</b>設計。<br/><a href=\'http://aidanfollestad.com\'>Website</a>&nbsp;&nbsp;
+        <a href=\'https://twitter.com/afollestad\'>Twitter</a>&nbsp;&nbsp;
+        <a href=\'https://google.com/+AidanFollestad\'>Google+</a>&nbsp;&nbsp;
+        <a href=\'https://github.com/afollestad\'>GitHub</a>&nbsp;&nbsp;
+        <a href=\'https://www.linkedin.com/in/afollestad\'>LinkedIn</a>
+    ]]></string>
+    <string name="details_body_file"><![CDATA[
+        <b>名稱：</b>&nbsp;&nbsp;%1$s<br/><b>路徑：</b>&nbsp;&nbsp;%2$s<br/><b>大小：</b>&nbsp;&nbsp;%3$s<br/><b>修改時間：</b>&nbsp;&nbsp;%4$s<br/><b>許可權：</b>&nbsp;&nbsp;%5$s
+    ]]></string>
+    <string name="details_body_dir"><![CDATA[
+        <b>名稱：</b>&nbsp;&nbsp;%1$s<br/><b>路徑：</b>&nbsp;&nbsp;%2$s<br/><b>內容：</b>&nbsp;&nbsp;%3$s<br/><b>修改時間：</b>&nbsp;&nbsp;%4$s
+    ]]></string>
+    <string name="material_version">Material</string>
+    <string name="material_version_desc">運行在 Android L 上的全新 Material Design 版本已發行！隨時瞭解最新版本請關注 Cabinet Google+ 社區。</string>
+    <string name="new_file">新增檔案</string>
+    <string name="making_file">新增檔案……</string>
+    <string name="created_file">新增檔案 %1$s</string>
+    <string name="file_already_exists">檔案已存在</string>
+    <string name="failed_make_file">新增檔案失敗：%1$s</string>
+    <string name="pick_a_file">提取檔案……</string>
+    <string name="cabinet_text_editor">Cabinet 文本編輯器</string>
+    <string name="save">保存</string>
+    <string name="unsaved_changes">未保存修改</string>
+    <string name="unsaved_changes_desc">您仍有修改尚未保存，是否在退出前保存？</string>
+    <string name="saving">保存中……</string>
+    <string name="loading">載入中……</string>
+    <string name="unsupported_extension">不支持的檔案類型</string>
+    <string name="unsupported_extension_desc">您無法將此類型檔案以文本編輯方式打開。</string>
+    <string name="file_already_exists_warning">警告：此檔案已存在，新增檔案將以副本形式出現。</string>
+</resources>

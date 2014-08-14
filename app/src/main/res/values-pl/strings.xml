@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="welcome">Witaj !</string>
+    <string name="welcome">Witaj!</string>
     <string name="welcome_intro">Witamy w aplikacji Cabinet! Cabinet to prosty menadżer plików, zaprojektowany tak by wyglądał estetycznie 
 i działał jak menadżer plików powinien.\n\n                       Spójrz na ten plik:</string>
-    <string name="welcome_conclusion">Dotknij obrazek lub 3 kropeczki. Dotknięcie obrazka zaznaczy plik, można to zrobić również poprzez dotknięcie i przytrzymanie nazwy pliku. Natomiast ikonka z 3 kropeczkami to menu kontekstowe odpowiadające za wyświetlanie szczegółowych opcji zarządzania plikiem. \n\nCabinet
+    <string name="welcome_conclusion">Dotknij obrazek lub trzy kropki. Dotknięcie obrazka zaznaczy plik, można to zrobić również poprzez dotknięcie i przytrzymanie nazwy pliku. Natomiast ikonka z trzema kropkami to menu kontekstowe odpowiadające za wyświetlanie szczegółowych opcji zarządzania plikiem. \n\nCabinet
 posiada również inne funkcje, takie jak m.in. zdolny dostęp do serwerów poprzez SFTP. Dziękujemy za wypróbowanie naszego menadżera plików Cabinet!</string>
     <string name="lets_go">Do dzieła!</string>
     <string name="open_as">Otwórz jako...</string>
