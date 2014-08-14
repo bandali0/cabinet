@@ -123,7 +123,7 @@ public class Utils {
         context.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                CustomDialog.create(context, R.string.error, context.getString(message, e.getMessage()), null).show(context.getFragmentManager(), "ERROR");
+                CustomDialog.create(context, R.string.error, context.getString(message, e.getLocalizedMessage()), null).show(context.getFragmentManager(), "ERROR");
             }
         });
     }

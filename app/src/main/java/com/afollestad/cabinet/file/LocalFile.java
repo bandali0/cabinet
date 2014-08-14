@@ -68,7 +68,9 @@ public class LocalFile extends File {
             @Override
             public void run() {
                 try {
-                    if (!toJavaFile().createNewFile())
+                    if (requiresRoot()) {
+                        runAsRoot("touch \"" + getPath() + "\"");
+                    } else if (!toJavaFile().createNewFile())
                         throw new Exception("An unknown error occurred while creating your file.");
                     callback.onComplete();
                 } catch (Exception e) {
