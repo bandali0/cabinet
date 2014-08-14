@@ -26,19 +26,23 @@ public class Unzipper {
         ZipInputStream zis = new ZipInputStream(new BufferedInputStream(fis));
         ZipEntry entry;
         while ((entry = zis.getNextEntry()) != null) {
+            log("Entry: " + entry.getName() + ", size: " + entry.getSize());
             File dest = new LocalFile(context.getActivity(), new java.io.File(context.getDirectory().getPath() + "/" + entry.getName()));
-            dest.toJavaFile().getParentFile().mkdirs();
             dest = Utils.checkDuplicatesSync(context.getActivity(), dest);
             log("Unzipping: " + dest.getPath());
-            int size;
-            byte[] buffer = new byte[2048];
-            FileOutputStream fos = new FileOutputStream(dest.toJavaFile());
-            BufferedOutputStream bos = new BufferedOutputStream(fos, buffer.length);
-            while ((size = zis.read(buffer, 0, buffer.length)) != -1) {
-                bos.write(buffer, 0, size);
+            log("Creating directory: " + dest.toJavaFile().getParentFile().getAbsolutePath());
+            dest.toJavaFile().getParentFile().mkdirs();
+            if (entry.getSize() > 0) {
+                int size;
+                byte[] buffer = new byte[2048];
+                FileOutputStream fos = new FileOutputStream(dest.toJavaFile());
+                BufferedOutputStream bos = new BufferedOutputStream(fos, buffer.length);
+                while ((size = zis.read(buffer, 0, buffer.length)) != -1) {
+                    bos.write(buffer, 0, size);
+                }
+                bos.flush();
+                bos.close();
             }
-            bos.flush();
-            bos.close();
         }
         zis.close();
         fis.close();

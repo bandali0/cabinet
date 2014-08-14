@@ -723,7 +723,29 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 act.setResult(Activity.RESULT_OK, intent);
                 act.finish();
             } else {
-                Utils.openFile((DrawerActivity) getActivity(), file, false);
+                if (file.getExtension().equals("zip")) {
+                    final File fFile = file;
+                    CustomDialog.create(getActivity(), R.string.unzip, getString(R.string.auto_unzip_prompt),
+                            android.R.string.ok, 0, android.R.string.cancel, new CustomDialog.ClickListener() {
+                                @Override
+                                public void onPositive(int which, View view) {
+                                    List<File> files = new ArrayList<File>();
+                                    files.add(fFile);
+                                    Unzipper.unzip(DirectoryFragment.this, files, null);
+                                }
+
+                                @Override
+                                public void onNeutral() {
+                                }
+
+                                @Override
+                                public void onNegative() {
+                                    Utils.openFile((DrawerActivity) getActivity(), fFile, false);
+                                }
+                            }).show(getFragmentManager(), "AUTO_UNZIP_PROMPT");
+                } else {
+                    Utils.openFile((DrawerActivity) getActivity(), file, false);
+                }
             }
         }
     }
