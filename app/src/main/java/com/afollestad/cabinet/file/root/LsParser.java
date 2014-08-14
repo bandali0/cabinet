@@ -22,6 +22,7 @@ public class LsParser {
     }
 
     public static LsParser parse(Activity context, String path, List<String> response, FileFilter filter, boolean includeHidden) {
+        if (path.equals("/")) path = "";
         LsParser parser = new LsParser();
         parser.mContext = context;
         parser.mPath = path;
