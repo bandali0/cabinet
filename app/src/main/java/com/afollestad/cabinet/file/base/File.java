@@ -156,6 +156,8 @@ public abstract class File implements Serializable {
 
     public abstract void delete(SftpClient.CompletionCallback callback);
 
+    public abstract boolean deleteSync() throws Exception;
+
     public abstract boolean isRemote();
 
     public abstract boolean isDirectory();

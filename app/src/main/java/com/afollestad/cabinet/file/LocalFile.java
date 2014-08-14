@@ -7,11 +7,13 @@ import android.util.Log;
 
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.file.base.File;
+import com.afollestad.cabinet.file.base.FileFilter;
+import com.afollestad.cabinet.file.root.LsParser;
+import com.afollestad.cabinet.file.root.RootFile;
 import com.afollestad.cabinet.services.NetworkService;
 import com.afollestad.cabinet.sftp.SftpClient;
 import com.afollestad.cabinet.utils.Utils;
 
-import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -19,8 +21,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-import eu.chainfire.libsuperuser.Shell;
 
 public class LocalFile extends File {
 
@@ -48,16 +48,6 @@ public class LocalFile extends File {
         return mFile.isHidden() || mFile.getName().startsWith(".");
     }
 
-    private List<String> runAsRoot(String command) throws Exception {
-        Log.v("Cabinet-SU", command);
-        boolean suAvailable = Shell.SU.available();
-        if (!suAvailable) throw new Exception("Superuser is not available.");
-        return Shell.SU.run(new String[]{
-                "mount -o remount,rw /",
-                command
-        });
-    }
-
     public final boolean requiresRoot() {
         return !getPath().contains(Environment.getExternalStorageDirectory().getAbsolutePath());
     }
@@ -69,7 +59,7 @@ public class LocalFile extends File {
             public void run() {
                 try {
                     if (requiresRoot()) {
-                        runAsRoot("touch \"" + getPath() + "\"");
+                        RootFile.runAsRoot("touch \"" + getPath() + "\"");
                     } else if (!toJavaFile().createNewFile())
                         throw new Exception("An unknown error occurred while creating your file.");
                     callback.onComplete();
@@ -99,7 +89,7 @@ public class LocalFile extends File {
 
     public void mkdirSync() throws Exception {
         if (requiresRoot()) {
-            runAsRoot("mkdir -P \"" + getPath() + "\"");
+            RootFile.runAsRoot("mkdir -P \"" + getPath() + "\"");
         } else {
             new java.io.File(getPath()).mkdirs();
         }
@@ -165,7 +155,7 @@ public class LocalFile extends File {
                             @Override
                             public void run() {
                                 try {
-                                    runAsRoot("mv \"" + getPath() + "\" \"" + newFile.getPath() + "\"");
+                                    RootFile.runAsRoot("mv \"" + getPath() + "\" \"" + newFile.getPath() + "\"");
                                     getContext().runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
@@ -308,7 +298,7 @@ public class LocalFile extends File {
     private LocalFile copySync(java.io.File file, java.io.File newFile) throws Exception {
         LocalFile dest = (LocalFile) Utils.checkDuplicatesSync(getContext(), new LocalFile(getContext(), newFile));
         if (requiresRoot()) {
-            runAsRoot("cp -R \"" + file.getAbsolutePath() + "\" \"" + dest.getPath() + "\"");
+            RootFile.runAsRoot("cp -R \"" + file.getAbsolutePath() + "\" \"" + dest.getPath() + "\"");
             return dest;
         }
         InputStream in = new FileInputStream(file);
@@ -419,7 +409,7 @@ public class LocalFile extends File {
                 @Override
                 public void run() {
                     try {
-                        runAsRoot("rm -rf \"" + getPath() + "\"");
+                        RootFile.runAsRoot("rm -rf \"" + getPath() + "\"");
                         getContext().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -455,6 +445,7 @@ public class LocalFile extends File {
         }
     }
 
+    @Override
     public boolean deleteSync() {
         boolean val = new java.io.File(getPath()).delete();
         notifyMediaScannerService(this);
@@ -478,12 +469,43 @@ public class LocalFile extends File {
     }
 
     @Override
-    public void exists(BooleanCallback callback) {
-        callback.onComplete(existsSync());
+    public void exists(final BooleanCallback callback) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    final boolean exists = existsSync();
+                    getContext().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (callback != null) callback.onComplete(exists);
+                        }
+                    });
+                } catch (final Exception e) {
+                    e.printStackTrace();
+                    getContext().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Utils.showErrorDialog(getContext(), R.string.error, e);
+                            if (callback != null) callback.onError(null);
+                        }
+                    });
+                }
+            }
+        }).start();
     }
 
     @Override
-    public boolean existsSync() {
+    public boolean existsSync() throws Exception {
+        if (requiresRoot()) {
+            String cmd;
+            if (isDirectory()) {
+                cmd = "[ -d \"" + getPath() + "\" ] && echo \"1\" || echo \"0\"";
+            } else {
+                cmd = "[ -f \"" + getPath() + "\" ] && echo \"1\" || echo \"0\"";
+            }
+            return Integer.parseInt(RootFile.runAsRoot(cmd).get(0)) == 1;
+        }
         java.io.File mFile = new java.io.File(getPath());
         return mFile.exists() && isDirectory() == mFile.isDirectory();
     }
@@ -494,9 +516,29 @@ public class LocalFile extends File {
     }
 
     @Override
-    public void listFiles(boolean includeHidden, final ArrayCallback callback) {
-        List<File> results = listFilesSync(includeHidden);
-        callback.onComplete(results != null ? results.toArray(new File[results.size()]) : null);
+    public void listFiles(final boolean includeHidden, final ArrayCallback callback) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    final List<File> results = listFilesSync(includeHidden);
+                    getContext().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            callback.onComplete(results != null ? results.toArray(new File[results.size()]) : null);
+                        }
+                    });
+                } catch (final Exception e) {
+                    e.printStackTrace();
+                    getContext().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            callback.onError(e);
+                        }
+                    });
+                }
+            }
+        }).start();
     }
 
     @Override
@@ -504,26 +546,36 @@ public class LocalFile extends File {
         return new java.io.File(getPath()).lastModified();
     }
 
-    public List<File> listFilesSync(boolean includeHidden) {
+    public List<File> listFilesSync(boolean includeHidden) throws Exception {
         return listFilesSync(includeHidden, null);
     }
 
-    public List<File> listFilesSync(boolean includeHidden, FileFilter filter) {
-        java.io.File[] list;
-        if (filter != null) list = new java.io.File(getPath()).listFiles(filter);
-        else list = new java.io.File(getPath()).listFiles();
-        if (list == null || list.length == 0) return new ArrayList<File>();
+    public List<File> listFilesSync(boolean includeHidden, FileFilter filter) throws Exception {
         List<File> results = new ArrayList<File>();
-        for (java.io.File local : list) {
-            if (!includeHidden && (local.isHidden() || local.getName().startsWith("."))) continue;
-            LocalFile file = new LocalFile(getContext(), local);
-            if (filter != null) file.isSearchResult = true;
-            results.add(file);
+        if (requiresRoot()) {
+            List<String> response = RootFile.runAsRoot("ls -l \"" + getPath() + "\"");
+            return LsParser.parse(getContext(), getPath(), response, filter, includeHidden).getFiles();
+        } else {
+            java.io.File[] list;
+            if (filter != null) list = new java.io.File(getPath()).listFiles();
+            else list = new java.io.File(getPath()).listFiles();
+            if (list == null || list.length == 0) return new ArrayList<File>();
+            for (java.io.File local : list) {
+                if (!includeHidden && (local.isHidden() || local.getName().startsWith(".")))
+                    continue;
+                LocalFile file = new LocalFile(getContext(), local);
+                if (filter != null) {
+                    if (filter.accept(file)) {
+                        file.isSearchResult = true;
+                        results.add(file);
+                    }
+                } else results.add(file);
+            }
         }
         return results;
     }
 
-    public List<File> searchRecursive(boolean includeHidden, FileFilter filter) {
+    public List<File> searchRecursive(boolean includeHidden, FileFilter filter) throws Exception {
         java.io.File mFile = new java.io.File(getPath());
         Log.v("SearchRecursive", "Searching: " + mFile.getAbsolutePath());
         List<File> all = listFilesSync(includeHidden);

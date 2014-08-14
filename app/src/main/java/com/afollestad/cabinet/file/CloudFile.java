@@ -444,6 +444,11 @@ public class CloudFile extends File {
     }
 
     @Override
+    public boolean deleteSync() throws Exception {
+        return false;
+    }
+
+    @Override
     public boolean isRemote() {
         return true;
     }

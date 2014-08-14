@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.file.LocalFile;
@@ -46,18 +47,22 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
             Shortcuts.add(context, new Shortcuts.Item(item));
             item = new LocalFile(context, Environment.getExternalStorageDirectory());
             Shortcuts.add(context, new Shortcuts.Item(item));
-            item = new LocalFile(context, new java.io.File(Environment.getExternalStorageDirectory(), "DCIM"));
-            if (item.existsSync())
-                Shortcuts.add(context, new Shortcuts.Item(item));
-            item = new LocalFile(context, new java.io.File(Environment.getExternalStorageDirectory(), "Download"));
-            if (item.existsSync())
-                Shortcuts.add(context, new Shortcuts.Item(item));
-            item = new LocalFile(context, new java.io.File(Environment.getExternalStorageDirectory(), "Music"));
-            if (item.existsSync())
-                Shortcuts.add(context, new Shortcuts.Item(item));
-            item = new LocalFile(context, new java.io.File(Environment.getExternalStorageDirectory(), "Pictures"));
-            if (item.existsSync())
-                Shortcuts.add(context, new Shortcuts.Item(item));
+            try {
+                item = new LocalFile(context, new java.io.File(Environment.getExternalStorageDirectory(), "DCIM"));
+                if (item.existsSync())
+                    Shortcuts.add(context, new Shortcuts.Item(item));
+                item = new LocalFile(context, new java.io.File(Environment.getExternalStorageDirectory(), "Download"));
+                if (item.existsSync())
+                    Shortcuts.add(context, new Shortcuts.Item(item));
+                item = new LocalFile(context, new java.io.File(Environment.getExternalStorageDirectory(), "Music"));
+                if (item.existsSync())
+                    Shortcuts.add(context, new Shortcuts.Item(item));
+                item = new LocalFile(context, new java.io.File(Environment.getExternalStorageDirectory(), "Pictures"));
+                if (item.existsSync())
+                    Shortcuts.add(context, new Shortcuts.Item(item));
+            } catch (Exception e) {
+                Toast.makeText(context, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
         }
         reload(context);
     }

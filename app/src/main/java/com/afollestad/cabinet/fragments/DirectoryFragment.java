@@ -42,6 +42,7 @@ import com.afollestad.cabinet.comparators.LowHighSizeComparator;
 import com.afollestad.cabinet.file.CloudFile;
 import com.afollestad.cabinet.file.LocalFile;
 import com.afollestad.cabinet.file.base.File;
+import com.afollestad.cabinet.file.base.FileFilter;
 import com.afollestad.cabinet.services.NetworkService;
 import com.afollestad.cabinet.sftp.SftpClient;
 import com.afollestad.cabinet.ui.DrawerActivity;
@@ -53,7 +54,6 @@ import com.afollestad.cabinet.zip.Unzipper;
 import com.afollestad.cabinet.zip.Zipper;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-import java.io.FileFilter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -200,7 +200,12 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 
         boolean canShow = !((DrawerLayout) getActivity().findViewById(R.id.drawer_layout)).isDrawerOpen(Gravity.START);
         if (!mDirectory.isRemote()) {
-            canShow = canShow && ((LocalFile) mDirectory).existsSync();
+            try {
+                canShow = canShow && mDirectory.existsSync();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(getActivity(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            }
         }
         boolean searchMode = mQuery != null;
         menu.findItem(R.id.sort).setVisible(canShow);
@@ -519,28 +524,48 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         new Thread(new Runnable() {
             @Override
             public void run() {
-                final List<File> results = searchDir(showHidden, new LocalFile(getActivity(), Environment.getExternalStorageDirectory()));
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Collections.sort(results, getComparator());
-                        mAdapter.set(results);
-                        setListShown(true);
-                    }
-                });
+                try {
+                    final List<File> results = searchDir(showHidden, new LocalFile(getActivity(), Environment.getExternalStorageDirectory()));
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Collections.sort(results, getComparator());
+                            mAdapter.set(results);
+                            setListShown(true);
+                        }
+                    });
+                } catch (final Exception e) {
+                    e.printStackTrace();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (mDirectory.isRemote()) {
+                                ((DrawerActivity) getActivity()).disableFab(false);
+                            }
+                            try {
+                                String message = e.getMessage();
+                                if (message.trim().isEmpty())
+                                    message = getString(R.string.error);
+                                setEmptyText(message);
+                                setListShown(true);
+                            } catch (IllegalStateException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                }
             }
         }).start();
     }
 
-    private List<File> searchDir(boolean includeHidden, LocalFile dir) {
+    private List<File> searchDir(boolean includeHidden, LocalFile dir) throws Exception {
         return dir.searchRecursive(includeHidden, new FileFilter() {
             @Override
-            public boolean accept(java.io.File file) {
+            public boolean accept(File file) {
                 if (mQuery.startsWith("type:")) {
-                    LocalFile currentFile = new LocalFile(getActivity(), file);
                     String target = mQuery.substring(mQuery.indexOf(':') + 1);
                     setEmptyText(getString(R.string.no_x_files, target));
-                    return currentFile.getExtension().equalsIgnoreCase(target);
+                    return file.getExtension().equalsIgnoreCase(target);
                 }
                 return file.getName().toLowerCase().contains(mQuery.toLowerCase());
             }

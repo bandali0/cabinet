@@ -44,8 +44,12 @@ public class Zipper {
                             });
                         } catch (final Exception e) {
                             e.printStackTrace();
-                            if (((LocalFile) dest).existsSync())
-                                ((LocalFile) dest).deleteSync();
+                            try {
+                                if (dest.existsSync())
+                                    dest.deleteSync();
+                            } catch (Exception e2) {
+                                e2.printStackTrace();
+                            }
                             if (context.getActivity() == null) return;
                             context.getActivity().runOnUiThread(new Runnable() {
                                 @Override
