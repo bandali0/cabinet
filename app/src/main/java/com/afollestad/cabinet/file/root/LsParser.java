@@ -28,8 +28,6 @@ public class LsParser {
         parser.mPath = path;
         parser.mFilter = filter;
         parser.includeHidden = includeHidden;
-        if (response.size() > 35)
-            parser.processLine(response.get(35));
         for (String line : response) {
             parser.processLine(line);
         }
@@ -59,7 +57,7 @@ public class LsParser {
             } else if (index == 6) {
                 file.setPath(mPath + "/" + token);
             } else {
-                file.shortcut = token;
+                file.setPath(token); // this is a link to another file/folder
             }
             index++;
         }

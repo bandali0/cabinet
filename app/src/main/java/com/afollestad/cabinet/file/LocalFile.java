@@ -541,10 +541,7 @@ public class LocalFile extends File {
         return new java.io.File(getPath()).lastModified();
     }
 
-    public List<File> listFilesSync(boolean includeHidden) throws Exception {
-        return listFilesSync(includeHidden, null);
-    }
-
+    @Override
     public List<File> listFilesSync(boolean includeHidden, FileFilter filter) throws Exception {
         List<File> results = new ArrayList<File>();
         if (requiresRoot()) {
@@ -569,25 +566,6 @@ public class LocalFile extends File {
         }
         return results;
     }
-
-    public List<File> searchRecursive(boolean includeHidden, FileFilter filter) throws Exception {
-        java.io.File mFile = new java.io.File(getPath());
-        Log.v("SearchRecursive", "Searching: " + mFile.getAbsolutePath());
-        List<File> all = listFilesSync(includeHidden);
-        if (all == null || all.size() == 0) {
-            Log.v("SearchRecursive", "No files in " + mFile.getAbsolutePath());
-            return null;
-        }
-        List<File> matches = new ArrayList<File>();
-        matches.addAll(listFilesSync(includeHidden, filter));
-        for (File fi : all) {
-            List<File> subResults = ((LocalFile) fi).searchRecursive(includeHidden, filter);
-            if (subResults != null && subResults.size() > 0)
-                matches.addAll(subResults);
-        }
-        return matches;
-    }
-
 
     @Override
     public File getParent() {

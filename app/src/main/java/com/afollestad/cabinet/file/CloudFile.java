@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.file.base.File;
+import com.afollestad.cabinet.file.base.FileFilter;
 import com.afollestad.cabinet.services.NetworkService;
 import com.afollestad.cabinet.sftp.FileNotExistsException;
 import com.afollestad.cabinet.sftp.SftpClient;
@@ -42,6 +43,11 @@ public class CloudFile extends File {
     private final Remote mRemote;
     private boolean mDirectory;
     private long mLength = -1;
+
+    @Override
+    public List<File> listFilesSync(boolean includeHidden, FileFilter filter) throws Exception {
+        throw new UnsupportedOperationException("Cloud search is not supported.");
+    }
 
     @Override
     public boolean isHidden() {

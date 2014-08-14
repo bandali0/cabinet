@@ -15,6 +15,8 @@ import com.afollestad.cabinet.ui.DrawerActivity;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class File implements Serializable {
 
@@ -32,6 +34,30 @@ public abstract class File implements Serializable {
     public final boolean requiresRoot() {
         return !getPath().contains(Environment.getExternalStorageDirectory().getAbsolutePath());
     }
+
+    public final List<File> searchRecursive(boolean includeHidden, FileFilter filter) throws Exception {
+        java.io.File mFile = new java.io.File(getPath());
+        Log.v("SearchRecursive", "Searching: " + mFile.getAbsolutePath());
+        List<File> all = listFilesSync(includeHidden);
+        if (all == null || all.size() == 0) {
+            Log.v("SearchRecursive", "No files in " + mFile.getAbsolutePath());
+            return null;
+        }
+        List<File> matches = new ArrayList<File>();
+        matches.addAll(listFilesSync(includeHidden, filter));
+        for (File fi : all) {
+            List<File> subResults = fi.searchRecursive(includeHidden, filter);
+            if (subResults != null && subResults.size() > 0)
+                matches.addAll(subResults);
+        }
+        return matches;
+    }
+
+    public final List<File> listFilesSync(boolean includeHidden) throws Exception {
+        return listFilesSync(includeHidden, null);
+    }
+
+    public abstract List<File> listFilesSync(boolean includeHidden, FileFilter filter) throws Exception;
 
     public String getDisplay() {
         String name = getName();

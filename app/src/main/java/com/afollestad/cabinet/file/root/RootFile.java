@@ -33,7 +33,6 @@ public class RootFile extends File {
     public long size = -1;
     public String date;
     public String time;
-    public String shortcut;
 
     @Override
     public boolean isHidden() {
@@ -251,10 +250,7 @@ public class RootFile extends File {
         }).start();
     }
 
-    public List<File> listFilesSync(boolean includeHidden) throws Exception {
-        return listFilesSync(includeHidden, null);
-    }
-
+    @Override
     public List<File> listFilesSync(boolean includeHidden, FileFilter filter) throws Exception {
         List<String> response = RootFile.runAsRoot("ls -l \"" + getPath() + "\"");
         return LsParser.parse(getContext(), getPath(), response, filter, includeHidden).getFiles();
