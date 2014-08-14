@@ -2,7 +2,6 @@ package com.afollestad.cabinet.file;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.os.Environment;
 import android.util.Log;
 
 import com.afollestad.cabinet.R;
@@ -46,10 +45,6 @@ public class LocalFile extends File {
     public boolean isHidden() {
         java.io.File mFile = new java.io.File(getPath());
         return mFile.isHidden() || mFile.getName().startsWith(".");
-    }
-
-    public final boolean requiresRoot() {
-        return !getPath().contains(Environment.getExternalStorageDirectory().getAbsolutePath());
     }
 
     @Override

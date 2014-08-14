@@ -29,7 +29,9 @@ public abstract class File implements Serializable {
     private transient Activity mContext;
     private String mPath;
 
-    /* BEGIN CARD METHODS */
+    public final boolean requiresRoot() {
+        return !getPath().contains(Environment.getExternalStorageDirectory().getAbsolutePath());
+    }
 
     public String getDisplay() {
         String name = getName();
@@ -42,8 +44,6 @@ public abstract class File implements Serializable {
         }
         return name;
     }
-
-    /* END CARD METHODS */
 
     private String readableFileSize(long size) {
         if (size <= 0) return "0 B";

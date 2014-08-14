@@ -525,7 +525,13 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             @Override
             public void run() {
                 try {
-                    final List<File> results = searchDir(showHidden, new LocalFile(getActivity(), Environment.getExternalStorageDirectory()));
+                    LocalFile searchTarget;
+                    if (mDirectory.requiresRoot()) {
+                        searchTarget = new LocalFile(getActivity(), "/");
+                    } else {
+                        searchTarget = new LocalFile(getActivity(), Environment.getExternalStorageDirectory());
+                    }
+                    final List<File> results = searchDir(showHidden, searchTarget);
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
