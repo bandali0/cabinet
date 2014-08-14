@@ -833,8 +833,10 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 break;
             case R.id.share:
                 try {
+                    String mime = file.getMimeType();
+                    if(file.getExtension().equals("apk")) mime = "*/*";
                     getActivity().startActivity(new Intent(Intent.ACTION_SEND)
-                            .setType(file.getMimeType())
+                            .setType(mime)
                             .putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file.toJavaFile())));
                 } catch (ActivityNotFoundException e) {
                     Toast.makeText(getActivity(), R.string.no_apps_for_sharing, Toast.LENGTH_SHORT).show();

@@ -33,6 +33,7 @@ public class RootFile extends File {
     public long size = -1;
     public String date;
     public String time;
+    public String originalName;
 
     @Override
     public boolean isHidden() {

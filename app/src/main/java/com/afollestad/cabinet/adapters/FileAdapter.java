@@ -24,6 +24,7 @@ import com.afollestad.cabinet.cab.CopyCab;
 import com.afollestad.cabinet.cab.CutCab;
 import com.afollestad.cabinet.cab.base.BaseFileCab;
 import com.afollestad.cabinet.file.base.File;
+import com.afollestad.cabinet.file.root.RootFile;
 import com.afollestad.cabinet.ui.DrawerActivity;
 import com.afollestad.cabinet.utils.Shortcuts;
 import com.afollestad.cabinet.utils.TimeUtils;
@@ -195,7 +196,10 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
         holder.view.setOnLongClickListener(this);
         setupTouchDelegate(mContext, holder.menu);
 
-        holder.title.setText(file.getName());
+        if(file instanceof RootFile) {
+            holder.title.setText(((RootFile)file).originalName);
+        } else holder.title.setText(file.getName());
+
         if (file.isDirectory()) {
             holder.content.setText(R.string.directory);
         } else {
