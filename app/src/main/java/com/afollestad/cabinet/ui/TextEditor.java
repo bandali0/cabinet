@@ -71,9 +71,10 @@ public class TextEditor extends Activity implements TextWatcher {
                     return;
                 }
 
-                String mime = File.getMimeType(File.getExtension(TextEditor.this, mFile.getName()));
+                String ext = File.getExtension(TextEditor.this, mFile.getName());
+                String mime = File.getMimeType(ext);
                 Log.v("TextEditor", "Mime: " + mime);
-                if (!mime.startsWith("text/") && !mime.equals("application/json")) {
+                if (!mime.startsWith("text/") && !mime.equals("application/json") && !ext.equals("prop")) {
                     Log.v("TextEditor", "Unsupported extension");
                     runOnUiThread(new Runnable() {
                         @Override
