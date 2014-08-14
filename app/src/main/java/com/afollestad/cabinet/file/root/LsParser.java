@@ -55,6 +55,7 @@ public class LsParser {
             } else if (index == 5) {
                 file.time = token;
             } else if (index == 6) {
+                // Store the original name for the case that this is a link (name is displayed but path is different)
                 file.originalName = token;
                 file.setPath(mPath + "/" + token);
             } else {
