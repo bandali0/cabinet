@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.IBinder;
@@ -41,7 +40,6 @@ import com.afollestad.cabinet.fragments.WelcomeFragment;
 import com.afollestad.cabinet.services.NetworkService;
 import com.afollestad.cabinet.utils.Shortcuts;
 import com.afollestad.cabinet.utils.ThemeUtils;
-import com.afollestad.cabinet.utils.Utils;
 import com.anjlab.android.iab.v3.BillingProcessor;
 import com.faizmalkani.floatingactionbutton.FloatingActionButton;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
@@ -257,30 +255,30 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     private final static String MATERIAL_PROMPT = "material_version_prompt";
 
     private void checkMaterialAndRating() {
-//        checkRating();
+        checkRating();
         // TODO toggle commented area for Material
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        if (prefs.getInt(MATERIAL_PROMPT, -1) != Utils.getVersion(this) && Build.VERSION.SDK_INT >= 20) {
-            CustomDialog.create(this, R.string.material_version, getString(R.string.material_version_desc), R.string.yes, R.string.later, R.string.no, new CustomDialog.ClickListener() {
-                @Override
-                public void onPositive(int which, View view) {
-                    PreferenceManager.getDefaultSharedPreferences(DrawerActivity.this)
-                            .edit().putInt(MATERIAL_PROMPT, Utils.getVersion(DrawerActivity.this)).commit();
-                    startActivity(new Intent(Intent.ACTION_VIEW)
-                            .setData(Uri.parse("https://plus.google.com/u/0/communities/110440751142118056139")));
-                }
-
-                @Override
-                public void onNeutral() {
-                }
-
-                @Override
-                public void onNegative() {
-                    PreferenceManager.getDefaultSharedPreferences(DrawerActivity.this)
-                            .edit().putInt(MATERIAL_PROMPT, Utils.getVersion(DrawerActivity.this)).commit();
-                }
-            }).show(getFragmentManager(), "MATERIAL_DIALOG");
-        } else checkRating();
+//        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+//        if (prefs.getInt(MATERIAL_PROMPT, -1) != Utils.getVersion(this) && Build.VERSION.SDK_INT >= 20) {
+//            CustomDialog.create(this, R.string.material_version, getString(R.string.material_version_desc), R.string.yes, R.string.later, R.string.no, new CustomDialog.ClickListener() {
+//                @Override
+//                public void onPositive(int which, View view) {
+//                    PreferenceManager.getDefaultSharedPreferences(DrawerActivity.this)
+//                            .edit().putInt(MATERIAL_PROMPT, Utils.getVersion(DrawerActivity.this)).commit();
+//                    startActivity(new Intent(Intent.ACTION_VIEW)
+//                            .setData(Uri.parse("https://plus.google.com/u/0/communities/110440751142118056139")));
+//                }
+//
+//                @Override
+//                public void onNeutral() {
+//                }
+//
+//                @Override
+//                public void onNegative() {
+//                    PreferenceManager.getDefaultSharedPreferences(DrawerActivity.this)
+//                            .edit().putInt(MATERIAL_PROMPT, Utils.getVersion(DrawerActivity.this)).commit();
+//                }
+//            }).show(getFragmentManager(), "MATERIAL_DIALOG");
+//        } else checkRating();
     }
 
     private void checkRating() {
