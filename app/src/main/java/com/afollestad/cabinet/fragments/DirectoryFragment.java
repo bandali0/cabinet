@@ -749,7 +749,10 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 break;
             case R.id.filterOther: {
                 final MenuItem fItem = item;
-                Utils.showInputDialog(getActivity(), R.string.extension, R.string.extension_hint, null, new Utils.InputCancelCallback() {
+                String prefill = null;
+                if (filter != null && filter.startsWith("ext"))
+                    prefill = filter.split(":")[1];
+                Utils.showInputDialog(getActivity(), R.string.extension, R.string.extension_hint, prefill, new Utils.InputCancelCallback() {
                     @Override
                     public void onInput(String input) {
                         fItem.setChecked(true);
