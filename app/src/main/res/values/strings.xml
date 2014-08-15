@@ -259,5 +259,6 @@
     <string name="archives">Archives</string>
     <string name="extension">Extension</string>
     <string name="extension_hint" translatable="false">.txt</string>
+    <string name="no_files_filter">No files for filter: %1$s</string>
 
 </resources>

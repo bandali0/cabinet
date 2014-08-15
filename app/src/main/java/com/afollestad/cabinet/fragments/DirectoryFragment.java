@@ -627,10 +627,12 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 public boolean accept(File file) {
                     if (filter.equals("archives")) {
                         String ext = file.getExtension();
+                        setEmptyText(getString(R.string.no_files_filter, getString(R.string.archives)));
                         return ext.equals("zip") || ext.equals("rar") || ext.equals("tar") ||
                                 ext.equals("tar.gz") || ext.equals(".7z");
                     } else {
                         String[] splitFilter = filter.split(":");
+                        setEmptyText(getString(R.string.no_files_filter, splitFilter[1]));
                         if (splitFilter[0].equals("mime")) {
                             return file.getMimeType().startsWith(splitFilter[1]);
                         } else if (splitFilter[0].equals("ext")) {
@@ -639,7 +641,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                     }
                 }
             };
-        }
+        } else setEmptyText(getString(R.string.no_files));
         mDirectory.listFiles(showHidden, lsFilter, new File.ArrayCallback() {
             @Override
             public void onComplete(final File[] results) {
