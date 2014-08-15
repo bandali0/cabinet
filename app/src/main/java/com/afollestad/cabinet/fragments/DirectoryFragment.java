@@ -642,6 +642,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 }
             };
         } else setEmptyText(getString(R.string.no_files));
+
         mDirectory.listFiles(showHidden, lsFilter, new File.ArrayCallback() {
             @Override
             public void onComplete(final File[] results) {
