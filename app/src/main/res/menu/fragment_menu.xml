@@ -42,6 +42,35 @@
         android:showAsAction="collapseActionView|ifRoom"
         android:actionViewClass="android.widget.SearchView" />
     <item
+        android:id="@+id/filter"
+        android:title="@string/filter">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/filterNone"
+                    android:title="@string/none" />
+                <item
+                    android:id="@+id/filterText"
+                    android:title="@string/text" />
+                <item
+                    android:id="@+id/filterImage"
+                    android:title="@string/image" />
+                <item
+                    android:id="@+id/filterAudio"
+                    android:title="@string/audio" />
+                <item
+                    android:id="@+id/filterVideo"
+                    android:title="@string/video" />
+                <item
+                    android:id="@+id/filterArchives"
+                    android:title="@string/archives" />
+                <item
+                    android:id="@+id/filterOther"
+                    android:title="@string/other" />
+            </group>
+        </menu>
+    </item>
+    <item
         android:id="@+id/donate"
         android:title="@string/donate">
         <menu>

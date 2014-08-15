@@ -79,6 +79,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     public FileAdapter mAdapter;
     private boolean showHidden;
     public int sorter;
+    public String filter;
 
     public File getDirectory() {
         return mDirectory;
@@ -115,8 +116,10 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         super.onCreate(savedInstanceState);
 
         if (mQuery != null) mQuery = mQuery.trim();
-        showHidden = Utils.getShowHidden(getActivity());
-        sorter = Utils.getSorter(getActivity());
+        Activity act = getActivity();
+        showHidden = Utils.getShowHidden(act);
+        sorter = Utils.getSorter(act);
+        filter = Utils.getFilter(act);
     }
 
     @Override
@@ -154,11 +157,15 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         }
 
         ((NavigationDrawerFragment) act.getFragmentManager().findFragmentByTag("NAV_DRAWER")).selectFile(mDirectory);
-        if (showHidden != Utils.getShowHidden(getActivity())) {
+        String persistentFilter = Utils.getFilter(getActivity());
+        if (showHidden != Utils.getShowHidden(getActivity()) ||
+                sorter != Utils.getSorter(getActivity()) ||
+                (filter == null && persistentFilter != null) ||
+                (filter != null && persistentFilter == null) ||
+                (filter != null && !filter.equals(persistentFilter))) {
             showHidden = Utils.getShowHidden(getActivity());
-            reload();
-        } else if (sorter != Utils.getSorter(getActivity())) {
             sorter = Utils.getSorter(getActivity());
+            filter = persistentFilter;
             reload();
         }
     }
@@ -197,6 +204,27 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 menu.findItem(R.id.sortLastModified).setChecked(true);
                 break;
         }
+
+        if (filter != null) {
+            if (filter.equals("archives")) {
+                menu.findItem(R.id.filterArchives).setChecked(true);
+            } else {
+                String[] splitFilter = filter.split(":");
+                if (splitFilter[0].equals("mime")) {
+                    if (splitFilter[1].equals("text")) {
+                        menu.findItem(R.id.filterText).setChecked(true);
+                    } else if (splitFilter[1].equals("image")) {
+                        menu.findItem(R.id.filterImage).setChecked(true);
+                    } else if (splitFilter[1].equals("audio")) {
+                        menu.findItem(R.id.filterAudio).setChecked(true);
+                    } else if (splitFilter[1].equals("video")) {
+                        menu.findItem(R.id.filterVideo).setChecked(true);
+                    }
+                } else if (splitFilter[0].equals("ext")) {
+                    menu.findItem(R.id.filterOther).setChecked(true);
+                }
+            }
+        } else menu.findItem(R.id.filterNone).setChecked(true);
 
         boolean canShow = !((DrawerLayout) getActivity().findViewById(R.id.drawer_layout)).isDrawerOpen(Gravity.START);
         if (!mDirectory.isRemote()) {
@@ -591,7 +619,28 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         if (mDirectory.isRemote()) {
             ((DrawerActivity) getActivity()).disableFab(true);
         }
-        mDirectory.listFiles(showHidden, new File.ArrayCallback() {
+
+        FileFilter lsFilter = null;
+        if (filter != null) {
+            lsFilter = new FileFilter() {
+                @Override
+                public boolean accept(File file) {
+                    if (filter.equals("archives")) {
+                        String ext = file.getExtension();
+                        return ext.equals("zip") || ext.equals("rar") || ext.equals("tar") ||
+                                ext.equals("tar.gz") || ext.equals(".7z");
+                    } else {
+                        String[] splitFilter = filter.split(":");
+                        if (splitFilter[0].equals("mime")) {
+                            return file.getMimeType().startsWith(splitFilter[1]);
+                        } else if (splitFilter[0].equals("ext")) {
+                            return file.getExtension().equals(splitFilter[1]);
+                        } else return false;
+                    }
+                }
+            };
+        }
+        mDirectory.listFiles(showHidden, lsFilter, new File.ArrayCallback() {
             @Override
             public void onComplete(final File[] results) {
                 runOnUiThread(new Runnable() {
@@ -674,6 +723,47 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 item.setChecked(true);
                 Utils.setSorter(this, 5);
                 break;
+            case R.id.filterNone:
+                item.setChecked(true);
+                Utils.setFilter(this, null);
+                break;
+            case R.id.filterText:
+                item.setChecked(true);
+                Utils.setFilter(this, "mime:text/");
+                break;
+            case R.id.filterImage:
+                item.setChecked(true);
+                Utils.setFilter(this, "mime:image/");
+                break;
+            case R.id.filterAudio:
+                item.setChecked(true);
+                Utils.setFilter(this, "mime:audio/");
+                break;
+            case R.id.filterVideo:
+                item.setChecked(true);
+                Utils.setFilter(this, "mime:video/");
+                break;
+            case R.id.filterArchives:
+                item.setChecked(true);
+                Utils.setFilter(this, "archives");
+                break;
+            case R.id.filterOther: {
+                final MenuItem fItem = item;
+                Utils.showInputDialog(getActivity(), R.string.extension, R.string.extension_hint, null, new Utils.InputCancelCallback() {
+                    @Override
+                    public void onInput(String input) {
+                        fItem.setChecked(true);
+                        if (input.startsWith(".")) input = input.substring(1);
+                        Utils.setFilter(DirectoryFragment.this, "ext:" + input);
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        fItem.setChecked(false);
+                    }
+                });
+                break;
+            }
             case R.id.donation1:
                 ((DrawerActivity) getActivity()).donate(1);
                 break;
@@ -834,7 +924,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             case R.id.share:
                 try {
                     String mime = file.getMimeType();
-                    if(file.getExtension().equals("apk")) mime = "*/*";
+                    if (file.getExtension().equals("apk")) mime = "*/*";
                     getActivity().startActivity(new Intent(Intent.ACTION_SEND)
                             .setType(mime)
                             .putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file.toJavaFile())));

@@ -1,10 +1,19 @@
 package com.afollestad.cabinet.sftp;
 
 import android.app.Activity;
+
 import com.afollestad.cabinet.file.CloudFile;
 import com.afollestad.cabinet.file.Remote;
 import com.afollestad.cabinet.file.base.File;
-import com.jcraft.jsch.*;
+import com.afollestad.cabinet.file.base.FileFilter;
+import com.jcraft.jsch.Channel;
+import com.jcraft.jsch.ChannelExec;
+import com.jcraft.jsch.ChannelSftp;
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.Session;
+import com.jcraft.jsch.SftpATTRS;
+import com.jcraft.jsch.SftpException;
+import com.jcraft.jsch.SftpProgressMonitor;
 
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -108,7 +117,8 @@ public class SftpClient {
                     mExecChannel.disconnect();
                     callback.onError(e);
                 } finally {
-                    if (mExecChannel != null && os == null && mExecChannel.isConnected()) mExecChannel.disconnect();
+                    if (mExecChannel != null && os == null && mExecChannel.isConnected())
+                        mExecChannel.disconnect();
                 }
             }
         }).start();
@@ -214,12 +224,12 @@ public class SftpClient {
         mChannel.get(remote, local);
     }
 
-    public void ls(final Activity context, final boolean includeHidden, final String dir, final File.ArrayCallback callback) {
+    public void ls(final Activity context, final boolean includeHidden, final String dir, final FileFilter filter, final File.ArrayCallback callback) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    List<CloudFile> results = lsSync(context, includeHidden, dir);
+                    List<CloudFile> results = lsSync(context, includeHidden, dir, filter);
                     callback.onComplete(results.toArray(new File[results.size()]));
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -229,7 +239,7 @@ public class SftpClient {
         }).start();
     }
 
-    public List<CloudFile> lsSync(Activity context, boolean includeHidden, String dir) throws Exception {
+    public List<CloudFile> lsSync(Activity context, boolean includeHidden, String dir, FileFilter filter) throws Exception {
         List<CloudFile> results = new ArrayList<CloudFile>();
         Vector vector = mChannel.ls(dir);
         Enumeration enumer = vector.elements();
@@ -237,7 +247,9 @@ public class SftpClient {
             ChannelSftp.LsEntry entry = (ChannelSftp.LsEntry) enumer.nextElement();
             if (entry.getFilename().equals(".") || entry.getFilename().equals("..")) continue;
             else if (entry.getFilename().startsWith(".") && !includeHidden) continue;
-            results.add(new CloudFile(context, dir, entry, getRemote()));
+            CloudFile file = new CloudFile(context, dir, entry, getRemote());
+            if (filter == null || filter.accept(file))
+                results.add(file);
         }
         return results;
     }

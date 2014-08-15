@@ -111,6 +111,16 @@ public class Utils {
         return PreferenceManager.getDefaultSharedPreferences(context).getInt("sorter", 0);
     }
 
+    public static void setFilter(DirectoryFragment context, String filter) {
+        PreferenceManager.getDefaultSharedPreferences(context.getActivity()).edit().putString("filter", filter).commit();
+        context.filter = filter;
+        context.reload();
+    }
+
+    public static String getFilter(Context context) {
+        return PreferenceManager.getDefaultSharedPreferences(context).getString("filter", null);
+    }
+
     public static boolean getShowHidden(Context context) {
         return PreferenceManager.getDefaultSharedPreferences(context).getBoolean("show_hidden", false);
     }
@@ -155,6 +165,10 @@ public class Utils {
         public abstract void onInput(String input);
     }
 
+    public interface InputCancelCallback extends InputCallback {
+        public abstract void onCancel();
+    }
+
     public static void showInputDialog(Activity context, int title, int hint, String prefillInput, final InputCallback callback) {
         CustomDialog dialog = CustomDialog.create(context, title, null, 0, R.layout.dialog_input, 0, 0, android.R.string.no, new CustomDialog.SimpleClickListener() {
             @Override
@@ -168,6 +182,13 @@ public class Utils {
         final EditText input = (EditText) dialog.getInflatedView().findViewById(R.id.input);
         if (hint != 0) input.setHint(hint);
         if (prefillInput != null) input.append(prefillInput);
+        dialog.setDismissListener(new CustomDialog.DismissListener() {
+            @Override
+            public void onDismiss() {
+                if (callback instanceof InputCancelCallback)
+                    ((InputCancelCallback) callback).onCancel();
+            }
+        });
         dialog.show(context.getFragmentManager(), "INPUT_DIALOG");
     }
 

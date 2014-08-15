@@ -195,7 +195,7 @@ public class CloudFile extends File {
                 throw new Exception("Failed to create the destination directory (" + e.getMessage() + ")");
             }
             log("Getting file listing for " + remote.getPath());
-            List<CloudFile> contents = client.lsSync(getContext(), true, remote.getPath());
+            List<CloudFile> contents = client.lsSync(getContext(), true, remote.getPath(), null);
             for (CloudFile cf : contents) {
                 LocalFile newFile = new LocalFile(getContext(), dest, cf.getName());
                 if (cf.isDirectory()) {
@@ -510,10 +510,15 @@ public class CloudFile extends File {
 
     @Override
     public void listFiles(final boolean includeHidden, final ArrayCallback callback) {
+
+    }
+
+    @Override
+    public void listFiles(final boolean includeHidden, final FileFilter filter, final ArrayCallback callback) {
         getContext().getNetworkService().getSftpClient(new NetworkService.SftpGetCallback() {
             @Override
             public void onSftpClient(SftpClient client) {
-                client.ls(getContext(), includeHidden, getPath(), callback);
+                client.ls(getContext(), includeHidden, getPath(), filter, callback);
             }
 
             @Override

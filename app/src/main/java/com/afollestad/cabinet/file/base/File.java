@@ -196,6 +196,8 @@ public abstract class File implements Serializable {
 
     public abstract void listFiles(boolean includeHidden, ArrayCallback callback);
 
+    public abstract void listFiles(boolean includeHidden, FileFilter filter, ArrayCallback callback);
+
     public abstract long lastModified();
 
     public static interface ArrayCallback {

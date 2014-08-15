@@ -24,13 +24,17 @@ public class CustomDialog extends DialogFragment implements View.OnClickListener
     }
 
     public interface SimpleClickListener {
-        public abstract void onPositive(int which, View view);
+        void onPositive(int which, View view);
     }
 
     public interface ClickListener extends SimpleClickListener {
-        public abstract void onNeutral();
+        void onNeutral();
 
-        public abstract void onNegative();
+        void onNegative();
+    }
+
+    public interface DismissListener {
+        void onDismiss();
     }
 
     public CustomDialog() {
@@ -45,6 +49,7 @@ public class CustomDialog extends DialogFragment implements View.OnClickListener
     int negative;
     SimpleClickListener mListener;
     View inflatedView;
+    DismissListener mDismiss;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -177,5 +182,15 @@ public class CustomDialog extends DialogFragment implements View.OnClickListener
             });
         }
         return builder.create();
+    }
+
+    public void setDismissListener(DismissListener listener) {
+        mDismiss = listener;
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        super.onDismiss(dialog);
+        if (mDismiss != null) mDismiss.onDismiss();
     }
 }

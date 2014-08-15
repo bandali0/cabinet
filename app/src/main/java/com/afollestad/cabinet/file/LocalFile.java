@@ -512,11 +512,16 @@ public class LocalFile extends File {
 
     @Override
     public void listFiles(final boolean includeHidden, final ArrayCallback callback) {
+        listFiles(includeHidden, null, callback);
+    }
+
+    @Override
+    public void listFiles(final boolean includeHidden, final FileFilter filter, final ArrayCallback callback) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    final List<File> results = listFilesSync(includeHidden);
+                    final List<File> results = listFilesSync(includeHidden, filter);
                     getContext().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {

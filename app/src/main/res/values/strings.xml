@@ -254,5 +254,10 @@
     <string name="file_already_exists_warning">Warning: this file already exists. Your new file will appear as a duplicate.</string>
 
     <string name="auto_unzip_prompt">Unzip this archive into the current directory?</string>
+    <string name="filter">Filter</string>
+    <string name="none">None</string>
+    <string name="archives">Archives</string>
+    <string name="extension">Extension</string>
+    <string name="extension_hint" translatable="false">.txt</string>
 
 </resources>
