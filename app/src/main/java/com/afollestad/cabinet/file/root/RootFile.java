@@ -52,7 +52,7 @@ public class RootFile extends File {
             @Override
             public void run() {
                 try {
-                    RootFile.runAsRoot("touch \"" + getPath() + "\"");
+                    runAsRoot("touch \"" + getPath() + "\"");
                     callback.onComplete();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -68,7 +68,7 @@ public class RootFile extends File {
             @Override
             public void run() {
                 try {
-                    RootFile.runAsRoot("mkdir -P \"" + getPath() + "\"");
+                    runAsRoot("mkdir -P \"" + getPath() + "\"");
                     callback.onComplete();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -87,7 +87,7 @@ public class RootFile extends File {
                     @Override
                     public void run() {
                         try {
-                            RootFile.runAsRoot("mv -f \"" + getPath() + "\" \"" + newFile.getPath() + "\"");
+                            runAsRoot("mv -f \"" + getPath() + "\" \"" + newFile.getPath() + "\"");
                             getContext().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -118,7 +118,7 @@ public class RootFile extends File {
             @Override
             public void onResult(final File dest) {
                 try {
-                    RootFile.runAsRoot("cp -R \"" + getPath() + "\" \"" + dest.getPath() + "\"");
+                    runAsRoot("cp -R \"" + getPath() + "\" \"" + dest.getPath() + "\"");
                     getContext().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -168,7 +168,7 @@ public class RootFile extends File {
 
     @Override
     public boolean deleteSync() throws Exception {
-        RootFile.runAsRoot("rm -rf \"" + getPath() + "\"");
+        runAsRoot("rm -rf \"" + getPath() + "\"");
         return true;
     }
 
@@ -217,7 +217,7 @@ public class RootFile extends File {
         } else {
             cmd = "[ -f \"" + getPath() + "\" ] && echo \"1\" || echo \"0\"";
         }
-        return Integer.parseInt(RootFile.runAsRoot(cmd).get(0)) == 1;
+        return Integer.parseInt(runAsRoot(cmd).get(0)) == 1;
     }
 
     @Override
@@ -258,7 +258,7 @@ public class RootFile extends File {
 
     @Override
     public List<File> listFilesSync(boolean includeHidden, FileFilter filter) throws Exception {
-        List<String> response = RootFile.runAsRoot("ls -l \"" + getPath() + "\"");
+        List<String> response = runAsRoot("ls -l \"" + getPath() + "\"");
         return LsParser.parse(getContext(), getPath(), response, filter, includeHidden).getFiles();
     }
 
@@ -272,10 +272,11 @@ public class RootFile extends File {
         }
     }
 
-    public static List<String> runAsRoot(String command) throws Exception {
+    private List<String> runAsRoot(String command) throws Exception {
         Log.v("Cabinet-SU", command);
         boolean suAvailable = Shell.SU.available();
-        if (!suAvailable) throw new Exception("Superuser is not available.");
+        if (!suAvailable)
+            throw new Exception(getContext().getString(R.string.superuser_not_available));
         return Shell.SU.run(new String[]{
                 "mount -o remount,rw /",
                 command

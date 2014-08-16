@@ -8,7 +8,6 @@ import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.file.base.FileFilter;
 import com.afollestad.cabinet.file.root.LsParser;
-import com.afollestad.cabinet.file.root.RootFile;
 import com.afollestad.cabinet.services.NetworkService;
 import com.afollestad.cabinet.sftp.SftpClient;
 import com.afollestad.cabinet.utils.Utils;
@@ -20,6 +19,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import eu.chainfire.libsuperuser.Shell;
 
 public class LocalFile extends File {
 
@@ -54,7 +55,7 @@ public class LocalFile extends File {
             public void run() {
                 try {
                     if (requiresRoot()) {
-                        RootFile.runAsRoot("touch \"" + getPath() + "\"");
+                        runAsRoot("touch \"" + getPath() + "\"");
                     } else if (!toJavaFile().createNewFile())
                         throw new Exception("An unknown error occurred while creating your file.");
                     callback.onComplete();
@@ -84,7 +85,7 @@ public class LocalFile extends File {
 
     public void mkdirSync() throws Exception {
         if (requiresRoot()) {
-            RootFile.runAsRoot("mkdir -P \"" + getPath() + "\"");
+            runAsRoot("mkdir -P \"" + getPath() + "\"");
         } else {
             new java.io.File(getPath()).mkdirs();
         }
@@ -150,7 +151,7 @@ public class LocalFile extends File {
                             @Override
                             public void run() {
                                 try {
-                                    RootFile.runAsRoot("mv \"" + getPath() + "\" \"" + newFile.getPath() + "\"");
+                                    runAsRoot("mv \"" + getPath() + "\" \"" + newFile.getPath() + "\"");
                                     getContext().runOnUiThread(new Runnable() {
                                         @Override
                                         public void run() {
@@ -293,7 +294,7 @@ public class LocalFile extends File {
     private LocalFile copySync(java.io.File file, java.io.File newFile) throws Exception {
         LocalFile dest = (LocalFile) Utils.checkDuplicatesSync(getContext(), new LocalFile(getContext(), newFile));
         if (requiresRoot()) {
-            RootFile.runAsRoot("cp -R \"" + file.getAbsolutePath() + "\" \"" + dest.getPath() + "\"");
+            runAsRoot("cp -R \"" + file.getAbsolutePath() + "\" \"" + dest.getPath() + "\"");
             return dest;
         }
         InputStream in = new FileInputStream(file);
@@ -404,7 +405,7 @@ public class LocalFile extends File {
                 @Override
                 public void run() {
                     try {
-                        RootFile.runAsRoot("rm -rf \"" + getPath() + "\"");
+                        runAsRoot("rm -rf \"" + getPath() + "\"");
                         getContext().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -499,7 +500,7 @@ public class LocalFile extends File {
             } else {
                 cmd = "[ -f \"" + getPath() + "\" ] && echo \"1\" || echo \"0\"";
             }
-            return Integer.parseInt(RootFile.runAsRoot(cmd).get(0)) == 1;
+            return Integer.parseInt(runAsRoot(cmd).get(0)) == 1;
         }
         java.io.File mFile = new java.io.File(getPath());
         return mFile.exists() && isDirectory() == mFile.isDirectory();
@@ -550,7 +551,7 @@ public class LocalFile extends File {
     public List<File> listFilesSync(boolean includeHidden, FileFilter filter) throws Exception {
         List<File> results = new ArrayList<File>();
         if (requiresRoot()) {
-            List<String> response = RootFile.runAsRoot("ls -l \"" + getPath() + "\"");
+            List<String> response = runAsRoot("ls -l \"" + getPath() + "\"");
             return LsParser.parse(getContext(), getPath(), response, filter, includeHidden).getFiles();
         } else {
             java.io.File[] list;
@@ -580,5 +581,16 @@ public class LocalFile extends File {
             if (str.trim().isEmpty()) str = "/";
             return new LocalFile(getContext(), str);
         } else return null;
+    }
+
+    private List<String> runAsRoot(String command) throws Exception {
+        Log.v("Cabinet-SU", command);
+        boolean suAvailable = Shell.SU.available();
+        if (!suAvailable)
+            throw new Exception(getContext().getString(R.string.superuser_not_available));
+        return Shell.SU.run(new String[]{
+                "mount -o remount,rw /",
+                command
+        });
     }
 }
