@@ -244,43 +244,44 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
             } else {
                 int resId = R.drawable.ic_file_misc;
                 if (file.isDirectory()) {
-                    if (file.isHidden()) resId = R.drawable.ic_folder_hidden;
-                    else resId = Utils.resolveDrawable(context, R.attr.folder_thumbnail);
+                    if (file.isHidden())
+                        resId = Utils.resolveDrawable(context, R.attr.ic_folder_hidden);
+                    else resId = Utils.resolveDrawable(context, R.attr.ic_folder);
                 } else {
                     String ext = file.getExtension();
                     List<String> codeExts = Arrays.asList(context.getResources().getStringArray(R.array.code_extensions));
                     if (mime.startsWith("audio/") || mime.equals("application/ogg")) {
-                        resId = R.drawable.ic_file_audio;
+                        resId = Utils.resolveDrawable(context, R.attr.ic_file_audio);
                     } else if (mime.startsWith("image/")) {
-                        resId = R.drawable.ic_file_image;
+                        resId = Utils.resolveDrawable(context, R.attr.ic_file_image);
                     } else if (mime.startsWith("video/")) {
-                        resId = R.drawable.ic_file_video;
+                        resId = Utils.resolveDrawable(context, R.attr.ic_file_video);
                     } else if (mime.equals("application/pdf")) {
-                        resId = R.drawable.ic_file_pdf;
+                        resId = Utils.resolveDrawable(context, R.attr.ic_file_pdf);
                     } else if (ext.equals("zip") || ext.equals("gzip") || ext.equals("tar") || ext.equals("tar.gz") ||
                             ext.equals("rar") || ext.equals("7z") || ext.equals("gz")) {
-                        resId = R.drawable.ic_file_zip;
+                        resId = Utils.resolveDrawable(context, R.attr.ic_file_zip);
                     } else if (mime.startsWith("model/")) {
-                        resId = R.drawable.ic_file_model;
+                        resId = Utils.resolveDrawable(context, R.attr.ic_file_model);
                     } else if (file.getExtension().equals("doc") || file.getExtension().equals("docx")) {
-                        resId = R.drawable.ic_file_word;
+                        resId = Utils.resolveDrawable(context, R.attr.ic_file_word);
                     } else if (file.getExtension().equals("ppt") || file.getExtension().equals("pptx")) {
-                        resId = R.drawable.ic_file_ppt;
+                        resId = Utils.resolveDrawable(context, R.attr.ic_file_ppt);
                     } else if (file.getExtension().equals("xls") || file.getExtension().equals("xlsx")) {
-                        resId = R.drawable.ic_file_excel;
+                        resId = Utils.resolveDrawable(context, R.attr.ic_file_excel);
                     } else if (file.getExtension().equals("ttf")) {
-                        resId = R.drawable.ic_file_font;
+                        resId = Utils.resolveDrawable(context, R.attr.ic_file_font);
                     } else if (file.getExtension().equals("sh") || file.getExtension().equals("bat")) {
-                        resId = R.drawable.ic_file_script;
+                        resId = Utils.resolveDrawable(context, R.attr.ic_file_script);
                     } else if (codeExts.contains(ext.toLowerCase(Locale.getDefault()))) {
-                        resId = R.drawable.ic_file_code;
+                        resId = Utils.resolveDrawable(context, R.attr.ic_file_code);
                     } else if (mime.startsWith("text/")) {
-                        resId = R.drawable.ic_file_doc;
+                        resId = Utils.resolveDrawable(context, R.attr.ic_file_doc);
                     }
                 }
                 icon.setImageResource(resId);
             }
-        } else icon.setImageResource(R.drawable.ic_file_misc);
+        } else icon.setImageResource(Utils.resolveDrawable(context, R.attr.ic_file_misc));
     }
 
     @Override

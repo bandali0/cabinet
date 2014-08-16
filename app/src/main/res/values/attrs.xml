@@ -12,8 +12,25 @@
     <attr name="list_selector" format="reference" />
     <attr name="list_selector_lighter" format="reference" />
     <attr name="overflow" format="reference" />
-    <attr name="folder_thumbnail" format="reference" />
     <attr name="empty_image" format="reference" />
     <attr name="empty_image_error" format="reference" />
+
+    <attr name="ic_folder" format="reference" />
+    <attr name="ic_folder_hidden" format="reference" />
+    <attr name="ic_file_apk" format="reference" />
+    <attr name="ic_file_audio" format="reference" />
+    <attr name="ic_file_code" format="reference" />
+    <attr name="ic_file_doc" format="reference" />
+    <attr name="ic_file_excel" format="reference" />
+    <attr name="ic_file_font" format="reference" />
+    <attr name="ic_file_image" format="reference" />
+    <attr name="ic_file_misc" format="reference" />
+    <attr name="ic_file_model" format="reference" />
+    <attr name="ic_file_pdf" format="reference" />
+    <attr name="ic_file_ppt" format="reference" />
+    <attr name="ic_file_script" format="reference" />
+    <attr name="ic_file_video" format="reference" />
+    <attr name="ic_file_word" format="reference" />
+    <attr name="ic_file_zip" format="reference" />
 
 </resources>

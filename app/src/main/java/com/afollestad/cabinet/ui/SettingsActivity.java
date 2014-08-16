@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.fragments.AboutDialog;
 import com.afollestad.cabinet.utils.ThemeUtils;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
  * @author Aidan Follestad (afollestad)
@@ -55,6 +56,7 @@ public class SettingsActivity extends PreferenceActivity implements AboutDialog.
         findPreference("dark_mode").setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
             public boolean onPreferenceChange(Preference preference, Object o) {
+                ImageLoader.getInstance().clearMemoryCache();
                 recreate();
                 return true;
             }

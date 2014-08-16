@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Parents -->
-
     <style name="CabinetParent" parent="@android:style/Theme.Holo.Light.DarkActionBar">
         <item name="title_text">@android:color/black</item>
         <item name="body_text">#303030</item>
@@ -10,7 +8,6 @@
         <item name="drawer_background">@color/drawer_background</item>
         <item name="divider">@color/divider</item>
         <item name="overflow">@drawable/ic_overflow_dark</item>
-        <item name="folder_thumbnail">@drawable/ic_folder</item>
         <item name="menu_selector">@drawable/menu_selector</item>
         <item name="list_selector">@drawable/list_selector</item>
         <item name="list_selector_lighter">@drawable/list_selector_lighter</item>
@@ -18,7 +15,24 @@
         <item name="empty_image_error">@drawable/ic_empty_error</item>
         <item name="empty_text">#99000000</item>
 
-        <!-- Theming -->
+        <item name="ic_file_apk">@drawable/ic_file_apk</item>
+        <item name="ic_file_audio">@drawable/ic_file_audio</item>
+        <item name="ic_file_code">@drawable/ic_file_code</item>
+        <item name="ic_file_doc">@drawable/ic_file_doc</item>
+        <item name="ic_file_excel">@drawable/ic_file_excel</item>
+        <item name="ic_file_font">@drawable/ic_file_font</item>
+        <item name="ic_file_image">@drawable/ic_file_image</item>
+        <item name="ic_file_misc">@drawable/ic_file_misc</item>
+        <item name="ic_file_model">@drawable/ic_file_model</item>
+        <item name="ic_file_pdf">@drawable/ic_file_pdf</item>
+        <item name="ic_file_ppt">@drawable/ic_file_ppt</item>
+        <item name="ic_file_script">@drawable/ic_file_script</item>
+        <item name="ic_file_video">@drawable/ic_file_video</item>
+        <item name="ic_file_word">@drawable/ic_file_word</item>
+        <item name="ic_file_zip">@drawable/ic_file_zip</item>
+        <item name="ic_folder">@drawable/ic_folder</item>
+        <item name="ic_folder_hidden">@drawable/ic_folder_hidden</item>
+
         <item name="android:buttonStyle">@style/ButtonCabinet</item>
         <item name="android:editTextBackground">@drawable/cabinet_edit_text_holo_light</item>
         <item name="android:checkboxStyle">@style/CheckBoxCabinet</item>
@@ -49,7 +63,6 @@
         <item name="drawer_background">@color/drawer_background_dark</item>
         <item name="divider">@color/divider_dark</item>
         <item name="overflow">@drawable/ic_overflow</item>
-        <item name="folder_thumbnail">@drawable/ic_folder_light</item>
         <item name="menu_selector">@drawable/menu_selector_dark</item>
         <item name="list_selector">@drawable/list_selector_dark</item>
         <item name="list_selector_lighter">@drawable/list_selector_lighter_dark</item>
@@ -57,7 +70,24 @@
         <item name="empty_image_error">@drawable/ic_empty_error_light</item>
         <item name="empty_text">#99FFFFFF</item>
 
-        <!-- Theming -->
+        <item name="ic_file_apk">@drawable/ic_file_apk_light</item>
+        <item name="ic_file_audio">@drawable/ic_file_audio_light</item>
+        <item name="ic_file_code">@drawable/ic_file_code_light</item>
+        <item name="ic_file_doc">@drawable/ic_file_doc_light</item>
+        <item name="ic_file_excel">@drawable/ic_file_excel_light</item>
+        <item name="ic_file_font">@drawable/ic_file_font_light</item>
+        <item name="ic_file_image">@drawable/ic_file_image_light</item>
+        <item name="ic_file_misc">@drawable/ic_file_misc_light</item>
+        <item name="ic_file_model">@drawable/ic_file_model_light</item>
+        <item name="ic_file_pdf">@drawable/ic_file_pdf_light</item>
+        <item name="ic_file_ppt">@drawable/ic_file_ppt_light</item>
+        <item name="ic_file_script">@drawable/ic_file_script_light</item>
+        <item name="ic_file_video">@drawable/ic_file_video_light</item>
+        <item name="ic_file_word">@drawable/ic_file_word_light</item>
+        <item name="ic_file_zip">@drawable/ic_file_zip_light</item>
+        <item name="ic_folder">@drawable/ic_folder_light</item>
+        <item name="ic_folder_hidden">@drawable/ic_folder_hidden_light</item>
+
         <item name="android:buttonStyle">@style/ButtonCabinetDark</item>
         <item name="android:editTextBackground">@drawable/cabinet_edit_text_holo_light</item>
         <item name="android:checkboxStyle">@style/CheckBoxCabinet</item>
