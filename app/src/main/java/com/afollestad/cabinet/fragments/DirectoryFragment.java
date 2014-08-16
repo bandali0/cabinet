@@ -632,12 +632,18 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                                 ext.equals("tar.gz") || ext.equals(".7z");
                     } else {
                         String[] splitFilter = filter.split(":");
-                        setEmptyText(getString(R.string.no_files_filter, splitFilter[1]));
                         if (splitFilter[0].equals("mime")) {
+                            if (splitFilter[1].equals("text/")) {
+                                setEmptyText(getString(R.string.no_files_filter, getString(R.string.text)));
+                            } else if (splitFilter[1].equals("image/")) {
+                                setEmptyText(getString(R.string.no_files_filter, getString(R.string.image)));
+                            } else if (splitFilter[1].equals("audio/")) {
+                                setEmptyText(getString(R.string.no_files_filter, getString(R.string.audio)));
+                            } else if (splitFilter[1].equals("video/")) {
+                                setEmptyText(getString(R.string.no_files_filter, getString(R.string.video)));
+                            }
                             return file.getMimeType().startsWith(splitFilter[1]);
-                        } else if (splitFilter[0].equals("ext")) {
-                            return file.getExtension().equals(splitFilter[1]);
-                        } else return false;
+                        } else return file.getExtension().equals(splitFilter[1]);
                     }
                 }
             };
