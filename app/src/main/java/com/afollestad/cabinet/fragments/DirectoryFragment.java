@@ -16,6 +16,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
+import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -51,6 +52,7 @@ import com.afollestad.cabinet.ui.DrawerActivity;
 import com.afollestad.cabinet.ui.SettingsActivity;
 import com.afollestad.cabinet.utils.PauseOnScrollListener;
 import com.afollestad.cabinet.utils.Shortcuts;
+import com.afollestad.cabinet.utils.ThemeUtils;
 import com.afollestad.cabinet.utils.Utils;
 import com.afollestad.cabinet.zip.Unzipper;
 import com.afollestad.cabinet.zip.Zipper;
@@ -864,7 +866,8 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             } else {
                 if (file.getExtension().equals("zip")) {
                     final File fFile = file;
-                    CustomDialog.create(getActivity(), R.string.unzip, getString(R.string.auto_unzip_prompt),
+                    ContextThemeWrapper context = new ContextThemeWrapper(getActivity(), new ThemeUtils(getActivity()).getCurrent());
+                    CustomDialog.create(context, R.string.unzip, getString(R.string.auto_unzip_prompt),
                             android.R.string.ok, 0, android.R.string.cancel, new CustomDialog.ClickListener() {
                                 @Override
                                 public void onPositive(int which, View view) {

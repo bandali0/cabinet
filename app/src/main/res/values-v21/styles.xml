@@ -23,7 +23,7 @@
         <item name="android:actionModeBackground">@color/cabinet_color</item>
         <item name="android:buttonStyle">@style/ButtonCabinet</item>
         <item name="android:actionModeCloseDrawable">@drawable/ic_action_close</item>
-        <item name="android:popupMenuStyle">@style/Theme.PopupMenu</item>
+        <!--<item name="android:popupMenuStyle">@style/Theme.PopupMenu</item>-->
 
         <item name="ic_file_apk">@drawable/ic_file_apk</item>
         <item name="ic_file_audio">@drawable/ic_file_audio</item>
@@ -44,7 +44,7 @@
         <item name="ic_folder_hidden">@drawable/ic_folder_hidden</item>
     </style>
 
-    <style name="_ParentDark" parent="android:Theme.Material.Light.DarkActionBar">
+    <style name="_ParentDark" parent="android:Theme.Material">
         <item name="title_text">@android:color/white</item>
         <item name="body_text">#EEEEEE</item>
         <item name="list_background">#242424</item>
@@ -64,7 +64,6 @@
         <item name="android:actionModeBackground">@color/cabinet_color</item>
         <item name="android:buttonStyle">@style/ButtonCabinetDark</item>
         <item name="android:actionModeCloseDrawable">@drawable/ic_action_close</item>
-        <item name="android:popupMenuStyle">@style/Theme.PopupMenu</item>
 
         <item name="ic_file_apk">@drawable/ic_file_apk_light</item>
         <item name="ic_file_audio">@drawable/ic_file_audio_light</item>

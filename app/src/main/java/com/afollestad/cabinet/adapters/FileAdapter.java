@@ -243,7 +243,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
                 DisplayImageOptions options = App.getDisplayOptions(Utils.resolveDrawable(context, R.attr.ic_file_apk));
                 ImageLoader.getInstance().displayImage(file.getPath(), icon, options);
             } else {
-                int resId = R.drawable.ic_file_misc;
+                int resId = Utils.resolveDrawable(context, R.attr.ic_file_misc);
                 if (file.isDirectory()) {
                     if (file.isHidden())
                         resId = Utils.resolveDrawable(context, R.attr.ic_folder_hidden);

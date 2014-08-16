@@ -1,9 +1,9 @@
 package com.afollestad.cabinet.fragments;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
@@ -88,25 +88,25 @@ public class CustomDialog extends DialogFragment implements View.OnClickListener
         return inflatedView;
     }
 
-    public static CustomDialog create(Activity context, int title, String body, CustomDialog.SimpleClickListener listener) {
+    public static CustomDialog create(Context context, int title, String body, CustomDialog.SimpleClickListener listener) {
         return create(context, title, body, 0, 0, 0, listener);
     }
 
-    public static CustomDialog create(Activity context, int title, int itemsRes, CustomDialog.SimpleClickListener listener) {
+    public static CustomDialog create(Context context, int title, int itemsRes, CustomDialog.SimpleClickListener listener) {
         return create(context, title, null, itemsRes, 0, 0, 0, 0, listener);
     }
 
-    public static CustomDialog create(Activity context, int title, String body, int positive, int neutral, int negative, CustomDialog.SimpleClickListener listener) {
+    public static CustomDialog create(Context context, int title, String body, int positive, int neutral, int negative, CustomDialog.SimpleClickListener listener) {
         return create(context, title, body, 0, 0, positive, neutral, negative, listener);
     }
 
-    public static CustomDialog create(Activity context, int title, String body, int itemsRes, int view, int positive, int neutral, int negative, CustomDialog.SimpleClickListener listener) {
+    public static CustomDialog create(Context context, int title, String body, int itemsRes, int view, int positive, int neutral, int negative, CustomDialog.SimpleClickListener listener) {
         CustomDialog dialog = new CustomDialog();
         dialog.title = title;
         dialog.body = body;
         dialog.itemsRes = itemsRes;
         dialog.view = view;
-        if (view != 0) dialog.inflatedView = context.getLayoutInflater().inflate(view, null);
+        if (view != 0) dialog.inflatedView = LayoutInflater.from(context).inflate(view, null);
         dialog.mListener = listener;
         if (positive == 0 && itemsRes == 0) positive = android.R.string.ok;
         dialog.positive = positive;
