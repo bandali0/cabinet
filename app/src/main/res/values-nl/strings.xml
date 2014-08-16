@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="welcome">Welkom</string>
-    <string name="welcome_intro">Welkom bij Cabinet! Cabinet is een simpel bestand beheer ontworpen om gebruiksvriendelijk te zijn,
- en om te werken zoals een bestand beheer app zal moeten.\n\n Kijk een naar het onderstaande bestand:</string>
-    <string name="welcome_conclusion">Probeer te tikken op de voorbeeld pictogram of de 3-punt icoon. Tikken op het voorbeeld pictogram selecteerd het bestand voor multi acties, dit kan ook gedaan worden door te tikken en ingedrukt te houden van bestanden. De 3-punt icoon laat een popup menu zien met opties voor het specifieke bestand.\n\nCabinet
- heeft daarnaast nog andere features, zoals toegang tot servers op afstand via SFTP dat je kan vinden tijden het gebruik van Cabinet. Bedankt voor het uitproberen van Cabinet!</string>
     <string name="lets_go">Laten we beginnen!</string>
     <string name="open_as">Open als…</string>
     <string name="pin">Vastzetten</string>
@@ -24,7 +20,7 @@
     <string name="directory">Map</string>
     <string name="unknown">Onbekend</string>
     <string name="go_up">Ga omhoog</string>
-    <string name="press_back_to_exit">"Druk nog een keer op terug om af te sluiten…"</string>
+    <string name="press_back_to_exit">"Druk nog een keer op terug om af te sluiten..."</string>
     <string name="x_files">%1$d bestanden</string>
     <string name="x_dirs">%1$d mappen</string>
     <string name="no_x_files">Geen %1$s bestanden</string>
@@ -169,14 +165,14 @@ Een minimalistische, vernuftige, mooie bestands beheerder voor Android 4.1 en ho
     <string name="unsupported_extension">Niet ondersteunde extensie</string>
     <string name="unsupported_extension_desc">Je kan dit type bestand niet openen voor tekst bewerking.</string>
     <string name="file_already_exists_warning">Let op: dit bestand bestaat al. Het nieuwe bestand zal verschijnen als kopie.</string>
-    <string name="auto_unzip_prompt">Unzip this archive into the current directory?</string>
+    <string name="auto_unzip_prompt">Dit archief uitpakken in de huidige map?</string>
     <string name="filter">Filter</string>
-    <string name="none">None</string>
-    <string name="archives">Archives</string>
-    <string name="extension">Extension</string>
-    <string name="no_files_filter">No files for filter: %1$s</string>
-    <string name="superuser_not_available">Superuser not available</string>
-    <string name="filter_active">Filter active: %1$s</string>
-    <string name="dark_theme">Dark Theme</string>
-    <string name="dark_theme_desc">Cabinet will use darker colors for AMOLED screens and low lit environments.</string>
+    <string name="none">Geen</string>
+    <string name="archives">Archieven</string>
+    <string name="extension">Uitbreiding</string>
+    <string name="no_files_filter">Geen bestanden voor filter: %1$s</string>
+    <string name="superuser_not_available">Superuser niet beschikbaar.</string>
+    <string name="filter_active">Filter actief:%1$s</string>
+    <string name="dark_theme">Donker thema</string>
+    <string name="dark_theme_desc">Cabinet zal donkerdere kleuren gebruiken voor AMOLED schermen en omgevingen met weinig licht.</string>
 </resources>

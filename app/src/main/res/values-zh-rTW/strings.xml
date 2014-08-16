@@ -176,8 +176,8 @@
     <string name="archives">壓縮檔案</string>
     <string name="extension">類型</string>
     <string name="no_files_filter">無符合此篩選條件的檔案： %1$s</string>
-    <string name="superuser_not_available">Superuser not available</string>
-    <string name="filter_active">Filter active: %1$s</string>
-    <string name="dark_theme">Dark Theme</string>
-    <string name="dark_theme_desc">Cabinet will use darker colors for AMOLED screens and low lit environments.</string>
+    <string name="superuser_not_available">Superuser 不可用</string>
+    <string name="filter_active">" 篩選條件： %1$s"</string>
+    <string name="dark_theme">暗系主題</string>
+    <string name="dark_theme_desc">Cabinet 將會在 AMOLED 熒幕或者弱光照條件下採用暗色系。</string>
 </resources>

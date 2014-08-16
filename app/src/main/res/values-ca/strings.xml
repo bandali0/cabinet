@@ -169,14 +169,14 @@
     <string name="unsupported_extension">Extensió incompatible</string>
     <string name="unsupported_extension_desc">No pots obirir aquest tipus d\'arxiu per editar text.</string>
     <string name="file_already_exists_warning">Atenció: Aquest arxiu ja existeix, el nou arxiu apareixerà per duplicat.</string>
-    <string name="auto_unzip_prompt">Unzip this archive into the current directory?</string>
-    <string name="filter">Filter</string>
-    <string name="none">None</string>
-    <string name="archives">Archives</string>
-    <string name="extension">Extension</string>
-    <string name="superuser_not_available">Superuser not available</string>
-    <string name="filter_active">Filter active: %1$s</string>
-    <string name="no_files_filter">No files for filter: %1$s</string>
-    <string name="dark_theme">Dark Theme</string>
-    <string name="dark_theme_desc">Cabinet will use darker colors for AMOLED screens and low lit environments.</string>
+    <string name="auto_unzip_prompt">Descomprimir aquest arxiu aquí?</string>
+    <string name="filter">Filtre</string>
+    <string name="none">Desactivat</string>
+    <string name="archives">Arxius</string>
+    <string name="extension">Extensió</string>
+    <string name="no_files_filter">Cap arxiu pel filtre: %1$s</string>
+    <string name="superuser_not_available">Superusuari no disponible</string>
+    <string name="filter_active">Filtre actiu: %1$s</string>
+    <string name="dark_theme">Tema fosc</string>
+    <string name="dark_theme_desc">Cabinet utilitzarà colors més foscos per a pantalles AMOLED i llocs amb poca il·luminació</string>
 </resources>
