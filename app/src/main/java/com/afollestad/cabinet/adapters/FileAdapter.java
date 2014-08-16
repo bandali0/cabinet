@@ -237,9 +237,10 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
         if (mime != null) {
             if (mime.startsWith("image/")) {
                 Uri uri = Uri.fromFile(file.toJavaFile());
-                ImageLoader.getInstance().displayImage(Uri.decode(uri.toString()), icon);
+                DisplayImageOptions options = App.getDisplayOptions(Utils.resolveDrawable(context, R.attr.ic_file_apk));
+                ImageLoader.getInstance().displayImage(Uri.decode(uri.toString()), icon, options);
             } else if (mime.equals("application/vnd.android.package-archive")) {
-                DisplayImageOptions options = App.getDisplayOptions(R.drawable.ic_file_apk);
+                DisplayImageOptions options = App.getDisplayOptions(Utils.resolveDrawable(context, R.attr.ic_file_apk));
                 ImageLoader.getInstance().displayImage(file.getPath(), icon, options);
             } else {
                 int resId = R.drawable.ic_file_misc;
