@@ -170,4 +170,12 @@
     <string name="unsupported_extension">不支持的檔案類型</string>
     <string name="unsupported_extension_desc">您無法將此類型檔案以文本編輯方式打開。</string>
     <string name="file_already_exists_warning">警告：此檔案已存在，新增檔案將以副本形式出現。</string>
+    <string name="auto_unzip_prompt">解壓縮檔案到當前資料夾？</string>
+    <string name="filter">篩選</string>
+    <string name="none">無</string>
+    <string name="archives">壓縮檔案</string>
+    <string name="extension">類型</string>
+    <string name="no_files_filter">無符合此篩選條件的檔案： %1$s</string>
+    <string name="superuser_not_available">Superuser not available</string>
+    <string name="filter_active">Filter active: %1$s</string>
 </resources>

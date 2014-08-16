@@ -6,7 +6,7 @@ i działał jak menadżer plików powinien.\n\n                       Spójrz na
     <string name="welcome_conclusion">Dotknij obrazek lub trzy kropki. Dotknięcie obrazka zaznaczy plik, można to zrobić również poprzez dotknięcie i przytrzymanie nazwy pliku. Natomiast ikonka z trzema kropkami to menu kontekstowe odpowiadające za wyświetlanie szczegółowych opcji zarządzania plikiem. \n\nCabinet
 posiada również inne funkcje, takie jak m.in. zdolny dostęp do serwerów poprzez SFTP. Dziękujemy za wypróbowanie naszego menadżera plików Cabinet!</string>
     <string name="lets_go">Do dzieła!</string>
-    <string name="open_as">Otwórz jako...</string>
+    <string name="open_as">Otwórz jako…</string>
     <string name="pin">Przypnij</string>
     <string name="copy">Kopiuj</string>
     <string name="cut">Wytnij</string>
@@ -70,16 +70,16 @@ posiada również inne funkcje, takie jak m.in. zdolny dostęp do serwerów popr
     <string name="disconnect_prompt">Czy chcesz się rozłączyć z %1$s?</string>
     <string name="uploaded_to">Wysyłanie do %1$s</string>
     <string name="downloaded_to">Pobieranie do %1$s</string>
-    <string name="connecting">Łączenie...</string>
-    <string name="downloading">Pobieranie...</string>
-    <string name="deleting">Usuwanie...</string>
-    <string name="making_folder">Tworzenie folderu...</string>
-    <string name="renaming">Zmiana nazwy...</string>
-    <string name="unzipping">Rozpakowywanie...</string>
-    <string name="zipping">Pakowanie...</string>
-    <string name="moving">Przenoszenie...</string>
-    <string name="uploading">Wysyłanie...</string>
-    <string name="copying">Kopiowanie...</string>
+    <string name="connecting">Łączenie…</string>
+    <string name="downloading">Pobieranie…</string>
+    <string name="deleting">Usuwanie…</string>
+    <string name="making_folder">Tworzenie folderu…</string>
+    <string name="renaming">Zmiana nazwy…</string>
+    <string name="unzipping">Rozpakowywanie…</string>
+    <string name="zipping">Pakowanie…</string>
+    <string name="moving">Przenoszenie…</string>
+    <string name="uploading">Wysyłanie…</string>
+    <string name="copying">Kopiowanie…</string>
     <string name="failed_delete_file">Nie można usunąć tego pliku: %1$s</string>
     <string name="failed_make_directory">"Nie udało się utworzyć nowego folderu: %1$s "</string>
     <string name="failed_rename_file">Nie udało się zmienić nazwy/przenieść tego pliku: %1$s</string>
@@ -105,7 +105,7 @@ posiada również inne funkcje, takie jak m.in. zdolny dostęp do serwerów popr
     <string name="cut_xfiles"><![CDATA[
  <b>Wytnij:</b>&nbsp:&;%1$d pliki
     ]]></string>
-    <string name="search_files">Szukaj plików...</string>
+    <string name="search_files">Szukaj plików…</string>
     <string name="search_x"><![CDATA[
  <b>Szukaj:</b>&nbsp;%1$s
     ]]></string>
@@ -118,7 +118,7 @@ posiada również inne funkcje, takie jak m.in. zdolny dostęp do serwerów popr
     <string name="no_thanks">Nie, dzięki</string>
     <string name="file">Plik</string>
     <string name="folder">Folder</string>
-    <string name="remote_connection">Połączenie zdalne...</string>
+    <string name="remote_connection">Połączenie zdalne…</string>
     <string name="text">Tekst</string>
     <string name="image">Obraz</string>
     <string name="audio">Dzwięk</string>
@@ -160,18 +160,26 @@ posiada również inne funkcje, takie jak m.in. zdolny dostęp do serwerów popr
     <string name="material_version">Material</string>
     <string name="material_version_desc">"Wersja ''Material Design'' jest dostępna dla tych którzy używają Androida L. Czy chesz zobaczyć stronę społeczności Cabinet w Google+ gdzie taka wersja jest dostępna? "</string>
     <string name="new_file">Nowy plik</string>
-    <string name="making_file">Tworzenie pliku...</string>
+    <string name="making_file">Tworzenie pliku…</string>
     <string name="created_file">Plik utworzony %1$s</string>
     <string name="file_already_exists">Plik już istnieje</string>
     <string name="failed_make_file">Nie udało się utworzyć nowego pliku: %1$s</string>
-    <string name="pick_a_file">Wybierz plik...</string>
+    <string name="pick_a_file">Wybierz plik…</string>
     <string name="cabinet_text_editor">Edytor tekstu Cabinet</string>
     <string name="save">Zapisz</string>
     <string name="unsaved_changes">Zmiany niezapisane</string>
     <string name="unsaved_changes_desc">Masz niezapisane zmiany, czy chesz je zapisać przed wyjściem?</string>
-    <string name="saving">Zapisywanie...</string>
-    <string name="loading">Ładowanie...</string>
+    <string name="saving">Zapisywanie…</string>
+    <string name="loading">Ładowanie…</string>
     <string name="unsupported_extension">Nieobsługiwane rozszerzenie</string>
     <string name="unsupported_extension_desc">Nie możesz otworzyć tego typu pliku w edytorze tekstu</string>
     <string name="file_already_exists_warning">Uwaga: ten plik już istnieje. Twój nowy plik pojawi się jako duplikat</string>
+    <string name="auto_unzip_prompt">Rozpakować archiwum w bieżącej ścieżce?</string>
+    <string name="filter">Filtruj</string>
+    <string name="none">Brak</string>
+    <string name="archives">Archiwa</string>
+    <string name="extension">Rozszerzenie</string>
+    <string name="no_files_filter">Brak wyników filtrowania: %1$s</string>
+    <string name="superuser_not_available">Tryb Superuser niedostępny</string>
+    <string name="filter_active">Filter active: %1$s</string>
 </resources>

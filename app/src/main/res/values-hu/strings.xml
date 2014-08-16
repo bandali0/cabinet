@@ -5,8 +5,8 @@
  Kellemes és úgy működik ahogy azt egy fájlkezelőtől elvárjuk. \n\n Vegyen egy pillantást a fájra:</string>
     <string name="welcome_conclusion">Érintse meg az ikonképet vagy a 3-as pont ikont. Ha az ikonképet megnyomja feltűnnek az opciók. Ezt a fájl hosszú nyomva tartásával is elérheti. A 3-as pont ikon megjeleníti a fájl többi opcióit. \n\nA Cabinet
  másik különféle jellemzői, mint például a szerverekhez való távoli hozzáférés SFTPn keresztül. Köszönjük hogy ezt az alkalmazást használja!</string>
-    <string name="lets_go">Tovább...</string>
-    <string name="open_as">Megnyitás Mint...</string>
+    <string name="lets_go">Tovább…</string>
+    <string name="open_as">Megnyitás Mint…</string>
     <string name="pin">Kedvencekhez</string>
     <string name="copy">Másolás</string>
     <string name="cut">Kivágás</string>
@@ -18,13 +18,13 @@
     <string name="unzip">Kibontás</string>
     <string name="selectAll">Összes Kiválasztása</string>
     <string name="details">Adatok</string>
-    <string name="no_files">Üres Mappa</string>
+    <string name="no_files">Üres Könyvtár</string>
     <string name="storage">Tárhely</string>
     <string name="root">Gyökér</string>
     <string name="directory">Könyvtár</string>
     <string name="unknown">Ismeretlen</string>
     <string name="go_up">Ugrás Fel</string>
-    <string name="press_back_to_exit">"Vissza gomb újra a kilépéshez..."</string>
+    <string name="press_back_to_exit">"Vissza gomb újra a kilépéshez…"</string>
     <string name="x_files">%1$d fájlok</string>
     <string name="x_dirs">%1$d könyvtárak</string>
     <string name="no_x_files">Nincsenek %1$s fájlok</string>
@@ -70,16 +70,16 @@
     <string name="disconnect_prompt">Szeretné hogy csatlakozzon a(z) %1$s-hoz?</string>
     <string name="uploaded_to">Feltöltve ide: %1$s</string>
     <string name="downloaded_to">Letöltve ide: %1$s</string>
-    <string name="connecting">Csatlakozás...</string>
-    <string name="downloading">Letöltés...</string>
-    <string name="deleting">Törlés...</string>
-    <string name="making_folder">Mappa létrehozása...</string>
-    <string name="renaming">Átnevezés...</string>
-    <string name="unzipping">Kibontás...</string>
-    <string name="zipping">Becsomagolás...</string>
-    <string name="moving">Áthelyezés...</string>
-    <string name="uploading">Feltöltés...</string>
-    <string name="copying">Másolás...</string>
+    <string name="connecting">Csatlakozás…</string>
+    <string name="downloading">Letöltés…</string>
+    <string name="deleting">Törlés…</string>
+    <string name="making_folder">Mappa létrehozása…</string>
+    <string name="renaming">Átnevezés…</string>
+    <string name="unzipping">Kibontás…</string>
+    <string name="zipping">Becsomagolás…</string>
+    <string name="moving">Áthelyezés…</string>
+    <string name="uploading">Feltöltés…</string>
+    <string name="copying">Másolás…</string>
     <string name="failed_delete_file">Sikertelen a(z): %1$s törlése</string>
     <string name="failed_make_directory">Sikertelen a(z): %1$s mappa létrehozása</string>
     <string name="failed_rename_file">Sikertelen a(z): %1$s fájl átnevezése/mozgatása</string>
@@ -105,7 +105,7 @@
     <string name="cut_xfiles"><![CDATA[
  <b>Kivágás:</b>&nbsp;&nbsp;%1$d fájlok
     ]]></string>
-    <string name="search_files">Fájlok keresése...</string>
+    <string name="search_files">Fájlok keresése…</string>
     <string name="search_x"><![CDATA[
  <b>Keresés:</b>&nbsp;%1$s
     ]]></string>
@@ -115,10 +115,10 @@
     <string name="later">Később</string>
     <string name="rate_desc">Szeretné értékelni a Play Áruházban?</string>
     <string name="sure">Persze!</string>
-    <string name="no_thanks">Nem Köszönöm</string>
+    <string name="no_thanks">Köszönöm Nem</string>
     <string name="file">Fájl</string>
     <string name="folder">Mappa</string>
-    <string name="remote_connection">Távoli Kapcsolat...</string>
+    <string name="remote_connection">Távoli Kapcsolat…</string>
     <string name="text">Szöveg</string>
     <string name="image">Kép</string>
     <string name="audio">Hang</string>
@@ -139,7 +139,7 @@
     <string name="translucent_statusbar_desc">Áttetsző (egyszínű a műveleti sávval) Értesítési Sáv Kitkat vagy újabb verzión.</string>
     <string name="translucent_navbar_desc">Áttetsző Navigációs Sáv Kitkat vagy újabb verzión.</string>
     <string name="about_body"><![CDATA[
- Egy minimalista, intuitív és szép fájlkezelő android 4.1-től. <br/><br/>
+ Egy minimalista, intuitív és szép fájlkezelő androidra. <br/><br/>
  Fejlesztő <b>Aidan Follestad</b>.<br/><a href=\'http://aidanfollestad.com\'>Weboldal</a>&nbsp;&nbsp;
  <a href=\'https://twitter.com/afollestad\'>Twitter</a>&nbsp;&nbsp;
  <a href=\'https://google.com/+AidanFollestad\'>Google+</a>&nbsp;&nbsp;
@@ -155,18 +155,26 @@
     <string name="material_version">Material</string>
     <string name="material_version_desc">A Cabinet Material verziója csak Android L- re érhető el. látogasson el a Google+ közösségi oldalunkra, ha azt a verziót szetetné letölteni.</string>
     <string name="new_file">Új Fájl</string>
-    <string name="making_file">Fájl létrehozása...</string>
+    <string name="making_file">Fájl létrehozása…</string>
     <string name="created_file">%1$s fájl létrehozva</string>
     <string name="file_already_exists">Ez a fájl már létezik</string>
     <string name="failed_make_file">Sikertelen a(z): %1$s új fájl létrehozása</string>
-    <string name="pick_a_file">Válasszon egy fájlt...</string>
+    <string name="pick_a_file">Válasszon egy fájlt…</string>
     <string name="cabinet_text_editor">Szöveg Szerkesztő</string>
     <string name="save">Mentés</string>
     <string name="unsaved_changes">Nem mentett változtatások</string>
     <string name="unsaved_changes_desc">Változtatások mentése kilépés előtt?</string>
-    <string name="saving">Mentés...</string>
-    <string name="loading">Betöltés...</string>
+    <string name="saving">Mentés…</string>
+    <string name="loading">Betöltés…</string>
     <string name="unsupported_extension">Nem Támogatott Kiterjesztés</string>
     <string name="unsupported_extension_desc">Ezt a fájltipust nem lehet szerkezteni.</string>
     <string name="file_already_exists_warning">Figyelmeztetés: Ez a fájl már létezik. Az új fájl egy másolatként jelenik meg.</string>
+    <string name="auto_unzip_prompt">Kibontja az archívumot a jelenlegi könyvtárba?</string>
+    <string name="filter">Szűrő</string>
+    <string name="none">Egyik Sem</string>
+    <string name="archives">Archívumok</string>
+    <string name="extension">Kiterjesztés</string>
+    <string name="no_files_filter">Nincsenek fájlok a(z) szűrőhöz: %1$s</string>
+    <string name="superuser_not_available">Nincs Superuser Jogosultság</string>
+    <string name="filter_active">Filter active: %1$s</string>
 </resources>

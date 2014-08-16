@@ -118,7 +118,7 @@
     <string name="no_thanks">No grazie</string>
     <string name="file">File</string>
     <string name="folder">Cartella</string>
-    <string name="remote_connection">Connessione remota...</string>
+    <string name="remote_connection">Connessione remota…</string>
     <string name="text">Testo</string>
     <string name="image">Immagine</string>
     <string name="audio">Audio</string>
@@ -155,7 +155,7 @@
     <string name="material_version">Material</string>
     <string name="material_version_desc">Una versione "Material" di Cabinet è disponibile per coloro che utilizzano Android L. Visualizzare la community di Cabinet su Google+ dove è disponibile questa versione?</string>
     <string name="new_file">Nuova File</string>
-    <string name="making_file">Creazione file...</string>
+    <string name="making_file">Creazione file…</string>
     <string name="created_file">File %1$s creato</string>
     <string name="file_already_exists">File già esistente</string>
     <string name="failed_make_file">Impossibile creare un nuovo file: %1$s</string>
@@ -164,9 +164,17 @@
     <string name="save">Salva</string>
     <string name="unsaved_changes">Modifiche non salvate</string>
     <string name="unsaved_changes_desc">Sono presenti modifiche non salvate. Salvarle prima di uscire?</string>
-    <string name="saving">Salvataggio...</string>
-    <string name="loading">Caricamento...</string>
+    <string name="saving">Salvataggio…</string>
+    <string name="loading">Caricamento…</string>
     <string name="unsupported_extension">Estensione non supportata</string>
     <string name="unsupported_extension_desc">Impossibile aprire questo tipo di file per la modifica del testo.</string>
     <string name="file_already_exists_warning">Attenzione: file già esistente. Il nuovo file apparirà come un duplicato.</string>
+    <string name="auto_unzip_prompt">Estrarre l\'archivio nella directory corrente?</string>
+    <string name="filter">Filtro</string>
+    <string name="none">Nessuno</string>
+    <string name="archives">Archivi</string>
+    <string name="extension">Estensione</string>
+    <string name="no_files_filter">Nessun file per %1$s</string>
+    <string name="superuser_not_available">Superuser non disponibile</string>
+    <string name="filter_active">Filter active: %1$s</string>
 </resources>

@@ -154,7 +154,7 @@
     <string name="material_version">Material</string>
     <string name="material_version_desc">Uma versão Material do Cabinet está disponível para aqueles que usam o Android L. Deseja visitar a comunidade Google+ do Cabinet onde esta versão está publicada?</string>
     <string name="new_file">Nova Ficheiro</string>
-    <string name="making_file">A criar ficheiro...</string>
+    <string name="making_file">A criar ficheiro…</string>
     <string name="created_file">Ficheiro criado %1$s</string>
     <string name="file_already_exists">O ficheiro já existe</string>
     <string name="failed_make_file">Falha ao criar um novo ficheiro: %1$s</string>
@@ -168,4 +168,12 @@
     <string name="unsupported_extension">Extensão não suportada</string>
     <string name="unsupported_extension_desc">Não é possível abrir este tipo de ficheiro para editar texto.</string>
     <string name="file_already_exists_warning">Aviso: este ficheiro já existe. O seu novo ficheiro irá aparecer como duplicado.</string>
+    <string name="auto_unzip_prompt">Descompactar este arquivo para o diretório atual?</string>
+    <string name="filter">Filtrar</string>
+    <string name="none">Nenhum</string>
+    <string name="archives">Arquivos</string>
+    <string name="extension">Extensão</string>
+    <string name="no_files_filter">Nenhum ficheiro após a filtragem: %1$s</string>
+    <string name="superuser_not_available">Superuser indisponível</string>
+    <string name="filter_active">Filter active: %1$s</string>
 </resources>
