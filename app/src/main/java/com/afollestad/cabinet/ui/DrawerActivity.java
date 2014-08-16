@@ -76,7 +76,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         if (!ThemeUtils.isTranslucentStatusbar(context)) return;
         SystemBarTintManager tintManager = new SystemBarTintManager(context);
         tintManager.setStatusBarTintEnabled(true);
-        tintManager.setStatusBarTintResource(R.color.cabinet_color);
+        tintManager.setStatusBarTintResource(R.color.cabinet_color_darker);
     }
 
     public static void setupTranslucentBottomPadding(Activity context, View view) {
