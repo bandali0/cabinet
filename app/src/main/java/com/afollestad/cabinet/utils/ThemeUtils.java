@@ -51,42 +51,42 @@ public class ThemeUtils {
     }
 
     public int getCurrent() {
-        if (translucentStatusbar && translucentNavbar) {
-            if (darkMode) return R.style.Theme_CabinetDarkNavStatusTranslucent;
-            else return R.style.Theme_CabinetNavStatusTranslucent;
-        } else if (translucentStatusbar) {
-            if (darkMode) return R.style.Theme_CabinetDarkStatusTranslucent;
-            else return R.style.Theme_CabinetStatusTranslucent;
-        } else if (translucentNavbar) {
-            if (darkMode) return R.style.Theme_CabinetDarkNavTranslucent;
-            else return R.style.Theme_CabinetNavTranslucent;
-        } else {
-            if (darkMode) return R.style.Theme_CabinetDark;
-            else return R.style.Theme_Cabinet;
-        }
-        // TODO toggle commented area for Material
-//        if (Build.VERSION.SDK_INT >= 20) {
-//            if (translucentNavbar) {
-//                if (darkMode) return R.style.Theme_CabinetDarkNavTranslucent;
-//                else return R.style.Theme_CabinetNavTranslucent;
-//            } else {
-//                if (darkMode) return R.style.Theme_CabinetDark;
-//                else return R.style.Theme_Cabinet;
-//            }
+//        if (translucentStatusbar && translucentNavbar) {
+//            if (darkMode) return R.style.Theme_CabinetDarkNavStatusTranslucent;
+//            else return R.style.Theme_CabinetNavStatusTranslucent;
+//        } else if (translucentStatusbar) {
+//            if (darkMode) return R.style.Theme_CabinetDarkStatusTranslucent;
+//            else return R.style.Theme_CabinetStatusTranslucent;
+//        } else if (translucentNavbar) {
+//            if (darkMode) return R.style.Theme_CabinetDarkNavTranslucent;
+//            else return R.style.Theme_CabinetNavTranslucent;
 //        } else {
-//            if (translucentStatusbar && translucentNavbar) {
-//                if (darkMode) return R.style.Theme_CabinetDarkNavStatusTranslucent;
-//                else return R.style.Theme_CabinetNavStatusTranslucent;
-//            } else if (translucentStatusbar) {
-//                if (darkMode) return R.style.Theme_CabinetDarkStatusTranslucent;
-//                else return R.style.Theme_CabinetStatusTranslucent;
-//            } else if (translucentNavbar) {
-//                if (darkMode) return R.style.Theme_CabinetDarkNavTranslucent;
-//                else return R.style.Theme_CabinetNavTranslucent;
-//            } else {
-//                if (darkMode) return R.style.Theme_CabinetDark;
-//                else return R.style.Theme_Cabinet;
-//            }
+//            if (darkMode) return R.style.Theme_CabinetDark;
+//            else return R.style.Theme_Cabinet;
 //        }
+        // TODO toggle commented area for Material
+        if (Build.VERSION.SDK_INT >= 20) {
+            if (translucentNavbar) {
+                if (darkMode) return R.style.Theme_CabinetDarkNavTranslucent;
+                else return R.style.Theme_CabinetNavTranslucent;
+            } else {
+                if (darkMode) return R.style.Theme_CabinetDark;
+                else return R.style.Theme_Cabinet;
+            }
+        } else {
+            if (translucentStatusbar && translucentNavbar) {
+                if (darkMode) return R.style.Theme_CabinetDarkNavStatusTranslucent;
+                else return R.style.Theme_CabinetNavStatusTranslucent;
+            } else if (translucentStatusbar) {
+                if (darkMode) return R.style.Theme_CabinetDarkStatusTranslucent;
+                else return R.style.Theme_CabinetStatusTranslucent;
+            } else if (translucentNavbar) {
+                if (darkMode) return R.style.Theme_CabinetDarkNavTranslucent;
+                else return R.style.Theme_CabinetNavTranslucent;
+            } else {
+                if (darkMode) return R.style.Theme_CabinetDark;
+                else return R.style.Theme_Cabinet;
+            }
+        }
     }
 }
