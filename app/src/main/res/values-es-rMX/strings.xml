@@ -177,4 +177,6 @@
     <string name="no_files_filter">No hay archivos para el filtro: %1$s</string>
     <string name="superuser_not_available">Superusuario no disponible</string>
     <string name="filter_active">Filter active: %1$s</string>
+    <string name="dark_theme">Dark Theme</string>
+    <string name="dark_theme_desc">Cabinet will use darker colors for AMOLED screens and low lit environments.</string>
 </resources>

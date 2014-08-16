@@ -46,12 +46,25 @@
     </style>
 
     <style name="ActionBar.Solid.Cabinet" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
-        <item name="android:icon">@android:color/transparent</item>
+        <item name="android:icon">@drawable/transparent</item>
         <item name="android:background">@drawable/ab_solid_cabinet</item>
+        <item name="android:titleTextStyle">@style/ActionTitleTextStyle</item>
     </style>
 
-    <!-- this style is only referenced in a Light.DarkActionBar based theme -->
-    <style name="Theme.Cabinet.Widget" parent="@android:style/Theme.Holo">
+    <style name="ActionTitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">#fff</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Theme.Cabinet.Widget.Dark" parent="@android:style/Theme.Holo">
+        <item name="android:textColorHint">@color/search_view_hint</item>
+        <item name="android:popupMenuStyle">@style/Theme.PopupMenu</item>
+        <item name="android:textColor">?title_text</item>
+        <item name="android:checkboxStyle">@style/CheckBoxCabinet</item>
+        <item name="android:radioButtonStyle">@style/RadioButtonCabinet</item>
+    </style>
+
+    <style name="Theme.Cabinet.Widget" parent="@android:style/Theme.Holo.Light">
         <item name="android:textColorHint">@color/search_view_hint</item>
         <item name="android:popupMenuStyle">@style/Theme.PopupMenu</item>
         <item name="android:textColor">?title_text</item>
@@ -62,6 +75,15 @@
     <style name="Theme.PopupMenu" parent="@android:style/Widget.Holo.Light.PopupMenu">
         <item name="android:dividerHeight">0dp</item>
         <item name="android:listDivider">@null</item>
+        <item name="android:dividerVertical">@null</item>
+        <item name="android:dividerHorizontal">@null</item>
+    </style>
+
+    <style name="Theme.PopupMenu.Dark" parent="@android:style/Widget.Holo.PopupMenu">
+        <item name="android:dividerHeight">0dp</item>
+        <item name="android:listDivider">@null</item>
+        <item name="android:dividerVertical">@null</item>
+        <item name="android:dividerHorizontal">@null</item>
     </style>
 
 </resources>

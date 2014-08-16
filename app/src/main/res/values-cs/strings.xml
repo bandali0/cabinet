@@ -177,4 +177,6 @@ Vytvořil <b>Aidan Follestad</b>.<br/><a href=\'http://aidanfollestad.com\'>Web<
     <string name="no_files_filter">Žádné soubory pro filtr: %1$s</string>
     <string name="superuser_not_available">Superuser není povolen</string>
     <string name="filter_active">Filter active: %1$s</string>
+    <string name="dark_theme">Dark Theme</string>
+    <string name="dark_theme_desc">Cabinet will use darker colors for AMOLED screens and low lit environments.</string>
 </resources>
