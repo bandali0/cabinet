@@ -10,6 +10,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.content.res.TypedArray;
 import android.net.Uri;
 import android.os.Environment;
 import android.preference.PreferenceManager;
@@ -32,6 +33,13 @@ public class Utils {
 
     public static interface DuplicateCheckResult {
         public abstract void onResult(File file);
+    }
+
+    public static int resolveDrawable(Context context, int drawable) {
+        TypedArray a = context.obtainStyledAttributes(new int[]{drawable});
+        int resId = a.getResourceId(0, 0);
+        a.recycle();
+        return resId;
     }
 
     public static int getVersion(Context context) {

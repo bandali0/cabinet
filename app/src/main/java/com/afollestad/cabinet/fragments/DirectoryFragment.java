@@ -688,7 +688,8 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        ((ImageView) getView().findViewById(R.id.emptyImage)).setImageResource(R.drawable.ic_empty_image);
+                        ((ImageView) getView().findViewById(R.id.emptyImage)).setImageResource(
+                                Utils.resolveDrawable(getActivity(), R.attr.empty_image));
                         mAdapter.clear();
                         if (results != null && results.length > 0) {
                             Arrays.sort(results, getComparator());
@@ -713,7 +714,8 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        ((ImageView) getView().findViewById(R.id.emptyImage)).setImageResource(R.drawable.ic_empty_error);
+                        ((ImageView) getView().findViewById(R.id.emptyImage)).setImageResource(
+                                Utils.resolveDrawable(getActivity(), R.attr.empty_image_error));
                         if (mDirectory.isRemote()) {
                             ((DrawerActivity) getActivity()).disableFab(false);
                         }

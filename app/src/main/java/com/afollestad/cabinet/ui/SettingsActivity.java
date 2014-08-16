@@ -52,6 +52,14 @@ public class SettingsActivity extends PreferenceActivity implements AboutDialog.
             }
         });
 
+        findPreference("dark_mode").setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object o) {
+                recreate();
+                return true;
+            }
+        });
+
         findPreference("about").setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {

@@ -10,6 +10,13 @@
         <item name="drawer_background">@color/drawer_background</item>
         <item name="divider">@color/divider</item>
         <item name="overflow">@drawable/ic_overflow_dark</item>
+        <item name="folder_thumbnail">@drawable/ic_folder</item>
+        <item name="menu_selector">@drawable/menu_ripple_selector</item>
+        <item name="list_selector">@drawable/list_ripple_selector</item>
+        <item name="list_selector_lighter">@drawable/list_ripple_selector_lighter</item>
+        <item name="empty_image">@drawable/ic_empty_image</item>
+        <item name="empty_image_error">@drawable/ic_empty_error</item>
+        <item name="empty_text">#99000000</item>
 
         <!-- Theming -->
         <item name="android:colorPrimary">@color/cabinet_color</item>
@@ -28,6 +35,14 @@
         <item name="drawer_background">@color/drawer_background</item>
         <item name="divider">@color/divider</item>
         <item name="overflow">@drawable/ic_overflow_dark</item>
+        <item name="folder_thumbnail">@drawable/ic_folder</item>
+        <item name="menu_selector">@drawable/menu_ripple_selector</item>
+        <item name="list_selector">@drawable/list_ripple_selector</item>
+        <item name="list_selector_lighter">@drawable/list_ripple_selector_lighter</item>
+        <item name="empty_image">@drawable/ic_empty_image</item>
+        <item name="empty_image_error">@drawable/ic_empty_error</item>
+        <item name="empty_text">#99000000</item>
+
         <item name="android:windowTranslucentNavigation">@bool/translucent_nav</item>
 
         <!-- Theming -->
@@ -49,13 +64,20 @@
         <item name="drawer_background">@color/drawer_background_dark</item>
         <item name="divider">@color/divider_dark</item>
         <item name="overflow">@drawable/ic_overflow</item>
+        <item name="folder_thumbnail">@drawable/ic_folder_light</item>
+        <item name="menu_selector">@drawable/menu_ripple_selector_dark</item>
+        <item name="list_selector">@drawable/list_ripple_selector_dark</item>
+        <item name="list_selector_lighter">@drawable/list_ripple_selector_lighter_dark</item>
+        <item name="empty_image">@drawable/ic_empty_image_light</item>
+        <item name="empty_image_error">@drawable/ic_empty_error_light</item>
+        <item name="empty_text">#99FFFFFF</item>
 
         <!-- Theming -->
         <item name="android:colorPrimary">@color/cabinet_color</item>
         <item name="android:colorPrimaryDark">@color/cabinet_color_darker</item>
         <item name="android:colorAccent">@color/cabinet_accent_color</item>
         <item name="android:actionModeBackground">@color/cabinet_color</item>
-        <item name="android:buttonStyle">@style/ButtonCabinet</item>
+        <item name="android:buttonStyle">@style/ButtonCabinetDark</item>
         <item name="android:actionModeCloseDrawable">@drawable/ic_action_close</item>
         <item name="android:popupMenuStyle">@style/Theme.PopupMenu</item>
     </style>
@@ -67,6 +89,14 @@
         <item name="drawer_background">@color/drawer_background_dark</item>
         <item name="divider">@color/divider_dark</item>
         <item name="overflow">@drawable/ic_overflow</item>
+        <item name="folder_thumbnail">@drawable/ic_folder_light</item>
+        <item name="menu_selector">@drawable/menu_ripple_selector_dark</item>
+        <item name="list_selector">@drawable/list_ripple_selector_dark</item>
+        <item name="list_selector_lighter">@drawable/list_ripple_selector_lighter_dark</item>
+        <item name="empty_image">@drawable/ic_empty_image_light</item>
+        <item name="empty_image_error">@drawable/ic_empty_error_light</item>
+        <item name="empty_text">#99FFFFFF</item>
+
         <item name="android:windowTranslucentNavigation">@bool/translucent_nav</item>
 
         <!-- Theming -->
@@ -74,7 +104,7 @@
         <item name="android:colorPrimaryDark">@color/cabinet_color_darker</item>
         <item name="android:colorAccent">@color/cabinet_accent_color</item>
         <item name="android:actionModeBackground">@color/cabinet_color</item>
-        <item name="android:buttonStyle">@style/ButtonCabinet</item>
+        <item name="android:buttonStyle">@style/ButtonCabinetDark</item>
         <item name="android:actionModeCloseDrawable">@drawable/ic_action_close</item>
         <item name="android:popupMenuStyle">@style/Theme.PopupMenu</item>
     </style>
@@ -89,6 +119,14 @@
     <style name="ButtonCabinet" parent="android:Widget.Material.Light.Button">
         <item name="android:background">@drawable/rect_button_ripple_selector</item>
         <item name="android:textColor">@color/button_text_selector</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:minWidth">64dp</item>
+        <item name="android:elevation">2dp</item>
+    </style>
+
+    <style name="ButtonCabinetDark" parent="android:Widget.Material.Light.Button">
+        <item name="android:background">@drawable/rect_button_ripple_selector_dark</item>
+        <item name="android:textColor">@color/button_text_selector_dark</item>
         <item name="android:minHeight">48dp</item>
         <item name="android:minWidth">64dp</item>
         <item name="android:elevation">2dp</item>

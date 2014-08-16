@@ -28,6 +28,7 @@ import com.afollestad.cabinet.file.root.RootFile;
 import com.afollestad.cabinet.ui.DrawerActivity;
 import com.afollestad.cabinet.utils.Shortcuts;
 import com.afollestad.cabinet.utils.TimeUtils;
+import com.afollestad.cabinet.utils.Utils;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -244,7 +245,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
                 int resId = R.drawable.ic_file_misc;
                 if (file.isDirectory()) {
                     if (file.isHidden()) resId = R.drawable.ic_folder_hidden;
-                    else resId = R.drawable.ic_folder;
+                    else resId = Utils.resolveDrawable(context, R.attr.folder_thumbnail);
                 } else {
                     String ext = file.getExtension();
                     List<String> codeExts = Arrays.asList(context.getResources().getStringArray(R.array.code_extensions));

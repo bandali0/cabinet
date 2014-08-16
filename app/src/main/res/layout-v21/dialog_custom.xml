@@ -36,7 +36,7 @@
                 android:paddingTop="10dp"
                 android:textSize="19sp"
                 android:lineSpacingMultiplier="1.4"
-                android:textColor="#606060"
+                android:textColor="?body_text"
                 android:textColorLink="@color/cabinet_color" />
             <!--android:paddingBottom="16dp" />-->
             <!-- TODO remove android:paddingBottom="16dp" for Material -->
