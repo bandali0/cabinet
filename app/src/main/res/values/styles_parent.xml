@@ -12,7 +12,7 @@
         <item name="list_selector_lighter">@drawable/list_selector_lighter</item>
         <item name="empty_image">@drawable/ic_empty_image</item>
         <item name="empty_image_error">@drawable/ic_empty_error</item>
-        <item name="empty_text">#99000000</item>
+        <item name="empty_text">#E5000000</item>
 
         <item name="ic_file_apk">@drawable/ic_file_apk</item>
         <item name="ic_file_audio">@drawable/ic_file_audio</item>
