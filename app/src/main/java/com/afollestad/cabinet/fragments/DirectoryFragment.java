@@ -423,7 +423,8 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 
                             @Override
                             public void onError(Exception e) {
-                                Utils.showErrorDialog(context, e.getMessage());
+                                if (e != null)
+                                    Utils.showErrorDialog(context, e.getMessage());
                             }
                         });
                     }

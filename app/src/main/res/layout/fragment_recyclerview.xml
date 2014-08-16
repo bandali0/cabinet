@@ -60,7 +60,8 @@
                 android:lineSpacingMultiplier="1.4"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:text="@string/no_files" />
+                android:text="@string/no_files"
+                android:paddingBottom="16dp" />
 
         </LinearLayout>
 
