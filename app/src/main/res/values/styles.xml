@@ -58,7 +58,7 @@
 
     <style name="Theme.Cabinet.Widget.Dark" parent="@android:style/Theme.Holo">
         <item name="android:textColorHint">@color/search_view_hint</item>
-        <item name="android:popupMenuStyle">@style/Theme.PopupMenu</item>
+        <item name="android:popupMenuStyle">@style/Theme.PopupMenu.Dark</item>
         <item name="android:textColor">?title_text</item>
         <item name="android:checkboxStyle">@style/CheckBoxCabinet</item>
         <item name="android:radioButtonStyle">@style/RadioButtonCabinet</item>

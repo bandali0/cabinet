@@ -46,7 +46,7 @@
     <!--<style name="_ParentDark" parent="android:Theme.Material">-->
         <!--<item name="title_text">@android:color/white</item>-->
         <!--<item name="body_text">#EEEEEE</item>-->
-        <!--<item name="list_background">#242424</item>-->
+        <!--<item name="android:windowBackground">@drawable/black</item>-->
         <!--<item name="drawer_background">@color/drawer_background_dark</item>-->
         <!--<item name="divider">@color/divider_dark</item>-->
         <!--<item name="overflow">@drawable/ic_overflow</item>-->
@@ -90,15 +90,11 @@
         <!--<item name="android:windowTranslucentNavigation">@bool/translucent_nav</item>-->
     <!--</style>-->
 
-    <!--&lt;!&ndash; Dark Themes &ndash;&gt;-->
-
     <!--<style name="Theme.CabinetDark" parent="_ParentDark" />-->
 
     <!--<style name="Theme.CabinetDarkNavTranslucent" parent="_ParentDark">-->
         <!--<item name="android:windowTranslucentNavigation">@bool/translucent_nav</item>-->
     <!--</style>-->
-
-    <!--&lt;!&ndash; Other Styles &ndash;&gt;-->
 
     <!--<style name="Theme.PopupMenu" parent="android:Widget.Material.Light.PopupMenu">-->
         <!--<item name="android:dividerHorizontal">@null</item>-->
