@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="CabinetParent" parent="@style/CabinetUIParent" />
+    <!-- Light themes -->
 
     <style name="Theme.CabinetStatusTranslucent" parent="@style/Theme.Cabinet">
         <item name="android:windowTranslucentStatus">true</item>
@@ -12,6 +12,21 @@
     </style>
 
     <style name="Theme.CabinetNavStatusTranslucent" parent="@style/Theme.Cabinet">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">@bool/translucent_nav</item>
+    </style>
+
+    <!-- Dark Themes -->
+
+    <style name="Theme.CabinetDarkStatusTranslucent" parent="@style/Theme.CabinetDark">
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="Theme.CabinetDarkNavTranslucent" parent="@style/Theme.CabinetDark">
+        <item name="android:windowTranslucentNavigation">@bool/translucent_nav</item>
+    </style>
+
+    <style name="Theme.CabinetDarkNavStatusTranslucent" parent="@style/Theme.CabinetDark">
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">@bool/translucent_nav</item>
     </style>

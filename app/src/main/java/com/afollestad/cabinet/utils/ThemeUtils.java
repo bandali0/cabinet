@@ -16,8 +16,14 @@ public class ThemeUtils {
     }
 
     private Context mContext;
+    private boolean darkMode;
     private boolean translucentStatusbar;
     private boolean translucentNavbar;
+
+    public static boolean isDarkMode(Context context) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        return prefs.getBoolean("dark_mode", false);
+    }
 
     public static boolean isTranslucentStatusbar(Context context) {
         if (Build.VERSION.SDK_INT >= 20 || Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT)
@@ -34,9 +40,11 @@ public class ThemeUtils {
     }
 
     public boolean isChanged() {
+        boolean darkTheme = isDarkMode(mContext);
         boolean statusTrans = isTranslucentStatusbar(mContext);
         boolean navTrans = isTranslucentNavbar(mContext);
-        boolean changed = statusTrans != translucentStatusbar || navTrans != translucentNavbar;
+        boolean changed = darkMode != darkTheme || statusTrans != translucentStatusbar || navTrans != translucentNavbar;
+        darkMode = darkTheme;
         translucentStatusbar = statusTrans;
         translucentNavbar = navTrans;
         return changed;
@@ -44,30 +52,40 @@ public class ThemeUtils {
 
     public int getCurrent() {
 //        if (translucentStatusbar && translucentNavbar) {
-//            return R.style.Theme_CabinetNavStatusTranslucent;
+//            if (darkMode) return R.style.Theme_CabinetDarkNavStatusTranslucent;
+//            else return R.style.Theme_CabinetNavStatusTranslucent;
 //        } else if (translucentStatusbar) {
-//            return R.style.Theme_CabinetStatusTranslucent;
+//            if (darkMode) return R.style.Theme_CabinetDarkStatusTranslucent;
+//            else return R.style.Theme_CabinetStatusTranslucent;
 //        } else if (translucentNavbar) {
-//            return R.style.Theme_CabinetNavTranslucent;
+//            if (darkMode) return R.style.Theme_CabinetDarkNavTranslucent;
+//            else return R.style.Theme_CabinetNavTranslucent;
 //        } else {
-//            return R.style.Theme_Cabinet;
+//            if (darkMode) return R.style.Theme_CabinetDark;
+//            else return R.style.Theme_Cabinet;
 //        }
         // TODO toggle commented area for Material
         if (Build.VERSION.SDK_INT >= 20) {
             if (translucentNavbar) {
-                return R.style.Theme_CabinetNavTranslucent;
+                if (darkMode) return R.style.Theme_CabinetDarkNavTranslucent;
+                else return R.style.Theme_CabinetNavTranslucent;
             } else {
-                return R.style.Theme_Cabinet;
+                if (darkMode) return R.style.Theme_CabinetDark;
+                else return R.style.Theme_Cabinet;
             }
         } else {
             if (translucentStatusbar && translucentNavbar) {
-                return R.style.Theme_CabinetNavStatusTranslucent;
+                if (darkMode) return R.style.Theme_CabinetDarkNavStatusTranslucent;
+                else return R.style.Theme_CabinetNavStatusTranslucent;
             } else if (translucentStatusbar) {
-                return R.style.Theme_CabinetStatusTranslucent;
+                if (darkMode) return R.style.Theme_CabinetDarkStatusTranslucent;
+                else return R.style.Theme_CabinetStatusTranslucent;
             } else if (translucentNavbar) {
-                return R.style.Theme_CabinetNavTranslucent;
+                if (darkMode) return R.style.Theme_CabinetDarkNavTranslucent;
+                else return R.style.Theme_CabinetNavTranslucent;
             } else {
-                return R.style.Theme_Cabinet;
+                if (darkMode) return R.style.Theme_CabinetDark;
+                else return R.style.Theme_Cabinet;
             }
         }
     }

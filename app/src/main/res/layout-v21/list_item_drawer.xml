@@ -7,7 +7,7 @@
     android:paddingBottom="@dimen/nav_drawer_item_vert_pad"
     android:paddingLeft="@dimen/nav_drawer_item_hor_pad"
     android:fontFamily="sans-serif-light"
-    android:textColor="@color/soft_black"
+    android:textColor="?body_text"
     android:background="@drawable/list_ripple_selector_lighter" />
     <!--android:background="@drawable/list_selector_lighter" />-->
 

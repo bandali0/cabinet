@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="title_text" format="color" />
+    <attr name="body_text" format="color" />
+    <attr name="list_background" format="color" />
+    <attr name="drawer_background" format="color" />
+    <attr name="divider" format="color" />
+
+</resources>

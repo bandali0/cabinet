@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="CabinetParent" parent="@style/CabinetUIParent" />
+    <!-- Parents -->
 
-    <style name="CabinetUIParent" parent="@android:style/Theme.Holo.Light.DarkActionBar">
+    <style name="CabinetParent" parent="@android:style/Theme.Holo.Light.DarkActionBar">
+        <item name="title_text">@android:color/black</item>
+        <item name="body_text">#303030</item>
+        <item name="list_background">@null</item>
+        <item name="drawer_background">@color/drawer_background</item>
+        <item name="divider">@color/divider</item>
+
+        <!-- Theming -->
         <item name="android:buttonStyle">@style/ButtonCabinet</item>
         <item name="android:editTextBackground">@drawable/cabinet_edit_text_holo_light</item>
         <item name="android:checkboxStyle">@style/CheckBoxCabinet</item>
@@ -13,23 +20,49 @@
         <item name="android:textSelectHandleRight">@drawable/cabinet_text_select_handle_right</item>
         <item name="android:textSelectHandle">@drawable/cabinet_text_select_handle_middle</item>
         <item name="android:actionModeCloseDrawable">@drawable/ic_action_close</item>
-
         <item name="android:popupMenuStyle">@style/Theme.PopupMenu</item>
         <item name="android:dropDownListViewStyle">
             @android:style/Widget.Holo.Light.ListView.DropDown
         </item>
-
         <item name="android:actionBarStyle">@style/ActionBar.Solid.Cabinet</item>
         <item name="android:actionModeBackground">@drawable/ab_solid_cabinet</item>
         <item name="android:actionModeSplitBackground">@drawable/ab_solid_cabinet</item>
         <item name="android:actionBarWidgetTheme">@style/Theme.Cabinet.Widget</item>
-
         <item name="android:actionBarSize">56dp</item>
         <item name="android:actionOverflowButtonStyle">@style/OverflowRecoup</item>
-        <item name="android:actionMenuTextColor">@color/soft_black</item>
-
+        <item name="android:actionMenuTextColor">#000</item>
         <item name="android:dialogTheme">@android:style/Theme.Holo.Light.Dialog</item>
+    </style>
 
+    <style name="CabinetDarkParent" parent="@android:style/Theme.Holo">
+        <item name="title_text">@android:color/white</item>
+        <item name="body_text">#EEEEEE</item>
+        <item name="list_background">#242424</item>
+        <item name="drawer_background">@color/drawer_background_dark</item>
+        <item name="divider">@color/divider_dark</item>
+
+        <!-- Theming -->
+        <item name="android:buttonStyle">@style/ButtonCabinet</item>
+        <item name="android:editTextBackground">@drawable/cabinet_edit_text_holo_light</item>
+        <item name="android:checkboxStyle">@style/CheckBoxCabinet</item>
+        <item name="android:radioButtonStyle">@style/RadioButtonCabinet</item>
+        <item name="android:textColorHighlight">#9957687c</item>
+        <item name="android:textSelectHandleLeft">@drawable/cabinet_text_select_handle_left</item>
+        <item name="android:textSelectHandleRight">@drawable/cabinet_text_select_handle_right</item>
+        <item name="android:textSelectHandle">@drawable/cabinet_text_select_handle_middle</item>
+        <item name="android:actionModeCloseDrawable">@drawable/ic_action_close</item>
+        <item name="android:popupMenuStyle">@style/Theme.PopupMenu</item>
+        <item name="android:dropDownListViewStyle">
+            @android:style/Widget.Holo.Light.ListView.DropDown
+        </item>
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.Cabinet</item>
+        <item name="android:actionModeBackground">@drawable/ab_solid_cabinet</item>
+        <item name="android:actionModeSplitBackground">@drawable/ab_solid_cabinet</item>
+        <item name="android:actionBarWidgetTheme">@style/Theme.Cabinet.Widget</item>
+        <item name="android:actionBarSize">56dp</item>
+        <item name="android:actionOverflowButtonStyle">@style/OverflowRecoup</item>
+        <item name="android:actionMenuTextColor">#fff</item>
+        <item name="android:dialogTheme">@android:style/Theme.Holo.Light.Dialog</item>
     </style>
 
 </resources>

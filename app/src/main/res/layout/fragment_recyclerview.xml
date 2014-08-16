@@ -30,7 +30,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
-            android:layout_below="@+id/status" />
+            android:layout_below="@+id/status"
+            android:background="?list_background" />
 
         <LinearLayout
             android:id="@android:id/empty"

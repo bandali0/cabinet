@@ -8,4 +8,5 @@
     android:paddingLeft="24dp"
     android:paddingRight="24dp"
     android:fontFamily="sans-serif-light"
-    android:background="@drawable/list_selector_lighter" />
+    android:background="@drawable/list_selector_lighter"
+    android:textColor="?body_text"/>

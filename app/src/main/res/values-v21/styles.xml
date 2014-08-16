@@ -2,7 +2,15 @@
 <resources>
 
     <!-- TODO toggle comment for Material -->
-    <style name="CabinetUIParent" parent="android:Theme.Material.Light.DarkActionBar">
+    <!-- Light themes -->
+    <style name="Theme.Cabinet" parent="android:Theme.Material.Light.DarkActionBar">
+        <item name="title_text">@android:color/black</item>
+        <item name="body_text">#303030</item>
+        <item name="list_background">@null</item>
+        <item name="drawer_background">@color/drawer_background</item>
+        <item name="divider">@color/divider</item>
+
+        <!-- Theming -->
         <item name="android:colorPrimary">@color/cabinet_color</item>
         <item name="android:colorPrimaryDark">@color/cabinet_color_darker</item>
         <item name="android:colorAccent">@color/cabinet_accent_color</item>
@@ -12,12 +20,62 @@
         <item name="android:popupMenuStyle">@style/Theme.PopupMenu</item>
     </style>
 
-    <style name="Theme.Cabinet" parent="@style/CabinetUIParent" />
-
-    <style name="Theme.CabinetNavTranslucent" parent="@style/CabinetUIParent">
+    <style name="Theme.CabinetNavTranslucent" parent="android:Theme.Material.Light.DarkActionBar">
+        <item name="title_text">@android:color/black</item>
+        <item name="body_text">#303030</item>
+        <item name="list_background">@null</item>
+        <item name="drawer_background">@color/drawer_background</item>
+        <item name="divider">@color/divider</item>
         <item name="android:windowTranslucentNavigation">@bool/translucent_nav</item>
-        <item name="android:navigationBarColor">@android:color/transparent</item>
+
+        <!-- Theming -->
+        <item name="android:colorPrimary">@color/cabinet_color</item>
+        <item name="android:colorPrimaryDark">@color/cabinet_color_darker</item>
+        <item name="android:colorAccent">@color/cabinet_accent_color</item>
+        <item name="android:actionModeBackground">@color/cabinet_color</item>
+        <item name="android:buttonStyle">@style/ButtonCabinet</item>
+        <item name="android:actionModeCloseDrawable">@drawable/ic_action_close</item>
+        <item name="android:popupMenuStyle">@style/Theme.PopupMenu</item>
     </style>
+
+    <!-- Dark Themes -->
+
+    <style name="Theme.CabinetDark" parent="android:Theme.Material">
+        <item name="title_text">@android:color/white</item>
+        <item name="body_text">#EEEEEE</item>
+        <item name="list_background">#242424</item>
+        <item name="drawer_background">@color/drawer_background_dark</item>
+        <item name="divider">@color/divider_dark</item>
+
+        <!-- Theming -->
+        <item name="android:colorPrimary">@color/cabinet_color</item>
+        <item name="android:colorPrimaryDark">@color/cabinet_color_darker</item>
+        <item name="android:colorAccent">@color/cabinet_accent_color</item>
+        <item name="android:actionModeBackground">@color/cabinet_color</item>
+        <item name="android:buttonStyle">@style/ButtonCabinet</item>
+        <item name="android:actionModeCloseDrawable">@drawable/ic_action_close</item>
+        <item name="android:popupMenuStyle">@style/Theme.PopupMenu</item>
+    </style>
+
+    <style name="Theme.CabinetDarkNavTranslucent" parent="android:Theme.Material">
+        <item name="title_text">@android:color/white</item>
+        <item name="body_text">#EEEEEE</item>
+        <item name="list_background">#242424</item>
+        <item name="drawer_background">@color/drawer_background_dark</item>
+        <item name="divider">@color/divider_dark</item>
+        <item name="android:windowTranslucentNavigation">@bool/translucent_nav</item>
+
+        <!-- Theming -->
+        <item name="android:colorPrimary">@color/cabinet_color</item>
+        <item name="android:colorPrimaryDark">@color/cabinet_color_darker</item>
+        <item name="android:colorAccent">@color/cabinet_accent_color</item>
+        <item name="android:actionModeBackground">@color/cabinet_color</item>
+        <item name="android:buttonStyle">@style/ButtonCabinet</item>
+        <item name="android:actionModeCloseDrawable">@drawable/ic_action_close</item>
+        <item name="android:popupMenuStyle">@style/Theme.PopupMenu</item>
+    </style>
+
+    <!-- Other Styles -->
 
     <style name="Theme.PopupMenu" parent="android:Widget.Material.Light.PopupMenu">
         <item name="android:dividerHorizontal">@null</item>

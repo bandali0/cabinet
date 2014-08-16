@@ -31,6 +31,13 @@
         android:layout="@layout/preference_category_custom">
 
         <CheckBoxPreference
+            android:key="dark_mode"
+            android:title="@string/dark_theme"
+            android:summary="@string/dark_theme_desc"
+            android:persistent="true"
+            android:layout="@layout/preference_custom" />
+
+        <CheckBoxPreference
             android:key="translucent_statusbar"
             android:title="@string/translucent_statusbar"
             android:summary="@string/translucent_statusbar_desc"
