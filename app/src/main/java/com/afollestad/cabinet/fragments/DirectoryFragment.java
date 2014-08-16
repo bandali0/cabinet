@@ -22,6 +22,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -494,6 +495,17 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         if (act != null) act.runOnUiThread(runnable);
     }
 
+    public final void setStatus(int message, String replacement) {
+        View v = getView();
+        if (v == null) return;
+        TextView status = (TextView) v.findViewById(R.id.status);
+        if (message == 0) status.setVisibility(View.GONE);
+        else {
+            status.setVisibility(View.VISIBLE);
+            status.setText(getString(message, replacement));
+        }
+    }
+
     public final void setListShown(boolean shown) {
         View v = getView();
         if (v != null) {
@@ -606,6 +618,26 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         });
     }
 
+    private String getFilterDisplay() {
+        if (filter.equals("archives")) {
+            return getString(R.string.archives);
+        } else {
+            String[] splitFilter = filter.split(":");
+            if (splitFilter[0].equals("mime")) {
+                if (splitFilter[1].equals("text/")) {
+                    return getString(R.string.text);
+                } else if (splitFilter[1].equals("image/")) {
+                    return getString(R.string.image);
+                } else if (splitFilter[1].equals("audio/")) {
+                    return getString(R.string.audio);
+                } else if (splitFilter[1].equals("video/")) {
+                    return getString(R.string.video);
+                }
+            }
+            return splitFilter[1];
+        }
+    }
+
     public void reload() {
         if (getActivity() == null || getView() == null) {
             return;
@@ -613,6 +645,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             search();
             return;
         }
+
         setListShown(false);
         mAdapter.showLastModified = (sorter == 5);
         mDirectory.setContext(getActivity());
@@ -622,32 +655,31 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 
         FileFilter lsFilter = null;
         if (filter != null) {
+            String display = getFilterDisplay();
+            setStatus(R.string.filter_active, display);
+            setEmptyText(getString(R.string.no_files_filter, display));
             lsFilter = new FileFilter() {
                 @Override
                 public boolean accept(File file) {
+                    if (file.isDirectory()) return true;
                     if (filter.equals("archives")) {
                         String ext = file.getExtension();
-                        setEmptyText(getString(R.string.no_files_filter, getString(R.string.archives)));
                         return ext.equals("zip") || ext.equals("rar") || ext.equals("tar") ||
                                 ext.equals("tar.gz") || ext.equals(".7z");
                     } else {
                         String[] splitFilter = filter.split(":");
                         if (splitFilter[0].equals("mime")) {
-                            if (splitFilter[1].equals("text/")) {
-                                setEmptyText(getString(R.string.no_files_filter, getString(R.string.text)));
-                            } else if (splitFilter[1].equals("image/")) {
-                                setEmptyText(getString(R.string.no_files_filter, getString(R.string.image)));
-                            } else if (splitFilter[1].equals("audio/")) {
-                                setEmptyText(getString(R.string.no_files_filter, getString(R.string.audio)));
-                            } else if (splitFilter[1].equals("video/")) {
-                                setEmptyText(getString(R.string.no_files_filter, getString(R.string.video)));
-                            }
                             return file.getMimeType().startsWith(splitFilter[1]);
-                        } else return file.getExtension().equals(splitFilter[1]);
+                        } else {
+                            return file.getExtension().equals(splitFilter[1]);
+                        }
                     }
                 }
             };
-        } else setEmptyText(getString(R.string.no_files));
+        } else {
+            setStatus(0, null);
+            setEmptyText(getString(R.string.no_files));
+        }
 
         mDirectory.listFiles(showHidden, lsFilter, new File.ArrayCallback() {
             @Override
@@ -655,6 +687,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        ((ImageView) getView().findViewById(R.id.emptyImage)).setImageResource(R.drawable.ic_empty_image);
                         mAdapter.clear();
                         if (results != null && results.length > 0) {
                             Arrays.sort(results, getComparator());
@@ -679,6 +712,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        ((ImageView) getView().findViewById(R.id.emptyImage)).setImageResource(R.drawable.ic_empty_error);
                         if (mDirectory.isRemote()) {
                             ((DrawerActivity) getActivity()).disableFab(false);
                         }

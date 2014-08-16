@@ -9,12 +9,28 @@
         android:layout_height="match_parent"
         android:visibility="gone">
 
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:background="#455a64"
+            android:textColor="#fff"
+            android:textSize="17sp"
+            android:gravity="center_vertical"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:visibility="gone" />
+
         <android.support.v7.widget.RecyclerView
             android:id="@android:id/list"
             android:scrollbars="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:clipToPadding="false" />
+            android:clipToPadding="false"
+            android:layout_below="@+id/status" />
 
         <LinearLayout
             android:id="@android:id/empty"
@@ -24,6 +40,7 @@
             android:layout_centerInParent="true">
 
             <ImageView
+                android:id="@+id/emptyImage"
                 android:layout_width="108dp"
                 android:layout_height="108dp"
                 android:layout_gravity="center_horizontal"
@@ -43,7 +60,8 @@
                 android:lineSpacingMultiplier="1.4"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:text="@string/no_files" />
+                android:text="@string/no_files"
+                android:paddingBottom="16dp" />
 
         </LinearLayout>
 

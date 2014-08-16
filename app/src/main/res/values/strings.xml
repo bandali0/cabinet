@@ -262,5 +262,6 @@
     <string name="no_files_filter">No files for filter: %1$s</string>
 
     <string name="superuser_not_available">Superuser not available</string>
+    <string name="filter_active">Filter active: %1$s</string>
 
 </resources>
