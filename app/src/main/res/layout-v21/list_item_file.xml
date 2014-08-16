@@ -5,8 +5,9 @@
     android:paddingTop="@dimen/file_item_spacing"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:background="@drawable/list_selector"
-    android:descendantFocusability="blocksDescendants">
+    android:descendantFocusability="blocksDescendants"
+    android:background="@drawable/list_ripple_selector">
+    <!--android:background="@drawable/list_selector">-->
 
     <!-- TODO change background for Material @drawable/list_ripple_selector -->
 
@@ -69,12 +70,13 @@
             android:scaleType="fitXY"
             android:layout_marginLeft="8dp"
             android:layout_alignParentRight="true"
-            android:background="@drawable/menu_selector"
             android:layout_centerVertical="true"
             android:padding="8dp"
             android:focusableInTouchMode="false"
             android:focusable="false"
-            android:layout_marginRight="14dp" />
+            android:layout_marginRight="14dp"
+            android:background="@drawable/menu_ripple_selector" />
+        <!--android:background="@drawable/menu_selector"/>-->
         <!-- TODO replace menu_selector with menu_ripple_selector for Material -->
 
     </RelativeLayout>
