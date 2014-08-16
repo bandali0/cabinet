@@ -176,7 +176,7 @@
     <string name="extension">Extensión</string>
     <string name="no_files_filter">No hay archivos para el filtro: %1$s</string>
     <string name="superuser_not_available">Superusuario no disponible</string>
-    <string name="filter_active">Filter active: %1$s</string>
-    <string name="dark_theme">Dark Theme</string>
-    <string name="dark_theme_desc">Cabinet will use darker colors for AMOLED screens and low lit environments.</string>
+    <string name="filter_active">Filtro activo: %1$s</string>
+    <string name="dark_theme">Tema Oscuro</string>
+    <string name="dark_theme_desc">Cabinet usará colores más oscuros para pantallas AMOLED y ambientes poco iluminados.</string>
 </resources>

@@ -140,7 +140,7 @@ posiada również inne funkcje, takie jak m.in. zdolny dostęp do serwerów popr
     <string name="translucent_navbar_desc">Przeźroczysty pasek nawigacji w Androidzie Kit Kat i wyższym</string>
     <string name="about_body"><![CDATA[
  Minimalistyczny, intuicyjny, piękny menadżer plików dla Androida 4.1 i wzwyż.<br/><br/> 
- Projektant <b>Aidan Follestad</b>.<br/><a href=\'http://aidanfollestad.com\'>Strona</a>
+ Twórca <b>Aidan Follestad</b>.<br/><a href=\'http://aidanfollestad.com\'>Strona</a>
 &nbsp;&nbsp;
  <a href=\'https://twitter.com/afollestad\'>Twitter</a>
 &nbsp;&nbsp;
@@ -181,7 +181,7 @@ posiada również inne funkcje, takie jak m.in. zdolny dostęp do serwerów popr
     <string name="extension">Rozszerzenie</string>
     <string name="no_files_filter">Brak wyników filtrowania: %1$s</string>
     <string name="superuser_not_available">Tryb Superuser niedostępny</string>
-    <string name="filter_active">Filter active: %1$s</string>
-    <string name="dark_theme">Dark Theme</string>
-    <string name="dark_theme_desc">Cabinet will use darker colors for AMOLED screens and low lit environments.</string>
+    <string name="filter_active">Zastosowany filtr: %1$s</string>
+    <string name="dark_theme">Ciemny motyw</string>
+    <string name="dark_theme_desc">Cabinet umożliwia ustawienie ciemniejszych kolorów dla ekranów AMOLED. Opcja przydatna także w warunkach niskiego natężenia światła.</string>
 </resources>

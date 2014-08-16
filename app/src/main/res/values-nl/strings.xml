@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="welcome">Welkom</string>
+    <string name="welcome_intro">\nWelkom bij Cabinet! Cabinet is een simpele bestandbeheerder ontworpen om gebruikvriendelijk te zijn,\nen om te werken zoals een bestandbeheerder zou moeten. Kijk eens naar het onderstaande bestand: \n</string>
+    <string name="welcome_conclusion">Probeer te tikken op het voorbeeld pictogram of de 3-punt icoon. Tikken op het voorbeeld pictogram selecteerd het bestand voor multi acties, dit kan ook gedaan worden door te tikken op en ingedrukt te houden van bestanden. De 3-punt icoon laat een popup menu zien met opties voor het specifieke bestand.\n\nCabinet
+ heeft daarnaast nog andere features, zoals toegang tot servers op afstand via SFTP dat je kan vinden tijden het gebruik van Cabinet. Bedankt voor het uitproberen van Cabinet!</string>
     <string name="lets_go">Laten we beginnen!</string>
     <string name="open_as">Open als…</string>
     <string name="pin">Vastzetten</string>
@@ -20,7 +23,7 @@
     <string name="directory">Map</string>
     <string name="unknown">Onbekend</string>
     <string name="go_up">Ga omhoog</string>
-    <string name="press_back_to_exit">"Druk nog een keer op terug om af te sluiten..."</string>
+    <string name="press_back_to_exit">"Druk nog een keer op terug om af te sluiten…"</string>
     <string name="x_files">%1$d bestanden</string>
     <string name="x_dirs">%1$d mappen</string>
     <string name="no_x_files">Geen %1$s bestanden</string>

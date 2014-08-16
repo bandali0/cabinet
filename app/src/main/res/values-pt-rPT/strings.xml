@@ -175,7 +175,7 @@
     <string name="extension">Extensão</string>
     <string name="no_files_filter">Nenhum ficheiro após a filtragem: %1$s</string>
     <string name="superuser_not_available">Superuser indisponível</string>
-    <string name="filter_active">Filter active: %1$s</string>
-    <string name="dark_theme">Dark Theme</string>
-    <string name="dark_theme_desc">Cabinet will use darker colors for AMOLED screens and low lit environments.</string>
+    <string name="filter_active">Filtro ativo: %1$s</string>
+    <string name="dark_theme">Tema Escuro</string>
+    <string name="dark_theme_desc">O Cabinet irá usar cores mais escuras para os ecrãs AMOLED e ambientes de baixa iluminação.</string>
 </resources>
