@@ -68,7 +68,7 @@
             android:id="@+id/menu"
             android:layout_width="42dp"
             android:layout_height="42dp"
-            android:src="@drawable/ic_overflow_dark"
+            android:src="?overflow"
             android:scaleType="fitXY"
             android:layout_marginLeft="8dp"
             android:layout_alignParentRight="true"

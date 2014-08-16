@@ -9,7 +9,7 @@
         <item name="list_background">@null</item>
         <item name="drawer_background">@color/drawer_background</item>
         <item name="divider">@color/divider</item>
-        <item name="overflow">@drawable/ic_overflow</item>
+        <item name="overflow">@drawable/ic_overflow_dark</item>
 
         <!-- Theming -->
         <item name="android:buttonStyle">@style/ButtonCabinet</item>
@@ -41,7 +41,7 @@
         <item name="list_background">#242424</item>
         <item name="drawer_background">@color/drawer_background_dark</item>
         <item name="divider">@color/divider_dark</item>
-        <item name="overflow">@drawable/ic_overflow_dark</item>
+        <item name="overflow">@drawable/ic_overflow</item>
 
         <!-- Theming -->
         <item name="android:buttonStyle">@style/ButtonCabinet</item>
