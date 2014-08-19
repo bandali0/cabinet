@@ -25,7 +25,15 @@
         <CheckBoxPreference
             android:key="dark_mode"
             android:title="@string/dark_theme"
-            android:summary="@string/dark_theme_desc" />
+            android:summary="@string/dark_theme_description"
+            android:persistent="true" />
+
+        <CheckBoxPreference
+            android:key="true_black"
+            android:title="@string/true_black"
+            android:summary="@string/true_black_description"
+            android:persistent="true"
+            android:dependency="dark_mode" />
 
         <CheckBoxPreference
             android:key="translucent_statusbar"

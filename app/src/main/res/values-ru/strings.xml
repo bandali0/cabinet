@@ -178,5 +178,5 @@
     <string name="superuser_not_available">Суперпользователь не доступен</string>
     <string name="filter_active">Отбор по: %1$s</string>
     <string name="dark_theme">Тёмная тема</string>
-    <string name="dark_theme_desc">Cabinet будет использовать более тёмные цвета для AMOLED экранов и в местах с низким уровнем освещенности.</string>
+    <string name="dark_theme_description">Cabinet будет использовать более тёмные цвета для AMOLED экранов и в местах с низким уровнем освещенности.</string>
 </resources>

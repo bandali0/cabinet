@@ -48,6 +48,7 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
             item = new LocalFile(context, Environment.getExternalStorageDirectory());
             Pins.add(context, new Pins.Item(item));
             try {
+
                 item = new LocalFile(context, new java.io.File("/external_sd"));
                 if (item.existsSync()) {
                     Pins.add(context, new Pins.Item(item));
@@ -56,6 +57,7 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
                     if (item.existsSync())
                         Pins.add(context, new Pins.Item(item));
                 }
+
                 item = new LocalFile(context, new java.io.File(Environment.getExternalStorageDirectory(), "DCIM"));
                 if (item.existsSync())
                     Pins.add(context, new Pins.Item(item));

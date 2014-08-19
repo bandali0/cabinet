@@ -179,5 +179,5 @@
     <string name="superuser_not_available">Superuser 不可用</string>
     <string name="filter_active">" 篩選條件： %1$s"</string>
     <string name="dark_theme">暗系主題</string>
-    <string name="dark_theme_desc">Cabinet 將會在 AMOLED 熒幕或者弱光照條件下採用暗色系。</string>
+    <string name="dark_theme_description">Cabinet 將會在 AMOLED 熒幕或者弱光照條件下採用暗色系。</string>
 </resources>

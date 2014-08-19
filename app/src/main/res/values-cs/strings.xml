@@ -178,5 +178,5 @@ Vytvořil <b>Aidan Follestad</b>.<br/><a href=\'http://aidanfollestad.com\'>Web<
     <string name="superuser_not_available">Superuser není povolen</string>
     <string name="filter_active">Aktivní filtr: %1$s</string>
     <string name="dark_theme">Tmavé téma</string>
-    <string name="dark_theme_desc">Cabinet se přemění do tmavším barev vhodných pro AMOLED displeje a do prostorů s nízkým osvětlením.</string>
+    <string name="dark_theme_description">Cabinet se přemění do tmavším barev vhodných pro AMOLED displeje a do prostorů s nízkým osvětlením.</string>
 </resources>

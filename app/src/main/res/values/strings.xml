@@ -265,7 +265,9 @@
     <string name="filter_active">Filter active: %1$s</string>
 
     <string name="dark_theme">Dark Theme</string>
-    <string name="dark_theme_desc">Cabinet will use darker colors for AMOLED screens and low lit environments.</string>
+    <string name="dark_theme_description">Cabinet will use darker colors.</string>
+    <string name="true_black">True Black</string>
+    <string name="true_black_description">Cabinet will use pure black for AMOLED displays.</string>
     <string name="sdcard">SD Card</string>
 
 </resources>

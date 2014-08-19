@@ -183,5 +183,5 @@ posiada również inne funkcje, takie jak m.in. zdolny dostęp do serwerów popr
     <string name="superuser_not_available">Tryb Superuser niedostępny</string>
     <string name="filter_active">Zastosowany filtr: %1$s</string>
     <string name="dark_theme">Ciemny motyw</string>
-    <string name="dark_theme_desc">Cabinet umożliwia ustawienie ciemniejszych kolorów dla ekranów AMOLED. Opcja przydatna także w warunkach niskiego natężenia światła.</string>
+    <string name="dark_theme_description">Cabinet umożliwia ustawienie ciemniejszych kolorów dla ekranów AMOLED. Opcja przydatna także w warunkach niskiego natężenia światła.</string>
 </resources>

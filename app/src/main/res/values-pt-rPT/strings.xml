@@ -177,5 +177,5 @@
     <string name="superuser_not_available">Superuser indisponível</string>
     <string name="filter_active">Filtro ativo: %1$s</string>
     <string name="dark_theme">Tema Escuro</string>
-    <string name="dark_theme_desc">O Cabinet irá usar cores mais escuras para os ecrãs AMOLED e ambientes de baixa iluminação.</string>
+    <string name="dark_theme_description">O Cabinet irá usar cores mais escuras para os ecrãs AMOLED e ambientes de baixa iluminação.</string>
 </resources>

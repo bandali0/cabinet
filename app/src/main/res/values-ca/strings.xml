@@ -178,5 +178,5 @@
     <string name="superuser_not_available">Superusuari no disponible</string>
     <string name="filter_active">Filtre actiu: %1$s</string>
     <string name="dark_theme">Tema fosc</string>
-    <string name="dark_theme_desc">Cabinet utilitzarà colors més foscos per a pantalles AMOLED i llocs amb poca il·luminació</string>
+    <string name="dark_theme_description">Cabinet utilitzarà colors més foscos per a pantalles AMOLED i llocs amb poca il·luminació</string>
 </resources>

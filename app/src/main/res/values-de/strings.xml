@@ -178,5 +178,5 @@
     <string name="superuser_not_available">Superuser nicht verfügbar</string>
     <string name="filter_active">Filter aktiv: %1$s</string>
     <string name="dark_theme">Dunkles Theme</string>
-    <string name="dark_theme_desc">Cabinet benutzt dunklere Farben bei AMOLED-Bildschirmen und bei wenig Licht.</string>
+    <string name="dark_theme_description">Cabinet benutzt dunklere Farben bei AMOLED-Bildschirmen und bei wenig Licht.</string>
 </resources>

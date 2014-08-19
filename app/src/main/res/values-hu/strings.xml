@@ -178,5 +178,5 @@
     <string name="superuser_not_available">Nincs Superuser Jogosultság</string>
     <string name="filter_active">Szűrő aktív: %1$s</string>
     <string name="dark_theme">Sötét Téma</string>
-    <string name="dark_theme_desc">Sötétebb színek használata.</string>
+    <string name="dark_theme_description">Sötétebb színek használata.</string>
 </resources>
