@@ -29,6 +29,8 @@ import com.afollestad.cabinet.utils.Utils;
 public class NavigationDrawerFragment extends Fragment {
 
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
+    private static final String STATE_TITLE = "title";
+    private static final String STATE_OPEN = "open";
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learn";
     private ActionBarDrawerToggle mDrawerToggle;
 
@@ -52,6 +54,9 @@ public class NavigationDrawerFragment extends Fragment {
         mUserLearnedDrawer = sp.getBoolean(PREF_USER_LEARNED_DRAWER, false);
         if (savedInstanceState != null) {
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
+            mTitle = savedInstanceState.getCharSequence(STATE_TITLE);
+            if (savedInstanceState.getBoolean(STATE_OPEN))
+                getActivity().setTitle(R.string.app_name);
             mFromSavedInstanceState = true;
         }
     }
@@ -195,6 +200,8 @@ public class NavigationDrawerFragment extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt(STATE_SELECTED_POSITION, mCurrentSelectedPosition);
+        outState.putCharSequence(STATE_TITLE, mTitle);
+        outState.putBoolean(STATE_OPEN, mDrawerLayout.isDrawerOpen(Gravity.START));
     }
 
     @Override
