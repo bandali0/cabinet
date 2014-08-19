@@ -50,8 +50,16 @@
         <item name="android:button">@drawable/cabinet_btn_check_holo_light</item>
     </style>
 
+    <style name="CheckBoxCabinetDark" parent="android:Widget.Holo.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/cabinetdark_btn_check_holo_dark</item>
+    </style>
+
     <style name="RadioButtonCabinet" parent="android:Widget.Holo.Light.CompoundButton.RadioButton">
         <item name="android:button">@drawable/cabinet_btn_radio_holo_light</item>
+    </style>
+
+    <style name="RadioButtonCabinetDark" parent="android:Widget.Holo.CompoundButton.RadioButton">
+        <item name="android:button">@drawable/cabinetdark_btn_check_holo_dark</item>
     </style>
 
     <style name="ActionBar.Solid.Cabinet" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
@@ -73,8 +81,8 @@
         <item name="android:textColorHint">@color/search_view_hint</item>
         <item name="android:popupMenuStyle">@style/Theme.PopupMenu.Dark</item>
         <item name="android:textColor">#fff</item>
-        <item name="android:checkboxStyle">@style/CheckBoxCabinet</item>
-        <item name="android:radioButtonStyle">@style/RadioButtonCabinet</item>
+        <item name="android:checkboxStyle">@style/CheckBoxCabinetDark</item>
+        <item name="android:radioButtonStyle">@style/RadioButtonCabinetDark</item>
     </style>
 
     <style name="Theme.Cabinet.Widget" parent="@android:style/Theme.Holo.Light">

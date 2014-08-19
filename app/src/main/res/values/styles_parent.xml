@@ -50,8 +50,13 @@
         <item name="android:actionBarWidgetTheme">@style/Theme.Cabinet.Widget</item>
         <item name="android:actionBarSize">56dp</item>
         <item name="android:actionOverflowButtonStyle">@style/OverflowRecoup</item>
-        <item name="android:actionMenuTextColor">#000</item>
         <item name="android:dialogTheme">@android:style/Theme.Holo.Light.Dialog</item>
+
+        <item name="android:itemTextAppearance">@style/ActionMenuTextAppearance</item>
+    </style>
+
+    <style name="ActionMenuTextAppearance">
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
     <style name="_DarkUIParent" parent="@android:style/Theme.Holo">
@@ -103,8 +108,13 @@
         <item name="android:actionBarWidgetTheme">@style/Theme.Cabinet.Widget.Dark</item>
         <item name="android:actionBarSize">56dp</item>
         <item name="android:actionOverflowButtonStyle">@style/OverflowRecoup</item>
-        <item name="android:actionMenuTextColor">#fff</item>
         <item name="android:dialogTheme">@android:style/Theme.Holo.Dialog</item>
+
+        <item name="android:itemTextAppearance">@style/ActionMenuTextAppearanceDark</item>
+    </style>
+
+    <style name="ActionMenuTextAppearanceDark">
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
     <style name="CabinetDarkParent" parent="@style/_DarkUIParent">
