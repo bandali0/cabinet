@@ -30,7 +30,6 @@ public class NavigationDrawerFragment extends Fragment {
 
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
     private static final String STATE_TITLE = "title";
-    private static final String STATE_OPEN = "open";
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learn";
     private ActionBarDrawerToggle mDrawerToggle;
 
@@ -55,8 +54,6 @@ public class NavigationDrawerFragment extends Fragment {
         if (savedInstanceState != null) {
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
             mTitle = savedInstanceState.getCharSequence(STATE_TITLE);
-            if (savedInstanceState.getBoolean(STATE_OPEN))
-                getActivity().setTitle(R.string.app_name);
             mFromSavedInstanceState = true;
         }
     }
@@ -201,7 +198,6 @@ public class NavigationDrawerFragment extends Fragment {
         super.onSaveInstanceState(outState);
         outState.putInt(STATE_SELECTED_POSITION, mCurrentSelectedPosition);
         outState.putCharSequence(STATE_TITLE, mTitle);
-        outState.putBoolean(STATE_OPEN, mDrawerLayout.isDrawerOpen(Gravity.START));
     }
 
     @Override
@@ -212,9 +208,8 @@ public class NavigationDrawerFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (mDrawerLayout.getDrawerLockMode(Gravity.START) == DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-            return true;
-        return mDrawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
+        return mDrawerLayout.getDrawerLockMode(Gravity.START) == DrawerLayout.LOCK_MODE_LOCKED_CLOSED ||
+                mDrawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
     private ActionBar getActionBar() {

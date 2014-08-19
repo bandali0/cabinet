@@ -131,9 +131,13 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 
         DrawerActivity act = (DrawerActivity) getActivity();
         act.registerReceiver(mReceiver, new IntentFilter(NetworkService.DISCONNECT_SFTP));
-        if (mQuery != null) {
-            act.setTitle(Html.fromHtml(getString(R.string.search_x, mQuery)));
-        } else act.setTitle(mDirectory.getDisplay());
+        if (!((DrawerLayout) act.findViewById(R.id.drawer_layout)).isDrawerOpen(Gravity.START)) {
+            if (mQuery != null) {
+                act.setTitle(Html.fromHtml(getString(R.string.search_x, mQuery)));
+            } else {
+                act.setTitle(mDirectory.getDisplay());
+            }
+        }
 
         BaseCab cab = ((DrawerActivity) getActivity()).getCab();
         if (cab != null && cab instanceof BaseFileCab) {
@@ -642,7 +646,8 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     }
 
     public void reload() {
-        if (getActivity() == null || getView() == null) {
+        final View v = getView();
+        if (getActivity() == null || v == null) {
             return;
         } else if (mQuery != null) {
             search();
@@ -684,14 +689,15 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             setEmptyText(getString(R.string.no_files));
         }
 
+        ((ImageView) v.findViewById(R.id.emptyImage)).setImageResource(
+                Utils.resolveDrawable(getActivity(), R.attr.empty_image));
+
         mDirectory.listFiles(showHidden, lsFilter, new File.ArrayCallback() {
             @Override
             public void onComplete(final File[] results) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        ((ImageView) getView().findViewById(R.id.emptyImage)).setImageResource(
-                                Utils.resolveDrawable(getActivity(), R.attr.empty_image));
                         mAdapter.clear();
                         if (results != null && results.length > 0) {
                             Arrays.sort(results, getComparator());
@@ -716,7 +722,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        ((ImageView) getView().findViewById(R.id.emptyImage)).setImageResource(
+                        ((ImageView) v.findViewById(R.id.emptyImage)).setImageResource(
                                 Utils.resolveDrawable(getActivity(), R.attr.empty_image_error));
                         if (mDirectory.isRemote()) {
                             ((DrawerActivity) getActivity()).disableFab(false);
