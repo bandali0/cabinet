@@ -29,8 +29,8 @@
             android:layout_height="wrap_content"
             android:paddingLeft="24dp"
             android:paddingRight="24dp"
-            android:paddingTop="16dp">
-            <!--android:paddingBottom="16dp">-->
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp">
             <!-- TODO remove android:paddingBottom="16dp" for Material -->
 
             <EditText
