@@ -74,11 +74,12 @@ public class Zipper {
         byte[] buffer = new byte[1024];
         for (File fi : files) {
             if (fi.isDirectory()) {
-                writeFiles(currentDir + "/" + fi.getName(), zout, ((LocalFile) fi).listFilesSync(true));
+                writeFiles(currentDir + "/" + fi.getName(), zout, fi.listFilesSync(true));
                 continue;
             }
             log(" >>> Writing: " + currentDir + "/" + fi.getName());
             ZipEntry ze = new ZipEntry(currentDir + "/" + fi.getName());
+            ze.setSize(fi.length());
             FileInputStream fin = new FileInputStream(fi.getPath());
             zout.putNextEntry(ze);
             int length;
