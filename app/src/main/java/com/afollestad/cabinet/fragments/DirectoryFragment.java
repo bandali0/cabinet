@@ -879,15 +879,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                                 public void onPositive(int which, View view) {
                                     List<File> files = new ArrayList<File>();
                                     files.add(fFile);
-                                    Unzipper.unzip(DirectoryFragment.this, files, new Zipper.ZipCallback() {
-                                        @Override
-                                        public void onComplete() {
-                                            String path = mDirectory.getPath();
-                                            if (path.equals("/")) path = "";
-                                            LocalFile dest = new LocalFile(getActivity(), path + "/" + fFile.getNameNoExtension());
-                                            ((DrawerActivity) getActivity()).switchDirectory(dest, false);
-                                        }
-                                    });
+                                    Unzipper.unzip(DirectoryFragment.this, files, null);
                                 }
 
                                 @Override

@@ -32,17 +32,15 @@ public class Unzipper {
             log("Unzipping: " + dest.getPath());
             log("Creating directory: " + dest.toJavaFile().getParentFile().getAbsolutePath());
             dest.toJavaFile().getParentFile().mkdirs();
-            if (entry.getSize() > 0) {
-                int size;
-                byte[] buffer = new byte[2048];
-                FileOutputStream fos = new FileOutputStream(dest.toJavaFile());
-                BufferedOutputStream bos = new BufferedOutputStream(fos, buffer.length);
-                while ((size = zis.read(buffer, 0, buffer.length)) != -1) {
-                    bos.write(buffer, 0, size);
-                }
-                bos.flush();
-                bos.close();
+            int size;
+            byte[] buffer = new byte[2048];
+            FileOutputStream fos = new FileOutputStream(dest.toJavaFile());
+            BufferedOutputStream bos = new BufferedOutputStream(fos, buffer.length);
+            while ((size = zis.read(buffer, 0, buffer.length)) != -1) {
+                bos.write(buffer, 0, size);
             }
+            bos.flush();
+            bos.close();
         }
         zis.close();
         fis.close();
