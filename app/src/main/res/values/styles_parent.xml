@@ -54,10 +54,9 @@
         <item name="android:dialogTheme">@android:style/Theme.Holo.Light.Dialog</item>
     </style>
 
-    <style name="CabinetDarkParent" parent="@android:style/Theme.Holo">
+    <style name="_DarkUIParent" parent="@android:style/Theme.Holo">
         <item name="title_text">@android:color/white</item>
         <item name="body_text">#EEEEEE</item>
-        <item name="android:windowBackground">@drawable/black</item>
         <item name="drawer_background">@color/drawer_background_dark</item>
         <item name="divider">@color/divider_dark</item>
         <item name="overflow">@drawable/ic_overflow</item>
@@ -106,6 +105,15 @@
         <item name="android:actionOverflowButtonStyle">@style/OverflowRecoup</item>
         <item name="android:actionMenuTextColor">#fff</item>
         <item name="android:dialogTheme">@android:style/Theme.Holo.Dialog</item>
+    </style>
+
+    <style name="CabinetDarkParent" parent="@style/_DarkUIParent">
+        <item name="android:windowBackground">@drawable/dark</item>
+    </style>
+
+    <style name="CabinetTrueBlackParent" parent="@style/_DarkUIParent">
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.CabinetTrueBlack</item>
+        <item name="android:windowBackground">@drawable/black</item>
     </style>
 
 </resources>

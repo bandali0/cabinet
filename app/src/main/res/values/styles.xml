@@ -19,6 +19,15 @@
     <style name="Theme.CabinetDarkNavStatusTranslucent" parent="@style/Theme.CabinetDark" />
 
 
+    <style name="Theme.CabinetTrueBlack" parent="@style/CabinetTrueBlackParent" />
+
+    <style name="Theme.CabinetTrueBlackStatusTranslucent" parent="@style/Theme.CabinetTrueBlack" />
+
+    <style name="Theme.CabinetTrueBlackNavTranslucent" parent="@style/Theme.CabinetTrueBlack" />
+
+    <style name="Theme.CabinetTrueBlackNavStatusTranslucent" parent="@style/Theme.CabinetTrueBlack" />
+
+
     <style name="OverflowRecoup" parent="@android:style/Widget.Holo.ActionButton.Overflow">
         <item name="android:src">@drawable/ic_overflow</item>
     </style>
@@ -49,6 +58,10 @@
         <item name="android:icon">@drawable/transparent</item>
         <item name="android:background">@drawable/ab_solid_cabinet</item>
         <item name="android:titleTextStyle">@style/ActionTitleTextStyle</item>
+    </style>
+
+    <style name="ActionBar.Solid.CabinetTrueBlack" parent="@style/ActionBar.Solid.Cabinet">
+        <item name="android:background">@drawable/ab_solid_cabinetdark</item>
     </style>
 
     <style name="ActionTitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">

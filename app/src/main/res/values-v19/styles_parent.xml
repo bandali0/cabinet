@@ -31,4 +31,19 @@
         <item name="android:windowTranslucentNavigation">@bool/translucent_nav</item>
     </style>
 
+    <!-- True Black -->
+
+    <style name="Theme.CabinetTrueBlackStatusTranslucent" parent="@style/Theme.CabinetTrueBlack">
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <style name="Theme.CabinetTrueBlackNavTranslucent" parent="@style/Theme.CabinetTrueBlack">
+        <item name="android:windowTranslucentNavigation">@bool/translucent_nav</item>
+    </style>
+
+    <style name="Theme.CabinetTrueBlackNavStatusTranslucent" parent="@style/Theme.CabinetTrueBlack">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">@bool/translucent_nav</item>
+    </style>
+
 </resources>
