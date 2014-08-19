@@ -23,7 +23,7 @@ import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.adapters.NavigationDrawerAdapter;
 import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.ui.DrawerActivity;
-import com.afollestad.cabinet.utils.Shortcuts;
+import com.afollestad.cabinet.utils.Pins;
 import com.afollestad.cabinet.utils.Utils;
 
 public class NavigationDrawerFragment extends Fragment {
@@ -80,12 +80,12 @@ public class NavigationDrawerFragment extends Fragment {
             @Override
             public boolean onLongClick(final int index) {
                 if (index > 1) {
-                    Shortcuts.Item item = mAdapter.getItem(index);
+                    Pins.Item item = mAdapter.getItem(index);
                     Utils.showConfirmDialog(getActivity(), R.string.remove_shortcut,
                             R.string.confirm_remove_shortcut, item.getDisplay(getActivity()), new CustomDialog.SimpleClickListener() {
                                 @Override
                                 public void onPositive(int which, View view) {
-                                    Shortcuts.remove(getActivity(), index);
+                                    Pins.remove(getActivity(), index);
                                     mAdapter.reload(getActivity());
                                 }
                             }
@@ -186,7 +186,7 @@ public class NavigationDrawerFragment extends Fragment {
             mDrawerLayout.closeDrawer(mFragmentContainerView);
         }
         DrawerActivity act = (DrawerActivity) getActivity();
-        Shortcuts.Item item = mAdapter.getItem(position);
+        Pins.Item item = mAdapter.getItem(position);
         act.switchDirectory(item);
         mTitle = item.getDisplay(getActivity());
         mDrawerLayout.closeDrawers();

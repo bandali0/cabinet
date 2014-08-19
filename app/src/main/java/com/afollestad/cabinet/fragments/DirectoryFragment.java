@@ -51,7 +51,7 @@ import com.afollestad.cabinet.sftp.SftpClient;
 import com.afollestad.cabinet.ui.DrawerActivity;
 import com.afollestad.cabinet.ui.SettingsActivity;
 import com.afollestad.cabinet.utils.PauseOnScrollListener;
-import com.afollestad.cabinet.utils.Shortcuts;
+import com.afollestad.cabinet.utils.Pins;
 import com.afollestad.cabinet.utils.ThemeUtils;
 import com.afollestad.cabinet.utils.Utils;
 import com.afollestad.cabinet.zip.Unzipper;
@@ -905,7 +905,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     public void onMenuItemClick(final File file, MenuItem item) {
         switch (item.getItemId()) {
             case R.id.pin:
-                Shortcuts.add(getActivity(), new Shortcuts.Item(file));
+                Pins.add(getActivity(), new Pins.Item(file));
                 ((DrawerActivity) getActivity()).reloadNavDrawer(true);
                 break;
             case R.id.openAs:
@@ -992,7 +992,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                         file.delete(new SftpClient.CompletionCallback() {
                             @Override
                             public void onComplete() {
-                                if (Shortcuts.remove(getActivity(), file))
+                                if (Pins.remove(getActivity(), file))
                                     ((DrawerActivity) getActivity()).reloadNavDrawer();
                                 mAdapter.remove(file, true);
                                 DrawerActivity act = (DrawerActivity) getActivity();

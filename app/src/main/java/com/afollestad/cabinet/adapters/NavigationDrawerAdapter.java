@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.file.LocalFile;
 import com.afollestad.cabinet.file.base.File;
-import com.afollestad.cabinet.utils.Shortcuts;
+import com.afollestad.cabinet.utils.Pins;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,26 +40,34 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
 
     public NavigationDrawerAdapter(Activity context, ClickListener listener) {
         mContext = context;
-        mItems = new ArrayList<Shortcuts.Item>();
+        mItems = new ArrayList<Pins.Item>();
         mListener = listener;
-        if (Shortcuts.getAll(context).size() == 0) {
+        if (Pins.getAll(context).size() == 0) {
             LocalFile item = new LocalFile(context);
-            Shortcuts.add(context, new Shortcuts.Item(item));
+            Pins.add(context, new Pins.Item(item));
             item = new LocalFile(context, Environment.getExternalStorageDirectory());
-            Shortcuts.add(context, new Shortcuts.Item(item));
+            Pins.add(context, new Pins.Item(item));
             try {
+                item = new LocalFile(context, new java.io.File("/external_sd"));
+                if (item.existsSync()) {
+                    Pins.add(context, new Pins.Item(item));
+                } else {
+                    item = new LocalFile(context, new java.io.File("/extSdCard"));
+                    if (item.existsSync())
+                        Pins.add(context, new Pins.Item(item));
+                }
                 item = new LocalFile(context, new java.io.File(Environment.getExternalStorageDirectory(), "DCIM"));
                 if (item.existsSync())
-                    Shortcuts.add(context, new Shortcuts.Item(item));
+                    Pins.add(context, new Pins.Item(item));
                 item = new LocalFile(context, new java.io.File(Environment.getExternalStorageDirectory(), "Download"));
                 if (item.existsSync())
-                    Shortcuts.add(context, new Shortcuts.Item(item));
+                    Pins.add(context, new Pins.Item(item));
                 item = new LocalFile(context, new java.io.File(Environment.getExternalStorageDirectory(), "Music"));
                 if (item.existsSync())
-                    Shortcuts.add(context, new Shortcuts.Item(item));
+                    Pins.add(context, new Pins.Item(item));
                 item = new LocalFile(context, new java.io.File(Environment.getExternalStorageDirectory(), "Pictures"));
                 if (item.existsSync())
-                    Shortcuts.add(context, new Shortcuts.Item(item));
+                    Pins.add(context, new Pins.Item(item));
             } catch (Exception e) {
                 Toast.makeText(context, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
@@ -68,17 +76,17 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
     }
 
     private Activity mContext;
-    private List<Shortcuts.Item> mItems;
+    private List<Pins.Item> mItems;
     private int mCheckedPos = -1;
     private ClickListener mListener;
 
     public void reload(Context context) {
-        set(Shortcuts.getAll(context));
+        set(Pins.getAll(context));
     }
 
-    public void set(List<Shortcuts.Item> items) {
+    public void set(List<Pins.Item> items) {
         mItems.clear();
-        for (Shortcuts.Item i : items)
+        for (Pins.Item i : items)
             mItems.add(i);
         notifyDataSetChanged();
     }
@@ -86,7 +94,7 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
     public int setCheckedFile(File file) {
         int index = -1;
         for (int i = 0; i < mItems.size(); i++) {
-            Shortcuts.Item item = mItems.get(i);
+            Pins.Item item = mItems.get(i);
             if (item.getPath().equals(file.getPath())) {
                 index = i;
                 break;
@@ -101,7 +109,7 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
         notifyDataSetChanged();
     }
 
-    public Shortcuts.Item getItem(int index) {
+    public Pins.Item getItem(int index) {
         return mItems.get(index);
     }
 
@@ -123,7 +131,7 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
 
     @Override
     public void onBindViewHolder(ShortcutViewHolder holder, int index) {
-        Shortcuts.Item item = mItems.get(index);
+        Pins.Item item = mItems.get(index);
         holder.title.setTag(index);
         holder.title.setOnClickListener(this);
         holder.title.setOnLongClickListener(this);
@@ -141,6 +149,8 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
                 holder.title.setText(R.string.root);
             } else if (file.isStorageDirectory()) {
                 holder.title.setText(R.string.storage);
+            } else if (file.getName().startsWith("sdcard")) {
+                holder.title.setText(R.string.sdcard);
             } else {
                 holder.title.setText(item.getDisplay(mContext));
             }

@@ -26,7 +26,7 @@ import com.afollestad.cabinet.cab.base.BaseFileCab;
 import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.file.root.RootFile;
 import com.afollestad.cabinet.ui.DrawerActivity;
-import com.afollestad.cabinet.utils.Shortcuts;
+import com.afollestad.cabinet.utils.Pins;
 import com.afollestad.cabinet.utils.TimeUtils;
 import com.afollestad.cabinet.utils.Utils;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -80,7 +80,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
             mPopupMenu.getMenu().findItem(R.id.copy).setVisible(!foundInCopyCab);
             mPopupMenu.getMenu().findItem(R.id.cut).setVisible(!foundInCutCab);
             if (file.isDirectory()) {
-                mPopupMenu.getMenu().findItem(R.id.pin).setVisible(!Shortcuts.contains(mContext, new Shortcuts.Item(file)));
+                mPopupMenu.getMenu().findItem(R.id.pin).setVisible(!Pins.contains(mContext, new Pins.Item(file)));
             } else {
                 MenuItem zip = mPopupMenu.getMenu().findItem(R.id.zip);
                 if (!file.isRemote()) {

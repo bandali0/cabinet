@@ -16,7 +16,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Shortcuts {
+public class Pins {
 
     public static class Item {
 
@@ -128,7 +128,7 @@ public class Shortcuts {
         for (Item item : items) {
             toSet.put(item.toJSON());
         }
-        prefs.edit().putString("shortcuts", toSet.toString()).commit();
+        prefs.edit().putString("pins", toSet.toString()).commit();
     }
 
     public static void add(Context context, Item item) {
@@ -140,7 +140,7 @@ public class Shortcuts {
     public static List<Item> getAll(Context context) {
         List<Item> items = new ArrayList<Item>();
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        String shortcuts = prefs.getString("shortcuts", null);
+        String shortcuts = prefs.getString("pins", null);
         if (shortcuts == null) return items;
         try {
             JSONArray shortcutsJson = new JSONArray(shortcuts);

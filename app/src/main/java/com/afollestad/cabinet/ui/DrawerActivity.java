@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.IBinder;
@@ -39,9 +38,8 @@ import com.afollestad.cabinet.fragments.DirectoryFragment;
 import com.afollestad.cabinet.fragments.NavigationDrawerFragment;
 import com.afollestad.cabinet.fragments.WelcomeFragment;
 import com.afollestad.cabinet.services.NetworkService;
-import com.afollestad.cabinet.utils.Shortcuts;
+import com.afollestad.cabinet.utils.Pins;
 import com.afollestad.cabinet.utils.ThemeUtils;
-import com.afollestad.cabinet.utils.Utils;
 import com.anjlab.android.iab.v3.BillingProcessor;
 import com.faizmalkani.floatingactionbutton.FloatingActionButton;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
@@ -366,7 +364,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         reloadNavDrawer(false);
     }
 
-    public void switchDirectory(Shortcuts.Item to) {
+    public void switchDirectory(Pins.Item to) {
         File file = to.toFile(this);
         boolean clearBackStack = file.isStorageDirectory();
         switchDirectory(file, clearBackStack);

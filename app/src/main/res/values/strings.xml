@@ -266,5 +266,6 @@
 
     <string name="dark_theme">Dark Theme</string>
     <string name="dark_theme_desc">Cabinet will use darker colors for AMOLED screens and low lit environments.</string>
+    <string name="sdcard">SD Card</string>
 
 </resources>

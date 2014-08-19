@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.sftp.SftpClient;
 import com.afollestad.cabinet.ui.DrawerActivity;
-import com.afollestad.cabinet.utils.Shortcuts;
+import com.afollestad.cabinet.utils.Pins;
 
 public class RemoteConnectionDialog implements SftpClient.CompletionCallback {
 
@@ -125,7 +125,7 @@ public class RemoteConnectionDialog implements SftpClient.CompletionCallback {
             client.disconnect();
             client = null;
         }
-        Shortcuts.add(mContext, new Shortcuts.Item(
+        Pins.add(mContext, new Pins.Item(
                 host.getText().toString().trim(),
                 Integer.parseInt(port.getText().toString().trim()),
                 user.getText().toString().trim(),
