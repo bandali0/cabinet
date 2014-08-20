@@ -19,6 +19,8 @@ import com.afollestad.cabinet.utils.Pins;
 import java.util.ArrayList;
 import java.util.List;
 
+import eu.chainfire.libsuperuser.Shell;
+
 public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDrawerAdapter.ShortcutViewHolder> implements View.OnClickListener, View.OnLongClickListener {
 
     @Override
@@ -43,23 +45,27 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
         mItems = new ArrayList<Pins.Item>();
         mListener = listener;
         if (Pins.getAll(context).size() == 0) {
-            LocalFile item = new LocalFile(context);
-            Pins.add(context, new Pins.Item(item));
+            LocalFile item;
+            if (Shell.SU.available()) {
+                item = new LocalFile(context);
+                Pins.add(context, new Pins.Item(item));
+            }
             item = new LocalFile(context, Environment.getExternalStorageDirectory());
             Pins.add(context, new Pins.Item(item));
             try {
 
-                java.io.File sd = new java.io.File("/external_sd");
-                if (sd.exists()) {
-                    item = new LocalFile(context, sd);
-                    Pins.add(context, new Pins.Item(item));
-                } else {
-                    sd = new java.io.File("/extSdCard");
-                    if (sd.exists()) {
-                        item = new LocalFile(context, sd);
-                        Pins.add(context, new Pins.Item(item));
-                    }
-                }
+                // TODO SD card stuff
+//                java.io.File sd = new java.io.File("/external_sd");
+//                if (sd.exists()) {
+//                    item = new LocalFile(context, sd);
+//                    Pins.add(context, new Pins.Item(item));
+//                } else {
+//                    sd = new java.io.File("/extSdCard");
+//                    if (sd.exists()) {
+//                        item = new LocalFile(context, sd);
+//                        Pins.add(context, new Pins.Item(item));
+//                    }
+//                }
 
                 item = new LocalFile(context, new java.io.File(Environment.getExternalStorageDirectory(), "DCIM"));
                 if (item.existsSync())

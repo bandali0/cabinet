@@ -76,20 +76,17 @@ public class NavigationDrawerFragment extends Fragment {
 
             @Override
             public boolean onLongClick(final int index) {
-                if (index > 1) {
-                    Pins.Item item = mAdapter.getItem(index);
-                    Utils.showConfirmDialog(getActivity(), R.string.remove_shortcut,
-                            R.string.confirm_remove_shortcut, item.getDisplay(getActivity()), new CustomDialog.SimpleClickListener() {
-                                @Override
-                                public void onPositive(int which, View view) {
-                                    Pins.remove(getActivity(), index);
-                                    mAdapter.reload(getActivity());
-                                }
+                Pins.Item item = mAdapter.getItem(index);
+                Utils.showConfirmDialog(getActivity(), R.string.remove_shortcut,
+                        R.string.confirm_remove_shortcut, item.getDisplay(getActivity()), new CustomDialog.SimpleClickListener() {
+                            @Override
+                            public void onPositive(int which, View view) {
+                                Pins.remove(getActivity(), index);
+                                mAdapter.reload(getActivity());
                             }
-                    );
-                    return false;
-                }
-                return true;
+                        }
+                );
+                return false;
             }
         });
         mRecyclerView.setAdapter(mAdapter);
