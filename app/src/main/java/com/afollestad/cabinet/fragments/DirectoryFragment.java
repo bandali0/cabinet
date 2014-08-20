@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
@@ -23,6 +24,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -57,6 +59,7 @@ import com.afollestad.cabinet.zip.Unzipper;
 import com.afollestad.cabinet.zip.Zipper;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -250,11 +253,20 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         if (canShow && !searchMode) {
             assert search != null;
             SearchView searchView = (SearchView) search.getActionView();
+            EditText searchPlate = (EditText) searchView.findViewById(searchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null));
+            searchPlate.setTextColor(getResources().getColor(android.R.color.white));
             // TODO uncomment if statement for Material
-//            if (Build.VERSION.SDK_INT < 20) {
-            View view = searchView.findViewById(searchView.getContext().getResources().getIdentifier("android:id/search_plate", null, null));
-            view.setBackgroundResource(R.drawable.cabinet_edit_text_holo_light);
-//            }
+            if (Build.VERSION.SDK_INT < 20) {
+                searchPlate.setBackgroundResource(Utils.resolveDrawable(getActivity(), android.R.attr.editTextBackground));
+                try {
+                    Field searchField = SearchView.class.getDeclaredField("mCloseButton");
+                    searchField.setAccessible(true);
+                    ImageView closeBtn = (ImageView) searchField.get(searchView);
+                    closeBtn.setImageResource(R.drawable.ic_action_close);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String query) {

@@ -261,25 +261,26 @@ public class RootFile extends File {
     @Override
     public List<File> listFilesSync(boolean includeHidden, FileFilter filter) throws Exception {
         List<File> results = new ArrayList<File>();
-        if (Shell.SU.available()) {
-            List<String> response = runAsRoot("ls -l \"" + getPath() + "\"");
-            return LsParser.parse(getContext(), getPath(), response, filter, includeHidden).getFiles();
-        } else {
-            java.io.File[] list;
-            if (filter != null) list = new java.io.File(getPath()).listFiles();
-            else list = new java.io.File(getPath()).listFiles();
-            if (list == null || list.length == 0) return new ArrayList<File>();
-            for (java.io.File local : list) {
-                if (!includeHidden && (local.isHidden() || local.getName().startsWith(".")))
-                    continue;
-                LocalFile file = new LocalFile(getContext(), local);
-                if (filter != null) {
-                    if (filter.accept(file)) {
-                        file.isSearchResult = true;
-                        results.add(file);
-                    }
-                } else results.add(file);
+        if (requiresRoot()) {
+            if (Shell.SU.available()) {
+                List<String> response = runAsRoot("ls -l \"" + getPath() + "\"");
+                return LsParser.parse(getContext(), getPath(), response, filter, includeHidden).getFiles();
             }
+        }
+        java.io.File[] list;
+        if (filter != null) list = new java.io.File(getPath()).listFiles();
+        else list = new java.io.File(getPath()).listFiles();
+        if (list == null || list.length == 0) return new ArrayList<File>();
+        for (java.io.File local : list) {
+            if (!includeHidden && (local.isHidden() || local.getName().startsWith(".")))
+                continue;
+            LocalFile file = new LocalFile(getContext(), local);
+            if (filter != null) {
+                if (filter.accept(file)) {
+                    file.isSearchResult = true;
+                    results.add(file);
+                }
+            } else results.add(file);
         }
         return results;
     }
