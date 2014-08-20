@@ -18,8 +18,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import eu.chainfire.libsuperuser.Shell;
-
 public abstract class File implements Serializable {
 
     public File() {
@@ -34,7 +32,7 @@ public abstract class File implements Serializable {
     private String mPath;
 
     public final boolean requiresRoot() {
-        return Shell.SU.available() && !getPath().contains(Environment.getExternalStorageDirectory().getAbsolutePath());
+        return !getPath().contains(Environment.getExternalStorageDirectory().getAbsolutePath());
     }
 
     public final List<File> searchRecursive(boolean includeHidden, FileFilter filter) throws Exception {
