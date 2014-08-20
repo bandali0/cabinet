@@ -168,15 +168,18 @@
     <string name="loading">Chargement…</string>
     <string name="unsupported_extension">L\'extension non pris en charge</string>
     <string name="unsupported_extension_desc">Vous ne pouvez pas ouvrir ce type de fichier pour l\'édition de texte.</string>
-    <string name="filter">Filter</string>
-    <string name="none">None</string>
+    <string name="file_already_exists_warning">Avertissement: ce fichier existe. Votre nouveau fichier apparaît comme un double.</string>
+    <string name="auto_unzip_prompt">Extraire cet archive dans le dossier actuel?</string>
+    <string name="filter">Filtre</string>
+    <string name="none">Aucun</string>
     <string name="archives">Archives</string>
     <string name="extension">Extension</string>
-    <string name="file_already_exists_warning">Avertissement: ce fichier existe. Votre nouveau fichier apparaît comme un double.</string>
-    <string name="superuser_not_available">Superuser not available</string>
-    <string name="auto_unzip_prompt">Unzip this archive into the current directory?</string>
-    <string name="no_files_filter">No files for filter: %1$s</string>
-    <string name="filter_active">Filter active: %1$s</string>
-    <string name="dark_theme">Dark Theme</string>
-    <string name="dark_theme_description">Cabinet will use darker colors for AMOLED screens and low lit environments.</string>
+    <string name="no_files_filter">Aucun fichier pour le filtre: %1$s</string>
+    <string name="superuser_not_available">Superutilisateur non disponible</string>
+    <string name="filter_active">Filtre activé: %1$s</string>
+    <string name="dark_theme">Thème foncé</string>
+    <string name="sdcard">Carte SD</string>
+    <string name="dark_theme_description">Cabinet des couleurs plus foncées.</string>
+    <string name="true_black">Vrai Noir</string>
+    <string name="true_black_description">Cabinet le noir pur pour écrans AMOLED.</string>
 </resources>

@@ -178,5 +178,8 @@
     <string name="superuser_not_available">Superusuari no disponible</string>
     <string name="filter_active">Filtre actiu: %1$s</string>
     <string name="dark_theme">Tema fosc</string>
-    <string name="dark_theme_description">Cabinet utilitzarà colors més foscos per a pantalles AMOLED i llocs amb poca il·luminació</string>
+    <string name="sdcard">Targeta SD</string>
+    <string name="dark_theme_description">Cabinet utilitzarà colors més foscos.</string>
+    <string name="true_black">Negre pur</string>
+    <string name="true_black_description">Cabinet utilitzarà negre pur per a les pantalles AMOLED.</string>
 </resources>

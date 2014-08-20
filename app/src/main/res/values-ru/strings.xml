@@ -175,8 +175,11 @@
     <string name="archives">Архивы</string>
     <string name="extension">Тип файла</string>
     <string name="no_files_filter">Нет файлов соответствующих отбору: %1$s</string>
-    <string name="superuser_not_available">Суперпользователь не доступен</string>
+    <string name="superuser_not_available">Права Суперпользователя не доступны</string>
     <string name="filter_active">Отбор по: %1$s</string>
-    <string name="dark_theme">Тёмная тема</string>
-    <string name="dark_theme_description">Cabinet будет использовать более тёмные цвета для AMOLED экранов и в местах с низким уровнем освещенности.</string>
+    <string name="dark_theme">Тёмный фон</string>
+    <string name="sdcard">Карта памяти</string>
+    <string name="dark_theme_description">Cabinet будет использовать тёмный фон.</string>
+    <string name="true_black">Настоящий черный</string>
+    <string name="true_black_description">Cabinet будет использовать чистый черный цвет для AMOLED-дисплеев.</string>
 </resources>

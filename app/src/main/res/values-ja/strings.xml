@@ -175,8 +175,5 @@ Android4.1以降向けのミニマリスト、直感的かつ美しいファイ�
     <string name="archives">アーカイブ</string>
     <string name="extension">拡張子</string>
     <string name="no_files_filter">フィルタ %1$s に対するファイルがありません</string>
-    <string name="filter_active">Filter active: %1$s</string>
     <string name="superuser_not_available">Superuserが利用できません</string>
-    <string name="dark_theme">Dark Theme</string>
-    <string name="dark_theme_description">Cabinet will use darker colors for AMOLED screens and low lit environments.</string>
 </resources>

@@ -178,5 +178,8 @@
     <string name="superuser_not_available">Superusuario no disponible</string>
     <string name="filter_active">Filtro activo: %1$s</string>
     <string name="dark_theme">Tema Oscuro</string>
-    <string name="dark_theme_description">Cabinet usará colores más oscuros para pantallas AMOLED y ambientes poco iluminados.</string>
+    <string name="sdcard">Tarjeta SD</string>
+    <string name="dark_theme_description">Cabinet usará colores oscuros.</string>
+    <string name="true_black">Verdadero Negro</string>
+    <string name="true_black_description">Cabinet usará negro puro para pantallas OLED.</string>
 </resources>

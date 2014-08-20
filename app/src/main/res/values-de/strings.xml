@@ -178,5 +178,8 @@
     <string name="superuser_not_available">Superuser nicht verfügbar</string>
     <string name="filter_active">Filter aktiv: %1$s</string>
     <string name="dark_theme">Dunkles Theme</string>
-    <string name="dark_theme_description">Cabinet benutzt dunklere Farben bei AMOLED-Bildschirmen und bei wenig Licht.</string>
+    <string name="sdcard">SD-Karte</string>
+    <string name="dark_theme_description">Cabinet benutzt dunklere Farben.</string>
+    <string name="true_black">Echtes Schwarz</string>
+    <string name="true_black_description">Cabinet wird pures schwarz für AMOLED-Bildschirme verwenden.</string>
 </resources>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome">Ласкаво просимо</string>
+    <string name="welcome_intro">Ласкаво просимо в Cabinet! Cabinet це простий файловий менеджер розроблений для естетичного
+задоволення і роботи, яку повинен виконувати файловий менеджер.\n\nЗверніть увану на цей файл:</string>
+    <string name="welcome_conclusion">Спробуйте натиснути на зображення файлу зліва або на іконку меню справа. Для виділення та роботи з файлами і папками, натискайте на їх зображення ліворуч, або використовуйте довге натискання. Для доступу до інших дій з файлами, використовуйте іконку меню справа.\n\nCabinet
+є й інші різні функції, такі як архівація і віддалений доступ через SFTP. Величезне дякую за те, що користуєтеся Cabinet!</string>
+    <string name="lets_go">Поїхали!</string>
+    <string name="open_as">ВІдкрити як…</string>
+    <string name="pin">Прикріпити</string>
+    <string name="copy">Копіювати</string>
+    <string name="cut">Вирізати</string>
+    <string name="rename">Змінити ім\'я</string>
+    <string name="delete">Видалити</string>
+    <string name="paste">Вставити</string>
+    <string name="share">Поділитись</string>
+    <string name="zip">Ар</string>
+    <string name="unzip">Розархівувати</string>
+    <string name="selectAll">Вибрати все</string>
+    <string name="details">Детальніше</string>
+    <string name="no_files">Пуста тека</string>
+    <string name="storage">Сховище</string>
+    <string name="root">Пристрій</string>
+    <string name="directory">Тека</string>
+    <string name="unknown">Невідомо</string>
+    <string name="go_up">Вверх</string>
+    <string name="press_back_to_exit">"Ще раз натисніть "Назад" щоб вийти…"</string>
+    <string name="x_files">%1$d файлів</string>
+    <string name="x_dirs">%1$d теки</string>
+    <string name="no_x_files">Немає %1$s файлів</string>
+    <string name="done">Виконано</string>
+    <string name="remove_shortcut">Видалити закладку</string>
+    <string name="confirm_remove_shortcut">Ви впевнені, що хочете перемістити вашу закладку до %1$s?</string>
+    <string name="sort_modified">Востаннє змінено</string>
+    <string name="modified_x">Змінено %1$s</string>
+    <string name="iconpress_hint">Натисніть на іконку файлу, щоб швидко вибрати його!</string>
+    <string name="drawer_longpress_hint">Порада: довге натискання на закладці дозволить видалити її!</string>
+    <string name="navigation_drawer_open">Відкрити меню</string>
+    <string name="navigation_drawer_close">Закрити меню</string>
+    <string name="new_folder">Нова тека</string>
+    <string name="created_folder">Створено теку %1$s</string>
+    <string name="untitled">Не ідентифікований</string>
+    <string name="renamed_to">Перейменовано на %1$s</string>
+    <string name="moved_to">Переміщено до %1$s</string>
+    <string name="copied_to">Скопійовано до %1$s</string>
+    <string name="no">Ні</string>
+    <string name="yes">Так</string>
+    <string name="newStr">Новий</string>
+    <string name="search">Пошук</string>
+    <string name="confirm_delete">Ви впевнені, що хочете видалити %1$s?</string>
+    <string name="confirm_delete_xfiles">Ви впевнені, що хочете видалити %1$d файлів?</string>
+    <string name="unavailable">Недоступно</string>
+    <string name="sort_by">Сортувати за</string>
+    <string name="sort_name_folderstop">По імені, спочатку теки</string>
+    <string name="sort_name">Іменем</string>
+    <string name="sort_extension">Типом</string>
+    <string name="sort_size_lowhigh">Розміром, від меншого до більшого</string>
+    <string name="sort_size_highlow">Розміром, від більшого до меншого</string>
+    <string name="new_remote_connection">Нове віддалене з\'єднання</string>
+    <string name="network_service_label">Мережева служба Cabinet</string>
+    <string name="connection_notification_content">Під\'єднано до %1$s</string>
+    <string name="cabinet_sftp">Cabinet SFTP</string>
+    <string name="disconnect">Від\'єднати</string>
+    <string name="host">Хост</string>
+    <string name="port">Порт</string>
+    <string name="username">Ім\'я користувача</string>
+    <string name="password">Пароль</string>
+    <string name="test_connection">Протестувати з\'єднання</string>
+    <string name="connection_successful">Встановлено з\'єднання!</string>
+    <string name="disconnect_prompt">Ви хочете від\'єднатись від %1$s?</string>
+    <string name="uploaded_to">Вивантажено до %1$s</string>
+    <string name="downloaded_to">Завантажено до %1$s</string>
+    <string name="connecting">З\'єднання…</string>
+    <string name="downloading">Завантаження…</string>
+    <string name="deleting">Видалення…</string>
+    <string name="making_folder">Створення теки…</string>
+    <string name="renaming">Перейменування…</string>
+    <string name="unzipping">Розхархівування…</string>
+    <string name="zipping">Архівація…</string>
+    <string name="moving">Переміщення…</string>
+    <string name="uploading">Вивантаження…</string>
+    <string name="copying">Копіювання…</string>
+    <string name="failed_delete_file">Помилка при видаленні цього файлу: %1$s</string>
+    <string name="failed_make_directory">Помилка при створенні нової теки: %1$s</string>
+    <string name="failed_rename_file">Помилка при перейменуванні/переміщенні цього файлу: %1$s</string>
+    <string name="failed_unzip_file">Помилка при розархівуванні цього файлу:%1$s</string>
+    <string name="failed_zip_files">Помилка при архівації файла(ів): %1$s</string>
+    <string name="error">Помилка</string>
+    <string name="failed_download_file">Виникла помилка при спробі завантажити даний файл: %1$s</string>
+    <string name="failed_connect_server">Помилка при з\'єднанні з сервером: %1$s</string>
+    <string name="activity_not_found">Не знайдено додатку для відкриття даного типу файлу</string>
+    <string name="failed_upload_file">Не вдалось вивантажити даний файл: %1$s</string>
+    <string name="failed_copy_file">Не вдалось скопіювати даний файл: %1$s</string>
+    <string name="no_apps_for_sharing">Не доступно жодного додатку, щоб поділитись даним типом файлу</string>
+    <string name="directory_already_exists">Така тека вже існує</string>
+    <string name="copy_x"><![CDATA[
+ <b>Скопіювати:</b>&nbsp;&nbsp;%1$s
+    ]]></string>
+    <string name="cut_x"><![CDATA[
+ <b>Вирізати:</b>&nbsp;&nbsp;%1$s
+    ]]></string>
+    <string name="copy_xfiles"><![CDATA[
+ <b>Скопіювати:</b>&nbsp;&nbsp;%1$d файли(-ів)
+    ]]></string>
+    <string name="cut_xfiles"><![CDATA[
+ <b>Вирізати:</b>&nbsp;&nbsp;%1$d файли(-ів)
+    ]]></string>
+    <string name="search_files">Пошук файлів…</string>
+    <string name="search_x"><![CDATA[
+        <b>Пошук:</b>&nbsp;%1$s
+    ]]></string>
+    <string name="donate">Пожертвувати</string>
+    <string name="thank_you">Дуже вам вдячні!</string>
+    <string name="rate">Оцінити</string>
+    <string name="later">Пізніше</string>
+    <string name="rate_desc">Ви хочете оцінити Cabinet в Google Play? Вітаються хороші відгуки!</string>
+    <string name="sure">Звичайно!</string>
+    <string name="no_thanks">Ні, дякую</string>
+    <string name="file">Файл</string>
+    <string name="folder">Тека</string>
+    <string name="remote_connection">Віддалене з\'єднання…</string>
+    <string name="text">Текст</string>
+    <string name="image">Зображення</string>
+    <string name="audio">Аудіо</string>
+    <string name="video">Відео</string>
+    <string name="other">Інше</string>
+    <string name="info">Інформація</string>
+    <string name="files">Файли</string>
+    <string name="show_hidden_files">Показати приховані файли</string>
+    <string name="about">Про</string>
+    <string name="about_desc">Про додаток та розробника</string>
+    <string name="show_hidden_files_desc">Оберіть, показувати чи ні приховані файли.</string>
+    <string name="ui">Інтерфейс</string>
+    <string name="settings">Налаштування</string>
+    <string name="translucentstatusbar_disabled">Ви не можете змінити це на  Android L.</string>
+    <string name="translucency_not_supported">Прозорість не підтримується у вашій версії Android.</string>
+    <string name="translucent_statusbar">Прозора Панель стану</string>
+    <string name="translucent_navbar">Прозора навігаційна панель</string>
+    <string name="translucent_statusbar_desc">Прозорий (той же колір, що і в action bar) статус бар в KitKat і вище</string>
+    <string name="translucent_navbar_desc">Прозорий навігаційний бар в KitKat і вище</string>
+    <string name="about_body"><![CDATA[
+        Мінімалістичний, інтуїтивно-зрозумілий та просто гарний файловий менеджер для Android 4.1 і вище.<br/><br/>
+        Розробник  <b>Aidan Follestad</b>.<br/><a href=\'http://aidanfollestad.com\'>Інтрнетсторінка</a>&nbsp;&nbsp;
+        <a href=\'https://twitter.com/afollestad\'>Twitter</a>&nbsp;&nbsp;
+        <a href=\'https://google.com/+AidanFollestad\'>Google+</a>&nbsp;&nbsp;
+        <a href=\'https://github.com/afollestad\'>GitHub</a>&nbsp;&nbsp;
+        <a href=\'https://www.linkedin.com/in/afollestad\'>LinkedIn</a>
+    ]]></string>
+    <string name="details_body_file"><![CDATA[
+        <b>Ім\'я:</b>&nbsp;&nbsp;%1$s<br/><b>Шлях:</b>&nbsp;&nbsp;%2$s<br/><b>Розмір:</b>&nbsp;&nbsp;%3$s<br/><b>Змінений:</b>&nbsp;&nbsp;%4$s<br/><b>Права:</b>&nbsp;&nbsp;%5$s
+    ]]></string>
+    <string name="details_body_dir"><![CDATA[
+        <b>Ім\'я:</b>&nbsp;&nbsp;%1$s<br/><b>Шлях:</b>&nbsp;&nbsp;%2$s<br/><b>Вкладення:</b>&nbsp;&nbsp;%3$s<br/><b>Змінений:</b>&nbsp;&nbsp;%4$s
+    ]]></string>
+    <string name="material_version">Матеріальний</string>
+    <string name="material_version_desc">Матеріальна версія Cabinet доступна для користувачів Android L. Бажаєте переглянути спільноту Cabinet у Google+, де ця версія розміщена?</string>
+    <string name="new_file">Новий файл</string>
+    <string name="making_file">Створення файлу…</string>
+    <string name="created_file">Створено файл %1$s</string>
+    <string name="file_already_exists">Файл уже існує</string>
+    <string name="failed_make_file">Помилка при створенні нового файлу: %1$s</string>
+    <string name="pick_a_file">Оберіть файл…</string>
+    <string name="cabinet_text_editor">Текстовий редактор Cabinet</string>
+    <string name="save">Зберегти</string>
+    <string name="unsaved_changes">Незбережені зміни</string>
+    <string name="unsaved_changes_desc">У Вас є незбережені зміни, бажаєте зберегти їх перед виходом?</string>
+    <string name="saving">Збереження…</string>
+    <string name="loading">Завантаження…</string>
+    <string name="unsupported_extension">Непідтримуване розширення</string>
+    <string name="unsupported_extension_desc">Ви не можете відкрити даний тип файлу для редагування тексту.</string>
+    <string name="file_already_exists_warning">Попередження: файл уже існує. Ваш новий файл з\'явиться як дублікат.</string>
+    <string name="auto_unzip_prompt">Розпакувати цей архів до поточного розташування?</string>
+    <string name="filter">Фільтр</string>
+    <string name="none">Жодного</string>
+    <string name="archives">Архіви</string>
+    <string name="extension">Розширення</string>
+    <string name="no_files_filter">Не знайдено файлів для відбору: %1$s</string>
+    <string name="superuser_not_available">Суперкористувач не доступний</string>
+    <string name="filter_active">Активний відбір: %1$s</string>
+    <string name="dark_theme">Темне оформлення</string>
+    <string name="sdcard">SD Карта</string>
+    <string name="dark_theme_description">Cabinet буде використовувати більш темні кольори.</string>
+    <string name="true_black">Справжній чорний</string>
+    <string name="true_black_description">Cabinet буде використовувати чисто чорний для AMOLED дисплеїв.</string>
+</resources>

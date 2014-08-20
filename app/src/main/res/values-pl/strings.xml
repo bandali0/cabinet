@@ -181,7 +181,10 @@ posiada również inne funkcje, takie jak m.in. zdolny dostęp do serwerów popr
     <string name="extension">Rozszerzenie</string>
     <string name="no_files_filter">Brak wyników filtrowania: %1$s</string>
     <string name="superuser_not_available">Tryb Superuser niedostępny</string>
-    <string name="filter_active">Zastosowany filtr: %1$s</string>
+    <string name="filter_active">Aktywny filtr: %1$s</string>
     <string name="dark_theme">Ciemny motyw</string>
-    <string name="dark_theme_description">Cabinet umożliwia ustawienie ciemniejszych kolorów dla ekranów AMOLED. Opcja przydatna także w warunkach niskiego natężenia światła.</string>
+    <string name="sdcard">Karta SD</string>
+    <string name="dark_theme_description">Cabinet będzie używał ciemniejszych kolorów.</string>
+    <string name="true_black">Prawdziwa Czerń</string>
+    <string name="true_black_description">Cabinet będzie używał prawdziwej czerni w wyświetlaczach typu AMOLED.</string>
 </resources>

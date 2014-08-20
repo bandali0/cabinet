@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome">Dobrodošli</string>
+    <string name="welcome_intro">Dobrodošli u Cabinet! Cabinet je jednostavan upravljač datoteka koji je dizajniran da bude estetski
+ ugodan i da radi kako bi upravljač datoteka trebao raditi.\n\nPogledajte ovu datoteku:</string>
+    <string name="welcome_conclusion">Pokušajte dodirnuti sliku ili ikonu sa tri točke. Dodirom na sliku odabrat ćete datoteku za daljnje radnje, ovo se također može napraviti pritiskom i držanjem prsta na datotekama. Ikona sa tri točke prikazat će skočni izbornik sa pojedinačnim opcijama datoteke.\n\nCabinet
+ ima razne ostale značajke, poput udaljenog pristupa serverima putem SFTP-a koji možete pronaći istraživanjem aplikacije. Zahvaljujemo što koristite Cabinet!</string>
+    <string name="lets_go">Kreni!</string>
+    <string name="open_as">Otvori Kao…</string>
+    <string name="pin">Prikvači</string>
+    <string name="copy">Kopiraj</string>
+    <string name="cut">Izreži</string>
+    <string name="rename">Preimenuj</string>
+    <string name="delete">Obriši</string>
+    <string name="paste">Zalijepi</string>
+    <string name="share">Podijeli</string>
+    <string name="zip">Zapakiraj</string>
+    <string name="unzip">Otpakiraj</string>
+    <string name="selectAll">Odaberi Sve</string>
+    <string name="details">Detalji</string>
+    <string name="no_files">Nema datoteka</string>
+    <string name="storage">Spremište</string>
+    <string name="root">Root</string>
+    <string name="directory">Direktorij</string>
+    <string name="unknown">Nepoznato</string>
+    <string name="go_up">Odi gore</string>
+    <string name="press_back_to_exit">"Pritisnite opet za izlazak…"</string>
+    <string name="x_files">%1$d datoteka</string>
+    <string name="x_dirs">%1$d direktorija</string>
+    <string name="no_x_files">Nema %1$s datoteka</string>
+    <string name="done">Obavljeno</string>
+    <string name="remove_shortcut">Ukloni Prečac</string>
+    <string name="confirm_remove_shortcut">Jeste li sigurni da želite ukloniti prečac do %1$s?</string>
+    <string name="sort_modified">Zadlji puta modificirano</string>
+    <string name="modified_x">Modificirano %1$s</string>
+    <string name="iconpress_hint">Možete pritisnuti ikonu datoteke kako biste je brzo odabrali!</string>
+    <string name="drawer_longpress_hint">Savjet: dugo pritisnite prečace kako biste ih uklonili!</string>
+    <string name="navigation_drawer_open">Otvori navigacijsku ladicu</string>
+    <string name="navigation_drawer_close">Zatvori navigacijsku ladicu</string>
+    <string name="new_folder">Nova Mapa</string>
+    <string name="created_folder">Stvorena mapa %1$s</string>
+    <string name="untitled">Bez imena</string>
+    <string name="renamed_to">Preimenovano u %1$s</string>
+    <string name="moved_to">Premješteno u %1$s</string>
+    <string name="copied_to">Kopirano u %1$s</string>
+    <string name="no">Ne</string>
+    <string name="yes">Da</string>
+    <string name="newStr">Novo</string>
+    <string name="search">Pretraži</string>
+    <string name="confirm_delete">Jeste li sigurni da želite obrisati %1$s?</string>
+    <string name="confirm_delete_xfiles">Jeste li sigurni da želite obrisati %1$d datoteka?</string>
+    <string name="unavailable">Nedostupno</string>
+    <string name="sort_by">Sortiraj Prema</string>
+    <string name="sort_name_folderstop">Ime, prvo mape</string>
+    <string name="sort_name">Ime</string>
+    <string name="sort_extension">Ekstenzija</string>
+    <string name="sort_size_lowhigh">Veličina, od najmanjeg</string>
+    <string name="sort_size_highlow">Veličina, od najvećeg</string>
+    <string name="new_remote_connection">Nova Veza Na Daljinu</string>
+    <string name="network_service_label">Cabinet Mrežna Usluga</string>
+    <string name="connection_notification_content">Spojena na %1$s</string>
+    <string name="cabinet_sftp">Cabinet SFTP</string>
+    <string name="disconnect">Prekini vezu</string>
+    <string name="host">Host</string>
+    <string name="port">Port</string>
+    <string name="username">Korisničko ime</string>
+    <string name="password">Lozinka</string>
+    <string name="test_connection">Testna Veza</string>
+    <string name="connection_successful">Uspješna veza!</string>
+    <string name="disconnect_prompt">Želite li prekinuti vezu sa %1$s?</string>
+    <string name="uploaded_to">Preneseno na %1$s</string>
+    <string name="downloaded_to">Skinuto u %1$s</string>
+    <string name="connecting">Povezujem…</string>
+    <string name="downloading">Skidam…</string>
+    <string name="deleting">Brišem…</string>
+    <string name="making_folder">Stvaram mapu…</string>
+    <string name="renaming">Preimenujem…</string>
+    <string name="unzipping">Otpakiravam…</string>
+    <string name="zipping">Zapakiravam…</string>
+    <string name="moving">Premještam…</string>
+    <string name="uploading">Prenosim…</string>
+    <string name="copying">Kopiram…</string>
+    <string name="failed_delete_file">Neuspjelo brisanje datoteke %1$s</string>
+    <string name="failed_make_directory">Neuspjelo stvaranje mape %1$s</string>
+    <string name="failed_rename_file">Neuspjelo preimenovanje/premještanje datoteke %1$s</string>
+    <string name="failed_unzip_file">Neuspjelo otpakiravanje datoteke %1$s</string>
+    <string name="failed_zip_files">Neuspjelo zapakiravanje datoteke/-a %1$s</string>
+    <string name="error">Greška</string>
+    <string name="failed_download_file">Dogodila se greška prilikom pokušaja skidanja datoteke %1$s</string>
+    <string name="failed_connect_server">Neuspjelo povezivanje na server %1$s</string>
+    <string name="activity_not_found">Nije pronađena aplikacija koja bi mogla otvoriti ovu datoteku</string>
+    <string name="failed_upload_file">Neuspjeli prijenos datoteke %1$s</string>
+    <string name="failed_copy_file">Neuspjelo kopiranje datoteke %1$s</string>
+    <string name="no_apps_for_sharing">Nijedna aplikacija nije dostupna za dijeljenje ove vrste datoteke</string>
+    <string name="directory_already_exists">Direktorij već postoji</string>
+    <string name="copy_x"><![CDATA[
+ <b>Kopiraj:</b>&nbsp;&nbsp;%1$s
+    ]]></string>
+    <string name="cut_x"><![CDATA[
+ <b>Izreži:</b>&nbsp;&nbsp;%1$s
+    ]]></string>
+    <string name="copy_xfiles"><![CDATA[
+ <b>Kopiraj:</b>&nbsp;&nbsp;%1$d files
+    ]]></string>
+    <string name="cut_xfiles"><![CDATA[
+ <b>Izreži:</b>&nbsp;&nbsp;%1$d datoteka
+    ]]></string>
+    <string name="search_files">Pretraži datoteke…</string>
+    <string name="search_x"><![CDATA[
+ <b>Traži:</b>&nbsp;%1$s
+    ]]></string>
+    <string name="donate">Doniraj</string>
+    <string name="thank_you">Mnogo Vam hvala!</string>
+    <string name="rate">Ocijeni</string>
+    <string name="later">Kasnije</string>
+    <string name="rate_desc">Da li želite ocijeniti Cabinet na Google Play trgovini? Dobre ocjene su dobrodošle!</string>
+    <string name="sure">Naravno!</string>
+    <string name="no_thanks">Ne hvala</string>
+    <string name="file">Datoteka</string>
+    <string name="folder">Mapa</string>
+    <string name="remote_connection">Veza Na Daljinu…</string>
+    <string name="text">Tekst</string>
+    <string name="image">Slika</string>
+    <string name="audio">Zvuk</string>
+    <string name="video">Video</string>
+    <string name="other">Ostalo</string>
+    <string name="info">Info</string>
+    <string name="files">Datoteke</string>
+    <string name="show_hidden_files">Pokaži Skrivene Datoteke</string>
+    <string name="about">O</string>
+    <string name="about_desc">O aplikaciji i njenom dizajneru.</string>
+    <string name="show_hidden_files_desc">Odaberi da li će Cabinet prikazivati skrivene datoteke ili ne.</string>
+    <string name="ui">UI</string>
+    <string name="settings">Postavke</string>
+    <string name="translucentstatusbar_disabled">Ne možete promijeniti ovo u Android L verziji.</string>
+    <string name="translucency_not_supported">Prozirnost nije podržana u ovoj verziji Androida.</string>
+    <string name="translucent_statusbar">Prozirna Statusna Traka</string>
+    <string name="translucent_navbar">Prozirna Navigacijska Traka</string>
+    <string name="translucent_statusbar_desc">Prozirna (jednaka boja kao traka s alatima) statusna traka na KitKat i kasnijim verzijama Androida.</string>
+    <string name="translucent_navbar_desc">Prozirna navigacijska traka na KitKat i kasnijim verzijama Androida.</string>
+    <string name="about_body"><![CDATA[
+ Minimalan, intuitivan, prelijep upravljač datoteka za Android 4.1 i kasnije.<br/><br/>
+ Dizajnirao <b>Aidan Follestad</b>.<br/><a href=\'http://aidanfollestad.com\'>Web stranica</a>&nbsp;&nbsp;
+ <a href=\'https://twitter.com/afollestad\'>Twitter</a>&nbsp;&nbsp;
+ <a href=\'https://google.com/+AidanFollestad\'>Google+</a>&nbsp;&nbsp;
+ <a href=\'https://github.com/afollestad\'>GitHub</a>&nbsp;&nbsp;
+ <a href=\'https://www.linkedin.com/in/afollestad\'>LinkedIn</a>
+    ]]></string>
+    <string name="details_body_file"><![CDATA[
+ <b>Ime:</b>&nbsp;&nbsp;%1$s<br/><b>Lokacija:</b>&nbsp;&nbsp;%2$s<br/><b>Veličina:</b>&nbsp;&nbsp;%3$s<br/><b>Modificirano:</b>&nbsp;&nbsp;%4$s<br/><b>Dozvole:</b>&nbsp;&nbsp;%5$s
+    ]]></string>
+    <string name="details_body_dir"><![CDATA[
+ <b>Ime:</b>&nbsp;&nbsp;%1$s<br/><b>Lokacija:</b>&nbsp;&nbsp;%2$s<br/><b>Sadržaj:</b>&nbsp;&nbsp;%3$s<br/><b>Modificirano:</b>&nbsp;&nbsp;%4$s
+    ]]></string>
+    <string name="material_version">Material</string>
+    <string name="material_version_desc">Material verzija Cabinet-a je dostupna korisnicima Android L verzije. Da li želite posjetiti Google+ zajednicu za Cabinet gdje možete naći tu verziju?</string>
+    <string name="new_file">Nova Datoteka</string>
+    <string name="making_file">Stvaram datoteku…</string>
+    <string name="created_file">Stvorena datoteka %1$s</string>
+    <string name="file_already_exists">Datoteka već postoji</string>
+    <string name="failed_make_file">Neuspjelo stvaranje nove datoteke %1$s</string>
+    <string name="pick_a_file">Odaberi datoteku…</string>
+    <string name="cabinet_text_editor">Cabinet Uređivač Teksta</string>
+    <string name="save">Spremi</string>
+    <string name="unsaved_changes">Nespremljene Promjene</string>
+    <string name="unsaved_changes_desc">Imati nespremljenih promjene, da li ih želite spremiti prije izlaska?</string>
+    <string name="saving">Spremam…</string>
+    <string name="loading">Učitavam…</string>
+    <string name="unsupported_extension">Nepodržana Ekstenzija</string>
+    <string name="unsupported_extension_desc">Ne možete otvoriti ovu vrstu datoteke u uređivaču teksta.</string>
+    <string name="file_already_exists_warning">Upozorenje: ova datoteka već postoji. Vaša nova datoteka će se pojaviti kao duplikat.</string>
+    <string name="auto_unzip_prompt">Otpakiraj ovu arhivu u trenutni direktorij?</string>
+    <string name="filter">Filtriraj</string>
+    <string name="none">Ništa</string>
+    <string name="archives">Arhive</string>
+    <string name="extension">Ekstenzija</string>
+    <string name="no_files_filter">Nema datoteka za filter: %1$s</string>
+    <string name="superuser_not_available">Superuser nije dostupan</string>
+    <string name="filter_active">Aktivan filter: %1$s</string>
+    <string name="dark_theme">Tamna Tema</string>
+    <string name="sdcard">SD Kartica</string>
+    <string name="dark_theme_description">Cabinet će koristiti tamnije boje.</string>
+    <string name="true_black">Prava Crna</string>
+    <string name="true_black_description">Cabinet će koristiti pravu crnu boju za AMOLED zaslone.</string>
+</resources>

@@ -118,7 +118,7 @@
     <string name="no_thanks">No gracias</string>
     <string name="file">Archivo</string>
     <string name="folder">Carpeta</string>
-    <string name="remote_connection">Conexión remota...</string>
+    <string name="remote_connection">Conexión remota…</string>
     <string name="text">Texto</string>
     <string name="image">Imagen</string>
     <string name="audio">Audio</string>
@@ -155,17 +155,17 @@
     <string name="material_version">Material</string>
     <string name="material_version_desc">Una versión con Material de Cabinet esta disponible para aquellos con Android L. ¿Quieres ver la comunidad de Cabinet  en Google+ donde está publicada esta versión?</string>
     <string name="new_file">Nuevo Archivo</string>
-    <string name="making_file">Creando archivo...</string>
+    <string name="making_file">Creando archivo…</string>
     <string name="created_file">Archivo creado %1$s</string>
     <string name="file_already_exists">El archivo ya existe</string>
     <string name="failed_make_file">Error al crear un nuevo archivo: %1$s</string>
-    <string name="pick_a_file">Seleccione un archivo...</string>
+    <string name="pick_a_file">Seleccione un archivo…</string>
     <string name="cabinet_text_editor">Cabinet editor de texto</string>
     <string name="save">Guardar</string>
     <string name="unsaved_changes">Cambios no guardados</string>
     <string name="unsaved_changes_desc">Tienes cambios no guardados, ¿quieres guardarlos antes de salir?</string>
-    <string name="saving">Guardando...</string>
-    <string name="loading">Cargando...</string>
+    <string name="saving">Guardando…</string>
+    <string name="loading">Cargando…</string>
     <string name="unsupported_extension">Extension no soportada</string>
     <string name="unsupported_extension_desc">No puedes abrir este tipo de archivo con el editor de texto.</string>
     <string name="file_already_exists_warning">Advertencia: este archivo ya existe. El nuevo archivo aparecerá como un duplicado.</string>
@@ -178,5 +178,8 @@
     <string name="superuser_not_available">Superusuario no disponible</string>
     <string name="filter_active">Filtro activo: %1$s</string>
     <string name="dark_theme">Tema Oscuro</string>
-    <string name="dark_theme_description">Cabinet utilizará colores oscuros para pantallas AMOLED y en ambientes con baja iluminacion.</string>
+    <string name="sdcard">Tarjeta SD</string>
+    <string name="dark_theme_description">Cabinet usará colores oscuros.</string>
+    <string name="true_black">Negro Verdadero</string>
+    <string name="true_black_description">Cabinet usara negro puro para pantallas AMOLED.</string>
 </resources>
