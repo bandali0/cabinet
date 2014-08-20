@@ -9,7 +9,6 @@
     <color name="cabinet_accent_color">#e91e63</color>
     <color name="cabinet_gray_darker">#616161</color>
 
-    <color name="drawer_background_dark">#3D3D3D</color>
     <color name="drawer_background">#fff</color>
     <color name="accent_color">#333</color>
     <color name="search_view_hint">#BBFFFFFF</color>
@@ -19,5 +18,6 @@
 
     <color name="button_disabled">#ddd</color>
     <color name="button_disabled_dark">#666</color>
+    <color name="dark_background">#242424</color>
 
 </resources>

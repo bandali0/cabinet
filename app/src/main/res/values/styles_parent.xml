@@ -63,7 +63,7 @@
     <style name="_DarkUIParent" parent="@android:style/Theme.Holo">
         <item name="title_text">@android:color/white</item>
         <item name="body_text">#EEEEEE</item>
-        <item name="drawer_background">@color/drawer_background_dark</item>
+        <item name="drawer_background">@color/dark_background</item>
         <item name="divider">@color/divider_dark</item>
         <item name="overflow">@drawable/ic_overflow</item>
         <item name="menu_selector">@drawable/menu_selector_dark</item>
