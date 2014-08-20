@@ -550,7 +550,7 @@ public class LocalFile extends File {
     @Override
     public List<File> listFilesSync(boolean includeHidden, FileFilter filter) throws Exception {
         List<File> results = new ArrayList<File>();
-        if (requiresRoot()) {
+        if (Shell.SU.available()) {
             List<String> response = runAsRoot("ls -l \"" + getPath() + "\"");
             return LsParser.parse(getContext(), getPath(), response, filter, includeHidden).getFiles();
         } else {
