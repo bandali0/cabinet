@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.util.Log;
 
 import com.afollestad.cabinet.R;
+import com.afollestad.cabinet.file.LocalFile;
 import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.file.base.FileFilter;
 import com.afollestad.cabinet.sftp.SftpClient;
@@ -11,6 +12,7 @@ import com.afollestad.cabinet.utils.Utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -258,8 +260,28 @@ public class RootFile extends File {
 
     @Override
     public List<File> listFilesSync(boolean includeHidden, FileFilter filter) throws Exception {
-        List<String> response = runAsRoot("ls -l \"" + getPath() + "\"");
-        return LsParser.parse(getContext(), getPath(), response, filter, includeHidden).getFiles();
+        List<File> results = new ArrayList<File>();
+        if (Shell.SU.available()) {
+            List<String> response = runAsRoot("ls -l \"" + getPath() + "\"");
+            return LsParser.parse(getContext(), getPath(), response, filter, includeHidden).getFiles();
+        } else {
+            java.io.File[] list;
+            if (filter != null) list = new java.io.File(getPath()).listFiles();
+            else list = new java.io.File(getPath()).listFiles();
+            if (list == null || list.length == 0) return new ArrayList<File>();
+            for (java.io.File local : list) {
+                if (!includeHidden && (local.isHidden() || local.getName().startsWith(".")))
+                    continue;
+                LocalFile file = new LocalFile(getContext(), local);
+                if (filter != null) {
+                    if (filter.accept(file)) {
+                        file.isSearchResult = true;
+                        results.add(file);
+                    }
+                } else results.add(file);
+            }
+        }
+        return results;
     }
 
     @Override
