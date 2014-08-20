@@ -24,6 +24,7 @@ import com.afollestad.cabinet.adapters.NavigationDrawerAdapter;
 import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.ui.DrawerActivity;
 import com.afollestad.cabinet.utils.Pins;
+import com.afollestad.cabinet.utils.StorageHelper;
 import com.afollestad.cabinet.utils.Utils;
 
 public class NavigationDrawerFragment extends Fragment {
@@ -43,6 +44,8 @@ public class NavigationDrawerFragment extends Fragment {
     private boolean mUserLearnedDrawer;
     private CharSequence mTitle;
 
+    private StorageHelper mStorageHelper;
+
     public NavigationDrawerFragment() {
     }
 
@@ -56,6 +59,13 @@ public class NavigationDrawerFragment extends Fragment {
             mTitle = savedInstanceState.getCharSequence(STATE_TITLE);
             mFromSavedInstanceState = true;
         }
+        mStorageHelper = new StorageHelper(getActivity(), new StorageHelper.StateListener() {
+            @Override
+            public void onStateChanged(boolean available, boolean writeable) {
+
+            }
+        });
+        mStorageHelper.startWatchingExternalStorage();
     }
 
     @Override

@@ -6,7 +6,7 @@
     <string name="welcome_conclusion">נסה ללחוץ על התמונה של הקובץ או על כפתור האפשרויות (שלושת הנקודות). לחיצה על תמונת הקובץ בוחרת אותו כדי לעשות פעולה אחת על מספר קבצים, כמו כן, זה יכול להיעשות באמצעות לחיצה ממושכת על הקובץ. כפתור האפשרויות מראה תפריט עם פעולות אינדיוידואלית לקובץ הספציפי. \n\n ל-Cabinet
  יש עוד אפשרויות שונות, כמו גישה מרחוק לשרתים באמצעות SFTP שאפשר למצוא באמצעות חיפוש. תודה שאתה מנסה את Cabinet!</string>
     <string name="lets_go">בואו נתחיל!</string>
-    <string name="open_as">פתח כ…</string>
+    <string name="open_as">פתח כ...</string>
     <string name="pin">סמן כמועדף</string>
     <string name="copy">העתק</string>
     <string name="cut">גזור</string>
@@ -24,7 +24,7 @@
     <string name="directory">מיקום</string>
     <string name="unknown">לא ידוע</string>
     <string name="go_up">עלה למעלה</string>
-    <string name="press_back_to_exit">"לחץ חזרה עוד הפעם כדי לצאת…"</string>
+    <string name="press_back_to_exit">"לחץ חזרה עוד הפעם כדי לצאת..."</string>
     <string name="x_files">קבצי %1$d</string>
     <string name="x_dirs">%1$d מיקומים</string>
     <string name="no_x_files">אין קבצי %1$s</string>
@@ -70,16 +70,16 @@
     <string name="disconnect_prompt">האם אתה רוצה להתנתק מ %1$s?</string>
     <string name="uploaded_to">הועלה ל-%1$s</string>
     <string name="downloaded_to">הורד ל-%1$s</string>
-    <string name="connecting">מתחבר…</string>
-    <string name="downloading">מוריד…</string>
-    <string name="deleting">מוחק…</string>
-    <string name="making_folder">יוצר תיקייה…</string>
-    <string name="renaming">משנה שם…</string>
-    <string name="unzipping">מחלץ קבצים מZIP…</string>
-    <string name="zipping">דוחס לZIP…</string>
-    <string name="moving">מזיז…</string>
-    <string name="uploading">מעלה…</string>
-    <string name="copying">מעתיק…</string>
+    <string name="connecting">מתחבר...</string>
+    <string name="downloading">מוריד...</string>
+    <string name="deleting">מוחק...</string>
+    <string name="making_folder">יוצר תיקייה...</string>
+    <string name="renaming">משנה שם...</string>
+    <string name="unzipping">מחלץ קבצים מZIP...</string>
+    <string name="zipping">דוחס לZIP...</string>
+    <string name="moving">מזיז...</string>
+    <string name="uploading">מעלה...</string>
+    <string name="copying">מעתיק...</string>
     <string name="failed_delete_file">נכשלה מחיקת הקובץ: %1$s</string>
     <string name="failed_make_directory">נכשלה יצירת התיקייה: %1$s</string>
     <string name="failed_rename_file">נכשלה הזזה/שינוי שם של הקובץ: %1$s</string>
@@ -105,7 +105,7 @@
     <string name="cut_xfiles"><![CDATA[
         <b>גזור:</b>&nbsp;&nbsp;%1$d קבצים
     ]]></string>
-    <string name="search_files">חפש קבצים…</string>
+    <string name="search_files">חפש קבצים...</string>
     <string name="search_x"><![CDATA[
         <b>חפש:</b>&nbsp;%1$s
     ]]></string>
@@ -118,7 +118,7 @@
     <string name="no_thanks">לא תודה</string>
     <string name="file">קובץ</string>
     <string name="folder">תיקיה</string>
-    <string name="remote_connection">גישה מרחוק…</string>
+    <string name="remote_connection">גישה מרחוק...</string>
     <string name="text">טקסט</string>
     <string name="image">תמונה</string>
     <string name="audio">קול</string>
@@ -155,28 +155,31 @@
     <string name="material_version">Material (חומרי)</string>
     <string name="material_version_desc">עיצוב חומרי (Material) זמין לאלו שמריצים את אנדרואיד L. האם אתה רוצה לראות איפה פרסמו גירסא זו בקהילת הGoogle+ של Cabinet?</string>
     <string name="new_file">קובץ חדש</string>
-    <string name="making_file">יוצר קובץ…</string>
+    <string name="making_file">יוצר קובץ...</string>
     <string name="created_file">נוצר הקובץ %1$s</string>
     <string name="file_already_exists">קובץ זה כבר קיים</string>
     <string name="failed_make_file">נכשלה יצירת הקובץ החדש: %1$s</string>
-    <string name="pick_a_file">בחר קובץ…</string>
+    <string name="pick_a_file">בחר קובץ...</string>
     <string name="cabinet_text_editor">עורך הטקסט של Cabinet</string>
     <string name="save">שמור</string>
     <string name="unsaved_changes">שינויים לא נשמרו</string>
     <string name="unsaved_changes_desc">יש לך שינויים לא שמורים, האם תרצה לשמור אותם לפני שאתה יוצא?</string>
-    <string name="saving">שומר…</string>
-    <string name="loading">טוען…</string>
+    <string name="saving">שומר...</string>
+    <string name="loading">טוען...</string>
     <string name="unsupported_extension">אין תמיכה בסוג קובץ זה.</string>
     <string name="unsupported_extension_desc">אתה לא יכול לפתוח קובץ מסוג זה על מנת לערוך טקסט.</string>
     <string name="file_already_exists_warning">הזהרה: קובץ זה כבר קיים. הקובץ החדש יופיע כמשוכפל</string>
-    <string name="superuser_not_available">Superuser not available</string>
-    <string name="auto_unzip_prompt">Unzip this archive into the current directory?</string>
-    <string name="filter">Filter</string>
-    <string name="none">None</string>
-    <string name="archives">Archives</string>
-    <string name="extension">Extension</string>
-    <string name="no_files_filter">No files for filter: %1$s</string>
-    <string name="filter_active">Filter active: %1$s</string>
-    <string name="dark_theme">Dark Theme</string>
-    <string name="dark_theme_description">Cabinet will use darker colors for AMOLED screens and low lit environments.</string>
+    <string name="auto_unzip_prompt">חלץ קבצים מ- ZIP זה למיקום הנוכחי?</string>
+    <string name="filter">מסנן</string>
+    <string name="none">אף אחד</string>
+    <string name="archives">ארכיון</string>
+    <string name="extension">הארכה</string>
+    <string name="no_files_filter">אין קבצים למסנן:</string>
+    <string name="superuser_not_available">משתמש על לא זמין</string>
+    <string name="filter_active">לסנן פעיל:</string>
+    <string name="dark_theme">נושא כהה</string>
+    <string name="sdcard">כרטיס SD</string>
+    <string name="dark_theme_description">קבינט יהיה להשתמש בצבעים כהים יותר.</string>
+    <string name="true_black">שחור אמיתי</string>
+    <string name="true_black_description">קבינט ישתמש שחור טהור עבור צגי AMOLED.</string>
 </resources>
