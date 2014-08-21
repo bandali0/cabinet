@@ -17,21 +17,19 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:clipToPadding="false">
 
         <EditText
             android:id="@+id/input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
-            android:textColorLink="@color/cabinet_color"
+            android:textColorLink="@color/cabinet_accent_color"
             android:textSize="18sp"
             android:inputType="textCapSentences|textMultiLine"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:scrollHorizontally="true" />
+            android:background="@null" />
 
     </ScrollView>
 

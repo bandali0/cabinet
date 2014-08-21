@@ -921,7 +921,8 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             } else {
                 if (file.getExtension().equals("zip")) {
                     final File fFile = file;
-                    ContextThemeWrapper context = new ContextThemeWrapper(getActivity(), new ThemeUtils(getActivity()).getCurrent());
+                    ContextThemeWrapper context = new ContextThemeWrapper(getActivity(),
+                            new ThemeUtils(getActivity(), true).getCurrent());
                     CustomDialog.create(context, R.string.unzip, getString(R.string.auto_unzip_prompt),
                             android.R.string.ok, 0, android.R.string.cancel, new CustomDialog.ClickListener() {
                                 @Override

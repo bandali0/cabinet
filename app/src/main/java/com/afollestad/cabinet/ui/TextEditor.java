@@ -54,6 +54,11 @@ public class TextEditor extends NetworkedActivity implements TextWatcher {
     }
 
     @Override
+    protected boolean allowTranslucentNavbar() {
+        return false;
+    }
+
+    @Override
     protected boolean disconnectOnNotify() {
         return false;
     }

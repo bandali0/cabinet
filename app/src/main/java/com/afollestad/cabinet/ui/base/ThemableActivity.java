@@ -14,7 +14,7 @@ public class ThemableActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mThemeUtils = new ThemeUtils(this);
+        mThemeUtils = new ThemeUtils(this, allowTranslucentNavbar());
         setTheme(mThemeUtils.getCurrent());
         super.onCreate(savedInstanceState);
     }
@@ -26,5 +26,9 @@ public class ThemableActivity extends Activity {
             setTheme(mThemeUtils.getCurrent());
             recreate();
         }
+    }
+
+    protected boolean allowTranslucentNavbar() {
+        return true;
     }
 }

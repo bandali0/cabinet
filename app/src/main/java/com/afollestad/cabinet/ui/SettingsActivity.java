@@ -29,7 +29,7 @@ public class SettingsActivity extends ThemablePreferenceActivity implements Abou
         DrawerActivity.setupTransparentTints(this);
         ListView list = (ListView) findViewById(android.R.id.list);
         DrawerActivity.setupTranslucentTopPadding(this, list);
-        DrawerActivity.setupTranslucentBottomMargin(this, list);
+        DrawerActivity.setupTranslucentBottomPadding(this, list);
 
         addPreferencesFromResource(R.xml.settings);
         final CheckBoxPreference translucentStatusbar = (CheckBoxPreference) findPreference("translucent_statusbar");

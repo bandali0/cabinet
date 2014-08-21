@@ -14,7 +14,7 @@ public class ThemablePreferenceActivity extends PreferenceActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mThemeUtils = new ThemeUtils(this);
+        mThemeUtils = new ThemeUtils(this, true);
         setTheme(mThemeUtils.getCurrent());
         super.onCreate(savedInstanceState);
     }

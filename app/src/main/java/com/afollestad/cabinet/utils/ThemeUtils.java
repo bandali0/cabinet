@@ -10,8 +10,9 @@ import com.afollestad.cabinet.R;
 
 public class ThemeUtils {
 
-    public ThemeUtils(Activity context) {
+    public ThemeUtils(Activity context, boolean allowTranslucentNavbar) {
         mContext = context;
+        this.allowTranslucentNavbar = allowTranslucentNavbar;
         isChanged(); // invalidate stored booleans
     }
 
@@ -20,6 +21,7 @@ public class ThemeUtils {
     private boolean trueBlack;
     private boolean translucentStatusbar;
     private boolean translucentNavbar;
+    private boolean allowTranslucentNavbar;
 
     public static boolean isDarkMode(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
@@ -50,7 +52,7 @@ public class ThemeUtils {
         boolean darkTheme = isDarkMode(mContext);
         boolean blackTheme = isTrueBlack(mContext);
         boolean statusTrans = isTranslucentStatusbar(mContext);
-        boolean navTrans = isTranslucentNavbar(mContext);
+        boolean navTrans = allowTranslucentNavbar && isTranslucentNavbar(mContext);
         boolean changed = darkMode != darkTheme || statusTrans != translucentStatusbar || navTrans != translucentNavbar || trueBlack != blackTheme;
         darkMode = darkTheme;
         trueBlack = blackTheme;

@@ -97,15 +97,36 @@ public class DrawerActivity extends NetworkedActivity implements BillingProcesso
         }
     }
 
-    public static void setupTranslucentBottomMargin(Activity context, View view) {
+    public static void setupTranslucentTopMargin(Activity context, View view, boolean add) {
+        if (!ThemeUtils.isTranslucentStatusbar(context)) return;
+        SystemBarTintManager tintManager = new SystemBarTintManager(context);
+        SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
+        ViewGroup.LayoutParams params = view.getLayoutParams();
+        if (view.getLayoutParams() instanceof FrameLayout.LayoutParams) {
+            int margin = config.getPixelInsetTop(true);
+            if (add) margin += ((FrameLayout.LayoutParams) params).topMargin;
+            ((FrameLayout.LayoutParams) params).topMargin = margin;
+        } else {
+            int margin = config.getPixelInsetTop(true);
+            if (add) margin += ((RelativeLayout.LayoutParams) params).topMargin;
+            ((RelativeLayout.LayoutParams) params).topMargin = margin;
+        }
+        view.setLayoutParams(params);
+    }
+
+    public static void setupTranslucentBottomMargin(Activity context, View view, boolean add) {
         if (!ThemeUtils.isTranslucentNavbar(context)) return;
         SystemBarTintManager tintManager = new SystemBarTintManager(context);
         SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
         ViewGroup.LayoutParams params = view.getLayoutParams();
         if (view.getLayoutParams() instanceof FrameLayout.LayoutParams) {
-            ((FrameLayout.LayoutParams) params).bottomMargin = config.getPixelInsetBottom();
+            int margin = config.getPixelInsetBottom();
+            if (add) margin += ((FrameLayout.LayoutParams) params).bottomMargin;
+            ((FrameLayout.LayoutParams) params).bottomMargin = margin;
         } else {
-            ((RelativeLayout.LayoutParams) params).bottomMargin = config.getPixelInsetBottom();
+            int margin = config.getPixelInsetBottom();
+            if (add) margin += ((RelativeLayout.LayoutParams) params).bottomMargin;
+            ((RelativeLayout.LayoutParams) params).bottomMargin = margin;
         }
         view.setLayoutParams(params);
     }
@@ -231,7 +252,7 @@ public class DrawerActivity extends NetworkedActivity implements BillingProcesso
                 return false;
             }
         });
-        setupTranslucentBottomMargin(this, fab);
+        setupTranslucentBottomMargin(this, fab, false);
         setupTransparentTints(this);
 
         mBP = new BillingProcessor(this, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlPBB2hP/R0PrXtK8NPeDX7QV1fvk1hDxPVbIwRZLIgO5l/ZnAOAf8y9Bq57+eO5CD+ZVTgWcAVrS/QsiqDI/MwbfXcDydSkZLJoFofOFXRuSL7mX/jNwZBNtH0UrmcyFx1RqaHIe9KZFONBWLeLBmr47Hvs7dKshAto2Iy0v18kN48NqKxlWtj/PHwk8uIQ4YQeLYiXDCGhfBXYS861guEr3FFUnSLYtIpQ8CiGjwfU60+kjRMmXEGnmhle5lqzj6QeL6m2PNrkbJ0T9w2HM+bR7buHcD8e6tHl2Be6s/j7zn1Ypco/NCbqhtPgCnmLpeYm8EwwTnH4Yei7ACR7mXQIDAQAB", this);
