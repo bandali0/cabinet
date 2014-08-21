@@ -186,7 +186,7 @@ public class TextEditor extends Activity implements TextWatcher {
     }
 
     private void checkUnsavedChanges() {
-        if (!mOriginal.equals(mInput.getText().toString())) {
+        if (mOriginal != null && !mOriginal.equals(mInput.getText().toString())) {
             CustomDialog.create(this, R.string.unsaved_changes, getString(R.string.unsaved_changes_desc), R.string.yes, 0, R.string.no, new CustomDialog.ClickListener() {
                 @Override
                 public void onNeutral() {
