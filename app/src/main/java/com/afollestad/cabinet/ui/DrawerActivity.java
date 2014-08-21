@@ -319,11 +319,8 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
 
     private void displayDisconnectPrompt() {
         String host = getString(R.string.unknown);
-        if (mNetworkService != null) {
-            if (mNetworkService.getSftpClient() != null && !mNetworkService.getSftpClient().isConnected()) {
-                return;
-            }
-            host = mNetworkService.getRemote().getRemote().getHost();
+        if (mRemoteSwitch != null) {
+            host = mRemoteSwitch.getRemote().getHost();
         }
         CustomDialog.create(this, R.string.disconnect, getString(R.string.disconnect_prompt, host),
                 R.string.yes, 0, R.string.no, new CustomDialog.SimpleClickListener() {
@@ -344,6 +341,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         if (intent.hasExtra("remote")) {
             mRemoteSwitch = (CloudFile) intent.getSerializableExtra("remote");
             if (mNetworkService != null) {
+                mNetworkService.setRemote(mRemoteSwitch);
                 switchDirectory(mRemoteSwitch, true);
                 displayDisconnectPrompt();
                 mRemoteSwitch = null;
@@ -361,7 +359,8 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     @Override
     protected void onStart() {
         super.onStart();
-        bindService(new Intent(this, NetworkService.class), mConnection, Context.BIND_AUTO_CREATE);
+        Intent intent = new Intent(this, NetworkService.class);
+        bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
     }
 
     @Override
@@ -450,6 +449,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
             NetworkService.LocalBinder binder = (NetworkService.LocalBinder) service;
             mNetworkService = binder.getService();
             if (mRemoteSwitch != null) {
+                mNetworkService.setRemote(mRemoteSwitch); // prevents crash
                 switchDirectory(mRemoteSwitch, true);
                 displayDisconnectPrompt();
                 mRemoteSwitch = null;
