@@ -10,7 +10,6 @@ import android.content.IntentFilter;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -90,6 +89,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     private boolean showHidden;
     public int sorter;
     public String filter;
+    private Thread searchThread;
 
     public File getDirectory() {
         return mDirectory;
@@ -187,6 +187,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     @Override
     public void onPause() {
         super.onPause();
+        searchThread.interrupt();
         try {
             getActivity().unregisterReceiver(mReceiver);
         } catch (Exception e) {
@@ -603,20 +604,15 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
 
     public void search() {
         setListShown(false);
-        new Thread(new Runnable() {
+        searchThread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    LocalFile searchTarget;
-                    if (mDirectory.requiresRoot()) {
-                        searchTarget = new LocalFile(getActivity(), "/");
-                    } else {
-                        searchTarget = new LocalFile(getActivity(), Environment.getExternalStorageDirectory());
-                    }
-                    final List<File> results = searchDir(showHidden, searchTarget);
+                    final List<File> results = searchDir(showHidden, mDirectory);
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            if (searchThread.isInterrupted()) return;
                             Collections.sort(results, getComparator());
                             mAdapter.set(results);
                             setListShown(true);
@@ -643,10 +639,10 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                     });
                 }
             }
-        }).start();
+        });
     }
 
-    private List<File> searchDir(boolean includeHidden, LocalFile dir) throws Exception {
+    private List<File> searchDir(boolean includeHidden, File dir) throws Exception {
         return dir.searchRecursive(includeHidden, new FileFilter() {
             @Override
             public boolean accept(File file) {
