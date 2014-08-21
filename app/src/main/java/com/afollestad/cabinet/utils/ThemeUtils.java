@@ -81,9 +81,11 @@ public class ThemeUtils {
         if (Build.VERSION.SDK_INT >= 20) {
             if (translucentNavbar) {
                 if (darkMode) return R.style.Theme_CabinetDarkNavTranslucent;
+                else if (trueBlack) return R.style.Theme_CabinetTrueBlackNavTranslucent;
                 else return R.style.Theme_CabinetNavTranslucent;
             } else {
                 if (darkMode) return R.style.Theme_CabinetDark;
+                else if (trueBlack) return R.style.Theme_CabinetTrueBlack;
                 else return R.style.Theme_Cabinet;
             }
         } else {
