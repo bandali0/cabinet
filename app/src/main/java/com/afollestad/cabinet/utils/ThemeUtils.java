@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import com.afollestad.cabinet.R;
 
@@ -80,13 +81,27 @@ public class ThemeUtils {
         // TODO toggle commented area for Material
         if (Build.VERSION.SDK_INT >= 20) {
             if (translucentNavbar) {
-                if (darkMode) return R.style.Theme_CabinetDarkNavTranslucent;
-                else if (trueBlack) return R.style.Theme_CabinetTrueBlackNavTranslucent;
-                else return R.style.Theme_CabinetNavTranslucent;
+                if (trueBlack) {
+                    Log.v("ThemeUtils", "Using Theme_CabinetTrueBlackNavTranslucent");
+                    return R.style.Theme_CabinetTrueBlackNavTranslucent;
+                } else if (darkMode) {
+                    Log.v("ThemeUtils", "Using Theme_CabinetDarkNavTranslucent");
+                    return R.style.Theme_CabinetDarkNavTranslucent;
+                } else {
+                    Log.v("ThemeUtils", "Using Theme_CabinetNavTranslucent");
+                    return R.style.Theme_CabinetNavTranslucent;
+                }
             } else {
-                if (darkMode) return R.style.Theme_CabinetDark;
-                else if (trueBlack) return R.style.Theme_CabinetTrueBlack;
-                else return R.style.Theme_Cabinet;
+                if (trueBlack) {
+                    Log.v("ThemeUtils", "Using Theme_CabinetTrueBlack");
+                    return R.style.Theme_CabinetTrueBlack;
+                } else if (darkMode) {
+                    Log.v("ThemeUtils", "Using Theme_CabinetDark");
+                    return R.style.Theme_CabinetDark;
+                } else {
+                    Log.v("ThemeUtils", "Using Theme_Cabinet");
+                    return R.style.Theme_Cabinet;
+                }
             }
         } else {
             if (translucentStatusbar && translucentNavbar) {
