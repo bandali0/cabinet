@@ -1,6 +1,7 @@
 package com.afollestad.cabinet.sftp;
 
 import android.app.Activity;
+import android.util.Log;
 
 import com.afollestad.cabinet.file.CloudFile;
 import com.afollestad.cabinet.file.Remote;
@@ -23,7 +24,29 @@ import java.util.Vector;
 
 public class SftpClient {
 
+    public static class MyLogger implements com.jcraft.jsch.Logger {
+
+        static java.util.Hashtable<Integer, String> name = new java.util.Hashtable<Integer, String>();
+
+        static {
+            name.put(DEBUG, "DEBUG: ");
+            name.put(INFO, "INFO: ");
+            name.put(WARN, "WARN: ");
+            name.put(ERROR, "ERROR: ");
+            name.put(FATAL, "FATAL: ");
+        }
+
+        public boolean isEnabled(int level) {
+            return true;
+        }
+
+        public void log(int level, String message) {
+            Log.d("SFTP", name.get(level) + message);
+        }
+    }
+
     public SftpClient() {
+        JSch.setLogger(new MyLogger());
         mSsh = new JSch();
     }
 

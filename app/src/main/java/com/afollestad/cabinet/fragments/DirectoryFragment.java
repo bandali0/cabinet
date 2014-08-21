@@ -729,6 +729,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         ((ImageView) v.findViewById(R.id.emptyImage)).setImageResource(
                 Utils.resolveDrawable(getActivity(), R.attr.empty_image));
 
+        mDirectory.setContext(getActivity());
         mDirectory.listFiles(showHidden, lsFilter, new File.ArrayCallback() {
             @Override
             public void onComplete(final File[] results) {
