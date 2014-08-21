@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.file.LocalFile;
@@ -52,8 +51,6 @@ public class TextEditor extends NetworkedActivity implements TextWatcher {
 
         if (getIntent().getData() != null) load(getIntent().getData());
         else mInput.setVisibility(View.VISIBLE);
-
-        Toast.makeText(this, "Remote: " + getRemoteSwitch(), Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -142,7 +139,6 @@ public class TextEditor extends NetworkedActivity implements TextWatcher {
     }
 
     private void upload(final boolean exitAfter) {
-        Toast.makeText(this, "Remote: " + getRemoteSwitch(), Toast.LENGTH_LONG).show();
         if (getRemoteSwitch() == null) {
             if (exitAfter) finish();
             return;

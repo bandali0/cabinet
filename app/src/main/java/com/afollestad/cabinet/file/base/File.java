@@ -11,7 +11,7 @@ import android.webkit.MimeTypeMap;
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.file.CloudFile;
 import com.afollestad.cabinet.sftp.SftpClient;
-import com.afollestad.cabinet.ui.DrawerActivity;
+import com.afollestad.cabinet.ui.base.NetworkedActivity;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
@@ -140,8 +140,8 @@ public abstract class File implements Serializable {
         return !isRemote() && getPath().equals(Environment.getExternalStorageDirectory().getAbsolutePath());
     }
 
-    public final DrawerActivity getContext() {
-        return (DrawerActivity) mContext;
+    public final NetworkedActivity getContext() {
+        return (NetworkedActivity) mContext;
     }
 
     public final void setContext(Activity context) {
