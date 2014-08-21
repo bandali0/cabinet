@@ -86,7 +86,8 @@ public class Utils {
 
             @Override
             public void onError(Exception e) {
-                showErrorDialog(context, e.getMessage());
+                if (e != null)
+                    showErrorDialog(context, e.getMessage());
             }
         });
     }
