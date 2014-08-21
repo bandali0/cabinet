@@ -96,6 +96,7 @@ public abstract class File implements Serializable {
 
     public final String getSizeString() {
         if (isDirectory()) {
+            if (mContext == null) return "(no context)";
             return mContext.getString(R.string.x_files, recursiveSize(toJavaFile(), false, false)) + ", " +
                     mContext.getString(R.string.x_dirs, recursiveSize(toJavaFile(), true, false)) + ", " +
                     readableFileSize(recursiveSize(toJavaFile(), false, true));
