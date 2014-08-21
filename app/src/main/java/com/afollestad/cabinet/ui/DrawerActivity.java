@@ -373,16 +373,21 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
 
     public void switchDirectory(Pins.Item to) {
         File file = to.toFile(this);
-        switchDirectory(file, true);
+        switchDirectory(file, file.isStorageDirectory(), false);
     }
 
     public void switchDirectory(File to, boolean clearBackStack) {
+        switchDirectory(to, clearBackStack, true);
+    }
+
+    public void switchDirectory(File to, boolean clearBackStack, boolean animate) {
         if (to == null) to = new LocalFile(this, Environment.getExternalStorageDirectory());
         canExit = false;
         if (clearBackStack)
             getFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         FragmentTransaction trans = getFragmentManager().beginTransaction();
-        if (!clearBackStack) trans.setCustomAnimations(R.anim.frag_enter, R.anim.frag_exit);
+        if (animate && !clearBackStack)
+            trans.setCustomAnimations(R.anim.frag_enter, R.anim.frag_exit);
         trans.replace(R.id.container, DirectoryFragment.create(to));
         if (!clearBackStack) trans.addToBackStack(null);
         try {
