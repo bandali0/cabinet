@@ -30,6 +30,7 @@ public class StorageHelper {
         } else {
             mExternalStorageAvailable = mExternalStorageWriteable = false;
         }
+        log("State = " + state + "; available = " + mExternalStorageAvailable + "; writeable = " + mExternalStorageWriteable);
         if (mListener != null)
             mListener.onStateChanged(mExternalStorageAvailable, mExternalStorageWriteable);
     }
@@ -38,7 +39,7 @@ public class StorageHelper {
         mExternalStorageReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                Log.i("StorageHelper", "Storage: " + intent.getData());
+                log("Storage: " + intent.getData());
                 updateExternalStorageState();
             }
         };
@@ -51,6 +52,10 @@ public class StorageHelper {
 
     public void stopWatchingExternalStorage() {
         mContext.unregisterReceiver(mExternalStorageReceiver);
+    }
+
+    private void log(String message) {
+        Log.v("StorageHelper", message);
     }
 
     public interface StateListener {
