@@ -48,6 +48,13 @@ public class SettingsActivity extends PreferenceActivity implements AboutDialog.
                 return true;
             }
         });
+
+        // TODO uncomment if statement for Material
+//        if (Build.VERSION.SDK_INT >= 20) {
+//            translucentStatusbar.setEnabled(false);
+//            translucentStatusbar.setSummary(R.string.translucentstatusbar_disabled);
+//        }
+
         translucentNavbar.setChecked(ThemeUtils.isTranslucentNavbar(this));
         translucentNavbar.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
             @Override
