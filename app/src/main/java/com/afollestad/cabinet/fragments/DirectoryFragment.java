@@ -137,6 +137,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         super.onResume();
 
         DrawerActivity act = (DrawerActivity) getActivity();
+        act.toggleFab(false);
         act.registerReceiver(mReceiver, new IntentFilter(NetworkService.DISCONNECT_SFTP));
         if (!((DrawerLayout) act.findViewById(R.id.drawer_layout)).isDrawerOpen(Gravity.START)) {
             if (mQuery != null) {
