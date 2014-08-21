@@ -32,7 +32,19 @@ import com.afollestad.cabinet.ui.DrawerActivity;
 public class Utils {
 
     public static interface DuplicateCheckResult {
-        public abstract void onResult(File file);
+        void onResult(File file);
+    }
+
+    public interface InputCallback {
+        void onInput(String input);
+    }
+
+    public interface InputCancelCallback extends InputCallback {
+        void onCancel();
+    }
+
+    public interface FileCallback {
+        void onFile(File file);
     }
 
     public static int resolveDrawable(Context context, int drawable) {
@@ -170,14 +182,6 @@ public class Utils {
         return showProgressDialog(context, message, null);
     }
 
-    public interface InputCallback {
-        public abstract void onInput(String input);
-    }
-
-    public interface InputCancelCallback extends InputCallback {
-        public abstract void onCancel();
-    }
-
     public static void showInputDialog(Activity context, int title, int hint, String prefillInput, final InputCallback callback) {
         CustomDialog dialog = CustomDialog.create(context, title, null, 0, R.layout.dialog_input, 0, 0, android.R.string.no, new CustomDialog.SimpleClickListener() {
             @Override
@@ -199,6 +203,93 @@ public class Utils {
             }
         });
         dialog.show(context.getFragmentManager(), "INPUT_DIALOG");
+    }
+
+    private static boolean cancelledDownload;
+
+    public static void downloadFile(final DrawerActivity context, final File item, final FileCallback callback) {
+        final java.io.File downloadDir = new java.io.File(Environment.getExternalStorageDirectory(), "Cabinet");
+        if (!downloadDir.exists()) downloadDir.mkdir();
+        java.io.File tester = new java.io.File(downloadDir, item.getName());
+        if (tester.exists() && tester.length() == item.length()) {
+            callback.onFile(new LocalFile(context, tester));
+            return;
+        }
+        final java.io.File dest = new java.io.File(downloadDir, item.getName());
+        cancelledDownload = false;
+        final ProgressDialog connectDialog = Utils.showProgressDialog(context, R.string.connecting, new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialogInterface) {
+                cancelledDownload = true;
+            }
+        });
+        context.getNetworkService().getSftpClient(new NetworkService.SftpGetCallback() {
+            @Override
+            public void onSftpClient(SftpClient client) {
+                if (cancelledDownload) return;
+                connectDialog.dismiss();
+                final ProgressDialog downloadDialog = Utils.showProgressDialog(context, R.string.downloading, new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialogInterface) {
+                        cancelledDownload = true;
+                    }
+                });
+                client.get(item.getPath(), dest.getPath(), new SftpClient.CancelableCompletionCallback() {
+                    @Override
+                    public void onComplete() {
+                        context.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (!cancelledDownload) {
+                                    downloadDialog.dismiss();
+                                    callback.onFile(new LocalFile(context, dest));
+                                } else if (dest.exists()) dest.delete();
+                            }
+                        });
+                    }
+
+                    @Override
+                    public boolean shouldCancel() {
+                        return cancelledDownload;
+                    }
+
+                    @Override
+                    public void onError(final Exception e) {
+                        context.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                downloadDialog.dismiss();
+                                Utils.showErrorDialog(context, R.string.failed_download_file, e);
+                            }
+                        });
+                    }
+                });
+            }
+
+            @Override
+            public void onError(final Exception e) {
+                context.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        connectDialog.dismiss();
+                        Utils.showErrorDialog(context, R.string.failed_connect_server, e);
+                    }
+                });
+            }
+        }, (CloudFile) item);
+    }
+
+    public static void openFile(final DrawerActivity context, final File item, final boolean openAs) {
+        if (item.isRemote()) {
+            downloadFile(context, item, new FileCallback() {
+                @Override
+                public void onFile(File file) {
+                    openLocal(context, file, openAs ? null : item.getMimeType());
+                }
+            });
+            return;
+        }
+        openLocal(context, item, openAs ? null : item.getMimeType());
     }
 
     private static void openLocal(final Activity context, final File file, String mime) {
@@ -240,83 +331,5 @@ public class Utils {
         } catch (ActivityNotFoundException e) {
             Toast.makeText(context, R.string.activity_not_found, Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private static boolean cancelledDownload;
-
-    public static void openFile(final DrawerActivity context, final File item, final boolean openAs) {
-        if (item.isRemote()) {
-            final java.io.File downloadDir = new java.io.File(Environment.getExternalStorageDirectory(), "Download");
-            if (!downloadDir.exists()) downloadDir.mkdir();
-            java.io.File tester = new java.io.File(downloadDir, item.getName());
-            if (tester.exists() && tester.length() == item.length()) {
-                openLocal(context, new LocalFile(context, tester), openAs ? null : item.getMimeType());
-                return;
-            }
-            final java.io.File dest = new java.io.File(downloadDir, item.getName());
-            cancelledDownload = false;
-            final ProgressDialog connectDialog = Utils.showProgressDialog(context, R.string.connecting, new DialogInterface.OnCancelListener() {
-                @Override
-                public void onCancel(DialogInterface dialogInterface) {
-                    cancelledDownload = true;
-                }
-            });
-            context.getNetworkService().getSftpClient(new NetworkService.SftpGetCallback() {
-                @Override
-                public void onSftpClient(SftpClient client) {
-                    if (cancelledDownload) return;
-                    connectDialog.dismiss();
-                    final ProgressDialog downloadDialog = Utils.showProgressDialog(context, R.string.downloading, new DialogInterface.OnCancelListener() {
-                        @Override
-                        public void onCancel(DialogInterface dialogInterface) {
-                            cancelledDownload = true;
-                        }
-                    });
-                    client.get(item.getPath(), dest.getPath(), new SftpClient.CancelableCompletionCallback() {
-                        @Override
-                        public void onComplete() {
-                            context.runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    if (!cancelledDownload) {
-                                        downloadDialog.dismiss();
-                                        openLocal(context, new LocalFile(context, dest), openAs ? null : item.getMimeType());
-                                    } else if (dest.exists()) dest.delete();
-                                }
-                            });
-                        }
-
-                        @Override
-                        public boolean shouldCancel() {
-                            return cancelledDownload;
-                        }
-
-                        @Override
-                        public void onError(final Exception e) {
-                            context.runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    downloadDialog.dismiss();
-                                    Utils.showErrorDialog(context, R.string.failed_download_file, e);
-                                }
-                            });
-                        }
-                    });
-                }
-
-                @Override
-                public void onError(final Exception e) {
-                    context.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            connectDialog.dismiss();
-                            Utils.showErrorDialog(context, R.string.failed_connect_server, e);
-                        }
-                    });
-                }
-            }, (CloudFile) item);
-            return;
-        }
-        openLocal(context, item, openAs ? null : item.getMimeType());
     }
 }

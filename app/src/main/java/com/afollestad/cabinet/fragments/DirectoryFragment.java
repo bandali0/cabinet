@@ -900,11 +900,24 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             ((DrawerActivity) getActivity()).switchDirectory(file, false);
         } else {
             if (((DrawerActivity) getActivity()).pickMode) {
-                Activity act = getActivity();
-                Intent intent = act.getIntent()
-                        .setData(Uri.fromFile(file.toJavaFile()));
-                act.setResult(Activity.RESULT_OK, intent);
-                act.finish();
+                if (file.isRemote()) {
+                    Utils.downloadFile((DrawerActivity) getActivity(), file, new Utils.FileCallback() {
+                        @Override
+                        public void onFile(File file) {
+                            Activity act = getActivity();
+                            Intent intent = act.getIntent()
+                                    .setData(Uri.fromFile(file.toJavaFile()));
+                            act.setResult(Activity.RESULT_OK, intent);
+                            act.finish();
+                        }
+                    });
+                } else {
+                    Activity act = getActivity();
+                    Intent intent = act.getIntent()
+                            .setData(Uri.fromFile(file.toJavaFile()));
+                    act.setResult(Activity.RESULT_OK, intent);
+                    act.finish();
+                }
             } else {
                 if (file.getExtension().equals("zip")) {
                     final File fFile = file;
