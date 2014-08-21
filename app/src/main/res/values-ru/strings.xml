@@ -6,7 +6,7 @@
     <string name="welcome_conclusion">Попробуйте нажать на изображение файла слева или на иконку меню справа. Для выделения и работы с файлами и папками, нажимайте на их изображение слева, или используйте долгое нажатие. Для доступа к другим действиям с файлами, используйте иконку меню справа.\n\nВ Cabinet
 есть и другие различные функции, такие как архивация и удалённый доступ через SFTP. Огромное спасибо за то, что пользуетесь Cabinet!</string>
     <string name="lets_go">Использовать!</string>
-    <string name="open_as">Открыть как…</string>
+    <string name="open_as">Открыть как...</string>
     <string name="pin">Закрепить</string>
     <string name="copy">Копировать</string>
     <string name="cut">Вырезать</string>
@@ -24,7 +24,7 @@
     <string name="directory">Папка</string>
     <string name="unknown">Неизвестно</string>
     <string name="go_up">Выше</string>
-    <string name="press_back_to_exit">"Нажмите назад ещё раз для того, чтобы выйти…"</string>
+    <string name="press_back_to_exit">"Нажмите назад ещё раз для того, чтобы выйти..."</string>
     <string name="x_files">%1$d файлов</string>
     <string name="x_dirs">%1$d папок</string>
     <string name="no_x_files">Нет %1$s файлов</string>
@@ -70,16 +70,16 @@
     <string name="disconnect_prompt">Вы хотите отсоединиться от %1$s?</string>
     <string name="uploaded_to">Выгружено в %1$s</string>
     <string name="downloaded_to">Загружено в %1$s</string>
-    <string name="connecting">Соединение…</string>
-    <string name="downloading">Загрузка…</string>
-    <string name="deleting">Удаление…</string>
-    <string name="making_folder">Создание папки…</string>
-    <string name="renaming">Переименование…</string>
-    <string name="unzipping">Распаковка…</string>
-    <string name="zipping">Архивирование…</string>
-    <string name="moving">Перемещение…</string>
-    <string name="uploading">Выгрузка…</string>
-    <string name="copying">Копирование…</string>
+    <string name="connecting">Соединение...</string>
+    <string name="downloading">Загрузка...</string>
+    <string name="deleting">Удаление...</string>
+    <string name="making_folder">Создание папки...</string>
+    <string name="renaming">Переименование...</string>
+    <string name="unzipping">Распаковка...</string>
+    <string name="zipping">Архивирование...</string>
+    <string name="moving">Перемещение...</string>
+    <string name="uploading">Выгрузка...</string>
+    <string name="copying">Копирование...</string>
     <string name="failed_delete_file">Ошибка при удалении файла: %1$s</string>
     <string name="failed_make_directory">Ошибка при создании новой папки: %1$s</string>
     <string name="failed_rename_file">Ошибка при переименовании/перемещении файла: %1$s</string>
@@ -105,7 +105,7 @@
     <string name="cut_xfiles"><![CDATA[
  <b>Вырезать:</b>%1$d файлов
     ]]></string>
-    <string name="search_files">Искать файлы…</string>
+    <string name="search_files">Искать файлы...</string>
     <string name="search_x"><![CDATA[
  <b>Искать:</b>%1$s
     ]]></string>
@@ -118,7 +118,7 @@
     <string name="no_thanks">Нет, спасибо</string>
     <string name="file">Файл</string>
     <string name="folder">Папка</string>
-    <string name="remote_connection">Удаленное подключение…</string>
+    <string name="remote_connection">Удаленное подключение...</string>
     <string name="text">Текст</string>
     <string name="image">Изображение</string>
     <string name="audio">Аудио</string>
@@ -155,17 +155,17 @@
     <string name="material_version">Материальный</string>
     <string name="material_version_desc">Версия Cabinet в дизайне Material доступна для устройств с Android L. Хотите посмотреть сообщество Cabinet в Google+, где эта версия доступна?</string>
     <string name="new_file">Новый файл</string>
-    <string name="making_file">Создание файла…</string>
+    <string name="making_file">Создание файла...</string>
     <string name="created_file">Файл %1$s создан</string>
     <string name="file_already_exists">Файл уже существует</string>
     <string name="failed_make_file">Не удалось создать новый файл: %1$s</string>
-    <string name="pick_a_file">Выбрать файл…</string>
+    <string name="pick_a_file">Выбрать файл...</string>
     <string name="cabinet_text_editor">Текстовый редактор Cabinet</string>
     <string name="save">Сохранить</string>
     <string name="unsaved_changes">Несохраненные изменения</string>
     <string name="unsaved_changes_desc">У вас есть несохраненные изменения, вы хотите сохранить их прежде чем выйти?</string>
-    <string name="saving">Сохранение…</string>
-    <string name="loading">Загрузка…</string>
+    <string name="saving">Сохранение...</string>
+    <string name="loading">Загрузка...</string>
     <string name="unsupported_extension">Расширение не поддерживается</string>
     <string name="unsupported_extension_desc">Редактирование файла невозможно.</string>
     <string name="file_already_exists_warning">Внимание: файл уже существует. Будет создана копия данного файла.</string>

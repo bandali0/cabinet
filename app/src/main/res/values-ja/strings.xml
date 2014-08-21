@@ -6,7 +6,7 @@
     <string name="welcome_conclusion">プレビュー画像または3点アイコンをタップしてみてください。プレビュー画像をタップ、またはファイルを長押しすると一括操作のためにファイルが選択されます。3点アイコンは個々のファイルに対するポップアップメニューを表示します。\n\n
 Cabinetはその他にもSFTPによるサーバへのリモートアクセスなど数多くの機能を備えています。探してみてください。Cabinetをご利用いただきありがとうございます！</string>
     <string name="lets_go">さあ、始めましょう！</string>
-    <string name="open_as">…として開く</string>
+    <string name="open_as">...として開く</string>
     <string name="pin">ピン留め</string>
     <string name="copy">コピー</string>
     <string name="cut">カット</string>
@@ -24,7 +24,7 @@ Cabinetはその他にもSFTPによるサーバへのリモートアクセスな
     <string name="directory">ディレクトリ</string>
     <string name="unknown">不明</string>
     <string name="go_up">上の階層</string>
-    <string name="press_back_to_exit">"もう一度戻るボタンを押して終了…"</string>
+    <string name="press_back_to_exit">"もう一度戻るボタンを押して終了..."</string>
     <string name="x_files">%1$d ファイル</string>
     <string name="x_dirs">%1$d ディレクトリ</string>
     <string name="no_x_files">%1$s ファイルなし</string>
@@ -70,16 +70,16 @@ Cabinetはその他にもSFTPによるサーバへのリモートアクセスな
     <string name="disconnect_prompt">%1$s から切断しますか？</string>
     <string name="uploaded_to">%1$s へアップロードしました</string>
     <string name="downloaded_to">%1$s へダウンロードしました</string>
-    <string name="connecting">接続中…</string>
-    <string name="downloading">ダウンロード中…</string>
-    <string name="deleting">削除中…</string>
-    <string name="making_folder">フォルダを作成中…</string>
-    <string name="renaming">名前を変更中…</string>
-    <string name="unzipping">解凍中…</string>
-    <string name="zipping">圧縮中…</string>
-    <string name="moving">移動中…</string>
-    <string name="uploading">アップロード中…</string>
-    <string name="copying">コピー中…</string>
+    <string name="connecting">接続中...</string>
+    <string name="downloading">ダウンロード中...</string>
+    <string name="deleting">削除中...</string>
+    <string name="making_folder">フォルダを作成中...</string>
+    <string name="renaming">名前を変更中...</string>
+    <string name="unzipping">解凍中...</string>
+    <string name="zipping">圧縮中...</string>
+    <string name="moving">移動中...</string>
+    <string name="uploading">アップロード中...</string>
+    <string name="copying">コピー中...</string>
     <string name="failed_delete_file">%1$s を削除できませんでした</string>
     <string name="failed_make_directory">新規フォルダ %1$s を作成できませんでした</string>
     <string name="failed_rename_file">%1$s の名前の変更/削除ができませんでした</string>
@@ -105,7 +105,7 @@ Cabinetはその他にもSFTPによるサーバへのリモートアクセスな
     <string name="cut_xfiles"><![CDATA[
         <b>カット：</b>&nbsp;&nbsp;%1$d ファイル
     ]]></string>
-    <string name="search_files">ファイルの検索…</string>
+    <string name="search_files">ファイルの検索...</string>
     <string name="search_x"><![CDATA[
         <b>検索：</b>&nbsp;%1$s
     ]]></string>
@@ -118,7 +118,7 @@ Cabinetはその他にもSFTPによるサーバへのリモートアクセスな
     <string name="no_thanks">結構です</string>
     <string name="file">ファイル</string>
     <string name="folder">フォルダ</string>
-    <string name="remote_connection">リモート接続…</string>
+    <string name="remote_connection">リモート接続...</string>
     <string name="text">テキスト</string>
     <string name="image">画像</string>
     <string name="audio">オーディオ</string>
@@ -159,13 +159,13 @@ Android4.1以降向けのミニマリスト、直感的かつ美しいファイ�
     <string name="created_file">ファイル %1$s を作成しました</string>
     <string name="file_already_exists">ファイルが既に存在します</string>
     <string name="failed_make_file">新規ファイル %1$s を作成できませんでした</string>
-    <string name="pick_a_file">ファイルを選択…</string>
+    <string name="pick_a_file">ファイルを選択...</string>
     <string name="cabinet_text_editor">Cabinet テキストエディタ</string>
     <string name="save">保存</string>
     <string name="unsaved_changes">未保存の変更</string>
     <string name="unsaved_changes_desc">未保存の変更があります。終了前に保存しますか？</string>
-    <string name="saving">保存中…</string>
-    <string name="loading">読み込み中…</string>
+    <string name="saving">保存中...</string>
+    <string name="loading">読み込み中...</string>
     <string name="unsupported_extension">サポートされていない拡張子</string>
     <string name="unsupported_extension_desc">このタイプのファイルはテキスト編集できません。</string>
     <string name="file_already_exists_warning">注意：このファイルは既に存在します。新しいファイルは重複バージョンとして作成されます。</string>
@@ -176,4 +176,10 @@ Android4.1以降向けのミニマリスト、直感的かつ美しいファイ�
     <string name="extension">拡張子</string>
     <string name="no_files_filter">フィルタ %1$s に対するファイルがありません</string>
     <string name="superuser_not_available">Superuserが利用できません</string>
+    <string name="filter_active">アクティブフィルタ：%1$s</string>
+    <string name="dark_theme">暗いテーマ</string>
+    <string name="sdcard">SDカード</string>
+    <string name="dark_theme_description">内閣は暗い色を使用します。</string>
+    <string name="true_black">トゥルーブラック</string>
+    <string name="true_black_description">内閣は、AMO​​LEDディスプレイの純粋な黒を使用します。</string>
 </resources>

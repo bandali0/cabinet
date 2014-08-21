@@ -6,7 +6,7 @@
     <string name="welcome_conclusion">Zkuste stisknout náhledový obrázek nebo ikonu s 3 tečkami. Stisknutím obrázku se soubor označí pro práci s více soubory. Toho lze docílit také stisknutím a podržením požadovaného souboru. Ikona s 3 tečkami zobrazí vyskakovací menu s různými možnostmi pro každý soubor.\n\nCabinet
 disponuje také dalšími různými funkcemi, jako vzdálený přístup k serverům přes SFTP. Můžete je později najít prozkoumáním aplikace. Díky, že jste si nainstalovali Cabinet!</string>
     <string name="lets_go">Jdeme na to!</string>
-    <string name="open_as">Otevřít jako…</string>
+    <string name="open_as">Otevřít jako...</string>
     <string name="pin">Připnout</string>
     <string name="copy">Kopírovat</string>
     <string name="cut">Vyjmout</string>
@@ -24,7 +24,7 @@ disponuje také dalšími různými funkcemi, jako vzdálený přístup k server
     <string name="directory">Adresář</string>
     <string name="unknown">Neznámé</string>
     <string name="go_up">Nahoru</string>
-    <string name="press_back_to_exit">"Stiskněte znovu pro ukončení…"</string>
+    <string name="press_back_to_exit">"Stiskněte znovu pro ukončení..."</string>
     <string name="x_files">%1$d souborů</string>
     <string name="x_dirs">%1$d adresářů</string>
     <string name="no_x_files">Žádné %1$s soubory</string>
@@ -70,16 +70,16 @@ disponuje také dalšími různými funkcemi, jako vzdálený přístup k server
     <string name="disconnect_prompt">Chcete se odpojit od %1$s?</string>
     <string name="uploaded_to">Nahráno na %1$s</string>
     <string name="downloaded_to">Staženo do %1$s</string>
-    <string name="connecting">Připojování…</string>
-    <string name="downloading">Stahování…</string>
-    <string name="deleting">Odstraňování…</string>
-    <string name="making_folder">Vytváření složky…</string>
-    <string name="renaming">Přejmenovávání…</string>
-    <string name="unzipping">Rozbalování…</string>
-    <string name="zipping">Zabalování…</string>
-    <string name="moving">Přesouvání…</string>
-    <string name="uploading">Nahrávání…</string>
-    <string name="copying">Kopírování…</string>
+    <string name="connecting">Připojování...</string>
+    <string name="downloading">Stahování...</string>
+    <string name="deleting">Odstraňování...</string>
+    <string name="making_folder">Vytváření složky...</string>
+    <string name="renaming">Přejmenovávání...</string>
+    <string name="unzipping">Rozbalování...</string>
+    <string name="zipping">Zabalování...</string>
+    <string name="moving">Přesouvání...</string>
+    <string name="uploading">Nahrávání...</string>
+    <string name="copying">Kopírování...</string>
     <string name="failed_delete_file">Tento soubor se nepovedlo odstranit: %1$s</string>
     <string name="failed_make_directory">Nepovedlo se vytvořit novou složku: %1$s</string>
     <string name="failed_rename_file">Nepovedlo se přejmenovat/přesunout tento soubor: %1$s</string>
@@ -105,7 +105,7 @@ disponuje také dalšími různými funkcemi, jako vzdálený přístup k server
     <string name="cut_xfiles"><![CDATA[
         <b>Vyjmout:</b>&nbsp;&nbsp;%1$d souborů
     ]]></string>
-    <string name="search_files">Hledat soubory…</string>
+    <string name="search_files">Hledat soubory...</string>
     <string name="search_x"><![CDATA[
         <b>Hledat:</b>&nbsp;%1$s
     ]]></string>
@@ -118,7 +118,7 @@ disponuje také dalšími různými funkcemi, jako vzdálený přístup k server
     <string name="no_thanks">Ne, díky</string>
     <string name="file">Soubor</string>
     <string name="folder">Složka</string>
-    <string name="remote_connection">Vzdálené připojení…</string>
+    <string name="remote_connection">Vzdálené připojení...</string>
     <string name="text">Text</string>
     <string name="image">Obrázek</string>
     <string name="audio">Zvuk</string>
@@ -155,17 +155,17 @@ Vytvořil <b>Aidan Follestad</b>.<br/><a href=\'http://aidanfollestad.com\'>Web<
     <string name="material_version">Material</string>
     <string name="material_version_desc">Cabinet s Material Designem je k dispozici pro zařízení s Androidem L. Chcete navštívit Cabinet Google+ komunitu, kde je tato verze umístěna?</string>
     <string name="new_file">Nový soubor</string>
-    <string name="making_file">Vytváření souboru…</string>
+    <string name="making_file">Vytváření souboru...</string>
     <string name="created_file">Vytvořen soubor %1$s</string>
     <string name="file_already_exists">Soubor již existuje</string>
     <string name="failed_make_file">Nepovedlo se vytvořit nový soubor: %1$s</string>
-    <string name="pick_a_file">Vyberte soubor…</string>
+    <string name="pick_a_file">Vyberte soubor...</string>
     <string name="cabinet_text_editor">Cabinet textový editor</string>
     <string name="save">Uložit</string>
     <string name="unsaved_changes">Neuložené změny</string>
     <string name="unsaved_changes_desc">Máte neuložené změny, chcete je před ukončením uložit?</string>
-    <string name="saving">Ukládání…</string>
-    <string name="loading">Načítání…</string>
+    <string name="saving">Ukládání...</string>
+    <string name="loading">Načítání...</string>
     <string name="unsupported_extension">Nepodporovaná přípona</string>
     <string name="unsupported_extension_desc">Nemůžete otevřít tento typ souboru pro editaci textu.</string>
     <string name="file_already_exists_warning">Varování: tento soubor již existuje. Váš nový soubor se objeví jako duplicita.</string>

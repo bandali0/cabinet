@@ -6,7 +6,7 @@
     <string name="welcome_conclusion">Intenta prémer sobre la imatge de previsualització o sobre la icona dels 3-punts. Prement sobre la previsualització es selecciona l\'arxiu per a tasques en grup, això també pot fer-se amb una pulsació llarga sobre els arxius. La icona de 3-punts mostra un menú amb opcions individuals. \n\n Cabinet
  té altres funcions vàries, com l\'accés remot a servidors via SFTP que pots trobar explorant. Gràcies per provar Cabinet!</string>
     <string name="lets_go">Anem!</string>
-    <string name="open_as">Obrir amb…</string>
+    <string name="open_as">Obrir amb...</string>
     <string name="pin">Fixar</string>
     <string name="copy">Copiar</string>
     <string name="cut">Tallar</string>
@@ -70,16 +70,16 @@
     <string name="disconnect_prompt">Vols tancar la connexió amb %1$s?</string>
     <string name="uploaded_to">Pujat a %1$s</string>
     <string name="downloaded_to">Descarregat en %1$s</string>
-    <string name="connecting">Connectant…</string>
-    <string name="downloading">Descarregant…</string>
-    <string name="deleting">Esborrant…</string>
-    <string name="making_folder">Creant carpeta…</string>
-    <string name="renaming">Renombrant…</string>
-    <string name="unzipping">Descomprimint…</string>
-    <string name="zipping">Comprimint…</string>
-    <string name="moving">Movent…</string>
-    <string name="uploading">Pujant…</string>
-    <string name="copying">Copiant…</string>
+    <string name="connecting">Connectant...</string>
+    <string name="downloading">Descarregant...</string>
+    <string name="deleting">Esborrant...</string>
+    <string name="making_folder">Creant carpeta...</string>
+    <string name="renaming">Renombrant...</string>
+    <string name="unzipping">Descomprimint...</string>
+    <string name="zipping">Comprimint...</string>
+    <string name="moving">Movent...</string>
+    <string name="uploading">Pujant...</string>
+    <string name="copying">Copiant...</string>
     <string name="failed_delete_file">Error en esborrar l\'arxiu %1$s</string>
     <string name="failed_make_directory">Error en crear nova carpeta %1$s</string>
     <string name="failed_rename_file">Error en renombrar/moure l\'arxiu %1$s</string>
@@ -105,7 +105,7 @@
     <string name="cut_xfiles"><![CDATA[
         <b>Tallar:</b>&nbsp;&nbsp;%1$d fitxers
     ]]></string>
-    <string name="search_files">Cercar fitxers…</string>
+    <string name="search_files">Cercar fitxers...</string>
     <string name="search_x"><![CDATA[
  <b>Cercar:</b>&nbsp;%1$s
     ]]></string>
@@ -118,7 +118,7 @@
     <string name="no_thanks">No gràcies</string>
     <string name="file">Arxiu</string>
     <string name="folder">Carpeta</string>
-    <string name="remote_connection">Connexió Remota…</string>
+    <string name="remote_connection">Connexió Remota...</string>
     <string name="text">Text</string>
     <string name="image">Imatge</string>
     <string name="audio">Àudio</string>
@@ -155,7 +155,7 @@
     <string name="material_version">Material</string>
     <string name="material_version_desc">Una versió amb Material està disponible per qui tingui Android L. Vol veure la comunitat Cabinet en Google+ on està disponible aquesta versió?</string>
     <string name="new_file">Nou Arxiu</string>
-    <string name="making_file">Creant arxiu…</string>
+    <string name="making_file">Creant arxiu...</string>
     <string name="created_file">Arxiu %1$s creat</string>
     <string name="file_already_exists">El arxiu ja existeix</string>
     <string name="failed_make_file">No s\'ha pogut crear el nou arxiu: %1$s</string>
@@ -164,8 +164,8 @@
     <string name="save">Desar</string>
     <string name="unsaved_changes">Canvis no desats</string>
     <string name="unsaved_changes_desc">Tens canvis no desats, vols desar-los abans de sortir?</string>
-    <string name="saving">Desant…</string>
-    <string name="loading">Carregant…</string>
+    <string name="saving">Desant...</string>
+    <string name="loading">Carregant...</string>
     <string name="unsupported_extension">Extensió incompatible</string>
     <string name="unsupported_extension_desc">No pots obirir aquest tipus d\'arxiu per editar text.</string>
     <string name="file_already_exists_warning">Atenció: Aquest arxiu ja existeix, el nou arxiu apareixerà per duplicat.</string>

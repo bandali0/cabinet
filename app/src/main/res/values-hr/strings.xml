@@ -6,7 +6,7 @@
     <string name="welcome_conclusion">Pokušajte dodirnuti sliku ili ikonu sa tri točke. Dodirom na sliku odabrat ćete datoteku za daljnje radnje, ovo se također može napraviti pritiskom i držanjem prsta na datotekama. Ikona sa tri točke prikazat će skočni izbornik sa pojedinačnim opcijama datoteke.\n\nCabinet
  ima razne ostale značajke, poput udaljenog pristupa serverima putem SFTP-a koji možete pronaći istraživanjem aplikacije. Zahvaljujemo što koristite Cabinet!</string>
     <string name="lets_go">Kreni!</string>
-    <string name="open_as">Otvori Kao…</string>
+    <string name="open_as">Otvori Kao...</string>
     <string name="pin">Prikvači</string>
     <string name="copy">Kopiraj</string>
     <string name="cut">Izreži</string>
@@ -24,7 +24,7 @@
     <string name="directory">Direktorij</string>
     <string name="unknown">Nepoznato</string>
     <string name="go_up">Odi gore</string>
-    <string name="press_back_to_exit">"Pritisnite opet za izlazak…"</string>
+    <string name="press_back_to_exit">"Pritisnite opet za izlazak..."</string>
     <string name="x_files">%1$d datoteka</string>
     <string name="x_dirs">%1$d direktorija</string>
     <string name="no_x_files">Nema %1$s datoteka</string>
@@ -70,16 +70,16 @@
     <string name="disconnect_prompt">Želite li prekinuti vezu sa %1$s?</string>
     <string name="uploaded_to">Preneseno na %1$s</string>
     <string name="downloaded_to">Skinuto u %1$s</string>
-    <string name="connecting">Povezujem…</string>
-    <string name="downloading">Skidam…</string>
-    <string name="deleting">Brišem…</string>
-    <string name="making_folder">Stvaram mapu…</string>
-    <string name="renaming">Preimenujem…</string>
-    <string name="unzipping">Otpakiravam…</string>
-    <string name="zipping">Zapakiravam…</string>
-    <string name="moving">Premještam…</string>
-    <string name="uploading">Prenosim…</string>
-    <string name="copying">Kopiram…</string>
+    <string name="connecting">Povezujem...</string>
+    <string name="downloading">Skidam...</string>
+    <string name="deleting">Brišem...</string>
+    <string name="making_folder">Stvaram mapu...</string>
+    <string name="renaming">Preimenujem...</string>
+    <string name="unzipping">Otpakiravam...</string>
+    <string name="zipping">Zapakiravam...</string>
+    <string name="moving">Premještam...</string>
+    <string name="uploading">Prenosim...</string>
+    <string name="copying">Kopiram...</string>
     <string name="failed_delete_file">Neuspjelo brisanje datoteke %1$s</string>
     <string name="failed_make_directory">Neuspjelo stvaranje mape %1$s</string>
     <string name="failed_rename_file">Neuspjelo preimenovanje/premještanje datoteke %1$s</string>
@@ -105,7 +105,7 @@
     <string name="cut_xfiles"><![CDATA[
  <b>Izreži:</b>&nbsp;&nbsp;%1$d datoteka
     ]]></string>
-    <string name="search_files">Pretraži datoteke…</string>
+    <string name="search_files">Pretraži datoteke...</string>
     <string name="search_x"><![CDATA[
  <b>Traži:</b>&nbsp;%1$s
     ]]></string>
@@ -118,7 +118,7 @@
     <string name="no_thanks">Ne hvala</string>
     <string name="file">Datoteka</string>
     <string name="folder">Mapa</string>
-    <string name="remote_connection">Veza Na Daljinu…</string>
+    <string name="remote_connection">Veza Na Daljinu...</string>
     <string name="text">Tekst</string>
     <string name="image">Slika</string>
     <string name="audio">Zvuk</string>
@@ -155,17 +155,17 @@
     <string name="material_version">Material</string>
     <string name="material_version_desc">Material verzija Cabinet-a je dostupna korisnicima Android L verzije. Da li želite posjetiti Google+ zajednicu za Cabinet gdje možete naći tu verziju?</string>
     <string name="new_file">Nova Datoteka</string>
-    <string name="making_file">Stvaram datoteku…</string>
+    <string name="making_file">Stvaram datoteku...</string>
     <string name="created_file">Stvorena datoteka %1$s</string>
     <string name="file_already_exists">Datoteka već postoji</string>
     <string name="failed_make_file">Neuspjelo stvaranje nove datoteke %1$s</string>
-    <string name="pick_a_file">Odaberi datoteku…</string>
+    <string name="pick_a_file">Odaberi datoteku...</string>
     <string name="cabinet_text_editor">Cabinet Uređivač Teksta</string>
     <string name="save">Spremi</string>
     <string name="unsaved_changes">Nespremljene Promjene</string>
     <string name="unsaved_changes_desc">Imati nespremljenih promjene, da li ih želite spremiti prije izlaska?</string>
-    <string name="saving">Spremam…</string>
-    <string name="loading">Učitavam…</string>
+    <string name="saving">Spremam...</string>
+    <string name="loading">Učitavam...</string>
     <string name="unsupported_extension">Nepodržana Ekstenzija</string>
     <string name="unsupported_extension_desc">Ne možete otvoriti ovu vrstu datoteke u uređivaču teksta.</string>
     <string name="file_already_exists_warning">Upozorenje: ova datoteka već postoji. Vaša nova datoteka će se pojaviti kao duplikat.</string>
