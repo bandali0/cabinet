@@ -673,8 +673,10 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 } else if (splitFilter[1].equals("video/")) {
                     return getString(R.string.video);
                 }
+            } else if (splitFilter[0].equals("ext")) {
+                return splitFilter[1];
             }
-            return splitFilter[1];
+            return splitFilter[0];
         }
     }
 
