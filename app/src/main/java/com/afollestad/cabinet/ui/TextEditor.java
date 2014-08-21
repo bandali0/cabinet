@@ -24,6 +24,9 @@ import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -71,10 +74,11 @@ public class TextEditor extends Activity implements TextWatcher {
                     return;
                 }
 
-                String ext = File.getExtension(TextEditor.this, mFile.getName());
+                String ext = File.getExtension(TextEditor.this, mFile.getName()).toLowerCase(Locale.getDefault());
                 String mime = File.getMimeType(ext);
                 Log.v("TextEditor", "Mime: " + mime);
-                if (!mime.startsWith("text/") && !mime.equals("application/json") && !ext.equals("prop")) {
+                List<String> textExts = Arrays.asList(getResources().getStringArray(R.array.other_text_extensions));
+                if (!mime.startsWith("text/") && !textExts.contains(ext)) {
                     Log.v("TextEditor", "Unsupported extension");
                     runOnUiThread(new Runnable() {
                         @Override
