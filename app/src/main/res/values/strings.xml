@@ -237,6 +237,21 @@
         <item>class</item>
     </string-array>
 
+    <string-array name="archive_extensions" translatable="false">
+        <item>zip</item>
+        <item>tar.gz</item>
+        <item>tar</item>
+        <item>rar</item>
+        <item>7z</item>
+        <item>gzip</item>
+    </string-array>
+
+    <string-array name="other_text_extensions" translatable="false">
+        <item>json</item>
+        <item>prop</item>
+        <item>md</item>
+    </string-array>
+
     <string name="new_file">New File</string>
     <string name="making_file">Creating file…</string>
     <string name="created_file">Created file %1$s</string>

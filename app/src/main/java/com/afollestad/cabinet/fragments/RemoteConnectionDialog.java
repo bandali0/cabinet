@@ -68,6 +68,10 @@ public class RemoteConnectionDialog implements SftpClient.CompletionCallback {
             @Override
             public void onClick(View view) {
                 view.setEnabled(false);
+                host.setEnabled(false);
+                port.setEnabled(false);
+                user.setEnabled(false);
+                pass.setEnabled(false);
                 client = new SftpClient()
                         .setHost(host.getText().toString().trim(), Integer.parseInt(port.getText().toString().trim()))
                         .setUser(user.getText().toString())
@@ -88,6 +92,8 @@ public class RemoteConnectionDialog implements SftpClient.CompletionCallback {
                 .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        if (client.isConnected()) client.disconnect();
+                        client = null;
                         dialogInterface.dismiss();
                     }
                 }).create();
@@ -97,12 +103,17 @@ public class RemoteConnectionDialog implements SftpClient.CompletionCallback {
 
     @Override
     public void onComplete() {
+        if (client == null) return;
         client.disconnect();
         client = null;
         mContext.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 testConnection.setEnabled(true);
+                host.setEnabled(true);
+                port.setEnabled(true);
+                user.setEnabled(true);
+                pass.setEnabled(true);
                 testConnection.setText(R.string.connection_successful);
             }
         });
@@ -110,11 +121,16 @@ public class RemoteConnectionDialog implements SftpClient.CompletionCallback {
 
     @Override
     public void onError(final Exception e) {
+        if (client == null) return;
         client = null;
         mContext.runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 testConnection.setEnabled(true);
+                host.setEnabled(true);
+                port.setEnabled(true);
+                user.setEnabled(true);
+                pass.setEnabled(true);
                 testConnection.setText(e.getMessage());
             }
         });
@@ -132,6 +148,6 @@ public class RemoteConnectionDialog implements SftpClient.CompletionCallback {
                 pass.getText().toString().trim(),
                 "/"
         ));
-        ((DrawerActivity) mContext).reloadNavDrawer();
+        ((DrawerActivity) mContext).reloadNavDrawer(true);
     }
 }

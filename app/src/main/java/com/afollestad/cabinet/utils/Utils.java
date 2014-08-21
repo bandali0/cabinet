@@ -202,7 +202,9 @@ public class Utils {
     }
 
     private static void openLocal(final Activity context, final File file, String mime) {
-        if (file.getExtension().equals("prop")) {
+        if (file.getExtension().equals("prop") ||
+                file.getExtension().equals("json") ||
+                file.getExtension().equals("md")) {
             mime = "text/plain";
         }
         if (mime == null) {

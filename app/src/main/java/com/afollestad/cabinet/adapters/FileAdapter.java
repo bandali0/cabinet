@@ -249,8 +249,10 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
                         resId = Utils.resolveDrawable(context, R.attr.ic_folder_hidden);
                     else resId = Utils.resolveDrawable(context, R.attr.ic_folder);
                 } else {
-                    String ext = file.getExtension();
+                    String ext = file.getExtension().toLowerCase(Locale.getDefault());
                     List<String> codeExts = Arrays.asList(context.getResources().getStringArray(R.array.code_extensions));
+                    List<String> archiveExts = Arrays.asList(context.getResources().getStringArray(R.array.archive_extensions));
+                    List<String> textExts = Arrays.asList(context.getResources().getStringArray(R.array.other_text_extensions));
                     if (mime.startsWith("audio/") || mime.equals("application/ogg")) {
                         resId = Utils.resolveDrawable(context, R.attr.ic_file_audio);
                     } else if (mime.startsWith("image/")) {
@@ -259,8 +261,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
                         resId = Utils.resolveDrawable(context, R.attr.ic_file_video);
                     } else if (mime.equals("application/pdf")) {
                         resId = Utils.resolveDrawable(context, R.attr.ic_file_pdf);
-                    } else if (ext.equals("zip") || ext.equals("gzip") || ext.equals("tar") || ext.equals("tar.gz") ||
-                            ext.equals("rar") || ext.equals("7z") || ext.equals("gz")) {
+                    } else if (archiveExts.contains(ext)) {
                         resId = Utils.resolveDrawable(context, R.attr.ic_file_zip);
                     } else if (mime.startsWith("model/")) {
                         resId = Utils.resolveDrawable(context, R.attr.ic_file_model);
@@ -274,9 +275,9 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
                         resId = Utils.resolveDrawable(context, R.attr.ic_file_font);
                     } else if (file.getExtension().equals("sh") || file.getExtension().equals("bat")) {
                         resId = Utils.resolveDrawable(context, R.attr.ic_file_script);
-                    } else if (codeExts.contains(ext.toLowerCase(Locale.getDefault()))) {
+                    } else if (codeExts.contains(ext)) {
                         resId = Utils.resolveDrawable(context, R.attr.ic_file_code);
-                    } else if (mime.startsWith("text/") || ext.equals("prop")) {
+                    } else if (mime.startsWith("text/") || textExts.contains(ext)) {
                         resId = Utils.resolveDrawable(context, R.attr.ic_file_doc);
                     }
                 }

@@ -18,7 +18,7 @@
     <color name="divider_dark">#444</color>
 
     <color name="button_disabled">#ddd</color>
-    <color name="button_disabled_dark">#666</color>
+    <color name="button_disabled_dark">@color/empty_text_dark</color>
     <color name="dark_background">#242424</color>
 
     <color name="empty_text">#C7C7C7</color>
