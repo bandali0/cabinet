@@ -320,6 +320,9 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     private void displayDisconnectPrompt() {
         String host = getString(R.string.unknown);
         if (mNetworkService != null) {
+            if (mNetworkService.getSftpClient() != null && !mNetworkService.getSftpClient().isConnected()) {
+                return;
+            }
             host = mNetworkService.getRemote().getRemote().getHost();
         }
         CustomDialog.create(this, R.string.disconnect, getString(R.string.disconnect_prompt, host),

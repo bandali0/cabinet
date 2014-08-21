@@ -62,7 +62,6 @@ public class NetworkService extends Service {
     public static final String DISCONNECT_SFTP = "com.afollestad.cabinet.services.DISCONNECT_SFTP";
 
     private void startPersistedNotification(CloudFile file) {
-        mRemote = file;
         NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         Intent mainIntent = new Intent(this, DrawerActivity.class)
                 .putExtra("remote", file);
@@ -102,6 +101,7 @@ public class NetworkService extends Service {
                 return;
             }
         }
+        mRemote = from;
         mSftp.setRemote(from.getRemote())
                 .connect(new SftpClient.CompletionCallback() {
                     @Override
