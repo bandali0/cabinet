@@ -368,8 +368,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
 
     public void switchDirectory(Pins.Item to) {
         File file = to.toFile(this);
-        boolean clearBackStack = file.isStorageDirectory();
-        switchDirectory(file, clearBackStack);
+        switchDirectory(file, true);
     }
 
     public void switchDirectory(File to, boolean clearBackStack) {
