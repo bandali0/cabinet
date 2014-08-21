@@ -276,7 +276,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
                         resId = Utils.resolveDrawable(context, R.attr.ic_file_script);
                     } else if (codeExts.contains(ext.toLowerCase(Locale.getDefault()))) {
                         resId = Utils.resolveDrawable(context, R.attr.ic_file_code);
-                    } else if (mime.startsWith("text/")) {
+                    } else if (mime.startsWith("text/") || ext.equals("prop")) {
                         resId = Utils.resolveDrawable(context, R.attr.ic_file_doc);
                     }
                 }
