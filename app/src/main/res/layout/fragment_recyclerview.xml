@@ -41,8 +41,8 @@
 
             <ImageView
                 android:id="@+id/emptyImage"
-                android:layout_width="108dp"
-                android:layout_height="108dp"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
                 android:layout_gravity="center_horizontal"
                 android:src="?empty_image"
                 android:scaleType="fitXY"

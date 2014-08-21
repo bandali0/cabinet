@@ -86,19 +86,23 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         tintManager.setStatusBarTintResource(tintColor);
     }
 
-    public static void setupTranslucentBottomPadding(Activity context, View view) {
+    public static void setupTranslucentBottomPadding(Activity context, View... views) {
         if (!ThemeUtils.isTranslucentNavbar(context)) return;
         SystemBarTintManager tintManager = new SystemBarTintManager(context);
         SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
-        view.setPadding(view.getPaddingLeft(), view.getPaddingTop(), view.getPaddingRight(),
-                view.getPaddingBottom() + config.getPixelInsetBottom());
+        for (View view : views) {
+            view.setPadding(view.getPaddingLeft(), view.getPaddingTop(), view.getPaddingRight(),
+                    view.getPaddingBottom() + config.getPixelInsetBottom());
+        }
     }
 
-    public static void setupTranslucentTopPadding(Activity context, View view) {
+    public static void setupTranslucentTopPadding(Activity context, View... views) {
         if (!ThemeUtils.isTranslucentStatusbar(context)) return;
         SystemBarTintManager tintManager = new SystemBarTintManager(context);
         SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
-        view.setPadding(view.getPaddingLeft(), config.getPixelInsetTop(true), view.getPaddingRight(), view.getPaddingBottom());
+        for (View view : views) {
+            view.setPadding(view.getPaddingLeft(), config.getPixelInsetTop(true), view.getPaddingRight(), view.getPaddingBottom());
+        }
     }
 
     public static void setupTranslucentBottomMargin(Activity context, View view) {

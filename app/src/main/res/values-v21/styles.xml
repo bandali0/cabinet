@@ -13,7 +13,7 @@
         <!--<item name="list_selector_lighter">@drawable/list_ripple_selector_lighter</item>-->
         <!--<item name="empty_image">@drawable/ic_empty_image</item>-->
         <!--<item name="empty_image_error">@drawable/ic_empty_error</item>-->
-        <!--<item name="empty_text">#E5000000</item>-->
+        <!--<item name="empty_text">@color/empty_text</item>-->
 
         <!--<item name="android:colorPrimary">@color/cabinet_color</item>-->
         <!--<item name="android:colorPrimaryDark">@color/cabinet_color_darker</item>-->
