@@ -180,4 +180,7 @@
     <string name="filter_active">" 篩選條件： %1$s"</string>
     <string name="dark_theme">暗系主題</string>
     <string name="dark_theme_description">Cabinet 將會在 AMOLED 熒幕或者弱光照條件下採用暗色系。</string>
+    <string name="true_black">True Black</string>
+    <string name="true_black_description">Cabinet will use pure black for AMOLED displays.</string>
+    <string name="sdcard">SD Card</string>
 </resources>
