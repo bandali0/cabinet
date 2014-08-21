@@ -640,6 +640,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                 }
             }
         });
+        searchThread.start();
     }
 
     private List<File> searchDir(boolean includeHidden, File dir) throws Exception {
