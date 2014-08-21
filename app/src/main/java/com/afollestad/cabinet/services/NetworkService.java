@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.Build;
 import android.os.IBinder;
+
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.file.CloudFile;
 import com.afollestad.cabinet.sftp.SftpClient;
@@ -61,6 +62,7 @@ public class NetworkService extends Service {
     public static final String DISCONNECT_SFTP = "com.afollestad.cabinet.services.DISCONNECT_SFTP";
 
     private void startPersistedNotification(CloudFile file) {
+        mRemote = file;
         NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         Intent mainIntent = new Intent(this, DrawerActivity.class)
                 .putExtra("remote", file);
@@ -95,6 +97,7 @@ public class NetworkService extends Service {
             if (!mSftp.getRemote().equals(from.getRemote())) {
                 mSftp.disconnect();
             } else {
+                mRemote = from;
                 callback.onSftpClient(mSftp);
                 return;
             }
