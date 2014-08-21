@@ -45,7 +45,6 @@
     <style name="_ParentDark" parent="android:Theme.Material">
         <item name="title_text">@android:color/white</item>
         <item name="body_text">#EEEEEE</item>
-        <item name="android:windowBackground">@drawable/black</item>
         <item name="drawer_background">@color/drawer_background_dark</item>
         <item name="divider">@color/divider_dark</item>
         <item name="overflow">@drawable/ic_overflow</item>
