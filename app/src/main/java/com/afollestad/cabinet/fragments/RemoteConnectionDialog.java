@@ -13,6 +13,7 @@ import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.sftp.SftpClient;
 import com.afollestad.cabinet.ui.DrawerActivity;
 import com.afollestad.cabinet.utils.Pins;
+import com.afollestad.cabinet.utils.Utils;
 
 public class RemoteConnectionDialog implements SftpClient.CompletionCallback {
 
@@ -30,6 +31,7 @@ public class RemoteConnectionDialog implements SftpClient.CompletionCallback {
     private TextView pass;
 
     public void show() {
+        Utils.lockOrientation(mContext);
         View view = mContext.getLayoutInflater().inflate(R.layout.dialog_add_remote, null);
         testConnection = (Button) view.findViewById(R.id.testConnection);
         host = (TextView) view.findViewById(R.id.host);
@@ -82,9 +84,11 @@ public class RemoteConnectionDialog implements SftpClient.CompletionCallback {
 
         dialog = new AlertDialog.Builder(mContext)
                 .setView(view)
+                .setCancelable(false)
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        Utils.unlockOrientation(mContext);
                         dialogInterface.dismiss();
                         onSubmit();
                     }
@@ -92,6 +96,7 @@ public class RemoteConnectionDialog implements SftpClient.CompletionCallback {
                 .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        Utils.unlockOrientation(mContext);
                         if (client.isConnected()) client.disconnect();
                         client = null;
                         dialogInterface.dismiss();
