@@ -29,6 +29,10 @@ import com.afollestad.cabinet.services.NetworkService;
 import com.afollestad.cabinet.sftp.SftpClient;
 import com.afollestad.cabinet.ui.DrawerActivity;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+
 public class Utils {
 
     public static interface DuplicateCheckResult {
@@ -284,18 +288,19 @@ public class Utils {
             downloadFile(context, item, new FileCallback() {
                 @Override
                 public void onFile(File file) {
-                    openLocal(context, file, openAs ? null : item.getMimeType());
+                    openLocal(context, file, openAs ? null : item.getMimeType(), (CloudFile) item);
                 }
             });
             return;
         }
-        openLocal(context, item, openAs ? null : item.getMimeType());
+        openLocal(context, item, openAs ? null : item.getMimeType(), null);
     }
 
-    private static void openLocal(final Activity context, final File file, String mime) {
-        if (file.getExtension().equals("prop") ||
-                file.getExtension().equals("json") ||
-                file.getExtension().equals("md")) {
+    private static void openLocal(final Activity context, final File file, String mime, final CloudFile remoteSource) {
+        List<String> textExts = Arrays.asList(context.getResources().getStringArray(R.array.other_text_extensions));
+        List<String> codeExts = Arrays.asList(context.getResources().getStringArray(R.array.code_extensions));
+        String ext = file.getExtension().toLowerCase(Locale.getDefault());
+        if (textExts.contains(ext) || codeExts.contains(ext)) {
             mime = "text/plain";
         }
         if (mime == null) {
@@ -320,14 +325,15 @@ public class Utils {
                             newMime = "*/*";
                             break;
                     }
-                    openLocal(context, file, newMime);
+                    openLocal(context, file, newMime, remoteSource);
                 }
             }).show(context.getFragmentManager(), "OPEN_AS_DIALOG");
             return;
         }
         try {
             context.startActivity(new Intent(Intent.ACTION_VIEW)
-                    .setDataAndType(Uri.fromFile(file.toJavaFile()), mime));
+                    .setDataAndType(Uri.fromFile(file.toJavaFile()), mime)
+                    .putExtra("remote", remoteSource));
         } catch (ActivityNotFoundException e) {
             Toast.makeText(context, R.string.activity_not_found, Toast.LENGTH_SHORT).show();
         }

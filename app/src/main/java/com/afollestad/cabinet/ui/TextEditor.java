@@ -1,6 +1,5 @@
 package com.afollestad.cabinet.ui;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,13 +10,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.file.LocalFile;
 import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.fragments.CustomDialog;
 import com.afollestad.cabinet.fragments.DetailsDialog;
-import com.afollestad.cabinet.utils.ThemeUtils;
+import com.afollestad.cabinet.sftp.SftpClient;
+import com.afollestad.cabinet.ui.base.NetworkedActivity;
 import com.afollestad.cabinet.utils.Utils;
 
 import java.io.BufferedReader;
@@ -30,9 +31,8 @@ import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class TextEditor extends Activity implements TextWatcher {
+public class TextEditor extends NetworkedActivity implements TextWatcher {
 
-    private ThemeUtils mThemeUtils;
     private EditText mInput;
     private java.io.File mFile;
     private String mOriginal;
@@ -41,8 +41,6 @@ public class TextEditor extends Activity implements TextWatcher {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mThemeUtils = new ThemeUtils(this);
-        setTheme(mThemeUtils.getCurrent());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_texteditor);
 
@@ -54,6 +52,13 @@ public class TextEditor extends Activity implements TextWatcher {
 
         if (getIntent().getData() != null) load(getIntent().getData());
         else mInput.setVisibility(View.VISIBLE);
+
+        Toast.makeText(this, "Remote: " + getRemoteSwitch(), Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected boolean disconnectOnNotify() {
+        return false;
     }
 
     private void setProgress(boolean show) {
@@ -78,7 +83,8 @@ public class TextEditor extends Activity implements TextWatcher {
                 String mime = File.getMimeType(ext);
                 Log.v("TextEditor", "Mime: " + mime);
                 List<String> textExts = Arrays.asList(getResources().getStringArray(R.array.other_text_extensions));
-                if (!mime.startsWith("text/") && !textExts.contains(ext)) {
+                List<String> codeExts = Arrays.asList(getResources().getStringArray(R.array.code_extensions));
+                if (!mime.startsWith("text/") && !textExts.contains(ext) && !codeExts.contains(ext)) {
                     Log.v("TextEditor", "Unsupported extension");
                     runOnUiThread(new Runnable() {
                         @Override
@@ -135,6 +141,25 @@ public class TextEditor extends Activity implements TextWatcher {
         }).start();
     }
 
+    private void upload(final boolean exitAfter) {
+        Toast.makeText(this, "Remote: " + getRemoteSwitch(), Toast.LENGTH_LONG).show();
+        if (getRemoteSwitch() == null) {
+            if (exitAfter) finish();
+            return;
+        }
+        new LocalFile(this, mFile).copy(getRemoteSwitch(), new SftpClient.FileCallback() {
+            @Override
+            public void onComplete(File file) {
+                if (exitAfter) finish();
+            }
+
+            @Override
+            public void onError(Exception e) {
+                // Dialog is already shown, can ignore this
+            }
+        });
+    }
+
     private void save(final boolean exitAfter) {
         final ProgressDialog mDialog = new ProgressDialog(this);
         mDialog.setIndeterminate(true);
@@ -154,11 +179,12 @@ public class TextEditor extends Activity implements TextWatcher {
                             mDialog.dismiss();
                             if (exitAfter) {
                                 mOriginal = null;
-                                finish();
+                                upload(exitAfter);
                             } else {
                                 mOriginal = mInput.getText().toString();
                                 mModified = false;
                                 invalidateOptionsMenu();
+                                upload(exitAfter);
                             }
                         }
                     });
@@ -173,15 +199,6 @@ public class TextEditor extends Activity implements TextWatcher {
                 }
             }
         }).start();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (mThemeUtils.isChanged()) {
-            setTheme(mThemeUtils.getCurrent());
-            recreate();
-        }
     }
 
     @Override

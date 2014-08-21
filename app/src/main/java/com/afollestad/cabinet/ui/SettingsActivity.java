@@ -3,28 +3,25 @@ package com.afollestad.cabinet.ui;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
-import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.fragments.AboutDialog;
+import com.afollestad.cabinet.ui.base.ThemablePreferenceActivity;
 import com.afollestad.cabinet.utils.ThemeUtils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
  * @author Aidan Follestad (afollestad)
  */
-public class SettingsActivity extends PreferenceActivity implements AboutDialog.DismissListener {
+public class SettingsActivity extends ThemablePreferenceActivity implements AboutDialog.DismissListener {
 
-    private ThemeUtils mThemeUtils;
     private boolean aboutDialogShown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mThemeUtils = new ThemeUtils(this);
-        setTheme(mThemeUtils.getCurrent());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.preference_activity_custom);
         getActionBar().setDisplayHomeAsUpEnabled(true);
@@ -89,15 +86,6 @@ public class SettingsActivity extends PreferenceActivity implements AboutDialog.
                 return true;
             }
         });
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (mThemeUtils.isChanged()) {
-            setTheme(mThemeUtils.getCurrent());
-            recreate();
-        }
     }
 
     @Override

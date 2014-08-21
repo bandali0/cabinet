@@ -13,7 +13,7 @@
         android:textSize="18sp"
         android:inputType="textCapSentences|textMultiLine"
         android:layout_margin="16dp"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical|horizontal" />
 
     <ProgressBar
         android:id="@+id/progress"

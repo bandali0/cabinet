@@ -4,16 +4,12 @@ import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.DrawerLayout;
@@ -31,14 +27,13 @@ import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.cab.PickerCab;
 import com.afollestad.cabinet.cab.base.BaseCab;
 import com.afollestad.cabinet.cab.base.BaseFileCab;
-import com.afollestad.cabinet.file.CloudFile;
 import com.afollestad.cabinet.file.LocalFile;
 import com.afollestad.cabinet.file.base.File;
 import com.afollestad.cabinet.fragments.CustomDialog;
 import com.afollestad.cabinet.fragments.DirectoryFragment;
 import com.afollestad.cabinet.fragments.NavigationDrawerFragment;
 import com.afollestad.cabinet.fragments.WelcomeFragment;
-import com.afollestad.cabinet.services.NetworkService;
+import com.afollestad.cabinet.ui.base.NetworkedActivity;
 import com.afollestad.cabinet.utils.Pins;
 import com.afollestad.cabinet.utils.ThemeUtils;
 import com.afollestad.cabinet.utils.Utils;
@@ -46,7 +41,7 @@ import com.anjlab.android.iab.v3.BillingProcessor;
 import com.faizmalkani.floatingactionbutton.FloatingActionButton;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
-public class DrawerActivity extends Activity implements BillingProcessor.IBillingHandler {
+public class DrawerActivity extends NetworkedActivity implements BillingProcessor.IBillingHandler {
 
     public interface FabListener {
         public abstract void onFabPressed(BaseFileCab.PasteMode pasteMode);
@@ -55,9 +50,6 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
     private BillingProcessor mBP; // used for donations
     private boolean canExit; // flag used for press back twice to exit
     private BaseCab mCab; // the current contextual action bar, saves state throughout fragments
-    private NetworkService mNetworkService;
-    private CloudFile mRemoteSwitch; // used by SFTP notification intent
-    private ThemeUtils mThemeUtils; // used to detect theme changes and get current theme
 
     public FloatingActionButton fab; // the floating blue add/paste button
     private float fabVisibleY; // saves y position of the top of the visible fab
@@ -204,8 +196,6 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mThemeUtils = new ThemeUtils(this);
-        setTheme(mThemeUtils.getCurrent());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
 
@@ -245,16 +235,6 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         setupTransparentTints(this);
 
         mBP = new BillingProcessor(this, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlPBB2hP/R0PrXtK8NPeDX7QV1fvk1hDxPVbIwRZLIgO5l/ZnAOAf8y9Bq57+eO5CD+ZVTgWcAVrS/QsiqDI/MwbfXcDydSkZLJoFofOFXRuSL7mX/jNwZBNtH0UrmcyFx1RqaHIe9KZFONBWLeLBmr47Hvs7dKshAto2Iy0v18kN48NqKxlWtj/PHwk8uIQ4YQeLYiXDCGhfBXYS861guEr3FFUnSLYtIpQ8CiGjwfU60+kjRMmXEGnmhle5lqzj6QeL6m2PNrkbJ0T9w2HM+bR7buHcD8e6tHl2Be6s/j7zn1Ypco/NCbqhtPgCnmLpeYm8EwwTnH4Yei7ACR7mXQIDAQAB", this);
-        processIntent(getIntent(), savedInstanceState);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (mThemeUtils.isChanged()) {
-            setTheme(mThemeUtils.getCurrent());
-            recreate();
-        }
     }
 
     @Override
@@ -317,36 +297,13 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         }
     }
 
-    private void displayDisconnectPrompt() {
-        String host = getString(R.string.unknown);
-        if (mRemoteSwitch != null) {
-            host = mRemoteSwitch.getRemote().getHost();
-        }
-        CustomDialog.create(this, R.string.disconnect, getString(R.string.disconnect_prompt, host),
-                R.string.yes, 0, R.string.no, new CustomDialog.SimpleClickListener() {
-                    @Override
-                    public void onPositive(int which, View view) {
-                        startService(new Intent(DrawerActivity.this, NetworkService.class)
-                                .setAction(NetworkService.DISCONNECT_SFTP));
-                    }
-                }
-        ).show(getFragmentManager(), "DISCONNECT_CONFIRM");
-    }
-
-    private void processIntent(Intent intent, Bundle savedInstanceState) {
+    @Override
+    protected void processIntent(Intent intent, Bundle savedInstanceState) {
+        super.processIntent(intent, savedInstanceState);
         pickMode = intent.getAction() != null && intent.getAction().equals(Intent.ACTION_GET_CONTENT);
         if (pickMode) {
             setCab(new PickerCab().setContext(this).start());
-        }
-        if (intent.hasExtra("remote")) {
-            mRemoteSwitch = (CloudFile) intent.getSerializableExtra("remote");
-            if (mNetworkService != null) {
-                mNetworkService.setRemote(mRemoteSwitch);
-                switchDirectory(mRemoteSwitch, true);
-                displayDisconnectPrompt();
-                mRemoteSwitch = null;
-            }
-        } else if (savedInstanceState == null) {
+        } else if (getRemoteSwitch() != null && savedInstanceState == null) {
             if (!PreferenceManager.getDefaultSharedPreferences(this).getBoolean("shown_welcome", false)) {
                 getFragmentManager().beginTransaction().replace(R.id.container, new WelcomeFragment()).commit();
             } else {
@@ -354,19 +311,6 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
                 switchDirectory(null, true);
             }
         }
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Intent intent = new Intent(this, NetworkService.class);
-        bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        unbindService(mConnection);
     }
 
     public void reloadNavDrawer(boolean open) {
@@ -382,6 +326,7 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         switchDirectory(file, file.isStorageDirectory(), false);
     }
 
+    @Override
     public void switchDirectory(File to, boolean clearBackStack) {
         switchDirectory(to, clearBackStack, true);
     }
@@ -438,28 +383,6 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
             }
         } else getFragmentManager().popBackStack();
     }
-
-    public NetworkService getNetworkService() {
-        return mNetworkService;
-    }
-
-    private final ServiceConnection mConnection = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName className, IBinder service) {
-            NetworkService.LocalBinder binder = (NetworkService.LocalBinder) service;
-            mNetworkService = binder.getService();
-            if (mRemoteSwitch != null) {
-                mNetworkService.setRemote(mRemoteSwitch); // prevents crash
-                switchDirectory(mRemoteSwitch, true);
-                displayDisconnectPrompt();
-                mRemoteSwitch = null;
-            }
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName arg0) {
-        }
-    };
 
     /* Donation stuff via in app billing */
 
