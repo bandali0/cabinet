@@ -187,7 +187,7 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
     @Override
     public void onPause() {
         super.onPause();
-        searchThread.interrupt();
+        if (searchThread != null) searchThread.interrupt();
         try {
             getActivity().unregisterReceiver(mReceiver);
         } catch (Exception e) {
