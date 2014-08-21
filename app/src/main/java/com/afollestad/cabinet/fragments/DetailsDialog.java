@@ -72,6 +72,7 @@ public class DetailsDialog extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         file = (File) getArguments().getSerializable("file");
+        file.setContext(getActivity());
         LayoutInflater layoutInflater = getActivity().getLayoutInflater();
         View rootView = layoutInflater.inflate(R.layout.dialog_custom, null);
         TextView title = (TextView) rootView.findViewById(R.id.title);

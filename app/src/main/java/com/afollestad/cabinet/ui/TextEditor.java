@@ -153,7 +153,7 @@ public class TextEditor extends NetworkedActivity implements TextWatcher {
             public void onError(Exception e) {
                 // Dialog is already shown, can ignore this
             }
-        });
+        }, false);
     }
 
     private void save(final boolean exitAfter) {

@@ -88,16 +88,23 @@ public class Utils {
         Log.v("checkDuplicates", "Checking: " + file.getPath());
         file.exists(new File.BooleanCallback() {
             @Override
-            public void onComplete(boolean result) {
-                if (result) {
-                    String newName = originalNameNoExt;
-                    if (checks > 0) newName += " (" + checks + ")";
-                    if (!file.isDirectory()) newName += "." + file.getExtension();
-                    File newFile = file.isRemote() ?
-                            new CloudFile(context, (CloudFile) file.getParent(), newName, file.isDirectory()) :
-                            new LocalFile(context, file.getParent(), newName);
-                    checkDuplicates(context, newFile, originalNameNoExt, 1 + checks, callback);
-                } else callback.onResult(file);
+            public void onComplete(final boolean result) {
+                context.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (result) {
+                            String newName = originalNameNoExt;
+                            if (checks > 0) newName += " (" + checks + ")";
+                            if (!file.isDirectory()) newName += "." + file.getExtension();
+                            File newFile = file.isRemote() ?
+                                    new CloudFile(context, (CloudFile) file.getParent(), newName, file.isDirectory()) :
+                                    new LocalFile(context, file.getParent(), newName);
+                            checkDuplicates(context, newFile, originalNameNoExt, 1 + checks, callback);
+                        } else {
+                            callback.onResult(file);
+                        }
+                    }
+                });
             }
 
             @Override

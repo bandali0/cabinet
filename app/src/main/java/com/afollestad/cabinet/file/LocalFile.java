@@ -106,7 +106,7 @@ public class LocalFile extends File {
                         @Override
                         public void run() {
                             try {
-                                uploadRecursive(client, LocalFile.this, (CloudFile) newFile, true);
+                                uploadRecursive(client, LocalFile.this, (CloudFile) newFile, true, true);
                                 getContext().runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
@@ -195,100 +195,112 @@ public class LocalFile extends File {
         }
     }
 
-    @Override
-    public void copy(File newFile, final SftpClient.FileCallback callback) {
-        Utils.checkDuplicates(getContext(), newFile, new Utils.DuplicateCheckResult() {
-            @Override
-            public void onResult(final File dest) {
-                if (dest.isRemote()) {
-                    final ProgressDialog connectProgress = Utils.showProgressDialog(getContext(), R.string.connecting);
-                    getContext().getNetworkService().getSftpClient(new NetworkService.SftpGetCallback() {
+    private void performCopy(final File dest, final SftpClient.FileCallback callback) {
+        if (dest.isRemote()) {
+            final ProgressDialog connectProgress = Utils.showProgressDialog(getContext(), R.string.connecting);
+            getContext().getNetworkService().getSftpClient(new NetworkService.SftpGetCallback() {
+                @Override
+                public void onSftpClient(final SftpClient client) {
+                    connectProgress.dismiss();
+                    final ProgressDialog uploadProgress = Utils.showProgressDialog(getContext(), R.string.uploading);
+                    new Thread(new Runnable() {
                         @Override
-                        public void onSftpClient(final SftpClient client) {
-                            connectProgress.dismiss();
-                            final ProgressDialog uploadProgress = Utils.showProgressDialog(getContext(), R.string.uploading);
-                            new Thread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    try {
-                                        uploadRecursive(client, LocalFile.this, (CloudFile) dest, false);
-                                        getContext().runOnUiThread(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                uploadProgress.dismiss();
-                                                callback.onComplete(dest);
-                                            }
-                                        });
-                                    } catch (final Exception e) {
-                                        e.printStackTrace();
-                                        getContext().runOnUiThread(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                uploadProgress.dismiss();
-                                                callback.onError(null);
-                                                Utils.showErrorDialog(getContext(), R.string.failed_upload_file, e);
-                                            }
-                                        });
+                        public void run() {
+                            try {
+                                uploadRecursive(client, LocalFile.this, (CloudFile) dest, false, false);
+                                getContext().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        uploadProgress.dismiss();
+                                        callback.onComplete(dest);
                                     }
-                                }
-                            }).start();
+                                });
+                            } catch (final Exception e) {
+                                e.printStackTrace();
+                                getContext().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        uploadProgress.dismiss();
+                                        callback.onError(null);
+                                        Utils.showErrorDialog(getContext(), R.string.failed_upload_file, e);
+                                    }
+                                });
+                            }
                         }
+                    }).start();
+                }
 
+                @Override
+                public void onError(final Exception e) {
+                    getContext().runOnUiThread(new Runnable() {
                         @Override
-                        public void onError(final Exception e) {
-                            getContext().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    connectProgress.dismiss();
-                                    callback.onError(null);
-                                    Utils.showErrorDialog(getContext(), R.string.failed_connect_server, e);
-                                }
-                            });
+                        public void run() {
+                            connectProgress.dismiss();
+                            callback.onError(null);
+                            Utils.showErrorDialog(getContext(), R.string.failed_connect_server, e);
                         }
-                    }, (CloudFile) dest);
-                } else {
-                    if (isDirectory()) {
-                        try {
-                            copyRecursive(toJavaFile(), dest.toJavaFile(), false);
-                            getContext().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    callback.onComplete(dest);
-                                }
-                            });
-                        } catch (Exception e) {
-                            getContext().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Utils.showErrorDialog(getContext(), R.string.failed_copy_file, new Exception("Unable to create the destination directory."));
-                                    callback.onError(null);
-                                }
-                            });
+                    });
+                }
+            }, (CloudFile) dest);
+        } else {
+            if (isDirectory()) {
+                try {
+                    copyRecursive(toJavaFile(), dest.toJavaFile(), false);
+                    getContext().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            callback.onComplete(dest);
                         }
+                    });
+                } catch (Exception e) {
+                    getContext().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Utils.showErrorDialog(getContext(), R.string.failed_copy_file, new Exception("Unable to create the destination directory."));
+                            callback.onError(null);
+                        }
+                    });
+                }
 
-                    } else {
-                        try {
-                            final LocalFile result = copySync(toJavaFile(), dest.toJavaFile());
-                            getContext().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    callback.onComplete(result);
-                                }
-                            });
-                        } catch (final Exception e) {
-                            e.printStackTrace();
-                            getContext().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Utils.showErrorDialog(getContext(), R.string.failed_copy_file, e);
-                                    callback.onError(null);
-                                }
-                            });
+            } else {
+                try {
+                    final LocalFile result = copySync(toJavaFile(), dest.toJavaFile());
+                    getContext().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            callback.onComplete(result);
                         }
-                    }
+                    });
+                } catch (final Exception e) {
+                    e.printStackTrace();
+                    getContext().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Utils.showErrorDialog(getContext(), R.string.failed_copy_file, e);
+                            callback.onError(null);
+                        }
+                    });
                 }
             }
-        });
+        }
+    }
+
+    public void copy(final File newFile, final SftpClient.FileCallback callback, boolean checkDuplicates) {
+        if (checkDuplicates) {
+            Utils.checkDuplicates(getContext(), newFile, new Utils.DuplicateCheckResult() {
+                @Override
+                public void onResult(final File dest) {
+                    performCopy(newFile, callback);
+                }
+            });
+        } else {
+            performCopy(newFile, callback);
+        }
+    }
+
+    @Override
+    public void copy(File newFile, final SftpClient.FileCallback callback) {
+        copy(newFile, callback, true);
     }
 
     private LocalFile copySync(java.io.File file, java.io.File newFile) throws Exception {
@@ -337,8 +349,9 @@ public class LocalFile extends File {
         Log.v("LocalFile", message);
     }
 
-    private File uploadRecursive(SftpClient client, LocalFile local, CloudFile dest, boolean deleteAfter) throws Exception {
-        dest = (CloudFile) Utils.checkDuplicatesSync(getContext(), dest);
+    private File uploadRecursive(SftpClient client, LocalFile local, CloudFile dest, boolean deleteAfter, boolean checkDuplicates) throws Exception {
+        if (checkDuplicates)
+            dest = (CloudFile) Utils.checkDuplicatesSync(getContext(), dest);
         if (local.isDirectory()) {
             log("Uploading local directory " + local.getPath() + " to " + dest.getPath());
             try {
@@ -351,7 +364,7 @@ public class LocalFile extends File {
             for (File lf : contents) {
                 CloudFile newFile = new CloudFile(getContext(), dest, lf.getName(), lf.isDirectory());
                 if (lf.isDirectory()) {
-                    uploadRecursive(client, (LocalFile) lf, newFile, deleteAfter);
+                    uploadRecursive(client, (LocalFile) lf, newFile, deleteAfter, checkDuplicates);
                 } else {
                     log(" >> Uploading sub-file: " + lf.getPath() + " to " + newFile.getPath());
                     client.putSync(lf.getPath(), newFile.getPath());
