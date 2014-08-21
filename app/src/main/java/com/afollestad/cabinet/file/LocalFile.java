@@ -378,12 +378,12 @@ public class LocalFile extends File {
     }
 
     private void wipeDirectory(File dir, final SftpClient.CompletionCallback callback) throws Exception {
-        List<File> contents = ((LocalFile) dir).listFilesSync(true);
+        List<File> contents = dir.listFilesSync(true);
         if (contents != null) {
             for (File fi : contents) {
                 if (fi.isDirectory()) {
                     wipeDirectory(fi, null);
-                } else if (!((LocalFile) fi).deleteSync()) {
+                } else if (!fi.deleteSync()) {
                     if (callback != null) callback.onError(new Exception("Unknown error"));
                     else throw new Exception("Failed to delete " + fi.getPath());
                     break;
@@ -432,7 +432,7 @@ public class LocalFile extends File {
                 } catch (Exception e) {
                     // This will not happen since a callback is passed
                 }
-            } else if (mFile.delete()) {
+            } else if (deleteSync()) {
                 if (callback != null) callback.onComplete();
             } else {
                 Utils.showErrorDialog(getContext(), R.string.failed_delete_file, new Exception("Unknown error"));
