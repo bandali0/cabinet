@@ -524,9 +524,9 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         }));
 
         DrawerActivity.setupTranslucentBottomPadding(getActivity(),
-                mRecyclerView, view.findViewById(android.R.id.empty));
+                mRecyclerView, view.findViewById(android.R.id.empty), view.findViewById(android.R.id.progress));
         DrawerActivity.setupTranslucentTopPadding(getActivity(),
-                view.findViewById(R.id.listFrame), view.findViewById(android.R.id.empty));
+                view.findViewById(R.id.listFrame), view.findViewById(android.R.id.empty), view.findViewById(android.R.id.progress));
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mAdapter = new FileAdapter(getActivity(), this, this, this, mQuery != null);
