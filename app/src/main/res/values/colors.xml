@@ -7,6 +7,7 @@
     <color name="cabinet_color">#4e6cef</color>
     <color name="cabinet_color_darker">#455ede</color>
     <color name="cabinet_accent_color">#e91e63</color>
+    <color name="cabinet_gray">#757575</color>
     <color name="cabinet_gray_darker">#616161</color>
 
     <color name="drawer_background">#fff</color>
