@@ -58,7 +58,6 @@ public abstract class NetworkedActivity extends ThemableActivity {
             if (mRemoteSwitch == null) return;
             mRemoteSwitch.setContext(this);
             if (mNetworkService != null) {
-                mNetworkService.setRemote(mRemoteSwitch);
                 if (disconnectOnNotify()) {
                     switchDirectory(mRemoteSwitch, true);
                     displayDisconnectPrompt();
@@ -99,7 +98,6 @@ public abstract class NetworkedActivity extends ThemableActivity {
             NetworkService.LocalBinder binder = (NetworkService.LocalBinder) service;
             mNetworkService = binder.getService();
             if (mRemoteSwitch != null) {
-                mNetworkService.setRemote(mRemoteSwitch);
                 if (disconnectOnNotify()) {
                     switchDirectory(mRemoteSwitch, true);
                     displayDisconnectPrompt();
