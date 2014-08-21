@@ -90,16 +90,20 @@ public class ThemeUtils {
             }
         } else {
             if (translucentStatusbar && translucentNavbar) {
-                if (darkMode) return R.style.Theme_CabinetDarkNavStatusTranslucent;
+                if (trueBlack) return R.style.Theme_CabinetTrueBlackNavStatusTranslucent;
+                else if (darkMode) return R.style.Theme_CabinetDarkNavStatusTranslucent;
                 else return R.style.Theme_CabinetNavStatusTranslucent;
             } else if (translucentStatusbar) {
-                if (darkMode) return R.style.Theme_CabinetDarkStatusTranslucent;
+                if (trueBlack) return R.style.Theme_CabinetTrueBlackStatusTranslucent;
+                else if (darkMode) return R.style.Theme_CabinetDarkStatusTranslucent;
                 else return R.style.Theme_CabinetStatusTranslucent;
             } else if (translucentNavbar) {
-                if (darkMode) return R.style.Theme_CabinetDarkNavTranslucent;
+                if (trueBlack) return R.style.Theme_CabinetTrueBlackNavTranslucent;
+                else if (darkMode) return R.style.Theme_CabinetDarkNavTranslucent;
                 else return R.style.Theme_CabinetNavTranslucent;
             } else {
-                if (darkMode) return R.style.Theme_CabinetDark;
+                if (trueBlack) return R.style.Theme_CabinetTrueBlack;
+                else if (darkMode) return R.style.Theme_CabinetDark;
                 else return R.style.Theme_Cabinet;
             }
         }
