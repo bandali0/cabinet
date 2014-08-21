@@ -170,7 +170,11 @@ public class RootFile extends File {
 
     @Override
     public boolean deleteSync() throws Exception {
-        runAsRoot("rm -rf \"" + getPath() + "\"");
+        String deleteCmd = "rm -f \"" + getPath() + "\"";
+        if (isDirectory()) {
+            deleteCmd = "rm -rf \"" + getPath() + "\"";
+        }
+        runAsRoot(deleteCmd);
         return true;
     }
 
