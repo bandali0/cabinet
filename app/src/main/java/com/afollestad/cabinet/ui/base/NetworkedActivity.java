@@ -55,6 +55,7 @@ public abstract class NetworkedActivity extends ThemableActivity {
     protected void processIntent(Intent intent, Bundle savedInstanceState) {
         if (intent.hasExtra("remote")) {
             mRemoteSwitch = (CloudFile) intent.getSerializableExtra("remote");
+            if (mRemoteSwitch == null) return;
             mRemoteSwitch.setContext(this);
             if (mNetworkService != null) {
                 mNetworkService.setRemote(mRemoteSwitch);
