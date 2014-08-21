@@ -78,7 +78,12 @@ public class DrawerActivity extends Activity implements BillingProcessor.IBillin
         if (!ThemeUtils.isTranslucentStatusbar(context)) return;
         SystemBarTintManager tintManager = new SystemBarTintManager(context);
         tintManager.setStatusBarTintEnabled(true);
-        tintManager.setStatusBarTintResource(ThemeUtils.isTrueBlack(context) ? R.color.cabinet_gray_darker : R.color.cabinet_color_darker);
+        //TODO remove if statement for L release
+        int tintColor = ThemeUtils.isTrueBlack(context) ? R.color.cabinet_gray_darker : R.color.cabinet_color_darker;
+        if (Build.VERSION.SDK_INT >= 20) {
+            tintColor = ThemeUtils.isTrueBlack(context) ? R.color.cabinet_gray : R.color.cabinet_color;
+        }
+        tintManager.setStatusBarTintResource(tintColor);
     }
 
     public static void setupTranslucentBottomPadding(Activity context, View view) {

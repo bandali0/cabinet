@@ -179,8 +179,8 @@
     <string name="superuser_not_available">Superuser 不可用</string>
     <string name="filter_active">" 篩選條件： %1$s"</string>
     <string name="dark_theme">暗系主題</string>
-    <string name="dark_theme_description">Cabinet 將會在 AMOLED 熒幕或者弱光照條件下採用暗色系。</string>
-    <string name="true_black">True Black</string>
-    <string name="true_black_description">Cabinet will use pure black for AMOLED displays.</string>
-    <string name="sdcard">SD Card</string>
+    <string name="sdcard">SD卡</string>
+    <string name="dark_theme_description">內閣將使用較暗的顏色。</string>
+    <string name="true_black">真黑</string>
+    <string name="true_black_description">內閣將採用純黑色的AMOLED顯示屏。</string>
 </resources>

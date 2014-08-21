@@ -6,6 +6,7 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.fragments.AboutDialog;
@@ -26,11 +27,14 @@ public class SettingsActivity extends PreferenceActivity implements AboutDialog.
         setTheme(mThemeUtils.getCurrent());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.preference_activity_custom);
-
         getActionBar().setDisplayHomeAsUpEnabled(true);
-        addPreferencesFromResource(R.xml.settings);
-        DrawerActivity.setupTransparentTints(this);
 
+        DrawerActivity.setupTransparentTints(this);
+        ListView list = (ListView) findViewById(android.R.id.list);
+        DrawerActivity.setupTranslucentTopPadding(this, list);
+        DrawerActivity.setupTranslucentBottomMargin(this, list);
+
+        addPreferencesFromResource(R.xml.settings);
         final CheckBoxPreference translucentStatusbar = (CheckBoxPreference) findPreference("translucent_statusbar");
         final CheckBoxPreference translucentNavbar = (CheckBoxPreference) findPreference("translucent_navbar");
 

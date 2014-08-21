@@ -40,7 +40,7 @@
                 android:textSize="19sp"
                 android:lineSpacingMultiplier="1.4"
                 android:textColor="?body_text"
-                android:textColorLink="@color/cabinet_color"
+                android:textColorLink="@color/cabinet_accent_color"
                 android:fontFamily="sans-serif-light" />
 
             <LinearLayout
