@@ -55,8 +55,8 @@
         <item name="empty_image_error">@drawable/ic_empty_error_light</item>
         <item name="empty_text">#fff</item>
 
-        <item name="android:colorPrimary">@color/cabinet_gray</item>
-        <item name="android:colorPrimaryDark">@color/cabinet_gray_darker</item>
+        <item name="android:colorPrimary">@color/cabinet_color</item>
+        <item name="android:colorPrimaryDark">@color/cabinet_color_darker</item>
         <item name="android:colorAccent">@color/cabinet_accent_color</item>
         <item name="android:actionModeBackground">@color/cabinet_color</item>
         <item name="android:buttonStyle">@style/ButtonCabinetDark</item>
@@ -100,10 +100,16 @@
 
     <!-- Pure black themes -->
     <style name="Theme.CabinetTrueBlack" parent="_ParentDark">
+        <item name="android:colorPrimary">@color/cabinet_gray</item>
+        <item name="android:colorPrimaryDark">@color/cabinet_gray_darker</item>
+
         <item name="android:windowBackground">@drawable/black</item>
     </style>
 
     <style name="Theme.CabinetTrueBlackNavTranslucent" parent="_ParentDark">
+        <item name="android:colorPrimary">@color/cabinet_gray</item>
+        <item name="android:colorPrimaryDark">@color/cabinet_gray_darker</item>
+
         <item name="android:windowBackground">@drawable/black</item>
         <item name="android:windowTranslucentNavigation">@bool/translucent_nav</item>
     </style>
