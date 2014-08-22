@@ -97,7 +97,7 @@ public class RemoteConnectionDialog implements SftpClient.CompletionCallback {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Utils.unlockOrientation(mContext);
-                        if (client.isConnected()) client.disconnect();
+                        if (client != null && client.isConnected()) client.disconnect();
                         client = null;
                         dialogInterface.dismiss();
                     }
