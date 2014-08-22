@@ -38,6 +38,9 @@ public class ThemeUtils {
     public static boolean isTranslucentStatusbar(Context context) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT)
             return false; // always disabled below KitKat
+        else if(Build.VERSION.SDK_INT >= 20)
+            return false;
+        // TODO uncomment if statement for Material
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         return prefs.getBoolean("translucent_statusbar", true);
     }
