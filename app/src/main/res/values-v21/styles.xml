@@ -2,132 +2,132 @@
 <resources>
 
     <!-- TODO toggle comment for Material -->
-    <!--<style name="_ParentLight" parent="android:Theme.Material.Light.DarkActionBar">-->
-        <!--<item name="title_text">@android:color/black</item>-->
-        <!--<item name="body_text">#303030</item>-->
-        <!--<item name="drawer_background">@color/drawer_background</item>-->
-        <!--<item name="divider">@color/divider</item>-->
-        <!--<item name="overflow">@drawable/ic_overflow_dark</item>-->
-        <!--<item name="menu_selector">@drawable/menu_ripple_selector</item>-->
-        <!--<item name="list_selector">@drawable/list_ripple_selector</item>-->
-        <!--<item name="list_selector_lighter">@drawable/list_ripple_selector_lighter</item>-->
-        <!--<item name="empty_image">@drawable/ic_empty_image</item>-->
-        <!--<item name="empty_image_error">@drawable/ic_empty_error</item>-->
-        <!--<item name="empty_text">@color/empty_text</item>-->
+    <style name="_ParentLight" parent="android:Theme.Material.Light.DarkActionBar">
+        <item name="title_text">@android:color/black</item>
+        <item name="body_text">#303030</item>
+        <item name="drawer_background">@color/drawer_background</item>
+        <item name="divider">@color/divider</item>
+        <item name="overflow">@drawable/ic_overflow_dark</item>
+        <item name="menu_selector">@drawable/menu_ripple_selector</item>
+        <item name="list_selector">@drawable/list_ripple_selector</item>
+        <item name="list_selector_lighter">@drawable/list_ripple_selector_lighter</item>
+        <item name="empty_image">@drawable/ic_empty_image</item>
+        <item name="empty_image_error">@drawable/ic_empty_error</item>
+        <item name="empty_text">@color/empty_text</item>
 
-        <!--<item name="android:colorPrimary">@color/cabinet_color</item>-->
-        <!--<item name="android:colorPrimaryDark">@color/cabinet_color_darker</item>-->
-        <!--<item name="android:colorAccent">@color/cabinet_accent_color</item>-->
-        <!--<item name="android:actionModeBackground">@color/cabinet_color</item>-->
-        <!--<item name="android:buttonStyle">@style/ButtonCabinet</item>-->
-        <!--<item name="android:actionModeCloseDrawable">@drawable/ic_action_close</item>-->
-        <!--&lt;!&ndash;<item name="android:popupMenuStyle">@style/Theme.PopupMenu</item>&ndash;&gt;-->
+        <item name="android:colorPrimary">@color/cabinet_color</item>
+        <item name="android:colorPrimaryDark">@color/cabinet_color_darker</item>
+        <item name="android:colorAccent">@color/cabinet_accent_color</item>
+        <item name="android:actionModeBackground">@color/cabinet_color</item>
+        <item name="android:buttonStyle">@style/ButtonCabinet</item>
+        <item name="android:actionModeCloseDrawable">@drawable/ic_action_close</item>
+        <!--<item name="android:popupMenuStyle">@style/Theme.PopupMenu</item>-->
 
-        <!--<item name="ic_file_apk">@drawable/ic_file_apk</item>-->
-        <!--<item name="ic_file_audio">@drawable/ic_file_audio</item>-->
-        <!--<item name="ic_file_code">@drawable/ic_file_code</item>-->
-        <!--<item name="ic_file_doc">@drawable/ic_file_doc</item>-->
-        <!--<item name="ic_file_excel">@drawable/ic_file_excel</item>-->
-        <!--<item name="ic_file_font">@drawable/ic_file_font</item>-->
-        <!--<item name="ic_file_image">@drawable/ic_file_image</item>-->
-        <!--<item name="ic_file_misc">@drawable/ic_file_misc</item>-->
-        <!--<item name="ic_file_model">@drawable/ic_file_model</item>-->
-        <!--<item name="ic_file_pdf">@drawable/ic_file_pdf</item>-->
-        <!--<item name="ic_file_ppt">@drawable/ic_file_ppt</item>-->
-        <!--<item name="ic_file_script">@drawable/ic_file_script</item>-->
-        <!--<item name="ic_file_video">@drawable/ic_file_video</item>-->
-        <!--<item name="ic_file_word">@drawable/ic_file_word</item>-->
-        <!--<item name="ic_file_zip">@drawable/ic_file_zip</item>-->
-        <!--<item name="ic_folder">@drawable/ic_folder</item>-->
-        <!--<item name="ic_folder_hidden">@drawable/ic_folder_hidden</item>-->
-    <!--</style>-->
+        <item name="ic_file_apk">@drawable/ic_file_apk</item>
+        <item name="ic_file_audio">@drawable/ic_file_audio</item>
+        <item name="ic_file_code">@drawable/ic_file_code</item>
+        <item name="ic_file_doc">@drawable/ic_file_doc</item>
+        <item name="ic_file_excel">@drawable/ic_file_excel</item>
+        <item name="ic_file_font">@drawable/ic_file_font</item>
+        <item name="ic_file_image">@drawable/ic_file_image</item>
+        <item name="ic_file_misc">@drawable/ic_file_misc</item>
+        <item name="ic_file_model">@drawable/ic_file_model</item>
+        <item name="ic_file_pdf">@drawable/ic_file_pdf</item>
+        <item name="ic_file_ppt">@drawable/ic_file_ppt</item>
+        <item name="ic_file_script">@drawable/ic_file_script</item>
+        <item name="ic_file_video">@drawable/ic_file_video</item>
+        <item name="ic_file_word">@drawable/ic_file_word</item>
+        <item name="ic_file_zip">@drawable/ic_file_zip</item>
+        <item name="ic_folder">@drawable/ic_folder</item>
+        <item name="ic_folder_hidden">@drawable/ic_folder_hidden</item>
+    </style>
 
-    <!--<style name="_ParentDark" parent="android:Theme.Material">-->
-        <!--<item name="title_text">@android:color/white</item>-->
-        <!--<item name="body_text">#EEEEEE</item>-->
-        <!--<item name="drawer_background">@color/dark_background</item>-->
-        <!--<item name="divider">@color/divider_dark</item>-->
-        <!--<item name="overflow">@drawable/ic_overflow</item>-->
-        <!--<item name="menu_selector">@drawable/menu_ripple_selector_dark</item>-->
-        <!--<item name="list_selector">@drawable/list_ripple_selector_dark</item>-->
-        <!--<item name="list_selector_lighter">@drawable/list_ripple_selector_lighter_dark</item>-->
-        <!--<item name="empty_image">@drawable/ic_empty_image_light</item>-->
-        <!--<item name="empty_image_error">@drawable/ic_empty_error_light</item>-->
-        <!--<item name="empty_text">#fff</item>-->
+    <style name="_ParentDark" parent="android:Theme.Material">
+        <item name="title_text">@android:color/white</item>
+        <item name="body_text">#EEEEEE</item>
+        <item name="drawer_background">@color/dark_background</item>
+        <item name="divider">@color/divider_dark</item>
+        <item name="overflow">@drawable/ic_overflow</item>
+        <item name="menu_selector">@drawable/menu_ripple_selector_dark</item>
+        <item name="list_selector">@drawable/list_ripple_selector_dark</item>
+        <item name="list_selector_lighter">@drawable/list_ripple_selector_lighter_dark</item>
+        <item name="empty_image">@drawable/ic_empty_image_light</item>
+        <item name="empty_image_error">@drawable/ic_empty_error_light</item>
+        <item name="empty_text">#fff</item>
 
-        <!--<item name="android:colorPrimary">@color/cabinet_gray</item>-->
-        <!--<item name="android:colorPrimaryDark">@color/cabinet_gray_darker</item>-->
-        <!--<item name="android:colorAccent">@color/cabinet_accent_color</item>-->
-        <!--<item name="android:actionModeBackground">@color/cabinet_color</item>-->
-        <!--<item name="android:buttonStyle">@style/ButtonCabinetDark</item>-->
-        <!--<item name="android:actionModeCloseDrawable">@drawable/ic_action_close</item>-->
+        <item name="android:colorPrimary">@color/cabinet_gray</item>
+        <item name="android:colorPrimaryDark">@color/cabinet_gray_darker</item>
+        <item name="android:colorAccent">@color/cabinet_accent_color</item>
+        <item name="android:actionModeBackground">@color/cabinet_color</item>
+        <item name="android:buttonStyle">@style/ButtonCabinetDark</item>
+        <item name="android:actionModeCloseDrawable">@drawable/ic_action_close</item>
 
-        <!--<item name="ic_file_apk">@drawable/ic_file_apk_light</item>-->
-        <!--<item name="ic_file_audio">@drawable/ic_file_audio_light</item>-->
-        <!--<item name="ic_file_code">@drawable/ic_file_code_light</item>-->
-        <!--<item name="ic_file_doc">@drawable/ic_file_doc_light</item>-->
-        <!--<item name="ic_file_excel">@drawable/ic_file_excel_light</item>-->
-        <!--<item name="ic_file_font">@drawable/ic_file_font_light</item>-->
-        <!--<item name="ic_file_image">@drawable/ic_file_image_light</item>-->
-        <!--<item name="ic_file_misc">@drawable/ic_file_misc_light</item>-->
-        <!--<item name="ic_file_model">@drawable/ic_file_model_light</item>-->
-        <!--<item name="ic_file_pdf">@drawable/ic_file_pdf_light</item>-->
-        <!--<item name="ic_file_ppt">@drawable/ic_file_ppt_light</item>-->
-        <!--<item name="ic_file_script">@drawable/ic_file_script_light</item>-->
-        <!--<item name="ic_file_video">@drawable/ic_file_video_light</item>-->
-        <!--<item name="ic_file_word">@drawable/ic_file_word_light</item>-->
-        <!--<item name="ic_file_zip">@drawable/ic_file_zip_light</item>-->
-        <!--<item name="ic_folder">@drawable/ic_folder_light</item>-->
-        <!--<item name="ic_folder_hidden">@drawable/ic_folder_hidden_light</item>-->
-    <!--</style>-->
+        <item name="ic_file_apk">@drawable/ic_file_apk_light</item>
+        <item name="ic_file_audio">@drawable/ic_file_audio_light</item>
+        <item name="ic_file_code">@drawable/ic_file_code_light</item>
+        <item name="ic_file_doc">@drawable/ic_file_doc_light</item>
+        <item name="ic_file_excel">@drawable/ic_file_excel_light</item>
+        <item name="ic_file_font">@drawable/ic_file_font_light</item>
+        <item name="ic_file_image">@drawable/ic_file_image_light</item>
+        <item name="ic_file_misc">@drawable/ic_file_misc_light</item>
+        <item name="ic_file_model">@drawable/ic_file_model_light</item>
+        <item name="ic_file_pdf">@drawable/ic_file_pdf_light</item>
+        <item name="ic_file_ppt">@drawable/ic_file_ppt_light</item>
+        <item name="ic_file_script">@drawable/ic_file_script_light</item>
+        <item name="ic_file_video">@drawable/ic_file_video_light</item>
+        <item name="ic_file_word">@drawable/ic_file_word_light</item>
+        <item name="ic_file_zip">@drawable/ic_file_zip_light</item>
+        <item name="ic_folder">@drawable/ic_folder_light</item>
+        <item name="ic_folder_hidden">@drawable/ic_folder_hidden_light</item>
+    </style>
 
-    <!--&lt;!&ndash; Light themes &ndash;&gt;-->
-    <!--<style name="Theme.Cabinet" parent="_ParentLight" />-->
+    <!-- Light themes -->
+    <style name="Theme.Cabinet" parent="_ParentLight" />
 
-    <!--<style name="Theme.CabinetNavTranslucent" parent="_ParentLight">-->
-        <!--<item name="android:windowTranslucentNavigation">@bool/translucent_nav</item>-->
-    <!--</style>-->
+    <style name="Theme.CabinetNavTranslucent" parent="_ParentLight">
+        <item name="android:windowTranslucentNavigation">@bool/translucent_nav</item>
+    </style>
 
-    <!--&lt;!&ndash; Dark themes &ndash;&gt;-->
-    <!--<style name="Theme.CabinetDark" parent="_ParentDark">-->
-        <!--<item name="android:windowBackground">@drawable/dark</item>-->
-    <!--</style>-->
+    <!-- Dark themes -->
+    <style name="Theme.CabinetDark" parent="_ParentDark">
+        <item name="android:windowBackground">@drawable/dark</item>
+    </style>
 
-    <!--<style name="Theme.CabinetDarkNavTranslucent" parent="_ParentDark">-->
-        <!--<item name="android:windowBackground">@drawable/dark</item>-->
-        <!--<item name="android:windowTranslucentNavigation">@bool/translucent_nav</item>-->
-    <!--</style>-->
+    <style name="Theme.CabinetDarkNavTranslucent" parent="_ParentDark">
+        <item name="android:windowBackground">@drawable/dark</item>
+        <item name="android:windowTranslucentNavigation">@bool/translucent_nav</item>
+    </style>
 
-    <!--&lt;!&ndash; Pure black themes &ndash;&gt;-->
-    <!--<style name="Theme.CabinetTrueBlack" parent="_ParentDark">-->
-        <!--<item name="android:windowBackground">@drawable/black</item>-->
-    <!--</style>-->
+    <!-- Pure black themes -->
+    <style name="Theme.CabinetTrueBlack" parent="_ParentDark">
+        <item name="android:windowBackground">@drawable/black</item>
+    </style>
 
-    <!--<style name="Theme.CabinetTrueBlackNavTranslucent" parent="_ParentDark">-->
-        <!--<item name="android:windowBackground">@drawable/black</item>-->
-        <!--<item name="android:windowTranslucentNavigation">@bool/translucent_nav</item>-->
-    <!--</style>-->
+    <style name="Theme.CabinetTrueBlackNavTranslucent" parent="_ParentDark">
+        <item name="android:windowBackground">@drawable/black</item>
+        <item name="android:windowTranslucentNavigation">@bool/translucent_nav</item>
+    </style>
 
 
-    <!--<style name="Theme.PopupMenu" parent="android:Widget.Material.Light.PopupMenu">-->
-        <!--<item name="android:dividerHorizontal">@null</item>-->
-        <!--<item name="android:dividerHeight">0dp</item>-->
-    <!--</style>-->
+    <style name="Theme.PopupMenu" parent="android:Widget.Material.Light.PopupMenu">
+        <item name="android:dividerHorizontal">@null</item>
+        <item name="android:dividerHeight">0dp</item>
+    </style>
 
-    <!--<style name="ButtonCabinet" parent="android:Widget.Material.Light.Button">-->
-        <!--<item name="android:background">@drawable/rect_button_ripple_selector</item>-->
-        <!--<item name="android:textColor">@color/button_text_selector</item>-->
-        <!--<item name="android:minHeight">48dp</item>-->
-        <!--<item name="android:minWidth">64dp</item>-->
-        <!--<item name="android:elevation">2dp</item>-->
-    <!--</style>-->
+    <style name="ButtonCabinet" parent="android:Widget.Material.Light.Button">
+        <item name="android:background">@drawable/rect_button_ripple_selector</item>
+        <item name="android:textColor">@color/button_text_selector</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:minWidth">64dp</item>
+        <item name="android:elevation">2dp</item>
+    </style>
 
-    <!--<style name="ButtonCabinetDark" parent="android:Widget.Material.Light.Button">-->
-        <!--<item name="android:background">@drawable/rect_button_ripple_selector_dark</item>-->
-        <!--<item name="android:textColor">@color/button_text_selector_dark</item>-->
-        <!--<item name="android:minHeight">48dp</item>-->
-        <!--<item name="android:minWidth">64dp</item>-->
-        <!--<item name="android:elevation">2dp</item>-->
-    <!--</style>-->
+    <style name="ButtonCabinetDark" parent="android:Widget.Material.Light.Button">
+        <item name="android:background">@drawable/rect_button_ripple_selector_dark</item>
+        <item name="android:textColor">@color/button_text_selector_dark</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:minWidth">64dp</item>
+        <item name="android:elevation">2dp</item>
+    </style>
 
 </resources>

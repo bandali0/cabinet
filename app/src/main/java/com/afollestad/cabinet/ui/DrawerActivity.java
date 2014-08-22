@@ -250,30 +250,30 @@ public class DrawerActivity extends NetworkedActivity implements BillingProcesso
     private final static String MATERIAL_PROMPT = "material_version_prompt";
 
     private void checkMaterialAndRating() {
-//        checkRating();
+        checkRating();
         // TODO toggle commented area for Material
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        if (prefs.getInt(MATERIAL_PROMPT, -1) != Utils.getVersion(this) && Build.VERSION.SDK_INT >= 20) {
-            CustomDialog.create(this, R.string.material_version, getString(R.string.material_version_desc), R.string.yes, R.string.later, R.string.no, new CustomDialog.ClickListener() {
-                @Override
-                public void onPositive(int which, View view) {
-                    PreferenceManager.getDefaultSharedPreferences(DrawerActivity.this)
-                            .edit().putInt(MATERIAL_PROMPT, Utils.getVersion(DrawerActivity.this)).commit();
-                    startActivity(new Intent(Intent.ACTION_VIEW)
-                            .setData(Uri.parse("https://plus.google.com/u/0/communities/110440751142118056139")));
-                }
-
-                @Override
-                public void onNeutral() {
-                }
-
-                @Override
-                public void onNegative() {
-                    PreferenceManager.getDefaultSharedPreferences(DrawerActivity.this)
-                            .edit().putInt(MATERIAL_PROMPT, Utils.getVersion(DrawerActivity.this)).commit();
-                }
-            }).show(getFragmentManager(), "MATERIAL_DIALOG");
-        } else checkRating();
+//        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+//        if (prefs.getInt(MATERIAL_PROMPT, -1) != Utils.getVersion(this) && Build.VERSION.SDK_INT >= 20) {
+//            CustomDialog.create(this, R.string.material_version, getString(R.string.material_version_desc), R.string.yes, R.string.later, R.string.no, new CustomDialog.ClickListener() {
+//                @Override
+//                public void onPositive(int which, View view) {
+//                    PreferenceManager.getDefaultSharedPreferences(DrawerActivity.this)
+//                            .edit().putInt(MATERIAL_PROMPT, Utils.getVersion(DrawerActivity.this)).commit();
+//                    startActivity(new Intent(Intent.ACTION_VIEW)
+//                            .setData(Uri.parse("https://plus.google.com/u/0/communities/110440751142118056139")));
+//                }
+//
+//                @Override
+//                public void onNeutral() {
+//                }
+//
+//                @Override
+//                public void onNegative() {
+//                    PreferenceManager.getDefaultSharedPreferences(DrawerActivity.this)
+//                            .edit().putInt(MATERIAL_PROMPT, Utils.getVersion(DrawerActivity.this)).commit();
+//                }
+//            }).show(getFragmentManager(), "MATERIAL_DIALOG");
+//        } else checkRating();
     }
 
     private void checkRating() {
