@@ -97,23 +97,6 @@ public class DrawerActivity extends NetworkedActivity implements BillingProcesso
         }
     }
 
-    public static void setupTranslucentTopMargin(Activity context, View view, boolean add) {
-        if (!ThemeUtils.isTranslucentStatusbar(context)) return;
-        SystemBarTintManager tintManager = new SystemBarTintManager(context);
-        SystemBarTintManager.SystemBarConfig config = tintManager.getConfig();
-        ViewGroup.LayoutParams params = view.getLayoutParams();
-        if (view.getLayoutParams() instanceof FrameLayout.LayoutParams) {
-            int margin = config.getPixelInsetTop(true);
-            if (add) margin += ((FrameLayout.LayoutParams) params).topMargin;
-            ((FrameLayout.LayoutParams) params).topMargin = margin;
-        } else {
-            int margin = config.getPixelInsetTop(true);
-            if (add) margin += ((RelativeLayout.LayoutParams) params).topMargin;
-            ((RelativeLayout.LayoutParams) params).topMargin = margin;
-        }
-        view.setLayoutParams(params);
-    }
-
     public static void setupTranslucentBottomMargin(Activity context, View view, boolean add) {
         if (!ThemeUtils.isTranslucentNavbar(context)) return;
         SystemBarTintManager tintManager = new SystemBarTintManager(context);

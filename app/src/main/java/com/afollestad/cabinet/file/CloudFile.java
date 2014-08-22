@@ -510,11 +510,32 @@ public class CloudFile extends File {
 
     @Override
     public void listFiles(final boolean includeHidden, final ArrayCallback callback) {
-
+        listFiles(includeHidden, null, callback);
     }
+
+    private transient Thread listWaitThread;
 
     @Override
     public void listFiles(final boolean includeHidden, final FileFilter filter, final ArrayCallback callback) {
+        if (getContext().getNetworkService() == null) {
+            if (listWaitThread != null) listWaitThread.interrupt();
+            listWaitThread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    while (getContext().getNetworkService() == null && !listWaitThread.isInterrupted()) {
+                        try {
+                            Thread.sleep(100);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    if (listWaitThread.isInterrupted()) return;
+                    listFiles(includeHidden, filter, callback);
+                }
+            });
+            listWaitThread.start();
+            return;
+        }
         getContext().getNetworkService().getSftpClient(new NetworkService.SftpGetCallback() {
             @Override
             public void onSftpClient(SftpClient client) {

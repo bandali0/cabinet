@@ -694,9 +694,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
         setListShown(false);
         mAdapter.showLastModified = (sorter == 5);
         mDirectory.setContext(getActivity());
-        if (mDirectory.isRemote()) {
-            ((DrawerActivity) getActivity()).disableFab(true);
-        }
 
         FileFilter lsFilter = null;
         if (filter != null) {
@@ -742,9 +739,6 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
                             for (File fi : results) {
                                 mAdapter.add(fi);
                             }
-                        }
-                        if (mDirectory.isRemote()) {
-                            ((DrawerActivity) getActivity()).disableFab(false);
                         }
                         try {
                             setListShown(true);
