@@ -285,4 +285,6 @@
     <string name="true_black_description">Cabinet will use pure black for AMOLED displays.</string>
     <string name="sdcard">SD Card</string>
 
+    <string name="mime_textplain">text/plain</string>
+
 </resources>
