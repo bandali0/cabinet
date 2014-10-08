@@ -8,6 +8,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 
+import com.afollestad.cabinet.App;
 import com.afollestad.cabinet.R;
 import com.afollestad.cabinet.file.CloudFile;
 import com.afollestad.cabinet.sftp.SftpClient;
@@ -121,7 +122,7 @@ public abstract class File implements Serializable {
         if (extension != null) {
             MimeTypeMap mime = MimeTypeMap.getSingleton();
             type = mime.getMimeTypeFromExtension(extension);
-            if (type == null) return extension;
+            if (type == null) return App.getAppContext().getResources().getString(R.string.mime_textplain);
         }
         return type;
     }

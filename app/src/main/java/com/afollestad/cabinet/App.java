@@ -1,6 +1,7 @@
 package com.afollestad.cabinet;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.afollestad.cabinet.utils.APKIconDownloader;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -12,6 +13,8 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
  */
 public class App extends Application {
 
+    private static Context context;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -20,6 +23,7 @@ public class App extends Application {
                 .imageDownloader(new APKIconDownloader(this))
                 .build();
         ImageLoader.getInstance().init(config);
+        context = getApplicationContext();
     }
 
     public static DisplayImageOptions getDisplayOptions(int fallback) {
@@ -33,5 +37,9 @@ public class App extends Application {
                 .cacheInMemory(true)
                 .cacheOnDisk(false)
                 .build();
+    }
+
+    public static Context getAppContext() {
+        return context;
     }
 }
