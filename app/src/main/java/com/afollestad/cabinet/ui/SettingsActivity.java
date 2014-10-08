@@ -1,6 +1,5 @@
 package com.afollestad.cabinet.ui;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
@@ -48,10 +47,10 @@ public class SettingsActivity extends ThemablePreferenceActivity implements Abou
         });
 
         // TODO uncomment if statement for Material
-        if (Build.VERSION.SDK_INT >= 20) {
-            translucentStatusbar.setEnabled(false);
-            translucentStatusbar.setSummary(R.string.translucentstatusbar_disabled);
-        }
+//        if (Build.VERSION.SDK_INT >= 20) {
+//            translucentStatusbar.setEnabled(false);
+//            translucentStatusbar.setSummary(R.string.translucentstatusbar_disabled);
+//        }
 
         translucentNavbar.setChecked(ThemeUtils.isTranslucentNavbar(this));
         translucentNavbar.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {

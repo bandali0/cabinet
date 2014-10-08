@@ -261,9 +261,9 @@ public class DirectoryFragment extends Fragment implements FileAdapter.IconClick
             assert search != null;
             SearchView searchView = (SearchView) search.getActionView();
             // TODO uncomment if statement for Material
-            if (Build.VERSION.SDK_INT < 20) {
-                themeSearchView(searchView);
-            }
+//            if (Build.VERSION.SDK_INT < 20) {
+//                themeSearchView(searchView);
+//            }
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
                 public boolean onQueryTextSubmit(String query) {
