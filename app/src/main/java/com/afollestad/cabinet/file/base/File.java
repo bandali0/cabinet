@@ -117,18 +117,18 @@ public abstract class File implements Serializable {
         return getExtension(getContext(), getName());
     }
 
-    public static String getMimeType(String extension) {
+    public static String getMimeType(Context context, String extension) {
         String type = null;
         if (extension != null) {
             MimeTypeMap mime = MimeTypeMap.getSingleton();
             type = mime.getMimeTypeFromExtension(extension);
-            if (type == null) return App.getAppContext().getResources().getString(R.string.mime_textplain);
+            if (type == null) return context.getResources().getString(R.string.mime_textplain);
         }
         return type;
     }
 
     public final String getMimeType() {
-        return getMimeType(getExtension());
+        return getMimeType(getContext(), getExtension());
     }
 
     public final boolean isRoot() {

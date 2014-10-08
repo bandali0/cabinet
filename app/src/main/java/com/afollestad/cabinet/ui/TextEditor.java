@@ -82,7 +82,7 @@ public class TextEditor extends NetworkedActivity implements TextWatcher {
                 }
 
                 String ext = File.getExtension(TextEditor.this, mFile.getName()).toLowerCase(Locale.getDefault());
-                String mime = File.getMimeType(ext);
+                String mime = File.getMimeType(TextEditor.this, ext);
                 Log.v("TextEditor", "Mime: " + mime);
                 List<String> textExts = Arrays.asList(getResources().getStringArray(R.array.other_text_extensions));
                 List<String> codeExts = Arrays.asList(getResources().getStringArray(R.array.code_extensions));
